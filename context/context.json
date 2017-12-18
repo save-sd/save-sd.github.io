@@ -1,6 +1,6 @@
 {
     "@context": {
-        "@base": "http://cs.unibo.it/save-sd/resource/",
+        "@base": "https://save-sd.github.io/resource/",
         "depiction": {
             "@id": "http://xmlns.com/foaf/0.1/depiction",
             "@type": "@id"
