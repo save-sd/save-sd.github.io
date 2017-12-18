@@ -26,7 +26,13 @@ There are four possible ways for writing a RASH document:
 
 ### dokieli
 
-[Dokieli](https://github.com/linkeddata/dokieli) is a client-side editor for decentralized article publishing in HTML+RDFa, annotations and social interactions, compliant with the [Linked Research](https://linkedresearch.org/) initiative. There are a variety of examples available online https://github.com/linkeddata/dokieli/wiki#examples-in-the-wild, where the [LNCS author guidelines](https://dokie.li/lncs-splnproc) as a template may be particularly useful.
+[Dokieli](https://dokie.li/) is a client-side editor for decentralized article publishing in HTML+RDF annotations and social interactions, compliant with the [Linked Research](https://linkedresearch.org/) initiative ([see the LNCS author guidelines as an example template](https://dokie.li/lncs-splnproc)). It includes a variety of features such as annotations, e.g. replies, peer-reviews, liking, resharing, bookmarking (implements W3C [Web Annotation model](https://www.w3.org/TR/annotation-model/)) and notifications (implements W3C [Linked Data Notifications](https://www.w3.org/TR/ldn/)). Articles as well as reviews can be notified to the [Linked Open Research Cloud](https://linkedresearch.org/cloud) using dokieli. 
+
+The following steps devote to simple writing:
+
+- If you want to work offline or on your local machine, open a dokieli file in your Web browser and edit. You have the option to export the document or use the Web browser’s native local storage. The dokieli repository includes [examples in the wild](https://github.com/linkeddata/dokieli/wiki#examples-in-the-wild) using the [LNCS author guidelines](https://dokie.li/lncs-splnproc) as a template. If you want to start from scratch, simply include the [dokieli CSS and JavaScript](https://github.com/linkeddata/dokieli) to any existing HTML document to immediately add in-browser editing and annotations. See also the [documentation](https://dokie.li/docs) for common HTML+RDFa patterns for articles and reviews.
+
+- If you have a [WebID and a personal online storage](https://dokie.li/#personal-storage), you can author your documents wherever you like on the Web, and you can decide who gets to read and write, e.g., your co-authors, or reviewers. Simply publish your article on any Web server that supports HTML.
 
 ## ODT
 
