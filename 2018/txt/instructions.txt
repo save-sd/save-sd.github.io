@@ -16,7 +16,7 @@ The earliest version of the RASH format is fully introduced in its [documentatio
 
 There are four possible ways for writing a RASH document:
 
-1. Use the native RASH wordprocessor, i.e. [RAJE](https://github.com/rash-framework/raje-app/releases);
+1. Use the native RASH wordprocessor, i.e. [RAJE](https://github.com/rash-framework/raje-app/releases) (available for Apple, Windows, and Linux);
 
 2. Use [OpenOffice Writer](https://www.openoffice.org/) following the [instructions available on the RASH repository](https://rawgit.com/essepuntato/rash/master/documentation/rash-in-odt.odt) for preparing your paper, and then use the [RASH online conversion service](http://dasplab.cs.unibo.it/rocs) for converting it in RASH;
 
