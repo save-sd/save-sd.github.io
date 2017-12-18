@@ -1,0 +1,3 @@
+An award of 250 euros, kindly sponsored by [Pensoft](http://www.pensoft.net), will be assigned to the best paper of the workshop. The decision will be taken by considering both the reviews received and how the authors will address the reviewers' concerns in the camera ready.
+
+Another award of 150 euros as a voucher for buying Springer's products, kindly sponsored by [Springer](http://www.springer.com), will be assigned to the best workshop submission in [RASH format](submission.html#instructions) (i.e., simplified HTML+RDFa). The decision will be taken by considering the quality of the markup (i.e., the less syntactical mistakes there are in the markup, the better), the number of RDF statements defined in RDFa, and the number of RDF links to LOD datasets.

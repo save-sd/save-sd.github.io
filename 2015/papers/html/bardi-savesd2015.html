@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="../grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><html xmlns="http://www.w3.org/1999/xhtml" prefix="schema: http://schema.org/     prism: http://prismstandard.org/namespaces/basic/2.0/     fabio: http://purl.org/spar/fabio/     cito: http://purl.org/spar/cito/     rash: http://cs.unibo.it/save-sd/rash/     cerif: http://www.eurocris.org/ontologies/cerif/1.3#     semcerif: http://www.eurocris.org/ontologies/semcerif/1.3#     dbpedia: http://dbpedia.org/ontology/">
+
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/rash.css"/>
+        <script src="../js/jquery.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="../js/bootstrap.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="../js/rash.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title>Enhanced Publication Management Systems -- A systemic approach towards modern
+            scientific communication</title>
+
+        <!-- Author's data (one or more) -->
+        <meta about="#ab" property="schema:name" name="dc.creator" content="Alessia Bardi"/>
+        <meta about="#ab" property="schema:email" content="alessia.bardi@isti.cnr.it"/>
+        <link about="#ab" property="schema:affiliation" href="#isti-cnr"/>
+        <!--<link about="ab" property="schema:affiliation" href="eng-unipi" />-->
+        <meta about="#pm" property="schema:name" name="dc.creator" content="Paolo Manghi"/>
+        <meta about="#pm" property="schema:email" content="paolo.manghi@isti.cnr.it"/>
+        <link about="#pm" property="schema:affiliation" href="#isti-cnr"/>
+
+        <!-- Affiliations -->
+        <meta about="#isti-cnr" property="schema:name" content="Institute of Information Science and Technologies, Italian National Research Council (ISTI-CNR), Pisa, Italy"/>
+        <!--<meta about="eng-unipi" property="schema:name"
+            content="Ph.D. program in Information Engineering, Ph.D. school “L. Da Vinci”, University of Pisa, Italy" />-->
+
+        <!-- Paper keywords (one or more) -->
+        <meta content="Enhanced publication" property="prism:keyword"/>
+        <meta content="Information systems" property="prism:keyword"/>
+        <meta content="Scholarly communication" property="prism:keyword"/>
+
+        <!-- ACM category (one or more) -->
+        <meta name="dcterms.subject" content="D.2.11,Software Architectures,Data abstraction,Domain-specific architectures"/>
+        <meta name="dcterms.subject" content="H.2.1,Database Management,Logical Design,Data Models"/>
+        <meta name="dcterms.subject" content="H.3.7,Information Storage and Retrieval,Digital Libraries"/>
+        <!-- /END Metadata -->
+
+        <!--Turtle about authors -->
+        <script type="text/turtle"><![CDATA[
+        
+            @prefix pro: <http://purl.org/spar/pro/> .
+            @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+            @prefix cerif: <http://www.eurocris.org/ontologies/cerif/1.3#> .
+            @prefix dbpedia: <http://dbpedia.org/ontology/> .
+            <ab> a cerif:Person ;
+                cerif:name "Alessia Bardi" ;
+                foaf:homepage <http://nemis.isti.cnr.it/person/alessia-bardi> ;
+                dbpedia:orcidid "orcid.org/0000-0002-1112-1292";
+                pro:holdsRoleInTime [
+                    a pro:RoleInTime ;
+                    pro:withRole pro:author ;
+                ] .
+           <pm> a cerif:Person ;
+                cerif:name "Paolo Manghi" ;
+                foaf:homepage <http://nemis.isti.cnr.it/person/paolo-manghi> ;
+                dbpedia:orcidid "orcid.org/0000-0001-7291-3210";
+                pro:holdsRoleInTime [
+                    a pro:RoleInTime ;
+                    pro:withRole pro:author ;
+                ] .
+            
+        ]]></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><!--//--><![CDATA[ ]]><!--//--></script></head>
+    <body>
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>Enhanced Publication Information Systems (EPISs) are information systems devised for
+                the management of enhanced publications (EP), i.e. digital publications enriched
+                with (links to) other research outcomes such as data, processing workflows,
+                software. </p>
+            <p>Today, EPISs are typically realised with a <q>from scratch</q> approach that entails
+                non-negligible implementation and maintenance costs.</p>
+            <p>This work argues for a more systemic approach to narrow those costs and presents the
+                notion of Enhanced Publication Management Systems, software frameworks that support
+                the realisation of EPISs by providing developers with EP-oriented tools and
+                functionalities.</p>
+        </section>
+
+        <!-- Sections -->
+        <section id="intro">
+            <h1>Introduction</h1>
+            <p>Enhanced publications (EPs) are digital publications enriched with, and/or linked to,
+                related research results, such as research data, processing workflows, software, and
+                connections among them <a href="#surf2009"> </a><a href="#bardi2014"> </a>.</p>
+            <p>
+                <a href="#fig_ep_example"> </a> shows an example of EP composed of
+                semantically linked parts that represent different kinds of outcome of a scientific
+                research (scientific publication in PDF, datasets, processing workflow).</p>
+            <figure id="fig_ep_example">
+                <p>
+                    <img src="pics/epub-executable-ns.png" alt="An example of enhanced publication"/>
+                </p>
+                <figcaption>An example of enhanced publication</figcaption>
+            </figure>
+            <p>The types of entities, in terms of structure and semantics, that can form an EP are
+                defined by an EP data model. An EP data model can be adopted by an Enhanced
+                Publication Information System (EPIS), that is an information system devised for the
+                management of EPs compliant to a specific EP data model. <a href="#bardi2014"> </a>
+            </p>
+            <p>The realization and maintenance of EPISs typically entail non-negligible costs, as
+                designers and developers have little or no technological support oriented to EPs. In
+                fact, they will realize EP-oriented software addressing the peculiarities of the
+                community to serve, by integrating technologies that are general purpose (e.g. <a href="http://dbpedia.org/resource/Database">database</a>s, file stores) and <a href="http://dbpedia.org/resource/Digital_library">Digital Library</a>-oriented
+                (e.g. repository software, cataloguing systems). The resulting products are often
+                not flexible enough to be adapted to the evolving requirements of the community they
+                target and hardly re-usable and configurable for different application domains with
+                similar requirements. </p>
+            <p>A more systemic approach would decrease the cost of realization and maintenance of
+                EPISs and support developers with EP management tools that hide the complexity of
+                the underlying technologies. </p>
+            <p>Like Data Base Management Systems had been introduced to collect common
+                functionalities used by different applications dealing with data, EPMSs could be
+                introduced into the scholarly communication scenario, offering to developers an
+                EP-oriented framework for the modern representation of scientific research outcomes.
+            </p>
+        </section>
+        <section id="epms">
+            <h1>Enhanced Publication Management Systems</h1>
+            <p>An EPMS is a framework that should provide tools to support the development of EPIS
+                for any application domain. As such, an EPMS should not make any assumption about
+                the structure and semantics of the EPs it will manage. Instead, an EPMS should
+                provide tools for the definition of EP data models, including the selection of
+                ontologies to use, and its functionalities should be configurable based on a given
+                EP data model. By analysing the requirements of existing EPISs, we have identified a
+                set of minimal requirements that an EPMS should satisfy:</p>
+            <ol>
+                <li>
+                    <p>Supporting the integration of heterogeneous content from dynamic data
+                        sources</p>
+                </li>
+                <li>
+                    <p>Supporting the adoption of different storage back-ends</p>
+                </li>
+                <li>
+                    <p>Enabling EP sharing via standard protocols (e.g. Linked Data, OAI-PMH/ORE,
+                        Search/Retrieve via URL (SRU), OpenSearch)</p>
+                </li>
+                <li>
+                    <p>Supporting portability</p>
+                </li>
+                <li>
+                    <p>Supporting the enrichment and curation of EPs</p>
+                </li>
+                <li>
+                    <p>Enabling the definition of customized EP data models</p>
+                </li>
+                <li>
+                    <p>Offering languages for EP definition, manipulation and access</p>
+                </li>
+                <li>
+                    <p>Supporting the addition of new domain-specific functionalities</p>
+                </li>
+            </ol>
+            <p> The high-level design of an EPMS has been designed so that each functional area
+                addresses a specific class of requirements, as shown in <a href="#fig_functional_areas"> </a>. </p>
+            <figure id="fig_functional_areas">
+                <p>
+                    <img src="pics/FA2.png" alt="EPMS functional areas"/>
+                </p>
+                <figcaption>EPMS functional areas</figcaption>
+            </figure>
+            <p> In particular, in order to allow the customization of the EP data model, the EP
+                Modelling area offers the EP meta-model (<a href="#fig_meta_model"> </a>), which is a data model oriented to the design of EP data models <a href="#bardi2015"> </a>. <em>EP</em> is a <em>Resource</em> that
+                    <em>Aggregates</em> at least one narration (via the <em>has text part</em>
+                relationship) and possibly other <em>Parts</em>. A narration represents a digital
+                publication to enhance and can be of type <em>File</em> (i.e. a file locally hosted),
+                    <em>Ref</em> (i.e. a link to a remote file), or <em>Structured Text</em> (e.g. JATS
+                XML). <em>Parts</em> are <em>Resources</em> that reflect the data model features
+                described above: embedded parts (<em>Embedded</em>), structured-text parts
+                    (<em>Structured Text</em>), reference parts (<em>Ref</em>), executable parts
+                    (<em>Executable</em>), and generated parts (<em>Generated</em>). <em>Resources</em>
+                can have a unique identifier and descriptive metadata. <em>Resources</em> can be
+                linked with each other via relationships (<em>Rel</em>) (for example to represent
+                versioning relationships between EPs). The attribute <em>label</em>, a free term or a
+                term from an <em>Ontology</em>, expresses the semantics of a relationship.</p>
+
+            <figure id="fig_meta_model">
+                <p>
+                    <img src="pics/model.png" alt="The EP Meta-model"/>
+                </p>
+                <figcaption>The EP meta-model</figcaption>
+            </figure>
+        </section>
+
+        <section id="ack" role="doc-acknowledgements">
+            <h1>Acknowledgments</h1>
+            <p>This work is partially supported by the EC-funded project <span about="http://www.openaire.eu" typeof="cerif:Project"><a href="http://www.openaire.eu">OpenAIREplus</a></span> (FP7-INFRA-2011-2,
+                Grant Agreement 283595). </p>
+            <p>This <span property="fabio:PosterPaper">poster</span> was also presented at the <a about="https://www.force11.org/meetings/force2015" typeof="cerif:event">Force2015 Conference</a>, <span property="cerif:cityTown">Oxford</span>, <span property="cerif:countryCode">UK</span>.</p>
+        </section>
+        <!-- References -->
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol>
+                <li id="bardi2015" role="doc-biblioentry">
+                    <p>Bardi A., Manghi P. <em>A Framework Supporting the Shift from Traditional
+                            Digital Publications to Enhanced Publications.</em> In: D-Lib Magazine,
+                        vol. 21 (1/2) article n. 3. Special issue on Linking and Contextualizing
+                        Publications and Datasets. Laurence Lannom (ed.). Corporation for National
+                        Research Initiatives, 2015. <a href="http://dx.doi.org/10.1045/january2015-bardi">doi:10.1045/january2015-bardi</a>
+                    </p>
+                </li>
+                <li id="bardi2014" role="doc-biblioentry">
+                    <p>Bardi A., Manghi P. <em>Enhanced publications: data models and information
+                            systems.</em> In: Liber Quarterly, vol. 23 (4) pp. 240 - 273. Association
+                        of the European Research Libraries, 2014. <a href="http://liber.library.uu.nl/index.php/lq/article/view/URN:NBN:NL:UI:10-1-116065">pid:URN:NBN:NL:UI:10-1-116065</a>
+                    </p>
+                </li>
+                <li id="surf2009" role="doc-biblioentry">
+                    <p>Woutersen-Windhouwer Brandsma, R., et al. <em>Enhanced Publications: Linking
+                            Publications and Research Data in Digital Repositories.</em> Amsterdam
+                        University Press, 2009. <a href="http://dx.doi.org/10.5117/9789089641885">doi:10.5117/9789089641885</a>
+                    </p>
+                </li>
+            </ol>
+        </section>
+    </body>
+</html>

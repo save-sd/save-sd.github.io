@@ -1,0 +1,33 @@
+All papers must represent original and unpublished work that is not currently under review. Papers will be evaluated according to their significance, originality, technical content, style, clarity, and relevance to the workshop. Papers have to be submitted through the [Springer Conference Submission System](https://ocs.springer.com/ocs/home/SAVE-SD2017). While we need that the authors submit through that submission system in order to proceed with the reviews, SAVE-SD also supports the [Linked Research principles](https://linkedresearch.org/calls#how-to-lr) and warmly suggest authors to consider them when preparing their papers.
+
+All submissions must be written in English. Several formats are possible for the submission: HTML (which is **strongly** encouraged), DOCX, ODT, and PDF. For non-PDF submissions, you should submit a zip archive containing the ODT/DOCX/HTML file. In case of HTML, you should also include in the archive all the additional stylesheets and scripts referred by the HTML file for guaranteeing a correct visualisation of the document on browsers. Please see below for additional details.
+
+## HTML
+
+You can use your own HTML-based format for the submission. In this case, you should submit a zip archive containing an HTML file with the additional stylesheets and scripts needed for guaranteeing a correct visualisation of the document on browsers. We **will not** ask you to prepare also the PDF version of your paper if you will submit in HTML.
+
+In addition, authors who are new to HTML submissions may consider to use either [RASH](#RASH) or [dokieli](#dokieli). 
+
+### RASH
+
+The [*Research Articles in Simplified HTML* (RASH) format](http://github.com/essepuntato/rash) allows one to easily prepare a scientific paper in HTML format. RASH is a Web-first format composed by a few of the available HTML tags and allows one to add RDF annotations by means of Turtle, JSON-LD, RDF/XML, and RDFa.
+
+The earliest version of the RASH format is fully introduced in its [documentation page](https://rawgit.com/essepuntato/rash/master/documentation/index.html) (written in RASH), which includes several examples. The complete RelaxNG grammar of the language is [available online](https://raw.githubusercontent.com/essepuntato/rash/master/grammar/rash.rng). The whole style package of this format (which includes the documentation, the examples and the grammar) is also [available](https://rawgit.com/essepuntato/rash/master/rash.zip) as a ZIP archive. Several other examples of RASH papers accepted to several venues are also available online at https://github.com/essepuntato/rash/#rash-papers-accepted-in-scholarly-venues.
+
+Note that now it also possible to use either **OpenOffice Writer** or **Microsoft Word** for preparing your RASH submission! Please follow the instructions available on the RASH repository for preparing your paper with either [OpenOffice Writer](https://rawgit.com/essepuntato/rash/master/documentation/rash-in-odt.odt) or [Microsoft Word](https://rawgit.com/essepuntato/rash/master/documentation/rash-in-docx.docx). Once you prepared your article with any of these two editors, you can convert it into RASH by using the [RASH online conversion service](http://dasplab.cs.unibo.it/rocs) - you can also install it locally on your machine following the instruction included in the [GitHub repository](https://github.com/essepuntato/rash/tree/master/tools/rocs).
+
+### dokieli
+
+[Dokieli](https://github.com/linkeddata/dokieli) is a client-side editor for decentralized article publishing in HTML+RDFa, annotations and social interactions, compliant with the [Linked Research](https://linkedresearch.org/) initiative. There are a variety of examples available online https://github.com/linkeddata/dokieli/wiki#examples-in-the-wild, where the [LNCS author guidelines](https://dokie.li/lncs-splnproc) as a template may be particularly useful.
+
+## ODT
+
+An ODT file formatted according to the [guidelines](https://rawgit.com/essepuntato/rash/master/documentation/rash-in-odt.odt) included in the RASH GitHub repository. Note that if you will follow strictly these guidelines we **will not** ask you to prepare also the PDF version of your paper.
+
+## DOCX
+
+A DOCX file formatted according to the [guidelines](https://rawgit.com/essepuntato/rash/master/documentation/rash-in-docx.docx) included in the RASH GitHub repository. Note that if you will follow strictly these guidelines we **will not** ask you to prepare also the PDF version of your paper.
+
+## PDF
+
+A PDF file formatted according to the [Springer LNCS template](https://www.springer.com/computer/lncs?SGWID=0-164-6-793341-0).

@@ -1,0 +1,9 @@
+SAVE-SD welcomes the submission of original research and application papers dealing with the three aforementioned fields. We encourage theoretical, methodological, empirical and applications papers. We appreciate the submission of papers incorporating links to data sets and other material used for evaluation as well as to live demos and software source code.
+
+We invite four kinds of submissions:
+- full research papers (max. 6 pp. in PDF or 5400 words in HTML)
+- position papers (max. 4 pp. in PDF or 3600 words in HTML) 
+- demo papers (max. 2 pp. in PDF or 1800 words in HTML)   
+- poster papers (max. 2 pp. in PDF or 1800  words in HTML) 
+
+All the aforementioned limits include metadata (title, authors, keywords, ACM categories, abstract), acknowledgements, references and the whole content of the paper. In the HTML format, figures and tables count 300 words each.

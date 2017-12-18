@@ -1,0 +1,11 @@
+**PeerJ Computer Science Collection**
+
+[PeerJ Computer Science](https://peerj.com/computer-science/) has just made available online the [Collection containing selected papers of SAVE-SD 2015](https://peerj.com/collections/24-save-sd-2015/). More information on the [PeerJ blog](https://peerj.com/blog/post/115284878808/save-sd-2015-collection/).
+
+**SAVE-SD 2016 Best paper award**
+
+* Salatino, A., Motta, E. (2016). Detection of Embryonic Research Topics by Analysing Semantic Topic Networks. Available in [RASH (HTML)](papers/html/salatino-savesd2016.html) and [PDF](papers/pdf/salatino-savesd2016.pdf)
+
+**SAVE-SD 2016 Best RASH paper award** - sponsored by [Springer Nature](http://www.springernature.com)
+
+* Philipson, J. (2016). Citation functions for knowledge export - a question of relevance, or, can CiTO do the trick? Available in [RASH (HTML)](papers/html/philipson-savesd2016.html) and [PDF](papers/pdf/philipson-savesd2016.pdf) 

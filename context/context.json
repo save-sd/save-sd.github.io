@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "@base": "http://cs.unibo.it/save-sd/resource/",
+        "depiction": {
+            "@id": "http://xmlns.com/foaf/0.1/depiction",
+            "@type": "@id"
+        },
+        "expression_collection": "http://purl.org/spar/fabio/ExpressionCollection",
+        "has_description": "http://purl.org/dc/terms/description",
+        "has_embodiment": {
+            "@id": "http://purl.org/vocab/frbr/core#embodiment",
+            "@type": "@id"
+        },
+        "has_id": "http://purl.org/dc/terms/identifier",
+        "has_label": "http://www.w3.org/2000/01/rdf-schema#label",
+        "has_homepage": {
+            "@id": "http://xmlns.com/foaf/0.1/homepage",
+            "@type": "@id"
+        },
+        "has_hastag": "http://purl.org/openorg/twitterHashtag",
+        "has_name": "http://xmlns.com/foaf/0.1/name",
+        "has_part": {
+            "@id": "http://purl.org/vocab/frbr/core#part",
+            "@type": "@id"
+        },
+        "has_representation": {
+            "@id": "http://purl.org/fabio/hasRepresentation",
+            "@type": "@id"
+        },
+        "has_title": "http://purl.org/dc/terms/title",
+        "has_twitter_account": "http://open.vocab.org/terms/twitter-id",
+        "has_type": {
+            "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "@type": "@id"
+        },
+        "has_url": {
+            "@id": "http://purl.org/spar/fabio/hasURL",
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI" 
+        },
+        "section": "http://purl.org/spar/doco/Section",
+        "web_content": "http://purl.org/spar/fabio/WebContent",
+        "web_site": "http://purl.org/spar/fabio/WebSite",
+        "workshop": "http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"
+    }
+}

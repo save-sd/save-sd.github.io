@@ -1,0 +1,29 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-sponsors",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2015 sponsors",
+        "has_title": "Sponsors",
+        "has_part": ["page/save-sd-2015-sponsors/pensoft", "page/save-sd-2015-sponsors/springer"],
+        "has_url": "sponsors.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-sponsors/pensoft",
+        "has_type": "section",
+        "has_id": "pensoft",
+        "has_label": "SAVE-SD 2015 sponsors, section 'Pensoft'",
+        "has_title": "Pensoft",
+        "has_url": "txt/pensoft.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-sponsors/springer",
+        "has_type": "section",
+        "has_id": "springer",
+        "has_label": "SAVE-SD 2015 sponsors, section 'Springer'",
+        "has_title": "Springer",
+        "has_url": "txt/springer.txt"
+    }
+]

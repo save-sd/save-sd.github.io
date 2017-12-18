@@ -1,0 +1,38 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2017 homepage",
+        "has_title": "Home",
+        "has_part": ["page/save-sd-2017-home/highlights", "page/save-sd-2017-home/goals", "page/save-sd-2017-home/topics"],
+        "has_url": "index.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home/highlights",
+        "has_type": "section",
+        "has_id": "highlights",
+        "has_label": "SAVE-SD 2017 homepage, section 'Highlights'",
+        "has_title": "Late breaking news",
+        "has_url": "txt/highlights.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home/goals",
+        "has_type": "section",
+        "has_id": "goals",
+        "has_label": "SAVE-SD 2017 homepage, section 'Goals'",
+        "has_title": "Goals",
+        "has_url": "txt/goals.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home/topics",
+        "has_type": "section",
+        "has_id": "topics",
+        "has_label": "SAVE-SD 2017 homepage, section 'Topics'",
+        "has_title": "Topics",
+        "has_url": "txt/topics.txt"
+    }
+]

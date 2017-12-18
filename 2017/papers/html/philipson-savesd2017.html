@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!-- -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+    prefix="
+    fabio: http://purl.org/spar/fabio/
+    cito: http://purl.org/spar/cito/
+    schema: http://schema.org/
+    mods: http://www.loc.gov/mods/v3/
+    prism: http://prismstandard.org/namespaces/basic/2.0/
+    dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/rash.css" />
+
+        <!-- Following script for altmetrics embedded donuts -->
+        <script src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+        <!-- End altmetrics script -->
+        <script src="js/jquery.min.js"> </script>
+        <script src="js/bootstrap.min.js"> </script>
+        <script src="js/rash.js"> </script>
+
+        <!-- 2. req. for embedded altmetrics donuts, not allowed here: <div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/mydoi.1234.5678"></div> -->
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title property="dcterms:title">About a BUOI: joint custody of universally unique
+            identifiers on the web, or, making PIDs more FAIR</title>
+
+
+        <!-- Author's data (one or more) -->
+        <meta about="#jph" typeof="schema:Person" name="dc.creator" content="Joakim Philipson" />
+        <meta about="#jph" property="schema:email" content="joakim.philipson@sub.su.se" />
+        <link about="#jph" property="schema:sameAs" href="http://orcid.org/0000-0001-5699-994X" />
+        <link about="#jph" property="schema:affiliation" href="#sub.su" />
+
+
+
+
+        <!-- Affiliations -->
+        <meta about="#sub.su" property="schema:name" typeof="schema:Organization"
+            content="Stockholm University Library, Stockholm, Sweden" />
+        <meta about="http://su.se/english/library/" property="schema:name"
+            typeof="schema:Organization" content="Stockholm University Library" />
+
+
+        <!-- Paper keywords (one or more) -->
+        <meta property="prism:keyword" content="identifiers" />
+        <meta property="prism:keyword" content="PIDs" />
+        <meta property="prism:keyword" content="findability" />
+        <meta property="prism:keyword" content="interoperability" />
+        <meta property="prism:keyword" content="resolvability" />
+        <meta property="prism:keyword" content="FAIR data principles" />
+        <meta property="prism:keyword" content="metadata" />
+        <meta property="prism:keyword" content="validation" />
+        <!-- /END Metadata -->
+
+        <!-- Other RDF statements -->
+        <script type="text/turtle">
+        <![CDATA[
+            @prefix cito: <http://purl.org/spar/cito/> .
+            @prefix fabio: <http://purl.org/spar/fabio/> .
+            @prefix schema: <http://schema.org/> .
+            @prefix mods: <http://www.loc.gov/mods/v3/> .
+            @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
+            @prefix dcterms: <http://purl.org/dc/terms/> .
+           
+            ]]>
+        </script>
+    </head>
+    <body
+        prefix="
+        fabio: http://purl.org/spar/fabio/
+        cito: http://purl.org/spar/cito/
+        schema: http://schema.org/        
+        prism: http://prismstandard.org/namespaces/basic/2.0/
+        mods: http://www.loc.gov/mods/v3/
+        dcterms: http://purl.org/dc/terms/">
+        <!-- Abstract -->
+
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>The findability and interoperability of some Permanent Identifiers (PIDs) in use on
+                the internet and their compliance with the FAIR data principles <a
+                    href="#fair-2016a"> </a> are explored. It is suggested that the wide
+                distribution and <em>findability</em> (e.g. by simple 'googling') on the internet
+                may be more important for the usefulness of identifiers, than the
+                    <em>resolvability</em> of links by one single authority, purportedly
+                guaranteeing their permanence and authenticity. The prevalence of phenomena such as
+                    <em>link rot</em> implies that the permanence of URLs, PURLs or URIs cannot be
+                trusted. By contrast, the well distributed, but seldom directly resolvable ISBN
+                identifier has proved remarkably resilient, with far-reaching persistence, inherent
+                structural meaning and good <em>validatability</em>, by means of fixed
+                string-length, pattern-recognition, restricted character set and check digit. Adding
+                    <em>context</em> and meaning to identifiers through namespace prefixes and
+                object types is also suggested. Arguing for a wide distribution of validatable
+                identifiers, the conclusion resembles the experience of the boy Marcus in the
+                novel-based film <em>About a boy</em>, from living with a suicidal mother: It's not
+                sufficient to rely on one source only for sustenance. You need more than that. You
+                need backup, in case something happens.<a href="#hornby-1998"> </a>
+                <a href="#weitz-2002"> </a></p>
+        </section>
+        <!-- Sections -->
+
+        <section id="sec_rationale">
+            <h1>Introduction: Identifiers in science</h1>
+            <p>Identifiers in science may refer to digital or physical objects, or concepts. They
+                may be general or domain-specific. Among the more prevalent general PID, permanent
+                identifier types are DOI, Handle and UUID. There are also 'old', bibliographic
+                identifiers like ISBN. Created in the 1960's and -70's of the print era, how come
+                they survived into this digital age? Some reasons might be: they are well
+                distributed across the internet, and widely used by stake-holders (libraries,
+                publishers, readers). They have a semantic structure, identifying well-defined
+                objects, and a fairly precise validation mechanism through fixed string-lengths,
+                limited character-set and check digits. Some of these properties of good identifiers
+                are shared by DOIs, Handles and UUIDs, or other more domain specific identifiers
+                used for scholarly data, but seldom all of them simultaneously. Among these
+                characteristics the main focus here will be on validation, as seemingly somewhat
+                neglected lately.</p>
+
+
+        </section>
+
+        <section id="sec_identifiers">
+            <h1>Identifiers - why do we need them?</h1>
+
+            <p>The general purpose of identifiers is to serve as <em>references</em> to the objects
+                that they are supposed to identify. This requires identifiers to indicate,
+                preferably in and by themselves, what <em>type of objects</em> they are meant to
+                identify. Now, far from all identifiers fulfil this requirement. Rather, it is often
+                left to the <em>names</em> of things to <em>describe</em> the objects identified,
+                thereby providing context and <em>meaning</em>. Scientific names may or may not be
+                part of the metadata on the destination page of a PID-URI.</p>
+                <p>While scientific <em>names</em> are often useful for <em>describing</em> objects (or
+                at least certain aspects or properties of 'things', organisms), they have other
+                drawbacks compared to identifiers, some of which were identified by <a
+                    href="#patterson-2016"> </a>. For example, homonymi and disambiguation should
+                generally be a lesser problem for globally unique identifiers. And while
+                concatenations or abbreviations may be problematic in the use of names for
+                identification, string-length restrictions and pattern limits are useful for
+                validation of identifiers, as is avoiding white space. Missing or added characters,
+                all types of misspellings are easier to detect and validate in standardized
+                identifiers of fixed string-length or well-defined character patterns. Inconsistent
+                encoding should generally also not be a problem in good identifiers, for which the
+                set of allowed characters may be limited. However, these assets of some identifiers
+                may conflict with the legitimate interest in having also transparent, meaningful
+                PIDs that at least in part "speak for themselves". The result of a compromise
+                between these two interests may be seen in the <em>Handle</em> (hdl) system
+                (below).</p>
+        </section>
+
+        <section id="FAIRprinciples">
+            <h1>FAIR principles</h1>
+            <p>The FAIR guiding principles aim <q>to make data <strong>Findable, Accessible,
+                        Interoperable, and Re-usable</strong>.</q><a href="#fair-2016a"> </a> As
+                such they concern also metadata in general and identifiers, PIDs, in particular, as
+                is seen from some of the principles:</p>
+
+            <figure id="fairpic">
+
+
+                <p><img class="14cm-9cm" src="img/fairforce11pic.jpg"
+                        alt="The FAIR data principles." /></p>
+                <figcaption>The FAIR data principles.<a href="#fair-2016a"> </a></figcaption>
+            </figure>
+
+            <p>The FAIR principles clearly need interpretation to become fully operational, as
+                several observers have noted, and such work is also in progress. <a
+                    href="#doorn-2017"></a>
+                <a href="#dunning-2017"> </a> Further explications of some of the principles are
+                also available from the originators <a href="#fair-2016b"> </a>:</p>
+
+            <ul>
+                <li>
+                    <p>1. To be <strong>Findable</strong> any Data Object should be uniquely and
+                        persistently identifiable.</p>
+                </li>
+                <li>
+                    <p>1.1. The same Data Object should be re-findable at any point in time, thus
+                        Data Objects should be persistent, with emphasis on their metadata...</p>
+                </li>
+                <li>
+                    <p>1.2. A Data Object should minimally contain basic machine actionable metadata
+                        that allows it to be distinguished from other Data Objects</p>
+                </li>
+                <li>
+                    <p>...</p>
+                </li>
+                <li>
+                    <p>2. Data is <strong>Accessible</strong> in that it can be always obtained by
+                        machines and humans</p>
+                </li>
+                <li>
+                    <p>...</p>
+                </li>
+                <li>
+                    <p>3. Data Objects can be <strong>Interoperable</strong> only if:</p>
+                </li>
+                <li>
+                    <p>3.1. (Meta) data is machine-actionable [8. ... <q>Metadata being machine
+                            readable is a <em>conditio sine qua non</em> for FAIRness.</q>] <a
+                            href="#force11-2016"> </a>
+                    </p>
+                </li>
+                <li>
+                    <p>...</p>
+                </li>
+                <li>
+                    <p>3.3  (Meta) data within the Data Object should thus be both syntactically
+                        parseable and semantically machine-accessible </p>
+                </li>
+                <li>
+                    <p>4. For Data Objects to be <strong>Re-usable</strong> additional criteria
+                        are:</p>
+                </li>
+                <li>
+                    <p>4.1 Data Objects should be compliant with principles 1-3</p>
+                </li>
+                <li>
+                    <p>4.2 (Meta) data should be sufficiently well-described and rich that it can be
+                        automatically (or with minimal human effort) linked or integrated,
+                        like-with-like, with other data sources </p>
+                </li>
+                <!--  -->
+            </ul>
+            <p> The FAIR principles have some resemblance with the Linked Data rules first fomulated
+                by Tim Berners-Lee already back in 2006, updated in 2009 and 2010.<a
+                    href="#berners-lee-2009"> </a> There is, for example, the insistence on
+                machine-readability and the linking of data sources with other data. But the FAIR
+                principles do not necessarily require metadata to be expressed in RDF, as the Linked
+                Data rules demand. It seems also that Berners-Lee is critical of identifier types
+                using other schemes than simple HTTP URIs.</p>
+
+            <p>Neither the FAIR principles, nor the Linked Data rules say anything explicitly about
+                    <em>validation</em>. Still, particularly for the <em>Interoperability</em> and
+                    <em>Re-usability</em>, it is crucial that metadata can be properly validated
+                against a schema, as adhering to an accepted metadata standard. And this includes
+                also identifiers. We must be sure that they are of the type or format they claim to
+                be, even if they cannot be resolved to a dedicated URI any longer. Failed
+                validation, e.g. due to simple typos or wrong namespace, may even be one way of
+                checking why an identifier or URI does not resolve as expected. It is also important
+                for the possibility to export metadata to another format, thereby promoting the
+                re-use of data, without exporting also potential errors. Although transformation or
+                harvesting of metadata might be possible even without validation, the trust in the
+                results and quality as well as the eventual findability of the data (and so again
+                the re-usability) might be seriously affected.
+                For enhanced findability, it is also important that standard, widely distributed
+                identifiers are used.</p>
+
+            <p>Validation of an identifier means ensuring that it is true to its proclaimed type,
+                for example, making sure that what is flagged as an ISBN is not in fact an ISSN
+                (real use case), or that the string-length and check-sum is compliant with its type.
+                A further advantage of promptly validatable identifiers, as against relying
+                exclusively on resolvability, is that validation can be performed also off-line, by
+                means of a more or less simple validation-algorithm and a piece of software such as
+                a resonably good XML-editor.</p>
+
+
+
+        </section>
+
+        <section id="sec_resolvability_or_findability">
+            <h1>Resolvable or findable?</h1>
+
+            <p>In the present FAIR principles the focus is very much on resolvability of identifiers
+                by an authority <a href="#fair-2016b"> </a>, despite the general awareness of
+                phenomena like 'link rot' and 'reference rot'.<a href="#gertler-2017"> </a><a
+                    href="#jones_etal-2016"> </a><a href="#linkrotwiki-2017"> </a> It has even been
+                suggested to put up digital gravestones over disappeared resources, with metadata
+                from their last known whereabouts serving as epitaphs.<a href="#clark-2016"> </a> A
+                2013 study in BMC Bioinformatics analyzed nearly 15,000 links in abstracts from
+                Thomson Reuters’ Web of Science citation index and found that the median lifespan of
+                web pages was 9.3 years, and just 62% were archived.<a href="#hennessey-2013"> </a>
+                This happens although there is an understanding that <q>[u]nique identifiers, and
+                    metadata describing the data, and its disposition, should persist -- even beyond
+                    the lifespan of the data they describe</q>.<a href="#force11-2014"> </a> A
+                recent study of some 40 research data repositories found that only one of these (3%)
+                was compliant with the FAIR principle of Accessibility requiring <q>a clear policy
+                    statement (or various examples of data this has actually happened to) indicating
+                    that metadata is still available even if the data is removed.</q> <a
+                    href="#dunning-2017"> </a> The argument here, though, is not that resolvable,
+                permanent URIs should be avoided as identifiers; in fact, they often do serve
+                their purpose of providing a more persistent metadata source than "ordinary", plain
+                URLs. But, as has been eloquently remarked, "persistent URIs must be used to be
+                    persistent".<a href="#vandesompel-2016a"> </a> Persistent, resolvable URIs as
+                identifiers work by means of a decoupling of the location and the identification
+                functions of URIs.</p>
+                <blockquote><p>                    
+                 The custodian of a web resource maintains the correspondence
+                    between the identifying URI and the locating URI in the resolver’s look-up table
+                    as the resource’s location changes over time. ... The solution comes at a price
+                    because it requires operating a resolver infrastructure and maintaining the
+                    look-up table that powers it.<a href="#vandesompel-2016a"> </a></p></blockquote> 
+            <p>This is
+                true of DOIs, as well as Handles, PURLs and URNs. There are in fact numerous cases
+                when the lookup-table is not maintained and updated as required. That is why it may
+                be wise not to rely on a single 'custodian' for the resolution of identifiers and
+                access to associated metadata. It is rather the <em>distribution</em> and use of
+                identifiers - whether resolvable or not - that is important here. It seems not even
+                the authors of <a href="#vandesompel-2016a"> </a> are true to their own principles,
+                since three of their references that actually have DOIs are cited without them: <a
+                    href="#duerr-2011"> </a>
+                <a href="#klein_etal-2014"> </a>
+                <a href="#zhou-2015"> </a>. So again, PIDs must be used and cited to remain
+                permanent. Citations may also serve as a 'means of transportation' to achieve widest possible
+                distribution. Further, it may be argued that wide distribution is <em>dependent</em>
+                on good 'validatability', in order not to multiply errors and 'non-resolution' as a
+                result.</p>
+
+            <p>One way to achieve wider distribution of identifiers might be the praiseworthy
+                initiative of <em>signposting.org</em> (see also: <a href="#vandesompel-2016b"
+                > </a>), using HTTP headers for retrieval of PIDs from simple URLs:</p>
+
+
+            <p>
+                <code>curl -I "https://doi.pangaea.de/10.1594/PANGAEA.867908" HTTP/1.1 200 OK
+                    Content-length: 8424 Content-type: text/html;charset=UTF-8 Link:
+                    &lt;https://doi.org/10.1594/PANGAEA.867908&gt; ; rel="identifier"</code>
+            </p>
+            <p>However, the signposting initiative, so far, only redirects the question of use from
+                PIDs and DOIs to HTTP header links. Again, going back to the question of
+                resolvability, the relationship between identifiers such as DOIs and URIs/IRIs is
+                not always straightforward, and sometimes involves a chain of redirects ('303s'),
+                before reaching eventually a destination holding also the appropriate metadata.<a
+                    href="#wass-2016"> </a><a href="#wass-2017"> </a>. Another reason resolvability
+                may not be sufficient, even if the metadata is somehow in place, is that the file on
+                the destination page resolved to is behind a paywall. This is a recent case, where
+                apparently public domain content more than 100 years old was hidden behind a
+                DOI-resolver charging 50$ for release of the content:</p>
+
+
+            <figure id="tweet1">
+
+
+                <p><img class="17cm-10.081cm" src="img/Capt0.JPG"
+                        alt="Tweets about the use of DOIs referring to resources behind paywalls."
+                     /></p>
+                <figcaption>Tweets about public domain resources behind DOI paywalls.</figcaption>
+            </figure>
+
+
+            <figure id="tweet3">
+                <p><img class="14cm-9cm" src="img/Capt2.JPG"
+                        alt="Tweets about the use of DOIs referring to resources behind paywalls."
+                     /></p>
+                <figcaption>Tweets about public domain resources behind DOI paywalls.</figcaption>
+            </figure>
+
+            <p>First, it is not true that every object only gets one and only one DOI. It is
+                possible to mint several DOIs for the same resource by different agents, such as
+                Dataverse, Figshare, ResearchGate etc. The DOI in question here is: <a
+                    href="http://dx.doi.org/10.1080/00222930908692639"
+                >10.1080/00222930908692639</a>. Secondly, there are some remedies against these
+                cases, notably the recently launched oaDOI at <em>oadoi.org</em>. <a
+                    href="#hayes-2016"> </a> We try it out here: </p>
+
+            <figure id="oaDOIresult1">
+                <p><img class="17cm-10.081cm" src="img/oaDOIresult1.JPG"
+                        alt="oadoi.org tool finding open access version of a resource referenced by a DOI behind a paywall"
+                     /></p>
+                <figcaption>oadoi.org tool finding open access version of a resource referenced by a
+                    DOI behind a paywall.</figcaption>
+            </figure>
+
+            <p>In several steps this eventually leads us via an API to an XML-file with a link to
+                the freely accessible fulltext at <a
+                    href="http://www.biodiversitylibrary.org/part/60220"
+                    >http://www.biodiversitylibrary.org/part/60220</a>.
+                But, most often you are not so fortunate to find a free replacement copy of resources behind a paywall. What meets you when tested
+                in those cases may be this telling message, when tried for the DOI of <a href="#paskin-1999"> </a>:</p>
+
+
+            <figure id="oaDOIresult2">
+                <p><img class="17cm-10.081cm" src="img/oadoiNoDice.JPG"
+                        alt="oadoi.org tool finding open access version of a resource referenced by a DOI behind a paywall"
+                     /></p>
+                <figcaption>oadoi.org tool not finding open access version of a resource referenced
+                    by a DOI behind a paywall.</figcaption>
+            </figure>
+
+            <p>And if <em>oadoi.org</em> (apparently just recently replaced by the browser add-on <em>unpaywall.org</em>) fails, <a
+                    href="http://identifiers.org/services/sparql">identifiers.org SPARQL
+                    endpoint</a> might be useful.<a href="#wimalaratne-2015"> </a> But, it does
+                not necessarily give us an open access URI in return. And it only works if the
+                potential corresponding URIs have been assigned the property <em>owl:sameAs</em>
+                just as the submitted subject URI. Unfortunately, in neither of our cases above
+                these conditions are met.</p>
+
+            <p>Assuming we have finally found a single seemingly reliable custodian of our PIDs and
+                URIs, promising 24/7 resolution and top quality metadata, should we rest content
+                with that? Most serious lawyers and journalists probably would agree, it is wise not
+                too judge by the testimony of a single witness, a single source alone. The evidence
+                of at least two, mutually independent witnesses is generally preferred. Clark
+                describes <em>multiple resolution</em> as representing a stage in the evolution of
+                PIDs, that will eventually be surpassed by a more mature age when we supply also
+                    <em>data types</em> to come with the PIDs, in order to make them more machine
+                actionable <a href="#clark-2016"> </a>. Providing multiple <em>access</em> to, or
+                    <em>identification</em> of resources through PIDs, that are capable of serving
+                as trustworthy, competent, valid independent witnesses from different moments in
+                time, at different sites, in different places is a good idea. Thus, we accept
+                    <q>that an object may have multiple PIDs</q>. Ideally these multiple PIDs should
+                get to "know about" each other as a way towards interoperability.<a
+                    href="#clark-2016"> </a>. This can be achieved already, e.g. by means of linked
+                open data (LOD), sameAs-relationships and tools provided by <em>n2t.net</em>,
+                    <em>oadoi.org</em> and the <em>identifiers.org</em> SPARQL endpoint referred to
+                above. Multiple identifiers from different namespaces for the same object may even
+                be desirable in order to ensure interoperability in different environments.<a
+                    href="#paskin-1999"> </a>. It is also in line with the principle of the semantic
+                web known as the <em>NUNA, Non-Unique Naming Assumption</em>, implying that
+                    <q>things described in RDF data can have more than one name</q> and any object
+                may be identified by more than one URI, serving in RDF as 'names' of things.<a
+                    href="#coyle-2014"> </a></p>
+
+            <figure id="cartoon">
+                <p><img class="17cm-10.081cm" src="img/prolifStandards15.JPG"
+                        alt="Cartoon of proliferating standards." /></p>
+                <figcaption>Proliferating standards cartoon. Source: <a href="https://xkcd.com/927/"
+                        >xkcd.com</a>. CC BY-NC 2.5</figcaption>
+            </figure>
+
+
+            <p>However, the conclusion to be drawn from this cartoon and the website <a
+                    href="http://yapid.org/">yapid.org</a> with regard to PIDs is not that any
+                identifier is as good as the other. In fact, there are significant differences in
+                quality between identifiers, particularly in terms of 'validatability' and
+                'meaningfulness', or 'semantic weight'. We are getting there a bit later.</p>
+
+            <p>But first, having referred to linked data and sameAs-relationships as a possible
+                solution to achieving interoperability, what about long-term sustainability? Are
+                LOD, relying heavily on URIs, fit for survival? Archival records for long-term
+                preservation need to be self-sustained, carrying meaning within themselves, while
+                the references may no longer be resolvable. In e-archives compliant with the
+                OAIS-model and Trustworthy Digital Repositories standards for self-sustenance, this
+                means that URIs lacking an inherently meaningful structure will often serve only as
+                another set of dumb identifiers. Unless they can import some meaning from outside,
+                through resolution or sameAs links, such opaque, non-resolvable URIs should
+                henceforth rather be described as "non-semantic".</p>
+
+
+
+
+        </section>
+
+
+
+        <section id="which_identifiers">
+            <h1>Which identifiers are FAIR enough?</h1>
+
+            <p>We must ask about PIDs, <q>Permanent Identifiers</q>, just how <q>permanent</q> are
+                they really? Even if not always resolvable, are they in general still 'findable',
+                well distributed over the internet in time and space? Are they 'validatable' (e.g.
+                through fixed string-length, pattern-recognition, restricted character set, built-in
+                checksum, built-in type?) Are they FAIR?</p>
+
+            <p><strong>Findability:</strong> Beginning with the F for findability, for comparison we
+                go back in time to 'old-fashioned' ISBNs, Internaional Standard Book Numbers.
+                Publicly declaring what type of objects they are meant to identify, ISBNs are rarely
+                directly resolvable. But they are widely distributed, they have good
+                    <em>findability</em> in terms of <em>precision</em> hits, as seen by simple
+                'googling', with good survival rate, longer than the median age of web-pages 9.3
+                years. For example, look at ISBN 0-14-029161-X: <em>The Diversity of Life / Edward
+                    O. Wilson (2001)</em>. Simple googling of 014029161X, unprefixed and without
+                hyphens results in 57/57 precision hits (date: 2017-01-30). ISBNs could also be
+                searched in library catalogs, the most comprehensive of which is probably the <a
+                    href="https://kvk.bibliothek.kit.edu/">Karlsruhe Virtual Catalog – KVK
+                    worldwide</a>. Result of the query '014029161X', with the same unprefixed ISBN
+                without hyphens yields 123/123 precision hits, recall being difficult to compute
+                since in 55 of 72 catalogs the search could not be successfully processed or no
+                records were found. To counteract the possibly unfair bias with a modern classic
+                like this, we try instead an even older, and presumably less well-known example:
+                ISBN: 2130381030. <em>L'Identité : séminaire interdisciplinaire dirigé par Claude
+                    Lévi-Strauss, 1974-1975</em> (Paris: PUF, 1983). Googling without prefix
+                (2130381030) the precision is between 14/39 and 22/50; with prefix (ISBN2130381030)
+                it reaches as high as 17/18 (date: 2017-01-30).</p>
+
+            <p>These results could be compared to similar tests for identifiers of one of the most
+                well studied organisms of all, the fruitfly <em>Drosophila melanogaster</em>.
+                Starting with its GBIF ID <a href="http://www.gbif.org/species/5073713">5073713</a>,
+                googling the unprefixed pure number gives the modest precision of 1/107 (date:
+                2017-01-30). Using instead the <a href="http://resolver.globalnames.org/">Global
+                    Names Resolver</a> to get a UUID v. 5 for <em>Drosophila melanogaster</em>,
+                &lt;gni-uuid&gt;1bc2f359-47e4-5da6-a748-74676b7c8c5d&lt;/gni-uuid&gt;, googling it
+                either unprefixed or prefixed gives a zero result (0 recall, 0 precision, date:
+                2017-01-30). Trying instead the same UUID in a general search of all databases of
+                NCBI, the US National Center for Biotechnology Information), we get 34 'hits' in 13
+                different databases, but all wrong (i.e. 0 precision) <a
+                    href="https://www.ncbi.nlm.nih.gov/gquery/?term=1bc2f359-47e4-5da6-a748-74676b7c8c5d"
+                    >1bc2f359-47e4-5da6-a748-74676b7c8c5d</a>. Apparently this is because the
+                default search algorithm ignores the hyphens, or rather replaces them with a 'OR',
+                so that we get chunks of the string interpreted as e.g. part of a gene locus or
+                names of clones. Most notably, we get 0 hits in the <a
+                    href="ttps://www.ncbi.nlm.nih.gov/taxonomy/?term=1bc2f359-47e4-5da6-a748-74676b7c8c5d"
+                    >NCBI Taxonomy database</a>, that on the face of it would seem to be the most
+                relevant to our search. Going back instead to the GBIF, using our gni-uuid for an
+                overall search, restricting our search in several steps finally to only species we
+                still get a result of 120613 'hits', simply too much to make precision all but
+                negligible. So, while the UUID is imminently validatable, with fixed string-length
+                and restricted character set, it is neither directly resolvable, nor findable in
+                terms of search results. To earn significance and importance as identifiers
+                gni-UUIDs must become more findable and re-usable, for example by ping-back and
+                auto-update, assigning themselves to the records in the biodiversity database
+                sources they were drawn from and make use of schema.org and similar to get incoming
+                links and a better ranking in search engines.</p>
+
+            <p><strong>Accessibility:</strong> Data and (digital) objects are accessible only in so
+                far as identifiers are findable or resolvable preferably to open access landing
+                pages with either direct availability of resources, or sufficient metadata to direct
+                the user to such an access point. In this respect DOIs are often, but not always, as
+                good as or sometimes better than ISBNs (for obvious reasons regarding print only
+                material), while gni-UUIDs as described above are all but useless. </p>
+
+            <p><strong>Interoperability</strong> and <strong>Re-usability</strong> are both
+                intimately associated with 'validatability', as argued above. We will look more into
+                detail at the performance of different PIDs regarding this below.</p>
+
+            <p><strong>DOI:</strong> DOIs can look just like anything. Here are some real cases, all
+                at the time of writing resolvable and with multiple findability also by simple
+                googling, some of them pretty 'old', although they got their DOIs assigned fairly
+                recently. One is even from 1977 (doi: 10.1177/030631277700700112), but it still
+                produces an impressive precision score of 26/26 or 59/59 (date: 2017-01-30), mostly
+                due to it quite high citation rate, yielding hits for all the citing sources.</p>
+            <ul>
+                <li>
+                    <p><a href="http://dx.doi.org/10.1007/978-3-319-07443-6_39">
+                            10.1007/978-3-319-07443-6_39</a></p>
+                </li>
+
+                <li>
+                    <p><a href="http://dx.doi.org/10.1002/asi.23256">10.1002/asi.23256</a></p>
+                </li>
+                <li>
+                    <p><a href="http://dx.doi.org/10.1177/030631277700700112">
+                            10.1177/030631277700700112</a></p>
+                </li>
+                <li>
+                    <p><a
+                            href="http://dx.doi.org/10.1002/(SICI)1097-4571(199510)46:9&lt;646::AID-ASI2&gt;3.0.CO;2-1"
+                            >10.1002/(SICI)1097-4571(199510)46:9&lt;646::AID-ASI2&gt;3.0.CO;2-1</a>.
+                        <!--           shortDOI handle: <a href="http://doi.org/fnvwh5">10/fnvwh5</a>    -->
+                    </p>
+                </li>
+
+
+                <li>
+                    <p><a href="http://dx.doi.org/10.1007/s11192-007-1682-3"
+                            >10.1007/s11192-007-1682-3</a></p>
+                </li>
+
+                <li>
+                    <p><a href="http://dx.doi.org/10.1023/B:SCIE.0000018543.82441.f1">
+                            10.1023/B:SCIE.0000018543.82441.f1</a></p>
+                </li>
+            </ul>
+            <p>Now, following are some old DOIs from Wiley Online Library 1996,1998 and Springer
+                2001 that do not seem to resolve properly (on 2017-01-31):</p>
+            <ul>
+                <li>
+                    <p><a
+                            href="http://dx.doi.org/10.1002/(SICI)1520-6297(199601/02)12:1&lt;67::AID-AGR6&gt;3.3.CO;2-#"
+                            >10.1002/(SICI)1520-6297(199601/02)12:1&lt;67::AID-AGR6&gt;3.3.CO;2-#</a></p>
+                </li>
+                <li>
+                    <p><a
+                            href="http://dx.doi.org/10.1002/(SICI)1520-6297(199601/02)12:1&lt;105::AID-AGR10&gt;3.3.CO;2-K"
+                            >10.1002/(SICI)1520-6297(199601/02)12:1&lt;67::AID-AGR6&gt;3.3.CO;2-K</a></p>
+                </li>
+                <li>
+                    <p><a
+                            href="http://dx.doi.org/10.1002/(SICI)1520-6297(199811/12)14:6&lt;475::AID-AGR5&gt;3.3.CO;2-6"
+                            >10.1002/(SICI)1520-6297(199811/12)14:6&lt;475::AID-AGR5&gt;3.3.CO;2-6</a></p>
+                </li>
+                <li>
+                    <p><a href="http://dx.doi.org/10.1007/s00145-001-0001-x"
+                            >10.1007/s00145-001-0001-x</a></p>
+                </li>
+            </ul>
+
+            <p>Obviously, all these DOIs, whether resolvable or not, vary substantially in
+                string-length, from just 17 to over 60 characters, some involving abbreviations of
+                journals or organisations, one an ISBN, and some containing characters in need of
+                special XML-encoding, different from URI. Note that although the two last items in
+                the first group are from the same journal, <em>Scientometrics</em>, they are quite
+                different in structure. Anyway, all the items in both groups are valid DOIs and all
+                validate against the best we can offer as a schema, with only partial pattern
+                recognition:</p>
+
+            <pre><code>
+ &lt;sch:rule context="identifier[@type='doi']"&gt;
+   &lt;sch:let name="doi-pattern" value="'^(doi:10|10)[.][0-9]{4,}/\S+$'"/&gt;
+   &lt;sch:assert test="matches(., $doi-pattern, 'i')">All DOI identifiers must start with 10, followed by a minimum of 4 digits, a '/' and a suffix of any length
+   &lt;/sch:assert&gt;
+ &lt;/sch:rule&gt;
+  </code></pre>
+
+            <p>But, so does this fake DOI equally:</p>
+
+            <pre><code>
+            <a about="blubber-2111" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1001/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx999999999999999999999999999999999999999999999999">http://dx.doi.org/<span about="blubber-2111" property="prism:doi">10.1001/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx999999999999999999999999999999999999999999999999</span></a>
+             </code></pre>
+
+            <p>DOIs, as we have seen, unlike ISBNs are difficult to validate accurately. Or rather,
+                it is difficult to find sufficiently discriminatory criteria to distinguish proper
+                DOIs from fake ones. They have no fixed string-length, to start with, and very
+                little of character set restrictions. All we can have is a partial
+                recognition-pattern such as the one in the schematron rule above.</p>
+
+            <p><strong>Handle:</strong>The Handle identifier system seems fairly easy and handy at a
+                first glance. Only, it comes in two different flavors. One is the semantically
+                opaque, which has the structure: <em>Prefix/noid</em> (10079/sqv9sf1), where the
+                NOID-part (for Nice Opaque Identifier <a href="#kunze-2006"> </a>) is a 7-character
+                long alphanumeric string from the restricted character set
+                "0123456789bcdfghjkmnpqrstvwxz", with random minting order.<a href="#guo-2016"> </a>
+                The other flavor is the semantically transparent, which could be of three different
+                types: the URL handle: <em>Prefix/local-PID</em> (10079/bibid/123456), the user
+                handle: <em>Prefix/netid/netid</em> (10079/netid/guoxinji) and the simpler group
+                handle: <em>Prefix/group</em> (10079/ISPS). While being more instantly "meaningful",
+                providing context, this kind of Handle, however, will prove less "validatable" in
+                the sense that there is no longer any fixed string-length or restricted
+                character-set. </p>
+
+            <p><strong>UUID</strong> v5 has support within the field of biodiversity taxonomy, as an
+                important complement to scientific names.<a href="#patterson-2016"> </a>. They were
+                introduced to the field in 2015 by the Global Names Architecture - GNA <a
+                    href="#gna-2015"> </a>. The arguments for using them instead of name strings for
+                certain functions are that they save space as index keys in databases, they have a
+                fixed string length (36 characters, including the dashes) while scientific names are
+                of different length. UUIDs do not suffer, as names sometimes do, from encoding
+                problems that are difficult to detect and they are more easily distinguishable one
+                from the other than name strings for closely related species variants. Specifically,
+                it is argued that <q>UUIDs v5 ... can be generated independently by anybody and
+                    still be the same to the same name string... Same ID can be generated in any
+                    popular language following well-defined algorithm.</q> The corresponding <a
+                    href="http://globalnames.org/apps/gn-uuid/">Ruby Gem app</a> is described thus:
+                    <q>Creates UUID version 5 out of scientific name string. It uses globalnames.org
+                    domain for DNS namespace. There is a 1:1 relationship between the string and the
+                    corresponding UUID, so it allows globally connect data about a name string
+                    originated from independent sources without a need to negotiate identifiers.</q>
+                Note, however, that it is actually the specific<em>name</em> string that is
+                identified here, not the object, the organism, the 'thing itself'. Thus, the
+                resulting UUID is completely dependent upon the particular name string (with its
+                encoding), it cannot be used as a bridge between different name forms for the same
+                organism, telling us that they are naming the same object. This is due to the fact
+                that it is <q>generated by hashing a namespace identifier and name</q>. <a
+                    href="#UUID-2017"> </a> By contrast, the UUID v5 is easily validated, e.g. with
+                an <a href="http://www.freecodeformat.com/validate-uuid-guid.php">online
+                    validator</a>.</p>
+
+        </section>
+
+        <section id="sec_why_context">
+            <h1> Why context?</h1>
+
+            <p>Generally speaking, although it is preferable that identifiers be findable and
+                identifiable also in their unprefixed, pure form, typed identifiers give context by
+                means of namespace prefixes of a metadata standard, a vocabulary or ontology. They
+                tell us what kind of identifier it is and sometimes what kind of objects it is used
+                for (e.g. ISBN), but not always (cf. DOI, EAN, UUID). Most importantly they indicate
+                what schema, which rules should be used for their validation.</p>
+
+            <p> Page <a href="#page-2016"> </a> claimed that e.g. "dc:title" is adding "unnecessary
+                complexity (why do we need to know that it's a "dc" title?)" in the JSON
+                expression:</p>
+            <pre><code> { "@context": { "dc:title": "http://purl.org/dc/terms/title" },
+                "dc:title": "Darwin Core: An Evolving Community-Developed Biodiversity Data
+                Standard" }</code></pre>
+
+            <p>A simple answer is that namespaces are important to retain meaning from context,
+                serving as a key to interpretation for the future. Self-sustained long-term
+                preservation should ideally mean in a case like this that the dc specification and
+                schemas valid at the time be archived together with the records, or at least that
+                there is provenance metadata including timestamps and namespace of terms used.
+                Metadatafiles in XML usually have a xsi:schemaLocation indicating which schema to
+                validate against, possibly also its @version. This information, together with
+                timestamped metadata elements such as 'dateIssued' should be sufficient to provide
+                context. For JSON metadata there are name/value pairs such as { "protocol": "doi",
+                ... "createTime": "2017-01-12T10:49:03Z", ...} that could fill the same function.
+                Secondly, context is just as important for validation of records also in the
+                present. </p>
+
+        </section>
+
+
+        <section id="sec_new_DOI">
+            <h1>A new contextual, integrated, validatable DOI - a BUOI?</h1>
+
+            <p>As we have seen in the case of Handle above, validatability sometimes comes at a
+                cost: transparency lost. Are we forced to make a choice between the two, then, and
+                let identifiers be fully validatable while we let associated, linked scientific
+                names stand for transparency and meaning? Or, can we create identifiers that are
+                both fully validatable and at the same time more meaningful, providing context? So,
+                here we finally suggest such a 'yapid' model for a 'BUOI' (Best Unique Object
+                Identifier):</p>
+            <pre><code><em>Model</em>: [namespace prefix].[object type].[object id: 10 positions]_[version]_.[issued date:YYYY-MM-DD].[registrant: org.id/ORCID]
+                </code></pre>
+
+            <pre><code><em>Example (expression of this paper)</em>: fabio.Preprint.philipson1_v1-1_.2017-03-25.0000-0001-5699-994X</code></pre>
+
+
+            <p> It is a model of a structured, contextual, modular, validatabale identifier. To make
+                it easier to implement, and more generazibale, there is no requirement of fixed
+                string-length for the two first modules. This means already existing namespaces and
+                object types could already be used to create a BUOI.</p>
+
+            <p>Each module/section may hold both letter characters and digits from a limited
+                character set. The full stop (.) was chosen as module separator, since it works well
+                in both xml- and http-environments, without encoding, and is not subject to
+                confusion as sometimes hyphens and dashes (en-dash and em-dash) can be. It also
+                works for tokenization of strings. The object type identified in the second module
+                should belong to the initial namespace prefix. Every namespace can have as many
+                object types as it likes. Namespace schemas could also define valid <em>data
+                    types</em> for their different object types, thus moving a step further towards
+                supplying <em>data types</em> to come with the PIDs, in order to make them more
+                machine actionable.<a href="#clark-2016"> </a></p>
+
+            <p> The scalability of the BUOI will mainly depend on the 10 character object id-module
+                and how restricted the permitted character set is. A character set restricted to
+                e.g. [A-Za-z0-9] will still have a possible of 62<sup>10</sup> unique permutations,
+                within each namespace and object-type, still better than the 7 character Handle with
+                NOID. But if this will not be sufficient, the permitted character set will have to
+                be expanded. It is also conceivable, to allow for integration of already existing
+                identifier schemes, that a namespace sets its own character set and string-length
+                restrictions, as long as these are declared in the validation schemas of that
+                namespace or they have otherwise well-known validation algorithms. Now there are
+                also narrow identifier namespaces that do not have as yet different object types
+                defined, possibly since they comprise basically only one type of object. Such is the
+                case basically for e.g. ISBNs and ISSNs. To allow also for these in the BUOI model,
+                we suggest as default second module <em>'NOT'</em> = No Object Type. So we could
+                have BUOIs expressing e.g. an IGSN, <em>International Geo Sample Number</em>
+                <a href="#SESAR-2017"> </a>:</p>
+
+            <pre><code><em>Example</em>: IGSN.NOT.IECUR0002.2005-03-31.gswa-library</code> 
+            </pre>
+
+            <p>The identifier should thus be fully validatable as a whole or in part (modules) in
+                the corresponding namespace(s). Possibly the version and last two modules might be
+                optional, but they are meant to offer built in data provenance. For organisation
+                identifiers (org.ids), we are still awaiting a common standard like the ORCID for
+                persons. Thus, the BUOI identifier should be right-truncatable so that the same
+                object id from different dates and registrants could easily be searched for.</p>
+
+            <p>The resulting BUOIS should be minted within the corresponding namespaces, who would
+                also be the 'custodians' and resolving authorities of their BUOIS, responsible for
+                their uniqueness within their namespace. Another task would be to monitor and assign
+                sameAs-properties to these BUOIs when identical twins of the same 'thing' are
+                detected in other namespaces.</p>
+
+            <p>It has been suggested that in order <q>to build more connected, cross-linked and
+                    digitially accessible Internet content</q> it is necessary <q>to assign
+                    recognizable, persistent, globally unique, stable identifiers to ... data
+                    objects.</q>
+                <a href="#guralnick-2015"> </a>. The model proposed here for a BUOI aims to make it
+                fully recognizable, universally unique, stable, but always in a well-known context,
+                seldom alone, and with great potential for backup.</p>
+        </section>
+
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol rel="cito:cites">
+
+                <li id="berners-lee-2009" role="doc-biblioentry">
+                    <p about="berners-lee-2009" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation"> Berners-Lee, Tim (2009).
+                            <em>Linked Data</em>
+                        <a about="berners-lee-2009" typeof="fabio:WebPage"
+                            href="https://www.w3.org/DesignIssues/LinkedData.html"
+                            >https://www.w3.org/DesignIssues/LinkedData.html</a></p>
+                </li>
+
+                <li id="clark-2016" role="doc-biblioentry">
+                    <p about="clark-2016" typeof="fabio:Presentation"
+                        property="dcterms:bibliographicCitation"> Clark, J. (2016).<em>
+                            PIDvasive:_What's possible when everything has a persistent
+                            identifier?</em> PIDapalooza, November 10, 2016. Retrieved Jan 16, 2017.
+                            <a about="clark-2016" typeof="fabio:Expression"
+                            href="http://dx.doi.org/10.6084/m9.figshare.4233839.v1"
+                                >http://dx.doi.org/<span about="clark-2016" property="prism:doi"
+                                >10.6084/m9.figshare.4233839.v1</span></a>
+                    </p>
+                </li>
+
+                <li id="coyle-2014" role="doc-biblioentry">
+                    <p about="coyle-2014" typeof="fabio:Presentation"
+                        property="dcterms:bibliographicCitation"> Coyle, K. et al.(2014). <em>How
+                            Semantic Web differs from traditional data processing. </em> RDF
+                        Validation in the Cultural Heritage Community. International Conference on
+                        Dublin Core and Metadata Applications, Austin, Oct. 2014. Date accessed: 24
+                        Mar. 2017. <a about="coyle-2014" typeof="fabio:Expression"
+                            href="http://dcevents.dublincore.org/IntConf/dc-2014/paper/view/311/"
+                                ><span about="coyle-2014" property="prism:uri"
+                                >http://dcevents.dublincore.org/IntConf/dc-2014/paper/view/311</span></a>
+                    </p>
+                </li>
+
+
+                <li id="doorn-2017" role="doc-biblioentry">
+                    <p about="doorn-2017" typeof="fabio:Presentation"
+                        property="dcterms:bibliographicCitation"> Doorn, P., Dillo, I. (2017).<em>
+                            Assessing the FAIRness of Datasets in Trustworthy Digital Repositories:
+                            A Proposal.</em> IDCC Edinburgh, 22 February 2017. <a about="doorn-2017"
+                            typeof="fabio:Presentation" href="http://www.dcc.ac.uk/webfm_send/2481"
+                            >http://www.dcc.ac.uk/webfm_send/2481</a>
+                    </p>
+                </li>
+
+                <li id="duerr-2011" role="doc-biblioentry">
+                    <p about="duerr-2011" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Duerr, R.E. et al. (2011).
+                            (2011).<em> On the utility of identification schemes for digital earth
+                            science data: an assessment and recommendations .</em> Earth Science
+                        Informatics 4:139. ISSN: 1865-0473 (Print) 1865-0481 (Online) <a
+                            about="duerr-2011" typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.1007/s12145-011-0083-6"
+                                >http://dx.doi.org/<span about="duerr-2011" property="prism:doi"
+                                >10.1007/s12145-011-0083-6</span></a></p>
+                </li>
+
+                <li id="dunning-2017" role="doc-biblioentry">
+                    <p about="dunning-2017" typeof="fabio:ConferencePaper"
+                        property="dcterms:bibliographicCitation">Dunning, A., de Smaele, M., Böhmer,
+                        J. (2017).<em> Are the FAIR Data Principles fair?</em> Practice Paper. 12th
+                        International Digital Curation Conference (IDCC 2017), Edinburgh, Scotland,
+                        20 - 23 February 2017. <a about="dunning-2017" typeof="fabio:Preprint"
+                            href="https://doi.org/10.5281/zenodo.321423">https://doi.org/<span
+                                about="dunning-2017" property="prism:doi"
+                                >10.5281/zenodo.321423</span></a>
+                    </p>
+                </li>
+
+
+                <li id="fair-2016a" role="doc-biblioentry">
+                    <p about="fair-2016a" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Force11 (2016a). <em>The FAIR Data
+                            Principles.</em>
+                        <a about="fair-2016a" typeof="fabio:WebPage"
+                            href="https://www.force11.org/group/fairgroup/fairprinciples"
+                            >https://www.force11.org/group/fairgroup/fairprinciples</a></p>
+                </li>
+
+                <li id="fair-2016b" role="doc-biblioentry">
+                    <p about="fair-2016b" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Force11 (2016b). <em>Guiding
+                            Principles for Findable, Accessible, Interoperable and Re-usable Data
+                            Publishing version B1.0.</em>
+                        <a about="fair-2016b" typeof="fabio:WebPage"
+                            href="https://www.force11.org/fairprinciples"
+                            >https://www.force11.org/fairprinciples</a></p>
+                </li>
+
+                <li id="force11-2014" role="doc-biblioentry">
+                    <p about="force11-2014" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Data Citation Synthesis Group,
+                        Martone M. (ed.)(2014). <em> Joint Declaration of Data Citation
+                            Principles</em> San Diego, CA: FORCE11 <a about="force11-2014"
+                            typeof="fabio:WebPage"
+                            href="https://www.force11.org/group/joint-declaration-data-citation-principles-final"
+                            >https://www.force11.org/group/joint-declaration-data-citation-principles-final</a></p>
+                </li>
+
+                <li id="force11-2016" role="doc-biblioentry">
+                    <p about="force11-2016" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Force11 (2016). <em> Guiding
+                            Principles for Findable, Accessible, Interoperable and Re-usable Data
+                            Publishing version b1.0</em> San Diego, CA: FORCE11 <a
+                            about="force11-2014" typeof="fabio:WebPage"
+                            href="https://www.force11.org/node/6062/#Annex6-9"
+                            >https://www.force11.org/node/6062/#Annex6-9</a></p>
+                </li>
+
+
+
+                <li id="gertler-2017" role="doc-biblioentry">
+                    <p about="gertler-2017" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Gertler, A., Bullock, J.
+                            (2017).<em> Reference Rot: An Emerging Threat to Transparency in
+                            Political Science.</em> The Profession. <a about="gertler-2017"
+                            typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.1017/S1049096516002353"
+                                >http://dx.doi.org/<span about="gertler-2017" property="prism:doi"
+                                >10.1017/S1049096516002353</span></a></p>
+                </li>
+
+                <li id="gna-2015" role="doc-biblioentry">
+                    <p about="gna-2015" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Global Names Architecture - GNA
+                        (2015). <em> New UUID v5 Generation Tool -- gn_uuid v0.5.0.</em>
+                        <a about="gna-2015" typeof="fabio:WebPage"
+                            href="http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0/"
+                            >http://globalnames.org/news/2015/05/31/gn-uuid-0-5-0/</a></p>
+                </li>
+
+                <li id="guo-2016" role="doc-biblioentry">
+                    <p about="guo-2016" typeof="fabio:Presentation"
+                        property="dcterms:bibliographicCitation"> Guo, Xinjiang (2016).<em> Yale
+                            Persistent Linking Service</em> PIDapalooza, November 10, 2016.
+                        Retrieved Jan 16, 2017. <a about="guo-2016" typeof="fabio:Expression"
+                            href="http://dx.doi.org/10.6084/m9.figshare.4235822.v1"
+                                >http://dx.doi.org/<span about="guo-2016" property="prism:doi"
+                                >10.6084/m9.figshare.4235822.v1</span></a>
+                    </p>
+                </li>
+                <li id="guralnick-2015" role="doc-biblioentry">
+                    <p about="guralnick-2015" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Guralnick, R. et al. (2015).<em>
+                            Community Next Steps for Making Globally Unique Identifiers Work for
+                            Biocollections Data.</em> ZooKeys 494: 133–154. <a
+                            about="guralnick-2015" typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.3897/zookeys.494.9352"
+                                >http://dx.doi.org/<span about="guralnick-2015" property="prism:doi"
+                                >10.3897/zookeys.494.9352</span></a></p>
+                </li>
+
+                <li id="hayes-2016" role="doc-biblioentry">
+                    <p about="hayes-2016" typeof="BlogPost" property="dcterms:bibliographicCitation"
+                        >Hayes, C. (2016).<em> oaDOI: A New Tool for Discovering OA Content</em>.
+                        Scholars Cooperative, Wayne State University. <a about="hayes-2016"
+                            typeof="fabio:BlogPost"
+                            href="http://blogs.wayne.edu/scholarscoop/2016/10/25/oadoi-a-new-tool-for-discovering-oa-content/"
+                            >http://blogs.wayne.edu/scholarscoop/2016/10/25/oadoi-a-new-tool-for-discovering-oa-content/</a></p>
+                </li>
+
+                <li id="hennessey-2013" role="doc-biblioentry">
+                    <p about="hennesey-2013" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Hennessey, J., Xijin Ge, S.
+                            (2013).<em> A Cross Disciplinary Study of Link Decay and the
+                            Effectiveness of Mitigation Techniques.</em> Proceedings of the Tenth
+                        Annual MCBIOS Conference. BMC Bioinformatics, 14(Suppl 14):S5.<a
+                            about="hennessey-2013" typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.1186/1471-2105-14-S14-S5"
+                                >http://dx.doi.org/<span about="hennessey-2013" property="prism:doi"
+                                >10.1186/1471-2105-14-S14-S5</span></a></p>
+                </li>
+                <li id="hornby-1998" role="doc-biblioentry">
+                    <p about="hornby-1998" typeof="fabio:Book"
+                        property="dcterms:bibliographicCitation">Hornby, N. (1999). <em>About a
+                            boy.</em> Indigo, 1999.<span about="hornby-1998"
+                            typeof="fabio:Expression" property="prism:isbn">ISBN:
+                            978-0-575-40229-4.</span></p>
+                </li>
+
+                <!--    <li id="kille-2015" role="doc-biblioentry">
+                    <p about="kille-2015" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Kille, L.W. (2015). <em>The growing
+                            problem of Internet "link rot" and best practices for media and online
+                            publishers. </em>
+                        <a about="kille-2015" typeof="fabio:WebPage"
+                            href="https://journalistsresource.org/studies/society/internet/website-linking-best-practices-media-online-publishers"
+                            >https://journalistsresource.org/studies/society/internet/website-linking-best-practices-media-online-publishers</a></p>
+                </li> -->
+
+                <li id="klein_etal-2014" role="doc-biblioentry">
+                    <p about="klein_etal-2014" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Klein, M., Van de Sompel, H.,
+                        Sanderson, R., Shankar, H., Balakireva L., Zhou, K., Tobin, R. (2014). <em>
+                            Scholarly Context Not Found: One in Five Articles Suffers from Reference
+                            Rot.</em> PLoS ONE 9(12): e115253. <a about="klein_etal-2014"
+                            typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.1371/journal.pone.0115253"
+                                >http://dx.doi.org/<span about="klein_etal-2014"
+                                property="prism:doi">10.1371/journal.pone.0115253</span></a></p>
+                </li>
+
+                <li id="kunze-2006" role="doc-biblioentry">
+                    <p about="kunze-2006" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Kunze, J., Russell, M. (2006).<em>
+                            Noid - search.cpan.org.</em>
+                        <a about="kunze-2006" typeof="fabio:WebPage"
+                            href="http://search.cpan.org/~jak/Noid/noid"
+                            >http://search.cpan.org/~jak/Noid/noid</a></p>
+                </li>
+
+                <!--     <li id="kunze-2016" role="doc-biblioentry">
+                    <p about="kunze-2016" typeof="fabio:Presentation"
+                        property="dcterms:bibliographicCitation">Kunze, J. (2016). <em> Identifiers
+                            obey Resolvers not Schemes</em>
+                        <a about="kunze-2016" typeof="fabio:Presentation"
+                            href="http://www.slideshare.net/jakkbl/identifiers-obey-resolvers-not-schemes"
+                            >http://www.slideshare.net/jakkbl/identifiers-obey-resolvers-not-schemes</a></p>
+                </li> -->
+
+                <li id="jones_etal-2016" role="doc-biblioentry">
+                    <p about="jones_etal-2016" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Jones, SM., Van de Sompel, H.,
+                        Shankar, H., Klein, M., Tobin, R., Grover, C. (2016). <em> Scholarly Context
+                            Adrift: Three out of Four URI References Lead to Changed Content.</em>
+                        PLoSONE 11(12): e0167475. <a about="jones_etal-2016"
+                            typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.1371/journal.pone.0167475"
+                                >http://dx.doi.org/<span about="jones_etal-2016"
+                                property="prism:doi">10.1371/journal.pone.016747</span></a></p>
+                </li>
+
+
+                <li id="page-2016" role="doc-biblioentry">
+                    <p about="page-2016" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Page, R. (2016).<em> Towards a
+                            biodiversity knowledge graph.</em> Research Ideas and Outcomes 2: e8767
+                        (07 Apr 2016). <a about="page-2016" typeof="fabio:ResearchPaper"
+                            href="https://dx.doi.org/10.3897/rio.2.e8767">http://dx.doi.org/<span
+                                about="page-2016" property="prism:doi"
+                            >10.3897/rio.2.e8767</span></a></p>
+                </li>
+
+                <li id="paskin-1999" role="doc-biblioentry">
+                    <p about="paskin-1999" typeof="fabio:ConferencePaper"
+                        property="bibliographicCitation">Paskin, N. (1999). <em>Toward Unique
+                            Identiﬁers.</em> Proceedings of the IEEE 87(7):1208 - 1227. <a
+                            about="paskin-1999" typeof="ConferencePaper"
+                            href="https://dx.doi.org/10.1109/5.771073">http://dx.doi.org/<span
+                                about="paskin-1999" property="prism:doi"
+                        >10.1109/5.771073</span></a></p>
+
+                </li>
+
+                <li id="patterson-2016" role="doc-biblioentry">
+                    <p about="patterson-2016" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Patterson, D. et al. (2016).<em>
+                            Challenges with using names to link digital biodiversity
+                            information.</em> Biodiversity Data Journal 4: e8080 (25 May 2016). <a
+                            about="patterson-2016" typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.3897/BDJ.4.e8080">http://dx.doi.org/<span
+                                about="patterson-2016" property="prism:doi"
+                                >10.3897/BDJ.4.e8080</span></a></p>
+                </li>
+
+                <li id="SESAR-2017" role="doc-biblioentry">
+                    <p about="SESAR-2017" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">SESAR - System for Earth Sample
+                        Registration (2017). <em>What is the IGSN?</em>
+                        <a about="SESAR-2017" typeof="fabio:WebPage"
+                            href="http://www.geosamples.org/aboutigsn"
+                            >http://www.geosamples.org/aboutigsn</a></p>
+                </li>
+
+            
+
+                <li id="linkrotwiki-2017" role="doc-biblioentry">
+                    <p about="linkrotwiki-2017" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Wikipedia (2017a). <em>Link
+                            rot.</em> (last modified on 13 March 2017, at 17:46. Retrieved
+                        2017-03-14.) <a about="linkrotwiki-2017" typeof="fabio:WebPage"
+                            href="https://en.wikipedia.org/wiki/Link_rot"
+                            >https://en.wikipedia.org/wiki/Link_rot</a></p>
+                </li>
+
+                <li id="UUID-2017" role="doc-biblioentry">
+                    <p about="UUID-2017" typeof="fabio:WebPage"
+                        property="dcterms:bibliographicCitation">Wikipedia (2017b). <em>Universally
+                            unique identifier.</em> (last modified on 29 January 2017, at 15:28.
+                        Retrieved 2017-01-30.) <a about="UUID-2017" typeof="fabio:WebPage"
+                            href="https://en.wikipedia.org/wiki/Universally_unique_identifier"
+                            >https://en.wikipedia.org/wiki/Universally_unique_identifier</a></p>
+                </li>
+
+                <li id="vandesompel-2016a" role="doc-biblioentry">
+                    <p about="vandesompel-2016a" typeof="fabio:PosterPaper"
+                        property="bibliographicCitation">Van de Sompel, H., Klein, M., Jones, S.M.
+                        (2016). <em>Persistent URIs Must Be Used To Be Persistent.</em> WWW 2016. <a
+                            about="vandeSompel-2016a" typeof="fabio:PosterPaper"
+                            href="https://arxiv.org/abs/1602.09102v1"><span
+                                about="vandesompel-2016a">arXiv:1602.09102v1 [cs.DL] 29 Feb
+                                2016</span></a></p>
+                </li>
+
+                <li id="vandesompel-2016b" role="doc-biblioentry">
+                    <p about="vandesompel-2016b" typeof="fabio:Presentation"
+                        property="bibliographicCitation">Van de Sompel, H. (2016). <em>A Signposting
+                            Pattern for PIDs.</em> PIDapalooza, Reykjavik, November 2016. <a
+                            about="VandeSompel-2016b" typeof="Presentation"
+                            href="https://doi.org/10.6084/m9.figshare.4249739.v1"
+                                >http://dx.doi.org/<span about="vandesompel-2016b"
+                                property="prism:doi">10.6084/m9.figshare.4249739.v1</span></a></p>
+                </li>
+
+                <li id="wass-2016" role="doc-biblioentry">
+                    <p about="wass-2016" typeof="Presentation"
+                        property="dcterms:bibliographicCitation">Wass, J. (2016).<em> When PIDs
+                            aren't there. Tales from Crossref Event Data.</em> PIDapalooza,
+                        Reykjavik, November 2016. Retrieved: 11:57, Mar 20, 2017 (GMT). <a
+                            about="wass-2016" typeof="fabio:Presentation"
+                            href="https://doi.org/10.6084/m9.figshare.4220580.v1"
+                                >http://dx.doi.org/<span about="wass-2016" property="prism:doi"
+                                >10.6084/m9.figshare.4220580.v1</span></a></p>
+                </li>
+                <li id="wass-2017" role="doc-biblioentry">
+                    <p about="wass-2017" typeof="BlogPost" property="dcterms:bibliographicCitation"
+                        >Wass, J. (2017).<em> URLs and DOIs: a complicated relationship. </em>
+                        CrossRef Blog, 2017 January 31. <a about="wass-2017" typeof="fabio:BlogPost"
+                            href="https://www.crossref.org/blog/urls-and-dois-a-complicated-relationship/"
+                            >https://www.crossref.org/blog/urls-and-dois-a-complicated-relationship/</a></p>
+                </li>
+
+                <li id="weitz-2002" role="doc-biblioentry">
+                    <p about="weitz-2002" typeof="fabio:MovingImage"
+                        property="dcterms:bibliographicCitation">Weitz, C., Weitz, P. (2002)<em>
+                            About a boy.</em>
+                        <a about="weitz-2002" href="http://www.imdb.com/title/tt0276751/"
+                            >http://www.imdb.com/title/tt0276751/</a>. <a about="weitz-2002"
+                            href="http://core.collectorz.com/movies/about-a-boy-2002"
+                            >http://core.collectorz.com/movies/about-a-boy-2002</a>. <span
+                            about="weitz-2002" property="mods:identifier" typeof="ean">EAN:
+                            3259190282520</span></p>
+                </li>
+
+                <li id="wilkinson-2016" role="doc-biblioentry">
+                    <p about="wilkinson-2016" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Wilkinson, M. D. et al. (2016).<em>
+                            The FAIR Guiding Principles for scientific data management and
+                            stewardship.</em> Scientific Data 3:160018. <a about="wilkinson-2016"
+                            typeof="fabio:JournalArticle"
+                            href="https://dx.doi.org/10.1038/sdata.2016.18">http://dx.doi.org/<span
+                                about="wilkinson-2016" property="prism:doi"
+                                >10.1038/sdata.2016.18</span></a></p>
+                </li>
+
+                <li id="wimalaratne-2015" role="doc-biblioentry">
+                    <p about="wimalaratne-2015" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation">Wimalaratne, S. et al. (2015).<em>
+                            SPARQL-enabled identifier conversion with Identifiers.org</em>
+                        Bioinformatics, 31(11), 2015, 1875–1877. <a about="wimalaratne-2015"
+                            typeof="fabio:ResearchPaper"
+                            href="https://dx.doi.org/10.1093/bioinformatics/btv064"
+                                >http://dx.doi.org/<span about="wimalaratne-2015"
+                                property="prism:doi">10.1093/bioinformatics/btv064</span></a></p>
+                </li>
+
+
+                <li id="zhou-2015" role="doc-biblioentry">
+                    <p about="zhou-2015" typeof="fabio:ConferencePaper"
+                        property="bibliographicCitation">Zhou, K. et al. (2015). <em>No More 404s:
+                            Predicting Referenced Link Rot in Scholarly Articles for Pro-Active
+                            Archiving.</em> In: Proceedings of the 15th ACM/IEEE-CE on Joint
+                        Conference on Digital Libraries. JCDL '15, p. 233-236. <a about="zhou-2015"
+                            typeof="fabio:ConferencePaper"
+                            href="https://dx.doi.org/10.1145/2756406.2756940"
+                                >http://dx.doi.org/<span about="zhou-2015" property="prism:doi"
+                                >10.1145/2756406.2756940</span></a>
+
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+    </body>
+</html>

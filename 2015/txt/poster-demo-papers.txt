@@ -1,0 +1,13 @@
+Alessia Bardi and Paolo Manghi. *Enhanced Publication Management Systems.A systemic approach towards modern scientific communication*
+
+Daniel Garijo, Nandana Mihindukulasooriya and Oscar Corcho. *LDP4ROs: Managing Research Objects with the W3C Linked Data Platform*
+
+Fajar J. Ekaputra, Marta Sabou, Estefania Serral and Stefan Biffl. *Collaborative Exchange of Systematic Literature Review Results: The Case of Empirical Software Engineering*
+
+Laurens De Vocht, Selver Softic, Anastasia Dimou, Ruben Verborgh, Martin Ebner, Erik Mannens and Rik Van de Walle. *Visualizing Collaborations and Online Social Interactions at Scientific Conferences for Scholarly Networking*
+
+Michele Pasin. *ResQuotes.com: transforming digital highlights and annotations into research assets*
+
+Theodoros Giannakopoulos, Ioannis Foufoulas, Eleftherios Stamatogiannakis, Harry Dimitropoulos, Natalia Manola and Yannis Ioannidis. *Visual-based classification of figures from scientific literature*
+
+Tobias Kuhn. *Science Bots: A Model for the Future of Scientific Computation?*

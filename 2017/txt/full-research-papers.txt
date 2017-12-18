@@ -1,0 +1,3 @@
+Andreas Behrend, Sahar Vahdati, Christoph Lange, Christiane Engels. *Towards a Cloud-Based Service for Maintaining Data About Scientific Events*
+
+Anastasia Dimou, Gerald Haesendonck, Martin Vanbrabant, Laurens De Vocht, Ruben Verborgh, Steven Latré, Erik Mannens. *iLastic: Linked Data Generation Workflow and User Interface for iMinds Scholarly Data*

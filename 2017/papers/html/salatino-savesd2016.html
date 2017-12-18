@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    prefix="
+    schema: http://schema.org/
+    prism: http://prismstandard.org/namespaces/basic/2.0/
+    dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/rash.css"/>
+        <script src="js/jquery.min.js"> </script>
+        <script src="js/bootstrap.min.js"> </script>
+        <script src="js/rash.js"> </script>
+        
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_CHTML"> </script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+        
+        <title property="dcterms:title">Detection of Embryonic Research Topics by Analysing Semantic Topic Networks</title>
+        
+        <!-- Author's data (one or more) -->
+        <meta about="#pc" property="schema:name" name="dc.creator" content="Angelo Antonio Salatino"/>
+        <meta about="#pc" property="schema:email" content="angelo.salatino@open.ac.uk"/>
+        <link about="#pc" property="schema:affiliation" href="#kmi"/>
+        
+        
+        <meta about="#adi" property="schema:name" name="dc.creator" content="Enrico Motta"/>
+        <meta about="#adi" property="schema:email" content="enrico.motta@open.ac.uk"/>
+        <link about="#adi" property="schema:affiliation" href="#kmi"/>
+        
+        
+        
+        <!-- Affiliations -->
+        <meta about="#kmi" property="schema:name" content="Knowledge Media Institute, The Open University, Milton Keynes, UK"/>
+        
+        
+        <!-- Paper keywords (one or more) -->
+        <meta property="prism:keyword" content="Scholarly Data"/>
+        <meta property="prism:keyword" content="Research Trend Detection"/>
+        <meta property="prism:keyword" content="Topic Emergence Detection"/>
+        <meta property="prism:keyword" content="Topic Discovery"/>
+        <meta property="prism:keyword" content="Semantic Web"/>
+        <meta property="prism:keyword" content="Ontology"/>
+        
+        
+    </head>
+    <body>
+        <section id="SectionAbstract" role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>Being aware of new research topics is an important asset for anybody involved in the research environment, including researchers, academic publishers and institutional funding bodies. In recent years, the amount of scholarly data available on the web has increased steadily, allowing the development of several approaches for detecting emerging research topics and assessing their trends. However, current methods focus on the detection of topics which are already associated with a label or a substantial number of documents. In this paper, we address instead the issue of detecting embryonic topics, which do not possess these characteristics yet. We suggest that it is possible to forecast the emergence of novel research topics even at such early stage and demonstrate that the emergence of a new topic can be anticipated by analysing the dynamics of pre-existing topics. We present an approach to evaluate such dynamics and an experiment on a sample of 3 million research papers, which confirms our hypothesis. In particular, we found that the pace of collaboration in sub-graphs of topics that will give rise to novel topics is significantly higher than the one in the control group.
+            </p>
+        </section>
+        <section>
+            <h1>Introduction</h1>
+            <p>Being aware of new research topics is important for anybody involved in the research environment and, although the effective detection of new research trends is still an open problem, the availability of very large repositories of scholarly data and other relevant sources opens the way to novel data-intensive approaches to address this problem.
+                We can consider two main phases in the early life of a topic. In its <em>initial stage</em>, a group of scientists agree on some basic theories, build a conceptual framework and begin to establish a new scientific community. Afterwards, the new area enters a <em>recognised phase</em> in which a substantial number of authors start working on it, producing and disseminating results. This characterisation is consistent with Kuhn’s vision of scientific revolutions <a href="#bib1"> </a>.
+                There are already several approaches capable of detecting novel topics and research trends  <a href="#bib2"> </a> <a href="#bib3"> </a> <a href="#bib4"> </a>, which rely on statistical techniques to analyse the impact of either labels or distributions of words associated to topics. However, all these approaches are able to recognise topics only in the two aforementioned phases; that is, when they are already established and associated with a substantial number of publications and when the communities of researchers have already reached a consensus for a label. 
+                In this paper, we focus on the earlier <em>embryonic phase</em>, in which the topic itself has not yet been explicitly labelled or identified by a research community. We theorise that it is possible to detect topics at this stage by analysing the dynamics of existent topics. This hypothesis follows from a number of theories <a href="#bib1"> </a> <a href="#bib5"> </a> <a href="#bib6"> </a> which suggest that new topics actually derive from the interactions and cross-pollinations of established research areas. We present a method which integrates statistics and semantics for assessing the dynamics of a topic graph. The method was tested on a sample of 3 million papers and the experiment confirmed our hypothesis. In particular, it was found that the pace of collaboration in graphs of topics that will give rise to a new topic is significantly higher than the one of the control group.
+                This paper is organised as follows. <a href="#SectionRelatedWorks"> </a> introduces the state of the art. In <a href="#ExperimentDesign"> </a> we describe the experimental approach used to confirm our hypothesis and in <a href="#Evaluation"> </a> we show and discuss the results. We conclude in <a href="#SectionConclusions"> </a> by discussing the future directions of our research.
+            </p>
+        </section>
+        <section id="SectionRelatedWorks">
+            <h1>Related work</h1>
+            <p>Detecting topics and their trends is a task that has recently gained increased interest from the information retrieval community and has been applied to many contexts, such as social networks <a href="#bib7"> </a>, blogs <a href="#bib8"> </a>, emails <a href="#bib9"> </a> and scientific literature <a href="#bib2"> </a> <a href="#bib10"> </a> <a href="#bib11"> </a> <a href="#bib12"> </a> <a href="#bib13"> </a>. </p><p>
+                The state of the art presents several works on research trend detection, which can be characterised either by the way they define a topic or the techniques they use to detect them <a href="#bib14"> </a>. Latent Dirichlet Allocation (LDA) <a href="#bib15"> </a> is an unsupervised learning method to extract topics from a corpus and models topics as a multinomial distribution over words. Since its introduction, LDA has been extended and adapted in several applications. For example, He <em>et al.</em> <a href="#bib4"> </a> combined LDA and citation networks in order to address the problem of topic evolution. Their approach detects topics in independent subsets of a corpus and then leverages citations to connect topics in different time frames. Similarly, Rosen-Zvi <em>et al.</em> <a href="#bib16"> </a> and Bolelli <em>et al.</em> <a href="#bib2"> </a> extend LDA with the Author-Topic model, in which authors can shape the distribution of topics, and claim that their approach is capable of detecting more new hidden topics than the standard LDA approach. However, these approaches model topics as a distribution over words making difficult to label them, and also the number of topics need to be known a priori.</p><p>
+                Morinaga <em>et al.</em> <a href="#bib9"> </a> employ the Finite Mixture Model to represent the structure of topics and analyse the changes in time of the extracted components to track emerging topics. This approach was evaluated on an email corpus and therefore is not clear how it could perform on scientific literature, especially when the full text of papers is not available.</p><p>
+                Duvvuru <em>et al.</em> <a href="#bib3"> </a> <a href="#bib17"> </a> analysed networks of co-occurring keywords in scholarly articles and monitored the evolution in time of the link weights for detecting research trends and emerging research areas. However, as pointed out by previous works <a href="#bib18"> </a>, keywords tend to be noisy and do not always represent research topics. For example, Osborne <em>et al.</em> <a href="#bib24"> </a> show that the use of a semantic characterisation of research topics yields better results for the detection of research communities. </p><p>
+                To alleviate this problem, Decker <em>et al.</em> <a href="#bib11"> </a> matched a corpus of publications to a taxonomy of topics based on the most significant words found in titles and abstracts, and analysed the changes in the number of publications associated with topics. Similarly, Erten <em>et al.</em> <a href="#bib12"> </a> adopted the ACM Digital Library taxonomy for analysing the evolution of topic graphs to monitor research trends. In our experiment we adopted a similar solution and used an ontology of computer science generated and regularly maintained by the Klink-2 algorithm <a href="#bib19"> </a>, which has the advantage of being always up to date.</p><p>
+                Jo <em>et al.</em> <a href="#bib20"> </a> have developed an approach that correlates distributions of terms with the distribution of the citation graph related to publications containing that term. Their work is based on the intuition that if a term is relevant to a particular topic, documents containing that term will have a stronger connection than randomly selected ones. However, this approach is not suitable for emerging topics since it will take time for the citation network of a term to become tightly connected.
+            </p><p>To summarise, the state of the art presents several approaches for detecting research trends. However these focus on already recognised topics, associated with a label or, in the case of probabilistic topics models, with a set of terms. Therefore, the problem of detecting research trends in their embryonic phase still needs to be addressed.
+            </p>
+        </section>
+        <section id="ExperimentDesign">
+            <h1>Experiment Design</h1>
+            <p>In order to confirm the theory that the emergence of a new topic is actually anticipated by the dynamics between already established topics, we designed the following experiment. We selected 50 topics debuting between 2000 and 2010 and extracted the sub-graphs of the <em>n</em> keywords most co-occurring with each topic. We then analysed these graphs in the five years before the topic debut year and compared them to a control group of graphs associated with established topics.  </p>
+            <p>The full list of topics and the results of the experiment can be found at <a href="http://technologies.kmi.open.ac.uk/rexplore/www2016/">http://technologies.kmi.open.ac.uk/rexplore/www2016/</a>. In the following sections we will describe the dataset, the steps of the process and the metrics used to measure the pace of collaboration of the sub-graphs.</p>
+            
+            <section>
+                <h1>Dataset</h1>
+                <p>The main input of the experiment are sixteen topic networks, derived from the Rexplore database <a href="#bib21"> </a>, representing the co-occurrences of topics in the 1995-2010 timeframe. From a practical perspective, each network can be represented as a fully weighted graph <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi>
+                                    </mrow>
+                                </msub>
+                                <mo>=</mo><mtext>&#x00A0;</mtext><mrow><mo>(</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>V</mi>
+                                            <mrow>
+                                                <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi>
+                                            </mrow>
+                                        </msub>
+                                        <mo>,</mo><mtext>&#x00A0;</mtext><msub>
+                                            <mi>E</mi>
+                                            <mrow>
+                                                <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi>
+                                            </mrow>
+                                        </msub>
+                                        
+                                    </mrow>
+                                    <mo>)</mo></mrow>
+                            </mrow>
+                        </math>
+                    </em>, in which V is the set of keywords while E is the set of links representing co-occurrences between keywords. The node weight is given by the number of publications in which the keyword appears, while the link weight is equal to the number of publications in which two keywords co-occur together in a particular year. However, as pointed out in <a href="#bib18"> </a>, the use of keywords as proxies for topics suffers from a number of problems. In fact some keywords tend to be noisy and do not represent topics (e.g., “case study”) while multiple keywords can refer to the same topic (e.g., “ontology mapping” and “ontology matching”). To address this issue, we automatically transformed the graph of keywords into a graph of topics using an ontology of computer science produced by Klink-2 <a href="#bib19"> </a>. </p><p>
+                    Klink-2 is an algorithm which analyses keywords and their relationships with research papers, authors, venues, and organizations and takes advantage of multiple knowledge sources available on the web in order to produce an ontology of research topics linked by three different semantic relationships. It was run on a sample of about 19 million papers, yielding an ontology including about 15000 topics in the field of Computer Science. We converted the keyword network to a topic network by filtering out all the keywords that do not represent topics and by aggregating the keywords representing the same concept. For example, we aggregated keywords such as “semantic web”, “semantic web technology” and “semantic web technologies” in a single node and accordingly recomputed the weights of the network.</p><p>
+                    From the topic networks we selected two initial groups of topics. The first group, labelled debutant topics was composed by topics that made their debut in the period between 2000 and 2010. The second group, labelled control group or non-debutant group, included topics that made their debut long before the debutant ones (at least in the previous decade) and thus were already established when analysed. </p><p>
+                    As we will discuss in <a href="#ExperimentDesign"> </a>, we firstly conducted a preliminary evaluation while designing the approach, with the aim of choosing the best combination of technologies for this task. We then evaluated the method on a bigger sample of topics. In the preliminary phase, we focused only on the Semantic Web (debuting in 2001) and Cloud Computing (2006) as debutant topics, because they are well-known research areas and this facilitated the process of validation. For the non-debutant group we selected twenty topics. In the second evaluation, we randomly chose 50 topics for the debutant group and 50 topics for non-debutant group.
+                </p>
+            </section>
+            <section>
+                <h1>Selection phase</h1>
+                <p>The selection phase is the first step of this approach and, as already mentioned, it aims to select and extract portions of the collaboration networks related to topics in the two groups, in a few years prior to the year of analysis.</p><p>
+                    We hypothesised that after a new topic emerges it will continue to collaborate with the topics that contributed to its creation for a certain time. Hence, for each debuting topic we extracted the portion of topic network containing its n most co-occurring topics and analysed them in the five years preceding its year of debut. In brief, if a topic A makes its debut in 2003, the portion of network containing its most related topics will be analysed in the 1998-2002 time frame, as showed in <a href="#fig1"> </a>. We repeated the same procedure on the topics in the control group, assigning them a random year of analysis within the decade 2000-2010. We performed a number of experiments considering different values of <em>n</em> (20, 40, and 60).
+                </p>
+                <figure id="fig1">
+                    <p>
+                        <img src="img/fig1.png" alt=""/>
+                    </p>
+                    <figcaption>Workflow representing all the steps for the selection phase</figcaption>
+                </figure>
+                <p>At the end of the selection phase we associated to each topic in the two groups a graph <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msup>
+                                
+                            </mrow>
+                        </math>
+                    </em>:</p>
+                <!-- Formula defined as an image -->
+                <figure id="formula_1">
+                    <p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msup>
+                                <mo>=</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mn>5</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mtext>&#x2009;</mtext><mo>&#x222A;</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mn>4</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mtext>&#x2009;</mtext><mo>&#x222A;</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mn>3</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mtext>&#x2009;</mtext><mo>&#x222A;</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mn>2</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mtext>&#x2009;</mtext><mo>&#x222A;</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mn>1</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                
+                            </mrow>
+                        </math>
+                        <!--<img src="formulas/eq1.gif" height="27"/>-->    
+                    </p>
+                </figure>
+                <p>which corresponded to its collaboration network in the five years prior to its emergence. This graph contained five sub-graphs 
+                    <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                
+                            </mrow>
+                        </math></em>
+                    and each one corresponded to:</p>
+                <!-- Formula defined as an image -->
+                <figure id="formula_2">
+                    <p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>G</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mtext>&#x2009;</mtext><mo>=</mo><mo stretchy='false'>(</mo><msubsup>
+                                    <mi>V</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mo>,</mo><mtext>&#x2009;</mtext><msubsup>
+                                    <mi>E</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mo stretchy='false'>)</mo>
+                            </mrow>
+                        </math>
+                        <!--<img src="formulas/eq2.gif" height="27"/>  -->  
+                    </p>
+                </figure>
+                <p>in which <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>V</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                
+                            </mrow>
+                        </math></em> is the set of most co-occurring topics in a particular year and <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>E</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                
+                            </mrow>
+                        </math></em> is the set of edges that link nodes in the set <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>V</mi>
+                                    <mrow>
+                                        <mi>y</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>t</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi>
+                                    </mrow>
+                                </msubsup>
+                                
+                            </mrow>
+                        </math></em>. </p>
+                
+            </section>
+            <section>
+                <h1>Analysis phase</h1>
+                <p>In this phase we evaluated the pace of collaboration between topics in the sub-graphs by analysing how the weights associated to nodes and links evolved in time. To this aim we transformed the graphs in sets of 3-cliques. A 3-clique, as shown in <a href="#fig2"> </a>, is a complete sub-graph of order three in which all nodes are connected to one another and it is employed to model small groups of entities close to each other <a href="#bib22"> </a>.</p>
+                    <figure id="fig2">
+                        <p>
+                            <img src="img/fig2.png" alt=""/>
+                        </p>
+                        <figcaption>An instance of a 3-clique containing both nodes, and links weights</figcaption>
+                    </figure>
+                <p>The intuition is that we can assess the sub-graphs activity by measuring the increase of collaboration in these triangles of topics. In the first instance, we extracted the 3-cliques from the five sub-graphs associated to each topic and created timelines of cliques in subsequent years. In order to measure the amount of collaboration associated to a clique we devised the index showed in <a href="#formula_3"> </a>, which measures the collaboration of nodes <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>&#x007B;</mo><mi>A</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>B</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>C</mi><mo>&#x007D;</mo>
+                            </mrow>
+                        </math>
+                    </em> by taking in consideration both node weights <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mrow><mo>{</mo> <mrow>
+                                        <msub>
+                                            <mtext>W</mtext>
+                                            <mtext>a</mtext>
+                                        </msub>
+                                        <mo>,</mo><msub>
+                                            <mrow>
+                                                <mtext>&#x00A0;W</mtext>
+                                            </mrow>
+                                            <mtext>b</mtext>
+                                        </msub>
+                                        <mo>,</mo><msub>
+                                            <mrow>
+                                                <mtext>&#x00A0;W</mtext>
+                                            </mrow>
+                                            <mtext>c</mtext>
+                                        </msub>
+                                        
+                                    </mrow> <mo>}</mo></mrow>
+                            </mrow>
+                        </math>
+                    </em> and link weights <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mrow><mo>{</mo> <mrow>
+                                        <msub>
+                                            <mtext>W</mtext>
+                                            <mrow>
+                                                <mtext>ab</mtext>
+                                            </mrow>
+                                        </msub>
+                                        <mo>,</mo><msub>
+                                            <mrow>
+                                                <mtext>&#x00A0;W</mtext>
+                                            </mrow>
+                                            <mrow>
+                                                <mtext>bc</mtext>
+                                            </mrow>
+                                        </msub>
+                                        <msub>
+                                            <mrow>
+                                                <mtext>,&#x00A0;W</mtext>
+                                            </mrow>
+                                            <mrow>
+                                                <mtext>ac</mtext>
+                                            </mrow>
+                                        </msub>
+                                        
+                                    </mrow> <mo>}</mo></mrow>
+                            </mrow>
+                        </math>
+                    </em>. It does so by computing the conditional probability <em><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>P</mi><mo stretchy='false'>(</mo><mi>y</mi><mo>&#x007C;</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mrow><mrow>
+                                        <msub>
+                                            <mi>W</mi>
+                                            <mrow>
+                                                <mi>x</mi><mi>y</mi>
+                                            </mrow>
+                                        </msub>
+                                        
+                                    </mrow><mo>/</mo><mrow>
+                                        <msub>
+                                            <mi>W</mi>
+                                            <mi>x</mi>
+                                        </msub>
+                                        
+                                    </mrow></mrow>
+                                
+                            </mrow>
+                        </math>
+                    </em> that a publication associated with a topic x will be also associated with a topic y in a certain year. The advantage of using the conditional probability over the number of co-occurrences is that the resulting value is already normalised according to the dimension of the topics.</p>
+                <!-- Formula defined as an image -->
+                <figure id="formula_3">
+                    <p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtable columnalign='left'>
+                                <mtr>
+                                    <mtd>
+                                        <msub>
+                                            <mi>&#x03BC;</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>=</mo><mtext>&#x2009;</mtext><mi>h</mi><mi>a</mi><mi>r</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mrow><mo>(</mo>
+                                            <mrow>
+                                                <mi>P</mi><mo stretchy='false'>(</mo><mi>A</mi><mo>&#x007C;</mo><mi>B</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>P</mi><mo stretchy='false'>(</mo><mi>B</mi><mo>&#x007C;</mo><mi>A</mi><mo stretchy='false'>)</mo>
+                                            </mrow>
+                                            <mo>)</mo></mrow>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <msub>
+                                            <mi>&#x03BC;</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>=</mo><mtext>&#x2009;</mtext><mi>h</mi><mi>a</mi><mi>r</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mrow><mo>(</mo>
+                                            <mrow>
+                                                <mi>P</mi><mo stretchy='false'>(</mo><mi>B</mi><mo>&#x007C;</mo><mi>C</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>P</mi><mo stretchy='false'>(</mo><mi>C</mi><mo>,</mo><mi>B</mi><mo stretchy='false'>)</mo>
+                                            </mrow>
+                                            <mo>)</mo></mrow>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <msub>
+                                            <mi>&#x03BC;</mi>
+                                            <mn>3</mn>
+                                        </msub>
+                                        <mo>=</mo><mtext>&#x2009;</mtext><mi>h</mi><mi>a</mi><mi>r</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mrow><mo>(</mo>
+                                            <mrow>
+                                                <mi>P</mi><mo stretchy='false'>(</mo><mi>C</mi><mo>&#x007C;</mo><mi>A</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>P</mi><mo stretchy='false'>(</mo><mi>A</mi><mo>&#x007C;</mo><mi>C</mi><mo stretchy='false'>)</mo>
+                                            </mrow>
+                                            <mo>)</mo></mrow>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <msub>
+                                            <mi>&#x03BC;</mi>
+                                            <mi>&#x0394;</mi>
+                                        </msub>
+                                        <mo>=</mo><mtext>&#x2009;</mtext><mi>h</mi><mi>a</mi><mi>r</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mrow><mo>(</mo>
+                                            <mrow>
+                                                <msub>
+                                                    <mi>&#x03BC;</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mo>,</mo><msub>
+                                                    <mi>&#x03BC;</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>,</mo><msub>
+                                                    <mi>&#x03BC;</mi>
+                                                    <mn>3</mn>
+                                                </msub>
+                                                
+                                            </mrow>
+                                            <mo>)</mo></mrow>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                            
+                        </math>
+                        
+                        <!--<img src="formulas/eq3.gif" height="108"/>    -->
+                    </p>
+                </figure>
+                <p>This approach computes the weight associated to each link between topic x and y by using the harmonic mean of the conditional probabilities <em>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>P</mtext><mrow><mo>(</mo>
+                                    <mrow>
+                                        <mi>y</mi><mo>&#x007C;</mo><mi>x</mi>
+                                    </mrow>
+                                    <mo>)</mo></mrow>
+                            </mrow>
+                            
+                        </math></em> and <em>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>P</mtext><mrow><mo>(</mo>
+                                    <mrow>
+                                        <mtext>x</mtext><mo>&#x007C;</mo><mtext>y</mtext>
+                                    </mrow>
+                                    <mo>)</mo></mrow>
+                            </mrow>
+                        </math></em> and then computes the final index <em>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mtext>&#x0394;</mtext>
+                                </msub>
+                                
+                            </mrow>
+                        </math>
+                    </em> as the harmonic mean of all the weights of the clique. We tested other kind of means (e.g., arithmetic mean) in the preliminary evaluation, but the harmonic mean appears to work better, as we will show in <a href="#Evaluation1"> </a>, since it rewards cliques in which all the links are associated with high values in both directions.
+                </p>
+                <p>At this stage, each clique is now reduced to a timeline of measures, as showed in <a href="#formula_4"> </a>. We then studied the evolution of these values to determine whether the collaboration pace of a clique was increasing or decreasing, as showed in <a href="#fig3"> </a>.</p>
+                <!-- Formula defined as an image -->
+                <figure id="formula_4">
+                    <p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msubsup>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mi>&#x0394;</mi><mtext>time</mtext>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>c</mi><mi>l</mi><mi>i</mi><mi>q</mi><mi>u</mi><mi>e</mi><mo>&#x2212;</mo><mi>i</mi>
+                                    </mrow>
+                                </msubsup>
+                                <mo>=</mo><mo stretchy='false'>[</mo><msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mo stretchy='false'>(</mo><mi>&#x0394;</mi><mtext>yr</mtext><mo>&#x2212;</mo><mtext>5</mtext><mo stretchy='false'>)</mo>
+                                    </mrow>
+                                </msub>
+                                <mo>,</mo><msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mo stretchy='false'>(</mo><mi>&#x0394;</mi><mtext>yr</mtext><mo>&#x2212;</mo><mtext>4</mtext><mo stretchy='false'>)</mo>
+                                    </mrow>
+                                </msub>
+                                <mo>,</mo><msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mo stretchy='false'>(</mo><mi>&#x0394;</mi><mtext>yr</mtext><mo>&#x2212;</mo><mtext>3</mtext><mo stretchy='false'>)</mo>
+                                    </mrow>
+                                </msub>
+                                <mo>,</mo><msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mo stretchy='false'>(</mo><mi>&#x0394;</mi><mtext>yr</mtext><mo>&#x2212;</mo><mtext>2</mtext><mo stretchy='false'>)</mo>
+                                    </mrow>
+                                </msub>
+                                <mo>,</mo><msub>
+                                    <mi>&#x03BC;</mi>
+                                    <mrow>
+                                        <mo stretchy='false'>(</mo><mi>&#x0394;</mi><mtext>yr</mtext><mo>&#x2212;</mo><mtext>1</mtext><mo stretchy='false'>)</mo>
+                                    </mrow>
+                                </msub>
+                                <mo stretchy='false'>]</mo>
+                            </mrow>
+                        </math>
+                        
+                        
+                        <!--<img src="formulas/eq4.gif" height="27"/>   -->
+                    </p>
+                </figure>
+                <figure id="fig3">
+                    <p>
+                        <img src="img/fig3.png" alt=""/>
+                    </p>
+                    <figcaption>Main steps of the analysis phase: from 3-cliques matching to slope processing</figcaption>
+                </figure>
+                <p>We first tried to determine the tendency of a clique by simply taking the difference between the first and the last values of the timeline. However, this method ignores the other values in the timeline and can thus ignore important information. For this reason, we applied the linear interpolation method on the five indexes using the least-squares approximation to determine the linear regression of the time series <em>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>f</mtext><mrow><mo>(</mo>
+                                    <mtext>x</mtext>
+                                    <mo>)</mo></mrow><mo>=</mo><mi>&#x03B1;</mi><mo>&#x00B7;</mo><mtext>x</mtext><mo>+</mo><mi>&#x03B2;</mi>
+                            </mrow>
+                        </math>
+                        
+                    </em>. The slope α is then used to assess the increase of collaboration in a clique. When α is positive the degree of collaboration between the topics in the clique is increasing over time, while if it is negative the topics are growing more distant. Subsequently, the collaboration pace of each sub-graph was assessed by computing the average and standard deviation of the slopes of the associated cliques.</p>
+                
+            </section>
+        </section>
+        <section id="Evaluation">
+            <h1>Findings and Discussion</h1>
+            <p>We will now report the results of the preliminary and full evaluation. The latter was performed on a dataset of 3 million publications including 100 topics initially selected for the analysis (50 debutant topics and 50 topics for the control group), and over 2000 of their co-occurring topics.</p>
+            <section id="Evaluation1">
+                <h1>Preliminary Evaluation</h1>
+                <p>In <a href="#ExperimentDesign"> </a>, we discussed two techniques to compute the weight of a clique (i.e., harmonic mean and arithmetic mean) and two methods to evaluate its trend (i.e., computing the difference between the first and the last values and linear interpolation). We tested these four techniques on the graphs composed by the 20 most co-occurring topics per each testing topics. In particular, we evaluated the following approaches:</p>
+                <ul>
+                    <li>
+                        <p><strong>AM-N</strong>, which uses the arithmetic mean and the difference between the two extreme values;</p>
+                    </li>
+                    <li>
+                        <p><strong>AM-CF</strong>, which uses the arithmetic mean and the linear interpolation;</p>
+                    </li>
+                    <li>
+                        <p><strong>HM-N</strong>, which uses the harmonic mean and the difference between the first and the last values;</p>
+                    </li>
+                    <li>
+                        <p><strong>HM-CF</strong>, which uses the harmonic mean and the linear interpolation.</p>
+                    </li>
+                </ul>
+                <p><a href="#fig4"> </a> reports the average pace of collaboration for the sub-graphs associated to each testing topics according to these methods (thick horizontal black lines) and the range of their values (thin vertical line). The results confirm the initial hypothesis: according to all these methods the pace of collaboration in the cliques associated with the creation of new topics is positive and higher than the one of the control group. Interestingly, the pace of collaboration of the control group is also slightly positive. Further analysis revealed that this behaviour is probably caused by the fact that in time the topic network becomes denser and noisier.                     
+                </p>
+                <figure id="fig4">
+                    <p>
+                        <img src="img/fig4.png" alt=""/>
+                    </p>
+                    <figcaption>Overall directions of the sub-graphs related to testing topics in both debutant and control group with all the four approaches. </figcaption>
+                </figure>
+                
+                <p>
+                    The techniques based on the simple difference (AM-N and HM-N) exhibit the larger gap between the two groups in terms of average pace of collaboration. However, the ranges of values actually overlap, making it harder to assess if a certain sub-group is incubating a novel topic. The same applies to AM-CF. HM-CF performs better and even if the values slightly overlap when averaging the pace over different years they do not in single years. Indeed, analysing the two ranges separately in 2001 and 2006 (see <a href="#fig5"> </a>), we can see that the overall collaboration paces of the debutant topics (DB) are always significantly higher than the control group (NDB).</p><p> 
+                    We ran the Student’s t-test on the HM-CF approach in order to verify that the two groups, showed in <a href="#fig6"> </a>, actually belong to different populations and thus the initial hypothesis is supported by empirical evidence. The test yielded a p-value equal to 7.0280•10<sup>-12</sup>, which allows us to reject the null hypothesis that the differences between the two distributions are due to random variations.</p><p>
+                    The results of HM-CF show also interesting insights on the creation of some well-known research topics. <a href="#Table1"> </a> and <a href="#Table2"> </a> list the cliques which exhibited a higher slope for semantic web and cloud computing. In particular, semantic web was anticipated in the 1996-2001 timeframe by a significant increase in the collaborations of the world wide web area with topics such as information retrieval, artificial intelligence, and knowledge based systems. This is actually consistent with the initial vision of the semantic web, defined in the 2001 by the seminal work of Tim Berners-Lee <a href="#bib23"> </a>.</p><p>
+                    Similarly, cloud computing was anticipated by an increase in the collaboration between topics such as grid computing, web services, distributed computer systems and internet. This suggests that our approach can be used both for forecasting the emergence of new topics in distinct subsections of the topic network and for identifying the topics that give rise to a specific research area.</p>
+                    <figure id="fig5">
+                        <p>
+                            <img src="img/fig5.png" alt=""/>
+                        </p>
+                        <figcaption>Overall directions of the sub-graphs related to testing topics in both debutant and control group in HM-CF approach</figcaption>
+                    </figure>                
+                    <figure id="fig6">
+                        <p>
+                            <img src="img/fig6.png" alt=""/>
+                        </p>
+                        <figcaption>Distributions of slope valued for both groups</figcaption>
+                    </figure>
+                <figure id="Table1">                
+                    <table>
+                        <tr><th>Topic 1</th><th>Topic 2</th><th>Topic 3</th><th>Score</th></tr>
+                        <tr><td rowspan="1" colspan="1"><p>world wide web</p></td><td rowspan="1" colspan="1"><p>information retrieval</p></td><td rowspan="1" colspan="1"><p>search engines</p></td><td rowspan="1" colspan="1"><p>2.529</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>world wide web</p></td><td rowspan="1" colspan="1"><p>user interfaces</p></td><td rowspan="1" colspan="1"><p>artificial intelligence</p></td><td rowspan="1" colspan="1"><p>1.12</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>world wide web</p></td><td rowspan="1" colspan="1"><p>artificial intelligence</p></td><td rowspan="1" colspan="1"><p>knowledge representation</p></td><td rowspan="1" colspan="1"><p>0.974</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>world wide web</p></td><td rowspan="1" colspan="1"><p>knowledge based systems</p></td><td rowspan="1" colspan="1"><p>artificial intelligence</p></td><td rowspan="1" colspan="1"><p>0.850</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>world wide web</p></td><td rowspan="1" colspan="1"><p>information retrieval</p></td><td rowspan="1" colspan="1"><p>knowledge representation</p></td><td rowspan="1" colspan="1"><p>0.803</p></td></tr>
+                    </table>
+                    <figcaption>Ranking of the cliques with highest slope value for the “semantic web”. </figcaption>
+                </figure>
+                <figure id="Table2">                
+                    <table>
+                        <tr><th>Topic 1</th><th>Topic 2</th><th>Topic 3</th><th>Score</th></tr>
+                        <tr><td rowspan="1" colspan="1"><p>grid computing</p></td><td rowspan="1" colspan="1"><p>distributed computer systems</p></td><td rowspan="1" colspan="1"><p>web services</p></td><td rowspan="1" colspan="1"><p>1.208</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>web services</p></td><td rowspan="1" colspan="1"><p>information management</p></td><td rowspan="1" colspan="1"><p>information technology</p></td><td rowspan="1" colspan="1"><p>1.094</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>grid computing</p></td><td rowspan="1" colspan="1"><p>distributed computer systems</p></td><td rowspan="1" colspan="1"><p>quality of service</p></td><td rowspan="1" colspan="1"><p>1.036</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>internet</p></td><td rowspan="1" colspan="1"><p>quality of service</p></td><td rowspan="1" colspan="1"><p>web services</p></td><td rowspan="1" colspan="1"><p>0.951</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>web services</p></td><td rowspan="1" colspan="1"><p>distributed computer systems</p></td><td rowspan="1" colspan="1"><p>information management</p></td><td rowspan="1" colspan="1"><p>0.949</p></td></tr>
+                    </table>                    
+                    <figcaption>Ranking of the cliques with highest slope value for the “cloud computing”. </figcaption>
+                </figure>           
+                
+            </section>
+            <section id="Evaluation2">
+                <h1>Evaluation</h1>
+                <p>
+                    The aim of this second evaluation was to further confirm our hypothesis on a bigger sample of topics. In order to do so, we applied the HM-CF approach on 50 debutant topics and compared them to a control group of 50 non-debutant topics. In particular, we performed a number of tests varying the number of co-occurring topics selected per each testing topic.</p><p>
+                    The charts in <a href="#fig7"> </a> reports the results obtained by using 20, 40 and 60 co-occurring topics. Each bar shows the mean value of the average pace of collaboration for the debutant (DB) and non-debutant (NDB) topics. As before, the average pace computed in the portion of topic network related to debutant topics is higher than the one of the control group.
+                </p>
+                <figure id="fig7">
+                    <p>
+                        <img src="img/fig7.png" alt=""/>
+                    </p>
+                    <figcaption>Average collaboration pace of the sub-graphs associated to the debutant (DB) and control group (NDB) topics, when selecting the 20, 40 and 60 most co-occurring topics. The thin vertical lines represent the ranges of the values</figcaption>
+                </figure>
+                <p>
+                    <a href="#fig8"> </a> shows the average collaboration pace for each year when considering the 20 most co-occurring topics. The collaboration pace for the debutant topics is higher than the one for the control group with the exception of 2009, when they were almost equal. In addition, in the last five years the overall pace of the non-debutant topics fluctuates, while the overall directions for the debutant topics suffer a significant fall. This can be due to a variety of factors. First, as we mentioned before, the topic network became denser and noisier in recent years. Moreover, the most recent debutant topics often have a yet underdeveloped network of collaborations, which may results in a poor selection of the group of topics to be analysed in the previous years. Therefore, selecting only 20 most co-occurring topics may not allow us to highlight the correct dynamics preceding the topic creation. 
+                </p>
+                <figure id="fig8">
+                    <p>
+                        <img src="img/fig8.png" alt=""/>
+                    </p>
+                    <figcaption>Average collaboration pace per year of the sub-graphs related to testing topics in both debutant and control group considering their 20 most co-occurring topics. The year refers to the year of analysis of each topic</figcaption>
+                </figure>
+                <p>
+                    Indeed, choosing a higher number of co-occurring topics significantly alleviates this issue. The effect is reduced when selecting 40 of them (<a href="#fig9"> </a>) and with 60 the collaboration pace of debutant topics is always significantly higher than the one for the control group (<a href="#fig10"> </a>). However, the fall in the last five years is still present and we thus intend to further investigate this phenomenon in future work. </p><p>
+                    We ran the Student’s t-test on the groups in different years, in order to confirm that the two distributions belong to different populations. When taking in consideration the 20 most co-occurring topics, the Student t-test yields p = 0.04 in 2009 and p &lt; 1.36•10<sup>-20</sup> in other years, whereas, when taking 40 and 60 most co-occurring topics the p-values are all less than 1.28•10<sup>-51</sup>. As an example, <a href="#fig11"> </a> shows the distributions in 2000 and 2001 for the 60 most co-occurring topics. </p><p>
+                    <a href="#Table3"> </a> shows a selection of debutant topics and their collaboration pace versus the collaboration pace of the control group in the same year. We can see a good number of well-known topics that emerged in the last decade and how their appearance was anticipated by the dynamics of the topic network.</p><p>
+                    In conclusion, the results confirms that the portions of the topic network in which a novel topic will appear exhibit a measurable fingerprint, in terms of increased collaboration pace, well before the topic is recognized and labelled by researchers. These dynamics can be exploited to foster the early detection of emerging research trends.                
+                </p>
+                <figure id="fig9">
+                    <p>
+                        <img src="img/fig9.png" alt=""/>
+                    </p>
+                    <figcaption>Average collaboration pace per year of the sub-graphs related to testing topics in both debutant and control group considering their 40 most co-occurring topics</figcaption>
+                </figure>
+                <figure id="fig10">
+                    <p>
+                        <img src="img/fig10.png" alt=""/>
+                    </p>
+                    <figcaption>Average collaboration pace per year of the sub-graphs related to testing topics in both debutant and control group considering their 60 most co-occurring topics</figcaption>
+                </figure>
+                <figure id="fig11">
+                    <p>
+                        <img src="img/fig11.png" alt=""/>
+                    </p>
+                    <figcaption>Distributions of slopes in the year 2001 (left) and 2002 (right) when considering the 60 most co-occurring topics</figcaption>
+                </figure>
+                <figure id="Table3">                
+                    <table>
+                        <tr><th>Topic</th><th>Collaboration Pace</th><th>Standard Collaboration pace</th></tr>
+                        <tr><td rowspan="1" colspan="1"><p>service discovery (2000)</p></td><td rowspan="1" colspan="1"><p>0.4549</p></td><td rowspan="1" colspan="1"><p>0.1459</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>ontology engineering (2000)</p></td><td rowspan="1" colspan="1"><p>0.4350</p></td><td rowspan="1" colspan="1"><p>0.1459</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>ontology alignment (2005)</p></td><td rowspan="1" colspan="1"><p>0.3864</p></td><td rowspan="1" colspan="1"><p>0.2473</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>service-oriented architecture (2003)</p></td><td rowspan="1" colspan="1"><p>0.3598</p></td><td rowspan="1" colspan="1"><p>0.2164</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>smart power grids (2005)</p></td><td rowspan="1" colspan="1"><p>0.3580</p></td><td rowspan="1" colspan="1"><p>0.2473</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>sentiment analysis (2005)</p></td><td rowspan="1" colspan="1"><p>0.3495</p></td><td rowspan="1" colspan="1"><p>0.2473</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>semantic web services (2003)</p></td><td rowspan="1" colspan="1"><p>0.3493</p></td><td rowspan="1" colspan="1"><p>0.2164</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>linked data (2004)</p></td><td rowspan="1" colspan="1"><p>0.3477</p></td><td rowspan="1" colspan="1"><p>0.2638</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>wimax (2004)</p></td><td rowspan="1" colspan="1"><p>0.3470</p></td><td rowspan="1" colspan="1"><p>0.2638</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>semantic web technology (2001)</p></td><td rowspan="1" colspan="1"><p>0.3434</p></td><td rowspan="1" colspan="1"><p>0.1160</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>vehicular ad hoc networks (2004)</p></td><td rowspan="1" colspan="1"><p>0.3421</p></td><td rowspan="1" colspan="1"><p>0.2638</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>manet (2001)</p></td><td rowspan="1" colspan="1"><p>0.3416</p></td><td rowspan="1" colspan="1"><p>0.1160</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>p2p network (2002)</p></td><td rowspan="1" colspan="1"><p>0.3396</p></td><td rowspan="1" colspan="1"><p>0.0947</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>location based services (2001)</p></td><td rowspan="1" colspan="1"><p>0.3308</p></td><td rowspan="1" colspan="1"><p>0.1160</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>service oriented computing (2003)</p></td><td rowspan="1" colspan="1"><p>0.3306</p></td><td rowspan="1" colspan="1"><p>0.2164</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>ambient intelligence (2002)</p></td><td rowspan="1" colspan="1"><p>0.2892</p></td><td rowspan="1" colspan="1"><p>0.0947</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>social tagging (2006)</p></td><td rowspan="1" colspan="1"><p>0.2631</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>wireless sensor network (2001)</p></td><td rowspan="1" colspan="1"><p>0.2583</p></td><td rowspan="1" colspan="1"><p>0.1160</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>community detection (2006)</p></td><td rowspan="1" colspan="1"><p>0.2433</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>cloud computing (2006)</p></td><td rowspan="1" colspan="1"><p>0.2410</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>user-generated content (2006)</p></td><td rowspan="1" colspan="1"><p>0.2404</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>information retrieval technology (2008)</p></td><td rowspan="1" colspan="1"><p>0.2315</p></td><td rowspan="1" colspan="1"><p>0.1411</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>web 2.0 (2006)</p></td><td rowspan="1" colspan="1"><p>0.2241</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>ambient assisted living (2006)</p></td><td rowspan="1" colspan="1"><p>0.2236</p></td><td rowspan="1" colspan="1"><p>0.1865</p></td></tr>
+                        <tr><td rowspan="1" colspan="1"><p>Internet of things (2009)</p></td><td rowspan="1" colspan="1"><p>0.2214</p></td><td rowspan="1" colspan="1"><p>0.1556</p></td></tr>
+                    </table>
+                    
+                    <figcaption>Collaboration pace of the sub-graphs associated to selected debutant topics versus the average collaboration pace of the control group in the same year of debut.</figcaption>
+                </figure>  
+            </section>
+        </section>
+        <section id="SectionConclusions">
+            <h1>Conclusions</h1>
+            <p>In this paper, we theorize that it is possible to detect topics in their embryonic stage, i.e., when they have not yet been labelled or associated with a considerable number of publications, by analysing the dynamics between existent topics. We also introduced a method for assessing the increase in the pace of collaboration of topic cliques and used it to confirm our hypothesis by testing it on more than 2000 topics and 3 million research publications. In particular, we selected a number of debuting topics and analysed the behaviour of their most co-occurring topics in the five years before their debut. We found that the pace of collaboration is significantly higher than the one of the control group. 
+                We plan to further develop our approach in two main directions. First, we are currently working on a method for the automatic detection of embryonic topics that analyses the topic network and identifies sub-graphs where topics exhibit the discussed dynamics. A second direction of work focuses on improving the current approach by integrating a number of additional dynamics involving other research entities, such as authors and venues. The aim is to produce a robust approach that could be used by researchers and companies alike for gaining a better understanding of where research is heading.
+                
+            </p>
+        </section>
+        
+        <section role="doc-acknowledgements" class="container">
+            <h1>Acknowledgements</h1>
+            <p>We would like to thank <a href="http://www.springer.com/gp/">Springer Nature</a> for partially funding this research and <a href="https://www.elsevier.com/">Elsevier B.V.</a> for providing us with access to their large repositories of scholarly data.</p>
+            
+        </section>
+        
+        <section id="SectionReferences" role="doc-bibliography">
+            <h1>References</h1>
+            <ul>
+                <li id="bib1" role="doc-biblioentry">
+                    <p>
+                        Kuhn, T.S.: The structure of scientific revolutions. University of Chicago press (2012)</p>
+                </li>
+                <li id="bib2" role="doc-biblioentry">
+                    <p>
+                        Bolelli, L., Ertekin, Ş., Giles, C.L.: Topic and trend detection in text collections using latent dirichlet allocation.  Advances in Information Retrieval, pp. 776-780. Springer (2009)</p>
+                </li>
+                <li id="bib3" role="doc-biblioentry">
+                    <p>
+                        Duvvuru, A., Kamarthi, S., Sultornsanee, S.: Undercovering research trends: Network analysis of keywords in scholarly articles. Computer Science and Software Engineering (JCSSE), 2012 International Joint Conference on 265-270 (2012)</p>
+                </li>
+                <li id="bib4" role="doc-biblioentry">
+                    <p>
+                        He, Q., Chen, B., Pei, J., Qiu, B., Mitra, P., Giles, L.: Detecting topic evolution in scientific literature: how can citations help? Proceedings of the 18th ACM conference on Information and knowledge management 957-966 (2009)</p>
+                </li>
+                <li id="bib5" role="doc-biblioentry">
+                    <p>
+                        Sun, X., Kaur, J., Milojević, S., Flammini, A., Menczer, F.: Social Dynamics of Science. Scientific Reports 3, 1069 (2013)</p>
+                </li>
+                <li id="bib6" role="doc-biblioentry">
+                    <p>
+                        Becher, T., Trowler, P.: Academic tribes and territories: Intellectual enquiry and the culture of disciplines. McGraw-Hill Education (UK) (2001)</p>
+                </li>
+                <li id="bib7" role="doc-biblioentry">
+                    <p>
+                        Mathioudakis, M., Koudas, N.: Twittermonitor: trend detection over the twitter stream. Proceedings of the 2010 ACM SIGMOD International Conference on Management of data 1155-1158 (2010)</p>
+                </li>
+                <li id="bib8" role="doc-biblioentry">
+                    <p>
+                        Gruhl, D., Guha, R., Liben-Nowell, D., Tomkins, A.: Information diffusion through blogspace. Proceedings of the 13th international conference on World Wide Web 491-501 (2004)</p>
+                </li>
+                <li id="bib9" role="doc-biblioentry">
+                    <p>
+                        Morinaga, S., Yamanishi, K.: Tracking dynamics of topic trends using a finite mixture model. Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining 811-816 (2004)</p>
+                </li>
+                <li id="bib10" role="doc-biblioentry">
+                    <p>
+                        Tseng, Y.-H., Lin, Y.-I., Lee, Y.-Y., Hung, W.-C., Lee, C.-H.: A comparison of methods for detecting hot topics. Scientometrics 81, 73-90 (2009)</p>
+                </li>
+                <li id="bib11" role="doc-biblioentry">
+                    <p>
+                        Decker, S.L., Aleman-Meza, B., Cameron, D., Arpinar, I.B.: Detection of bursty and emerging trends towards identification of researchers at the early stage of trends. University of Georgia (2007)</p>
+                </li>
+                <li id="bib12" role="doc-biblioentry">
+                    <p>
+                        Erten, C., Harding, P.J., Kobourov, S.G., Wampler, K., Yee, G.: Exploring the computing literature using temporal graph visualization. Electronic Imaging 2004 45-56 (2004)</p>
+                </li>
+                <li id="bib13" role="doc-biblioentry">
+                    <p>
+                        Lv, P.H., Wang, G.-F., Wan, Y., Liu, J., Liu, Q., Ma, F.-c.: Bibliometric trend analysis on global graphene research. Scientometrics 88, 399-419 (2011)</p>
+                </li>
+                <li id="bib14" role="doc-biblioentry">
+                    <p>
+                        Salatino, A.: Early Detection and Forecasting of Research Trends. (2015)</p>
+                </li>
+                <li id="bib15" role="doc-biblioentry">
+                    <p>
+                        Blei, D.M., Ng, A.Y., Jordan, M.I.: Latent dirichlet allocation. J. Mach. Learn. Res. 3, 993-1022 (2003)</p>
+                </li>
+                <li id="bib16" role="doc-biblioentry">
+                    <p>
+                        Rosen-Zvi, M., Griffiths, T., Steyvers, M., Smyth, P.: The author-topic model for authors and documents. Proceedings of the 20th conference on Uncertainty in artificial intelligence 487-494 (2004)</p>
+                </li>
+                <li id="bib17" role="doc-biblioentry">
+                    <p>
+                        Duvvuru, A., Radhakrishnan, S., More, D., Kamarthi, S., Sultornsanee, S.: Analyzing Structural &amp; Temporal Characteristics of Keyword System in Academic Research Articles. Procedia Computer Science 20, 439-445 (2013)</p>
+                </li>
+                <li id="bib18" role="doc-biblioentry">
+                    <p>
+                        Osborne, F., Motta, E.: Mining semantic relations between research areas.  The Semantic Web–ISWC 2012, pp. 410-426. Springer (2012)</p>
+                </li>
+                <li id="bib19" role="doc-biblioentry">
+                    <p>
+                        Osborne, F., Motta, E.: Klink-2: integrating multiple web sources to generate semantic topic networks.  The Semantic Web–ISWC 2015, pp. 408-424. Springer (2015)</p>
+                </li>
+                <li id="bib20" role="doc-biblioentry">
+                    <p>
+                        Jo, Y., Lagoze, C., Giles, C.L.: Detecting research topics via the correlation between graphs and texts. Proceedings of the 13th ACM SIGKDD international conference on Knowledge discovery and data mining 370-379 (2007)</p>
+                </li>
+                <li id="bib21" role="doc-biblioentry">
+                    <p>
+                        Osborne, F., Motta, E., Mulholland, P.: Exploring scholarly data with rexplore.  The Semantic Web–ISWC 2013, pp. 460-477. Springer (2013)</p>
+                </li>
+                <li id="bib22" role="doc-biblioentry">
+                    <p>
+                        Luce, R.D., Perry, A.D.: A method of matrix analysis of group structure. Psychometrika 14, 95-116 (1949)</p>
+                </li>
+                <li id="bib23" role="doc-biblioentry">
+                    <p>
+                        Berners-Lee, T., Hendler, J., Lassila, O.: The semantic web. Scientific american 284, 28-37 (2001)</p>
+                </li>
+                <li id="bib24" role="doc-biblioentry">
+                    <p>
+                        Osborne, F., Scavo, G., Motta, E.: A hybrid semantic approach to building dynamic maps of research communities.  Knowledge Engineering and Knowledge Management, pp. 356-372. Springer (2014)</p>
+                </li>
+                
+                
+            </ul>
+        </section>
+    </body>
+</html>
+

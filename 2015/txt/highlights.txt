@@ -1,0 +1,17 @@
+**SAVE-SD 2016 website**
+
+The [webpage of the 2016 edition](http://cs.unibo.it/save-sd/2016/index.html) of SAVE-SD is online!
+
+**PeerJ Computer Science Collection**
+
+[PeerJ Computer Science](https://peerj.com/computer-science/) has just made available online the [Collection containing selected papers of SAVE-SD 2015](https://peerj.com/collections/24-save-sd-2015/). More information on the [PeerJ blog](https://peerj.com/blog/post/115284878808/save-sd-2015-collection/).
+
+**SAVE-SD 2015 Best paper award** - sponsored by [PenSoft](http://www.pensoft.net/)
+
+* Di Iorio, A., Giannella, R., Poggi, F., Vitali, F. (2015). Exploring bibliographies for research-related tasks. http://dx.doi.org/10.1145/2740908.2742018 (also available in [RASH (HTML)](papers/html/diiorio-savesd2015.html))
+
+* Sateli, B., Witte, R. (2015). What's in this paper? Combining Rhetorical Entities with Linked Open Data for Semantic Literature Querying. http://dx.doi.org/10.1145/2740908.2742022
+
+**SAVE-SD 2015 Best RASH paper award** - sponsored by [Springer](http://www.springer.com)
+
+* Kuhn, T. (2015). Science Bots: A Model for the Future of Scientific Computation? http://dx.doi.org/10.1145/2740908.2742014 (also available in [RASH (HTML)](papers/html/kuhn-savesd2015.html))

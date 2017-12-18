@@ -1,0 +1,200 @@
+### 09:00-10:30 | Session 1: _Keynote and P&D highlights_
+
+*	__09:00-09:15 | Opening__
+
+*	__09:15-10:00 | Keynote__
+	
+	Invited speaker: Paul Groth (Elsevier)
+	
+	_Increasing the Productivity of Scholarship: The Case for Knowledge Graphs_
+	
+	Available in [RASH (HTML)](papers/html/groth-savesd2015.html) and [PDF](papers/pdf/groth-savesd2015.pdf) 
+
+*	__10:00-10:30 | Poster & Demo highlights__
+	
+	10:00-10:05
+	
+	Alessia Bardi (ISTI-CNR) and Paolo Manghi (ISTI-CNR)
+	
+	_Enhanced Publication Management Systems. A systemic approach towards modern scientific communication_
+	
+	Available in [RASH (HTML)](papers/html/bardi-savesd2015.html) and [PDF](papers/pdf/bardi-savesd2015.pdf) 
+	
+	---
+	
+	10:05-10:10
+	
+	Daniel Garijo (Universidad Politécnica de Madrid), Nandana Mihindukulasooriya (Universidad Politécnica de Madrid) and Oscar Corcho (Universidad Politécnica de Madrid)
+	
+	_LDP4ROs: Managing Research Objects with the W3C Linked Data Platform_
+	
+	Available in [PDF](papers/pdf/garijo-savesd2015.pdf) 
+	
+	---
+	
+	10:10-10:15
+	
+	Fajar J. Ekaputra (TU Wien), Marta Sabou (TU Wien), Estefania Serral (KU Leuven) and Stefan Biffl (TU Wien)
+	
+	_Collaborative Exchange of Systematic Literature Review Results: The Case of Empirical Software Engineering_
+	
+	Available in [PDF](papers/pdf/ekaputra-savesd2015.pdf) 
+	
+	---
+	
+	10:15-10:20
+	
+	Laurens De Vocht (Ghent University), Selver Softic (TU Graz), Anastasia Dimou (Ghent University), Ruben Verborgh (Ghent University), Martin Ebner (TU Graz), Erik Mannens (Ghent University) and Rik Van de Walle (Ghent University)
+	
+	_Visualizing Collaborations and Online Social Interactions at Scientific Conferences for Scholarly Networking_
+	
+	Available in [PDF](papers/pdf/devocht-savesd2015.pdf) 
+	
+	---
+	
+	10:20-10:25
+	
+	Theodoros Giannakopoulos (University of Athens), Ioannis Foufoulas (University of Athens), Eleftherios Stamatogiannakis (University of Athens), Harry Dimitropoulos (University of Athens), Natalia Manola and Yannis Ioannidis (University of Athens)
+	
+	_Visual-based classification of figures from scientific literature_
+	
+	Available in [PDF](papers/pdf/giannakopoulos-savesd2015.pdf) 
+	
+	---
+	
+	10:25-10:30
+	
+	Tobias Kuhn (ETH Zurich)
+	
+	_Science Bots: A Model for the Future of Scientific Computation?_
+	
+	Available in [RASH (HTML)](papers/html/kuhn-savesd2015.html) and [PDF](papers/pdf/kuhn-savesd2015.pdf) 
+
+
+### 10:30-11:00 | Coffee Break
+
+
+### 11:00-12:30 | Session 2: _Semantic Web meets Scholarly Data_
+
+* 	__11:00-12:30 | Papers, part 1__
+	
+	11:00-11:20
+	
+	Angelo Di Iorio (University of Bologna), Raffaele Giannella (University of Bologna), Francesco Poggi (University of Bologna) and Fabio Vitali (University of Bologna)
+	
+	_Exploring bibliographies for research-related tasks_ (Research Paper)
+	
+	Available in [RASH (HTML)](papers/html/diiorio-savesd2015.html) and [PDF](papers/pdf/diiorio-savesd2015.pdf) 
+	
+	---
+	
+	11:20-11:40
+	
+	Anna Lisa Gentile (University of Sheffield), Maribel Acosta (Karlsruhe Institute of Technology), Luca Costabello (Siemens), Andrea Giovanni Nuzzolese (ISTC-CNR), Valentina Presutti (ISTC-CNR) and Diego Reforgiato (ISTC-CNR)
+	
+	_Conference Live: Accessible and Sociable Conference Semantic Data_ (Research Paper)
+	
+	Available in [RASH (HTML)](papers/html/gentile-savesd2015.html) and [PDF](papers/pdf/gentile-savesd2015.pdf) 
+	
+	---
+	
+	11:40-11:50
+	
+	Anna Tordai (Elsevier)
+	
+	_A Model for Copyright and Licensing: Elsevier’s Copyright Model_ (Position Paper)
+	
+	Available in [RASH (HTML)](papers/html/tordai-savesd2015.html) and [PDF](papers/pdf/tordai-savesd2015.pdf) 
+	
+	---
+	
+	11:50-12:10
+	
+	Bahar Sateli (Concordia University) and René Witte (Concordia University)
+	
+	_What's in this paper? Combining Rhetorical Entities with Linked Open Data for Semantic Literature Querying_ (Research Paper)
+	
+	Available in [PDF](papers/pdf/sateli-savesd2015.pdf) 
+	
+	---
+	
+	12:10-12:30
+	
+	Ilaria Tiddi (Open University), Mathieu D'Aquin (Open University) and Enrico Motta (Open University)
+	
+	_Using Linked Data Traversal to Label Academic Communities_ (Research Paper)
+	
+	Available in [PDF](papers/pdf/tiddi-savesd2015.pdf) 
+
+
+### 12:30-14:00 | Lunch
+
+
+### 14:00-15:30 | Session 3: _Time matters_
+
+* 	__14:00-15:30 | Papers, part 2__
+	
+	14:00-14:10
+	
+	Hugo Mougard (University of Nantes), Matthieu Riou (University of Nantes), Colin de La Higuera (University of Nantes), Solen Quiniou (University of Nantes) and Olivier Aubert (University of Nantes)
+	
+	_The Paper or the Video: Why Choose?_ (Position Paper)
+	
+	Available in [PDF](papers/pdf/mougard-savesd2015.pdf) 
+	
+	---
+	
+	14:10-14:30
+	
+	Luigi Di Caro (University of Turin), Mario Cataldi (University of Paris 8), Myriam Lamolle (University of Paris 8) and Claudio Schifanella (RAI)
+	
+	_It is not What but Who you Know: a Time-Sensitive Collaboration Impact Measure of Researchers in Surrounding Communities_ (Research Paper)
+	
+	Available in [PDF](papers/pdf/dicaro-savesd2015.pdf) 
+	
+	---
+	
+	14:30-14:50
+	
+	Patrick Golden (The University of North Carolina at Chapel Hill) and Ryan Shaw (The University of North Carolina at Chapel Hill)
+	
+	_Period assertion as nanopublication_ (Research Paper)
+	
+	Available in [RASH (HTML)](papers/html/golden-savesd2015.html) and [PDF](papers/pdf/golden-savesd2015.pdf) 
+	
+	---
+	
+	14:50-15:10
+	
+	Theresa Velden (University of Michigan), Shiyan Yan (University of Michigan), Kan Yu (University of Michigan) and Carl Lagoze (University of Michigan)
+	
+	_Mapping The Temporal Evolution of Scientific Community Structures_ (Research Paper)
+	
+	Available in [PDF](papers/pdf/velden-savesd2015.pdf) 
+	
+	---
+	
+	15:10-15:30
+	
+	Yan Wu (The Chinese University of Hong Kong), Srinivasan Venkatramanan (The Chinese University of Hong Kong) and Dah Ming Chiu (The Chinese University of Hong Kong)
+	
+	_Research Collaboration and Topic Trends in Computer Science - An Analysis Based on UCP Authors_ (Research Paper)
+	
+	Available in [PDF](papers/pdf/wu-savesd2015.pdf) 
+
+
+### 15:30-16:00 | Coffee Break
+
+
+### 16:00-17:30 Session 4: _Poster & Demo interactive session_
+
+*	__16:00-17:00: Poster & Demo session__
+
+* 	__17:00-17:20: Award Ceremony__
+	* 	Selected papers for journal special issue
+
+	* 	Best Paper Award (sponsored by Pensoft)
+
+	* 	Best RASH Paper Award (sponsored by Springer)
+
+*	__17:20-17:30: Closing__

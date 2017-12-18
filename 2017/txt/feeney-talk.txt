@@ -1,0 +1,3 @@
+**Making connections between data**
+
+Scholarly infrastructure consists of connections between researchers, research data, funders, research outputs, and more. These links are sometimes unseen but make the whole system work, and need to evolve just as research and discovery evolves. Crossref has a growing corpus of over 87 million persistent metadata records that at their most basic connect a reader to scholarly literature, but have the potential to make the process of citing, assessing, and discovering research seamless. This talk will be a deep dive into Crossref's plans to capture and share the connections between metadata to form a comprehensive and enduring map. 

@@ -1,0 +1,9 @@
+Angelo Salatino and Enrico Motta. *Detection of Embryonic Research Topics by Analysing Semantic Topic Networks*
+
+Bahar Sateli, Felicitas Löffler, Birgitta König-Ries and René Witte. *Semantic User Profiles: Learning Scholars’ Competences by Analyzing their Publications*
+
+Francesco Ronzano and Horacio Saggion. *Knowledge Extraction and Modeling from Scientific Publications*
+
+Sahar Vahdati, Anastasia Dimou, Christoph Lange and Angelo Di Iorio. *Semantic Publishing Challenge: Bootstrapping a Value Chain for Scientific Data*
+
+Vidas Daudaravicius. *A framework for keyphrase extraction from scientific journals*

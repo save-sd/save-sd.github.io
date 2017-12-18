@@ -1,0 +1,31 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-accepted-papers",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2017 accepted papers",
+        "has_title": "Accepted papers",
+        "has_part": [
+            "page/save-sd-2017-accepted-papers/full-research-papers", 
+            "page/save-sd-2017-accepted-papers/position-papers"],
+        "has_url": "accepted-papers.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-accepted-papers/full-research-papers",
+        "has_type": "section",
+        "has_id": "full",
+        "has_label": "SAVE-SD 2017 accepted papers, section 'Full research papers'",
+        "has_title": "Full research papers",
+        "has_url": "txt/full-research-papers.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-accepted-papers/position-papers",
+        "has_type": "section",
+        "has_id": "position",
+        "has_label": "SAVE-SD 2017 accepted papers, section 'Position papers'",
+        "has_title": "Position papers",
+        "has_url": "txt/position-papers.txt"
+    }
+]

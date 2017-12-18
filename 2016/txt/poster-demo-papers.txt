@@ -1,0 +1,11 @@
+Bahar Sateli and René Witte. *From Papers to Triples: An Open Source Workflow for Semantic Publishing Experiments*
+
+Erwin Marsi and Pinar Øzturk. *Text mining of related events from natural science literature*
+
+Giorgos Alexiou, Sahar Vahdati, Christoph Lange, George Papastefanatos and Steffen Lohmann. *OpenAIRE LOD services: Scholarly Communication Data as Linked Data*
+
+Kata Gábor, Haïfa Zargayouna, Isabelle Tellier, Davide Buscaldi and Thierry Charnois. *A Typology of Semantic Relations Dedicated to Scientific Literature Analysis*
+
+Jason Portenoy and Jevin West. *Dynamic Visualization of Citation Networks Showing the Influence of Scholarly Fields Over Time*
+
+Marko Požega, Dario Poljak and Kristina Kocijan	Building. *Scholarly Data Forest*

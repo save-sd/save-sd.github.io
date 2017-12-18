@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="../grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!--
+Research Articles in Simplified HTML (RASH) format - Documentation - Version 0.4.3, December 29, 2015
+by Silvio Peroni
+
+This work is licensed under a Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/).
+You are free to:
+* Share - copy and redistribute the material in any medium or format
+* Adapt - remix, transform, and build upon the material
+for any purpose, even commercially.
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+* Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+-->
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    prefix="
+        schema: http://schema.org/
+        prism: http://prismstandard.org/namespaces/basic/2.0/
+        cito: http://purl.org/spar/cito/
+        dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+				<meta charset="UTF-8"/>
+				<meta name="viewport" content="width=device-width, initial-scale=1"/>
+				<link rel="stylesheet" href="css/bootstrap.min.css"/>
+				<link rel="stylesheet" href="css/rash.css"/>
+				<script src="js/jquery.min.js"> </script>
+				<script src="js/bootstrap.min.js"> </script>
+				<script src="js/rash.js"> </script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title property="dcterms:title">Towards a Cloud-Based Service for Maintaining and Analyzing Data About Scientific Events</title>
+
+        <!-- Author's data (one or more) -->
+        <meta about="#ab" name="dc.creator" content="Andreas Behrend"/>
+        <meta about="#sv" name="dc.creator" content="Sahar Vahdati"/>
+        <meta about="#cl" name="dc.creator" content="Christoph Lange"/>
+        <meta about="#ce" name="dc.creator" content="Christiane Engels"/>
+
+        <meta about="#sv" property="schema:email" content="vahdati@uni-bonn.de"/>
+        <meta about="#ab" property="schema:email" content="behrend@cs.uni-bonn.de"/>
+        <meta about="#cl" property="schema:email" content="math.semantic.web@gmail.com"/>
+        <meta about="#ce" property="schema:email" content="christiane.engels@googlemail.com"/>
+        <!-- <link about="#ga" property="schema:affiliation" href="#imis-athena"/> -->
+	<!-- <link about="#ga" property="schema:affiliation" href="#ece-ntua"/> -->
+        <link about="#sv" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#ab" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#ce" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#iais-FhG"/>
+        <!-- <link about="#gp" property="schema:affiliation" href="#imis-athena"/> -->
+        <!-- <link about="#sl" property="schema:affiliation" href="#eis-uni-bonn"/> -->
+        <!-- <link about="#sl" property="schema:affiliation" href="#iais-FhG"/> -->
+
+        <!-- Affiliations -->
+      <!-- <meta about="#imis-athena" property="schema:name" content="Institute for the Management of Information Systems, Athena Research Center, Greece"/>  -->
+      <!--     <meta about="#ece-ntua" property="schema:name" content="School of Electrical and Computer Enginnering, National Technical University of Athens, Greece"/> -->
+      <meta about="#eis-uni-bonn" property="schema:name" content="University of Bonn, Germany"/>
+      <meta about="#iais-FhG" property="schema:name" content="Fraunhofer IAIS, Sankt Augustin, Germany"/>
+ <!--
+        <meta property="prism:keyword" content="OpenAIRE"/>
+        <meta property="prism:keyword" content="Linked Data"/>
+        <meta property="prism:keyword" content="Open Access"/>
+        <meta property="prism:keyword" content="Semantic Publishing"/>
+
+
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Markup languages"/>
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Annotation"/>
+         -->
+
+<!--
+         Adding Turtle to the document
+        <script type="text/turtle">
+            @prefix pro: &lt;http://purl.org/spar/pro/&gt; .
+            @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+            &lt;#sp&gt; a foaf:Person ;
+                foaf:givenName "Silvio" ;
+                foaf:familyName "Peroni" ;
+                foaf:homepage &lt;http://www.essepuntato.it&gt; ;
+                pro:holdsRoleInTime [
+                    a pro:RoleInTime ;
+                    pro:withRole pro:author ;
+                    pro:relatesToDocument &lt;&gt;
+                ] .
+
+        </script>
+-->
+        <!-- Adding JSON-LD to the document -->
+<!--
+        <script type="application/ld+json">
+                {
+                    "@context":
+                        {
+                          "nick": "http://xmlns.com/foaf/0.1/nick"
+                        },
+                    "@id": "#sp",
+                    "nick": ["S.", "essepuntato"]
+                }
+        </script>
+-->
+    </head>
+    <body>
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>
+            We propose the new cloud-based service OpenResearch for managing and analyzing data about scientific events such as conferences and workshops in a persistent and reliable way.
+            This includes data about scientific articles, participants, acceptance rates, submission numbers, impact values as well as organizational details such as program committees, chairs, fees and sponsoring. OpenResearch is a centralized repository for scientific events and supports researchers in collecting, organizing, sharing and disseminating information about scientific events in a structured way.
+            An additional feature currently under development is the possibility to archive web pages along with the extracted semantic data in order to lift the burden of maintaining new and old conference web sites from public research institutions. However, the main advantage is that this cloud-based repository enables a comprehensive analysis of conference data. Based on extracted semantic data, it is possible to determine quality estimations, scientific communities, research trends as well the development of acceptance rates, fees and number of participants in a continuous way complemented by projections into the future.
+            Furthermore, data about research articles can be systematically explored using a content-based analysis as well as citation linkage. All data maintained in this crowd-sourcing platform is made freely available through an open SPARQL endpoint, which allows for analytical queries in a flexible and user-defined way.             </p>
+        </section>
+         <!-- introduction section end   -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- introduction section start -->
+        <section id="intro">
+            <h1>Introduction</h1>
+            <p>
+            In computer science, scientific events like conferences and workshops form one of the most important ways of realizing fast publication of papers and bringing researchers together to present and discuss new results with peers. Information about such events is usually provided via web pages which are typically hosted by scientific organizations such as universities, research institutes, etc.
+            Unfortunately, these organizations cannot ensure a reliable archive support, such that many conference pages just vanish over time.
+            Additionally, many auxiliary services like conference management systems, mailing lists, digital libraries etc. are employed in order to organize and disseminate data about scientific events, but these specialized systems provide selected information or analysis results only. This makes the analysis of scientific events complicated as a complete information record is usually not available.
+            For example, if a researcher searches for a conference with moderate conference fees, a high quality ranking and a continuously growing community interested in the topic 'Graph Databases', a matching event is rather difficult to find.</p>
+            <p>
+            Therefore, scholars frequently rely on individual experience, recommendations from colleagues or informal community wisdom in order to organize their scientific communication.
+            Often, scholars just simply search the Web or subscribe to mailing lists in order to receive potentially relevant calls for papers (CfPs).
+            Other sources like Google Scholar Metrics<a href="#fn08"></a> or the British Research Excellence Framework are used for assessing the quality and topical relevance of scientific events.
+            So, various internet sources need to be continuously consulted in order to obtain a comprehensive picture about the current research landscape. This complex analysis needs to be complemented by a bibliographic analysis in order to identify the most important research results, related papers, promising approaches as well as the search for the most active groups for a specific research topic.
+            Despite some technical support by digital libraries and repositories on the Web, this analysis typically requires a lot of manual exploration work, e.g., by navigating the citations provided in sets of research articles.
+            </p>
+            <p>
+            As a solution to these organizational problems, we proposed the cloud-based service <em>OpenResearch</em><a href="#fn00"></a> for persistently storing, analyzing and maintaining data about scientific events in <a href="#EKAW16"></a>.
+            OpenResearch manages data about scientific articles, participants, acceptance rates, submission numbers, impact values as well as organizational details such as the structure of program committee, chairs, fees and sponsoring.
+            It is a platform for automating or crowd-sourcing the collection and integration of semantically structured metadata about scholarly events.
+            </p>
+            <p>
+            In this paper, we introduce a design view for entities in OpenResearch complementing the existing data view. For conferences, this means the possibility to store and view conference homepages along with their factual datasheet. Conference homepages are a good source of metadata that can be used to provide a comprehensive analysis about scientific events or any other scholarly communication metadata. Storing plain HTML conference homepages in OpenResearch makes them accessible for future data analysis, as in future smarter information extraction tools might be developed that would extract from these archived homepages structured data, which would then be fed into OpenResearch's database. In fact, the benefit of the proposed solution is twofold: Having a centralized repository for scientific events supports researchers in collecting, organizing, sharing and disseminating information about scientific events in a structured way. At the same time, the burden of maintaining conference web sites is lifted from public institutions allowing to considerably lower their running cost for providing hosting services.
+            </p>
+            <p>
+            OpenResearch is implemented using Semantic Media Wiki<a href="#fn25"></a> (SMW) and provides a user interface for creating and editing semantically structured project descriptions, researcher and event profiles in a collaborative, agile 'wiki' way.
+            By the application of SMW, semantic web features are integrated into the MediaWiki wiki engine best known from Wikipedia, enabling a comprehensive search and organization of wiki content. In particular, OpenResearch ...
+            <ol>
+			<li>represents a central storage for information about scientific events, projects and scholars e.g., hosting and archiving conference homepages
+			<li>allows for freely annotating the data (e.g., quality measures, related events) based on results from user-defined queries
+			<li>supports users in finding relevant events and event organizers in promoting their events
+			<li>enables researchers to analyze metadata about scientific events or any other scholarly communication metadata
+            </ol>
+            With the new functionality of providing a design view of the data, more text analysis tools need to be integrated in order to leverage the above mentioned features for data analyzes. In the future, the system will be extended by the functionality to store accepted papers of a given scientific event (e.g., by supporting the semantically structured subsets of HTML such as Research Articles in Simplified HTML (RASH)<a href="#fn22"></a> or the format supported by the dokieli<a href="#fn23"></a> editor) as well as the possibility to store and display entire conference web pages along with their semantically enriched wikis.
+            This way, we hope that a considerable part of research communication becomes freely available and analyzable in a sustainable way.
+            </p>
+ 	        <p>
+            <a href="#relatedwork"></a> of this paper presents the state of the art of existing approaches and services. <a href="#problemstatement"></a> reviews the background of OpenResearch and the main challenges this project addresses. In <a href="#openresearch"></a> the approach and architecture of OpenResearch is presented and
+            <a href="#usabilitystudy"></a> presents the services that OpenResearch provides to its end users. <a href="#perspectives"></a> presents the current status of the OpenResearch project and discusses its future perspectives. Afterwards, we summarize and conclude the  paper with <a href="#conclusion"></a>.
+            </p>
+          </section>
+
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Related Work               -->
+       <section id="relatedwork">
+         <h1>Related Work</h1>
+	     <p>
+	     <em>CfP classification and analysis:</em>
+         CfP Manager <a href="#IJKSS15"></a> is an information extraction
+	     tool for CfPs from the computer science domain. It extracts metadata of
+	     events from the unstructured text of CfPs focusing on keyword detection.
+         Because of the different representations and terminologies across research
+         communities, this approach requires domain specific implementations.
+         CfP Manager neither supports comprehensive data analysis nor data curation
+         workflows involving multiple stakeholders. Hurtado Martin et al. proposed an
+         approach based on user profiles, which takes a scholar's recent publication
+         list and recommends related CfPs using content analysis <a href="#MIR13"></a>.
+	     Xia et al. presented a classification method to filter CfPs by social tagging <a href="#CSE10"></a>.
+	     Wang et al. proposed another approach to classify CfPs by implementing three
+	     different methods but focus on comparing the classification methods rather than
+	     services to improve scientific communication<a href="#SSCI15"></a>. Paperleap<a href="#fn01"></a>
+         is a commercial tool for analyzing CfPs and provide recommendations for users.
+		 The two wellknown digital libraries in the field of comuter science provide event support for researchers: ACM<a href="#fn18"></a> hosts webpages for their conferences and IEEE upcoming events with deadlines<a href="#fn19"></a>
+         </p>
+         <p>
+   	     <em>CfP dissemination:</em>
+         DBWorld<a href="#fn05"></a> collects data about upcoming events and other announcements in the field of
+	     databases and information systems. WikiCFP<a href="#fn04"></a> is a popular service for
+	     publishing CfPs on the Web. Like DBWorld, WikiCFP only supports a limited set of structured
+	     event metadata (title, dates, deadlines), which results in limited search
+	     and exploration functionality. WikiCFP employs crawlers to track high-profile
+	     conferences. Although WikiCFP claims to be a semantic wiki, there is neither collaborative
+	     authoring nor versioning and the data is neither downloadable
+	     as RDF nor accessible via a SPARQL endpoint. CFPList<a href="#fn06"></a> works similarly to
+	     WikiCFP but focuses on social science related subjects. Data is contributed by
+	     the community using an online form. SemanticScholar<a href="#fn07"></a> offers a keyword-based
+	     search facility that shows metadata about publications and authors. It uses artificial
+	     intelligence methods for retrieving highly relevant search results but offers no arbitrary user-defined queries.
+	     </p>
+ 	     <p>
+	     <em>Quality Estimation Approaches:</em> Google Scholar Metrics (GSM)<a href="#fn08"></a> provides ranked
+         lists of conferences and journals by scientific field based on a 5-year impact analysis over the Google
+	     Scholar citation data. 20 top-ranked conferences and journals are shown for each
+	     (sub-)field. The ranking is based on the two metrics h5-index and h5-median.
+	     GSM's ranking method only considers the number of citations, whereas we intend
+	     to offer a multi-disciplinary service with a flexible search mechanism based
+	     on several quality metrics.
+	     </p>
+	     <p>
+	     <em>Data Collections:</em> DBLP<a href="#fn09"></a>, one of the most widely known bibliographic databases
+         in computer science, provides information mainly about publications
+	     but also considers related entities such as authors, editors, conference proceedings
+	     and journals. Events, deadlines and subjects are out of DBLP's scope.
+	     DBLP allows event organizers to upload XML data with bibliographic data
+	     for ingestion. The dataset of DBLP is available as an RDF dump.
+         ScholarlyData<a href="#fn10"></a> provides RDF dumps for scientific events. A new conference
+         ontology developed for ScholarlyData improves over already existing ones about
+         scientific events such as the Semantic Web Dog Food ontology.
+         Springer LOD<a href="#fn11"></a> is a portal for publishing conference metadata
+	     collected from the traditional publishing process of Springer as Linked Open
+	     Data. All these conferences are related to Computer Science. The data is available
+	     through a SPARQL endpoint, which makes it possible to search or browse
+	     the data. A graph visualization of the results is also available. For each conference,
+	     there is information about its acronym, location and time, and a link to the
+	     conferences series. The aim of this service is to enrich Springer's own metadata
+	     and link them to related datasets in the LOD Cloud.
+	     </p>
+ 	     <p>
+	     <em>Other Services:</em> Conference.city<a href="#fn12"></a> is a new service initialized in 2016 that lists
+	     upcoming conferences by location. For each conference, title, date, deadline,
+	     location and number of views of its conference.city page are shown. The service
+         collects data mainly from event homepages and from mailing lists. In addition,
+         it allows users to add a conference using a form. PapersInvited<a href="#fn13"></a>
+         focuses on collecting CfPs from event organizers and attracting potential participants
+         who already have access to the ProQuest service<a href="#fn14"></a>. ProQuest acts as a hub between repositories holding rich and diverse scholarly data. The collected data is not made available to the public.
+         EasyChair<a href="#fn15"></a> is a conference management system allowing organizers to publish
+         CfPs and authors find calls relevant to them. ResearchGate<a href="#fn16"></a> is a social
+         networking site for sharing papers and find potential collaborators.
+		 Lanyrd<a href="#fn20"></a> is a general service that allows everyone to add or discover new
+         professional as well as scientific events.
+	     However, the keyword-based search offered by this service hardly allows for a comprehensive data
+          analysis and the metadata shown for an event is restricted to dates and event locations.
+		 </p>
+       <p>
+	    <em>Conclusion:</em>
+        Only Cfplist supports an advanced query search but no free access to their data by means of a LOD set.
+        Free LOD dumps are provided by CiteSeer.
+        ScholarlyData and Springer LOD but no advanced query support.
+        The possibility to advertise events by means of distributing CfPs in a goal-directed way and hosting entire web pages in addition to semantic wikis is not supported at all so far.
+       </p>
+		</section>
+
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Problem Statement          -->
+           <section id="problemstatement">
+            <h1>Open Research Methodology</h1>
+            <p>
+            In <a href="#EKAW16"></a>, we introduced OpenResearch and its general architecture and different views of quality-related queries.
+            In this paper we extend the application range of OpenResearch as a crowd-sourcing platform which provides hosting and archiving services for conference homepages and researcher profiles.
+            <a href="#Workflow"></a> depicts the general phases which typically occur during the organization of a conference.
+            With the new extensions, OpenResearch can support conference organizers in various stages with a wide range of features. For realizing these features, the following problems and challenges needed to be solved.
+            </p>
+          <figure id="Workflow">
+            <p>
+            <img src="img/workflow.png" alt="Role of OpenResearch in the workflow of academic conference management"/>
+            </p>
+            <figcaption>Role of OpenResearch in the workflow of academic conference management</figcaption>
+            </figure>
+	        <p>
+            <p>
+            <em>Promoting Events:</em> Typically, research communities use CfPs in order to promote a scientific event.
+            To this end, various communication channels are used to distribute CfPs like mailing lists or CfP wikis (e.g., WikiCFP).
+            In most cases, CfPs contain unstructured data and the way of distributing them hardly allows for any systematic analysis.
+            Consequently, potential authors or participants easily overlook relevant events and interesting analysis results like changes in topic coverage, fees and PC structure have to be manually explored.
+            Therefore, OpenResearch provides a central repository for CfPs along with extracted semantically structured data for querying them. To this end, we developed assistants that facilitate individual as well as bulk input of CfP related data in a consistent way.
+            Based on that, relationships between conferences and subscription lists for users can be provided in order to simplify the search for relevant events.
+            The relevance and intrinsic complexity of this task is underlined by the fact that the recently founded company Paperleap<a href="#fn01"></a> is solely specialized on this kind of analysis alone.
+ 			</p>
+            <p>
+            <em>Diversity of Event Structure:</em> There are structural differences across events, for example, events with many co-located events or sub-events, or new events emerged from multiple smaller ones.
+            One example for the latter is the Conference on Intelligent Computer Mathematics (CICM), which results from the convergence of four conferences that used to be separate but now are tracks of a single conference.
+            In order to support researchers in finding a suitable event, we need to automatically track and present this kind of structural information and developments for events over time.
+            In addition, this information ought to become queryable as it may indicate changes in the underlying community. For example, in the late 90's several logic programming conferences merged into symposiums indicating a decline in the interest from the respective research community.
+            </p>
+            <p>
+            <em>Tracking Event History:</em> A large number of events are one-off workshops which may be colocated with other events. On the other hand, most scientific events occur in series or are associated with an event series, whose individual editions took place in different locations with narrow topical changes.
+            Researchers often need to explore several resources to obtain an overview of the previous editions of an event series to be able to estimate the quality of the next upcoming event in this series.
+            In OpenResearch, we want to provide a quick overview of past editions and changes over time in order to support researchers in this search.
+            Providing a complete history of event related data also allows for projections into future developments such as likely increases of conference fees or number of participants.
+            </p>
+            <p>
+            <em> Addressing Different Stakeholders:</em> Event organizers aim to attract as many submitters as possible to their events.
+            Publishers want to know whether they should accept a particular event's proceedings in their renowned proceedings series.
+            Potential PC members want to decide whether it is worth spending time in the reviewing process of an event. Similarly, sponsors and invited speakers need to decide whether a certain event is worth sponsoring or attending.
+            Researchers receiving CfP emails have to distinguish whether the event is appropriate for presenting their work.
+            Researchers searching for events through various communication channels assess events based on criteria such as thematic relevance, feasibility of the deadline, location, low registration fee etc.
+            The organizers of smaller events who plan to organize their event as a sub-event of a bigger event have to decide whether this is the right venue to co-locate with.
+            These examples (for further background see <a href="#Bryl14"></a>) prove the importance of filtering events by topic and quality from the point of view of different stakeholders.
+            Although, quality of events have huge aspect in the competition of events, the space of information around scientific events is organized in a cumbersome way.
+            Thus preventing events' stakeholders from making informed decisions, and preventing a competition of events around quality, economy and efficiency.
+            </p>
+            <p>
+            <em>Different Presentation Views:</em> Till now, OpenResearch presents event related information just in the form of wiki pages.
+            The disadvantage of this uniform presentation of data is that the user has no control over the design in which he wants to present his research profile or well-established conference series.
+            Therefore, we are currently extending OpenResearch in order to support two views of the data: a customized presentation view and a semantic data view.
+            <a href="#TwoViews"></a> shows the two views of the workshop SMWCon 2016 both hosted at OpenResearch.
+            Storing the web pages of an event supports event organizers in archiving their data.
+            In case that not all event related information has been automatically extracted, the stored web pages basically represent original sources from which further information can be subsequently retrieved.
+			In addition, the web presence of a planned or currently active conferences can be directly
+            managed with OpenResearch and no local island solutions are needed.
+            Quite similar idea to GitHub Jekyll<a href="#fn02"></a> which is a static site generator with already existed GitHub Pages, we want to establish links between extracted semantic data and its presentation in order to support the propagation of subsequent changes.
+          </p>
+
+         <figure id="TwoViews">
+         <p>
+         <img class="17cm-10.081cm" src="img/TwoViews.png" alt="Two presentation views"/>
+         </p>
+         <figcaption>Two presentation views for SMWCon 2016 conference in OpenResearch</figcaption>
+         </figure>
+
+			<p>
+            OpenResearch provides a centralized and holistic infrastructure for managing the information about scientific events and researchers.
+            The integration of various services such as ontology based text analysis, user-defined queries and different presentation views, leads to a complex system design with a considerable number of submodules to be coordinated (cf. architecture in <a href="#openresearch"></a>).
+            OpenResearch is a cloud service with high requirements with respect to data load and access rates.
+            The latter is not so problematic with respect to simple data access as the amount of event related data is manageable small.
+            In order to provide high access rates for complex query results, however, we need to employ and configure a scaling SPARQL engine with a balanced resource distribution for users.
+            At the moment, we are still using Blazegraph<a href="#fn21"></a> but performance studies (e.g, <a href="#ISWC11"></a>) already suggest system changes in the future.
+            Finally, a reliable backup service needs to be provided in order to satisfy the quality needs of event organizers and users.
+            </p>
+       </section>
+
+
+          <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Open Research              -->
+       <section id="openresearch">
+         <h1>Extended System Architecture</h1>
+	     <p>
+         OpenResearch is a semantic wiki that balances manual (or crowd-sourced) contributions and (semi)auto-generated content. It follows the semantic wiki paradigm of instant gratification in that it aims to reduce the pain of manual data input by assistants and gives immediate access to visual analyses generated from the data just entered <a href="#aumueller05"></a>. In <a href="#OR_Arch"></a> the three layered architecture of the system is depicted. The <em>data gathering layer</em> contains functionality to import event related information. To this end, data extraction tools for analyzing event homepages, web feeds as well as a crawling script for exploring various event related web sources such as WikiCFP or DBLP can be employed. In addition, registered users can create and modify event related content. OpenResearch offers flexible forms for events as well as event related web sites in order to enter data.
+         </p>
+         <figure id="OR_Arch">
+         <p>
+         <img class="17cm-10.081cm" src="img/ORaRC.png" alt="OpenResearch Architecture"/>
+         </p>
+         <figcaption>OpenResearch Architecture</figcaption>
+         </figure>
+         <p>
+         In the <em>data processing layer</em>, two database management systems are used to store and query the schema
+         information and generated semantic triples, respectively. The underlying SMW supports various triple stores;
+         we decided to use Blazegraph because of its performance and quality. A MySQL database instance is employed to store templates, properties and forms. OpenResearch applies a comprehensive ontology by reusing existing vocabularies (including the Semantic Web Conference Ontology and the Semantic Web Portal Ontology) and extending them with new properties<a href="#fn17"></a>. Our ontology is stored and maintained by SMW as properties and categories. The alignment of wiki properties to ontology properties is realized using the SMW mechanism for importing vocabularies.
+         </p>
+         <p>
+         The <em>service layer</em> of OpenResearch offers various possibilities for consuming the stored data.
+         The underlying SMW provides a full-text search facility and the visualization of their results. In addition, the RDF triple store can be accessed via a SPARQL endpoint or a downloadable RDF dump. Events, CfPs and user profiles are
+         presented as individual wiki pages including a semantic representation of their metadata. Various query results
+         are also visualized, including event locations on a map or event related deadlines using a calendar function.
+         </p>
+         <p>
+         Aside from wiki articles, OpenResearch is extended for supporting the presentation of the original design of event related web pages.
+         This way, the system becomes an archive of old event web pages and its content which may have not been completely semantically extracted yet.
+         The same service will be offered for user profiles such that researchers can better advertise their achievements in contrast to just presenting a uniform fact sheet about themselves. Aside from just archiving data for presentation, OpenResearch automatically analyzes the HTML code for extracting additional metadata about the given event and maintains this information in the respective fact sheet of the data view. In addition, a component is added which synchronizes changes made to these
+         linked items in order to avoid any inconsistencies between the two views of the data. This way, even the content of a conference web page becomes partly queryable due to the incorporated information extraction mechanism.
+         </p>
+		</section>
+
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Usability Study            -->
+       <section id="usabilitystudy">
+         <h1>Use Cases</h1>
+	     <p>
+     In the following, we outline a few use cases that demonstrate how OpenResearch can support the analysis of metadata of scientific events.
+     We imagine such services to be extended by interlinking OpenResearch data with other relevant datasets.
+     Prefixes are eliminated from the sample queries.
+
+    <p><em>Event-related:</em>
+
+      One challenging question that every researcher is interested in is a list of the most competitive, and thus, possibly, highest-quality conferences on their research topic.
+    </p>
+        <pre><code># Q1: conferences of topic "Semantic Web" ordered based on acceptance rate?
+          SELECT ?event ?startDate ?country ?wikipage ?acceptanceRate WHERE {
+            ?e a ?EventTypes ;
+               rdfs:label ?event ;
+               ...
+               property:Acceptance_rate ?acceptanceRate ;
+               property:Has_location_city ?city ;
+               swivt:page ?wikipage.
+            FILTER (DATATYPE(?endDate) != xsd:double &&
+                    DATATYPE(?startDate) != xsd:double)
+          } ORDER BY ASC(?acceptanceRate) LIMIT 10
+          BINDINGS ?EventTypes {(smwont:ConferenceEvent)}
+        </pre></code>
+    The result of this query is a list of high quality events with their corresponding acceptance rate, location and start date as well as a link to their wiki page.
+    This can be extended to the event <em>series</em> level instead of having the list of individual editions of an event series.
+
+    Another difficult and time consuming task for researchers, especially young ones, is to get an overview of event series of an given topic.
+         <pre><code># Q2: Life time of top five event series in the Semantic Web field
+        SELECT (AVG(?num_year) AS ?averaged_life_long) WHERE
+        { SELECT ?series (COUNT(DISTINCT ?startDate) AS ?num_year) WHERE
+          {   ?series a category:Event_series, category:Semantic_Web.
+              ...
+              FILTER (DATATYPE(?endDate) != xsd:double &&
+                DATATYPE(?startDate) != xsd:double)
+          } GROUP BY ?series ORDER BY DESC(?num_year) LIMIT 5
+        }
+</pre></code>
+    The result of this query is shown in a default table view as a number representing the average lifetime of corresponding event series in the Semantic Web field, which is 9.5 years.
+
+    Identifying scientific topic movement is challenging because it is hard to define an objective notion of it.
+    One of the possible ways to get insights on this challenge is to look at the movement of submission numbers for specific topics in their corresponding scientific events.
+    In this way, one can see whether a topic is growing by the interest of active researchers in it.
+    The following query addresses this issue.
+      <pre><code># Q3: Topic movement?
+        SELECT  ?series ?numEvents ?topic ?events ?years WHERE{
+          ?series a ?topic.
+          ?topic rdfs:subClassOf category:Computer_Science.
+          FILTER(?numEvents = 10).
+          {
+            SELECT  ?series
+              (COUNT(?e) AS ?numEvents)
+              (GROUP_CONCAT(DISTINCT ?e; separator="; ") AS ?events)
+              (GROUP_CONCAT(DISTINCT ?startDate; separator="; ") AS ?years)
+            WHERE {
+              ?e rdfs:label ?event ;
+                 a smwont:ConferenceEvent ;
+                 property:Event_in_series ?series ;
+                 property:Submitted_papers ?num_papers .
+              ...
+              FILTER (DATATYPE(?endDate) != xsd:double &&
+                      DATATYPE(?startDate) != xsd:double).
+              FILTER (?startDate >= "2007-01-01"^^xsd:date &&
+                      ?endDate < "2017-01-01"^^xsd:date).
+            }GROUP BY ?series
+          }
+    </pre></code>
+
+  <p><em>Person-related:</em>
+  In what event did a given person have some role (e.g., chair, PC member or participant).
+  Consider Harith Alani as an example and look for his roles in different events over the last few years.
+  Note that right now these queries are run over OpenResearch's data only; therefore other roles held by this person might not be in this list.
+</p>
+  <pre><code># Q4: Researchers's roles in event?
+  SELECT ?event ?person ?hasRole WHERE {
+    ?e rdfs:label ?event ;
+       ?hasRole ?person.
+    ?hasRole rdfs:subPropertyOf property:Has_person.
+    ?person rdfs:label "Harith Alani".
+    ...
+  }
+  </pre></code>
+This way a list of events and roles of the given person is generated.
+One can add more properties of these events to be shown in the final results.
+This kind of questions could help researchers who want to attend events to plan their networking when they are interested to meet certain key people in their research field.
+
+<p><em>History-related:</em> Recommendations are another service that OpenResearch is aiming to offer.
+Providing such recommendation services need to have a history of properties and values of them.
+Basically any property of an event can be used to obtain insights on the upcoming events by extrapolation from the history of that property.
+Based on the following query one could extrapolate the possible registration fee of the coming edition:
+</p>
+<pre><code># Q5: registration fees of recent events
+SELECT  ?series
+	   (COUNT(?e) AS ?numEvents)
+	   (GROUP_CONCAT(DISTINCT ?attendFee; separator="; ") AS ?fees)
+	   (GROUP_CONCAT(DISTINCT ?e; separator="; ") AS ?events)
+	   (GROUP_CONCAT(DISTINCT ?startDate; separator="; ") AS ?years)
+WHERE {
+  		...
+  		?e property:Attendance_fee ?attendFee.
+  		FILTER (DATATYPE(?endDate) != xsd:double &&
+                DATATYPE(?startDate) != xsd:double).
+  		FILTER (?startDate >= "2014-01-01"^^xsd:date &&
+                  ?endDate < "2017-01-01"^^xsd:date).
+} GROUP BY ?series
+</pre></code>
+The result of this query is a list of individual events with their registration fees.
+
+Usually, researchers start searching for possible events to submit their research results as soon as they have made interesting and new achievements.
+This timing might not be aligned with the schedule of relevant and high quality events.
+CfPs are typically announced a few months before an event, but researchers might overlook them.
+A good way of supporting researchers is to give them suggestions of time periods in which they can expect CfPs for relevant events.
+With the below query we explore over OpenResearch to find periods of year in which most events for a specific field or topic have been held.
+<pre><code># Q6: When to submit?
+        SELECT ?month (COUNT(?e) AS ?numEvents) WHERE
+        {
+          ?e rdfs:label ?event;
+             ...
+             a category:Semantic_Web.
+          FILTER (DATATYPE(?endDate) != xsd:double &&
+		          DATATYPE(?startDate) != xsd:double)
+          FILTER (?startDate >= "2016-01-01"^^xsd:date &&
+		  ?endDate < "2017-01-01"^^xsd:date).
+          VALUES ?month {1 .. 12}
+          FILTER ( month(?startDate) <= ?month &&
+                   ?month <= month(?endDate) )
+        } GROUP BY ?month
+</pre></code>
+
+Further extending this query by considering the submission deadline, researchers can effectively plan their activities as well as exporting data
+about an event into applications such as conferenceLive<a href="#fn24"></a> .
+</section>
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Conclusion                 -->
+        <section id="perspectives">
+            <h1>Current Status and Perspectives</h1>
+            <p>
+            OpenResearch, currently in prototype state, is a crowd-sourcing platform
+            with more than 300 registered users. OpenResearch has so far been used on the OpenResearch.org site; however, as it is technically a set of plugins and configuration rules on top of MediaWiki and its SMW extension, it could in principle be installed anywhere else as well (using data imported from the OpenResearch.org site, or using other, site-specific data), but this has so far not been documented. There exists a rudimentary GitHub repository<a href="#fn27"></a> hosting the source code of a few import filters and with a few issues being tracked; so far only the core development team has used it.
+            </p>
+            <p>
+            The project is part of a greater research and development agenda for enabling open access to all types of scholarly communication metadata not just from a legal but also from a technical perspective. In addition to easy and open access to such a knowledge graph, it has the potential to serve as a unique integrated environment for comprehensive analyzes on top of the metadata. The size of the community potentially interested in collaboratively analyzing scholarly communication metadata using the extended OpenResearch software can be estimated from the venues that bring together researchers with related interests: the Semantics, Analytics, Visualization: Enhancing Scholarly Data (SAVE-SD) workshop at the International World Wide Web (WWW) Conference (yearly since 2015; usually involving ~35 authors), the Big Scholarly Data (BigScholar) workshop also at WWW (since 2014; ~30 authors), the Scholarly Big Data workshop at AAAI (since 2015; ~20 authors), the Semantic Publishing Challenge at the ESWC Semantic Web Conference (since 2014; ~20), as well as sub-communities of the Scientometrics journal, the OpenSym conference on open collaboration, and of several Semantic Web, Digital Libraries and Knowledge Management conferences. 
+            </p>
+            <p>
+            In order to ensure future sustainability of OpenResearch we are pursuing a two-fold strategy: First, we are planning to establish an OpenResearch Foundation in order to govern the platform. Secondly, we are trying to improve the reusability of the OpenResearch software so that third parties can more easily install and operate it on their own and thus contribute to building a decentral, interlinked knowledge-base about research results.
+		    </p>
+        </section>
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- Conclusion                 -->
+        <section id="conclusion">
+            <h1>Conclusion</h1>
+            <p>
+              We presented the OpenResearch platform, which supports researchers in finding the most suitable event for their publications according to various criteria.
+              In particular, OpenResearch allows for comprehensively querying semantically structured metadata about scholarly events. Young or even unknown events can benefit from that and can become attractive for authors due to certain quality metrics despite still being poorly ranked in general (e.g. by impact).
+              Organizers can also benefit from our this platform because the quantification of quality becomes transparent and possibilities of positively influencing quality metrics can be systematically explored.
+              In addition, the temporal evolution of the assessment metrics can be investigated,
+              which allows for identifying the stability of certain quality indicators such as the acceptance rate.
+              This plays an important role for sponsors and other long-term partners.
+              As an additional feature, we are investigating the archiving of web pages along with the semantic data extracted from them.  First, this would lift the burden of maintaining new and old conference web sites from public research institutions; secondly, it would support evolution and evaluation of information extraction: once better information extraction tools become available, one could re-apply them to the archived conference web sites.
+		    </p>
+        </section>
+
+        <section id="ack">
+            <h1>Acknowledgments</h1>
+            <p>
+ This work has been partially funded by the European Commission under grant agreements no. 643410 and the German Research Foundation (DFG) under grant agreement AU 340/9-1.
+        </p>
+        </section>
+
+
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- -----------------------    -->
+         <!-- References -->
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol>
+                <li id="Bryl14" role="doc-biblioentry"><p>Bryl, V., Birukou, A., Eckert, K. &amp; Kessler, M.: What's in the proceedings?  Combining publisher's and researcher's perspectives. 4th Workshop on Semantic Publishing (SePublica), 2014, no. 1155 in CEUR Workshop Proceedings.</p></li>
+
+                <li id="MIR13" role="doc-biblioentry"><p>Hurtado Martin, G. et al.: An Exploratory Study on Content-based Filtering of Call for Papers. 6th Information Retrieval Facility Conference, IRFC 2013, Springer.
+                </p></li>
+
+                <li id="IJKSS15" role="doc-biblioentry"><p>Issertial, L. &amp; Tsuji, H.: Information Extraction for Call for Paper. International Journal of Knowledge and Systems Science (IJKSS) 6(4) (2015), Springer.</p></li>
+
+                <li id="ISWC11" role="doc-biblioentry"><p>Morsey, M., Lehmann, J., Auer, S. &amp; Ngonga Ngomo, A.-C.: DBpedia SPARQL Benchmark – Performance Assessment with Real Queries on Real Data. ISWC 2011, Springer.</p></li>
+
+               <li id="EKAW16" role="doc-biblioentry"><p>Vahdati, S., Arndt, N., Auer, S., &amp; Lange, C.: OpenResearch: Collaborative Management of Scholarly Communication Metadata, EKAW 2016, pp. 778-793.</p></li>
+
+                <li id="SSCI15" role="doc-biblioentry"><p>Wang, H.-D. &amp; Wu, J.: Collaborative Filtering of Call for Papers. IEEE Symposium Series on Computational Intelligence, pp. 963-970, 2015.</p></li>
+
+                <li id="CSE10" role="doc-biblioentry"><p>Xia, J. et al.: Optimizing Academic Conference Classification Using Social Tags. IEEE Computational Science and Engineering, pp. 289-294, 2010
+
+                <li id="aumueller05" role="doc-biblioentry"><p>Aumüller, D. &amp; Auer, S.: Towards a Semantic Wiki Experience -- Desktop Integration and Interactivity in WikSAR. Proceedings of the 1st Workshop on The Semantic Desktop -- Next Generation Personal Information Management and Collaboration Infrastructure, 2005
+
+                </p></li>
+
+
+		    </ol>
+        </section>
+
+
+         <!-- Footnotes -->
+           <section id="fnlist" role="doc-footnotes">
+             <section id="fn00" role="doc-footnote">
+            	<p><a href="http://openresearch.org/">http://openresearch.org/</a></p>
+            </section>
+            <section id="fn01" role="doc-footnote">
+				<p><a href="http://www.paperleap.com/">http://www.paperleap.com/</a></p>
+            </section>
+           <section id="fn02" role="doc-footnote">
+            	<p><a href="https://github.com/jekyll/">https://github.com/jekyll/</a></p>
+            </section>
+            <section id="fn03" role="doc-footnote">
+            	<p><a href="https://www.blazegraph.com/">https://www.blazegraph.com/</a></p>
+            </section>
+            <section id="fn04" role="doc-footnote">
+            	<p><a href="http://www.wikicfp.com/">http://www.wikicfp.com/</a></p>
+            </section>
+            <section id="fn05" role="doc-footnote">
+            	<p><a href="https://research.cs.wisc.edu/dbworld/">https://research.cs.wisc.edu/dbworld/</a></p>
+            </section>
+            <section id="fn06" role="doc-footnote">
+            	<p><a href="https://www.cfplist.com/">https://www.cfplist.com/</a></p>
+            </section>
+            <section id="fn07" role="doc-footnote">
+            	<p><a href="https://www.semanticscholar.org/">https://www.semanticscholar.org/</a></p>
+            </section>
+            <section id="fn08" role="doc-footnote">
+            	<p><a href="https://scholar.google.com/intl/en/scholar/metrics.html">https://scholar.google.com/intl/en/scholar/metrics.html</a></p>
+            </section>
+            <section id="fn09" role="doc-footnote">
+            	<p><a href="http://dblp.uni-trier.de/">http://dblp.uni-trier.de/</a></p>
+            </section>
+            <section id="fn10" role="doc-footnote">
+            	<p><a href="http://www.scholarlydata.org/">http://www.scholarlydata.org/</a></p>
+            </section>
+            <section id="fn11" role="doc-footnote">
+            	<p><a href="http://lod.springer.com/">http://lod.springer.com/</a></p>
+            </section>
+            <section id="fn12" role="doc-footnote">
+            	<p><a href="http://conference.city/">http://conference.city/</a></p>
+            </section>
+            <section id="fn13" role="doc-footnote">
+            	<p><a href="http://www.papersinvited.com/">http://www.papersinvited.com/</a></p>
+            </section>
+            <section id="fn14" role="doc-footnote">
+            	<p><a href="http://www.proquest.com/">http://www.proquest.com/</a></p>
+            </section>
+            <section id="fn15" role="doc-footnote">
+            	<p><a href="http://easychair.org/">http://easychair.org/</a></p>
+            </section>
+            <section id="fn16" role="doc-footnote">
+            	<p><a href="https://www.researchgate.net/">https://www.researchgate.net/</a></p>
+            </section>
+            <section id="fn17" role="doc-footnote">
+            	<p><a href="https://github.com/EIS-Bonn/OpenResearch/.../openresearch.ttl">https://github.com/EIS-Bonn/OpenResearch/.../openresearch.ttl</a></p>
+            </section>
+			<section id="fn18" role="doc-footnote">
+            	<p><a href="http://www.acm.org/conferences">http://www.acm.org/conferences</a></p>
+            </section>
+			<section id="fn19" role="doc-footnote">
+            	<p><a href="https://www.ieee.org/conferences_events">https://www.ieee.org/conferences_events</a></p>
+            </section>
+			<section id="fn20" role="doc-footnote">
+            	<p><a href="https://lanyrd.com/">https://lanyrd.com/</a></p>
+            </section>
+			<section id="fn21" role="doc-footnote">
+            	<p><a href="https://www.blazegraph.com/">https://www.blazegraph.com/</a></p>
+            </section>
+            <section id="fn22" role="doc-footnote">
+                    <p><a href="https://github.com/essepuntato/rash">https://github.com/essepuntato/rash</a></p>
+            </section>
+      <section id="fn23" role="doc-footnote">
+                          <p><a href="https://dokie.li/">https://dokie.li/</a></p>
+      </section>
+      <section id="fn24" role="doc-footnote">
+            <p><a href="http://www.aifb.kit.edu/web/Inproceedings3479/en">http://www.aifb.kit.edu/web/Inproceedings3479/en</a></p>
+      </section>
+      <section id="fn25" role="doc-footnote">
+           <p><a href="http://www.semantic-mediawiki.org/">http://www.semantic-mediawiki.org/</a></p>
+      </section>
+      <section id="fn27" role="doc-footnote">
+           <p><a href="https://github.com/EIS-Bonn/OpenResearch">https://github.com/EIS-Bonn/OpenResearch</a></p>
+      </section>
+
+
+
+</section>
+    </body>
+</html>
+
+<!--  LocalWords:  foaf sp givenName Silvio familyName Peroni CfPs th
+ -->
+<!--  LocalWords:  holdsRoleInTime RoleInTime withRole essepuntato
+ -->
+<!--  LocalWords:  relatesToDocument OpenResearch SMW dokieli
+ -->
+<!--  LocalWords:  CfP WikiCFP Paperleap CICM SMWCon submodules Xia
+ -->
+<!--  LocalWords:  Blazegraph Hurtado DBWorld Cfplist SemanticScholar
+ -->
+<!--  LocalWords:  GSM GSM's DBLP's ScholarlyData Springer Springer's
+ -->
+<!--  LocalWords:  PapersInvited ProQuest ResearchGate CiteSeer MySQL
+ -->
+<!--  LocalWords:  Harith Alani IRFC Issertial Tsuji IJKSS Morsey
+ -->
+<!--  LocalWords:  Lehmann Auer Ngonga Ngomo ISWC Vahdati Arndt EKAW
+ -->

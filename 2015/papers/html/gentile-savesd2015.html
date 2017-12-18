@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="../grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><html xmlns="http://www.w3.org/1999/xhtml" prefix="  fabio: http://purl.org/spar/fabio/     cito: http://purl.org/spar/cito/     rash: http://cs.unibo.it/save-sd/rash/     doco: http://purl.org/spar/doco/     biro: http://purl.org/spar/biro/     pattern: http://www.essepuntato.it/2008/12/pattern#     swdf: http://data.semanticweb.org/     deo: http://purl.org/spar/deo/     c4o: http://purl.org/spar/c4o/     co: http://purl.org/co/     dcterms: http://purl.org/dc/terms/     liveconf: http://www.ontologydesignpatterns.org/data/liveconf/save-sd2015/     schema: http://schema.org/     prism: http://prismstandard.org/namespaces/basic/2.0/     sro: http://salt.semanticauthoring.org/ontologies/sro#">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    	<link rel="stylesheet" href="../css/rash.css"/>
+    	<script src="../js/jquery.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+    	<script src="../js/bootstrap.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+    	<script src="../js/rash.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+        
+        <!-- Metadata -->
+        <title>Conference Live: Accessible and Sociable Conference Semantic Data</title>
+        
+        <!-- Author's data (one or more) -->
+        <meta content="Anna Lisa Gentile" name="dc.creator" about="http://data.semanticweb.org/person/anna-lisa-gentile"/>
+        <meta content="a.gentile@sheffield.ac.uk" property="schema:email" about="http://data.semanticweb.org/person/anna-lisa-gentile"/>
+        <link about="http://data.semanticweb.org/person/anna-lisa-gentile" property="schema:affiliation" href="http://data.semanticweb.org/organization/university-of-sheffield"/>
+        <meta content="Department of Computer Science, University of Sheffield, UK" property="schema:name" about="http://data.semanticweb.org/organization/university-of-sheffield"/>
+        
+        <meta content="Maribel Acosta" name="dc.creator" about="http://data.semanticweb.org/person/maribel-acosta"/>
+        <meta content="maribel.acosta@kit.edu" property="schema:email" about="http://data.semanticweb.org/person/maribel-acosta"/>
+        <link about="http://data.semanticweb.org/person/maribel-acosta" property="schema:affiliation" href="http://data.semanticweb.org/organization/karlsruhe-institute-of-technology"/>
+        <meta content="Karlsruhe Institute of Technology (KIT), Germany" property="schema:name" about="http://data.semanticweb.org/organization/karlsruhe-institute-of-technology"/>
+        
+        <meta content="Luca Costabello" name="dc.creator" about="http://data.semanticweb.org/person/luca-costabello"/>
+        <meta content="luca.costabello@inria.fr" property="schema:email" about="http://data.semanticweb.org/person/luca-costabello"/>
+        <link about="http://data.semanticweb.org/person/luca-costabello" property="schema:affiliation" href="http://data.semanticweb.org/organization/fujitsu"/>
+        <meta content="Fujitsu, Ireland" property="schema:name" about="http://data.semanticweb.org/organization/fujitsu"/>
+        
+        <meta content="Andrea Giovanni Nuzzolese" name="dc.creator" about="http://data.semanticweb.org/person/andrea-giovanni-nuzzolese"/>
+        <meta content="andrea.nuzzoles@istc.cnr.it" property="schema:email" about="http://data.semanticweb.org/person/andrea-giovanni-nuzzolese"/>
+        <link about="http://data.semanticweb.org/person/andrea-giovanni-nuzzolese" property="schema:affiliation" href="http://data.semanticweb.org/organization/stlab-istc-cnr"/>
+        <meta content="Semantic Technology Lab, ISTC-CNR, Italy" property="schema:name" about="http://data.semanticweb.org/organization/stlab-istc-cnr"/>
+        
+        <meta content="Valentina Presutti" name="dc.creator" about="http://data.semanticweb.org/person/valentina-presutti"/>
+        <meta content="valentina.presutti@cnr.it" property="schema:email" about="http://data.semanticweb.org/person/valentina-presutti"/>
+        <link about="http://data.semanticweb.org/person/valentina-presutti" property="schema:affiliation" href="http://data.semanticweb.org/organization/stlab-istc-cnr"/>
+        
+        <meta content="Diego Reforgiato Recupero" name="dc.creator" about="http://data.semanticweb.org/person/diego-reforgiato-recupero"/>
+        <meta content="diego.reforgiato@istc.cnr.it" property="schema:email" about="http://data.semanticweb.org/person/diego-reforgiato-recupero"/>
+        <link about="http://data.semanticweb.org/person/diego-reforgiato-recupero" property="schema:affiliation" href="http://data.semanticweb.org/organization/stlab-istc-cnr"/>
+       
+    	<meta name="dcterms.subject" content="H.3.5, Information Storage and Retrieval, Online Information Services, Web-based services"/>
+    	
+    	<meta property="prism:keyword" content="Semantic Conference Mananger"/>
+    	<meta property="prism:keyword" content="LiveConf"/>
+    	<meta property="prism:keyword" content="Semantic Web Dog Food"/>
+    	<meta property="prism:keyword" content="ESWC data management"/>
+        <!-- /END Metadata -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><!--//--><![CDATA[ ]]><!--//--></script></head>
+    <body resource="liveconf:body" typeof="doco:BodyMatter">
+        <!-- Abstract -->
+        <section property="pattern:contains" resource="liveconf:abstract" typeof="doco:Abstract" role="doc-abstract">
+            <h1 property="dc:title">Abstract</h1>
+            <p property="c4o:hasContent">In this paper we describe <em>Conference Live</em>, a semantic Web application to browse conference data. <em>Conference Live</em> is a Web and mobile application based on conference data from the Semantic Web Dog Food server, which provides facilities to browse papers and authors at a specific conference.
+            Available data for the specific conference is enriched with social features (e.g. integrated Twitter accounts of paper authors), scheduling features (calendar information are attached for paper presentations and social events), the possibility to check and add feedback to each paper and to vote for papers, if the conference includes sessions where participants can vote, as it is popular e.g. for poster sessions. 
+            As use case we report on the usage of the application at the Extended Semantic Web Conference (ESWC) in May 2014.</p>
+        </section>
+        
+        <!-- Sections -->
+        <section property="pattern:contains" resource="liveconf:section-1" typeof="doco:Section deo:Introduction">
+            <h1 property="pattern:contains" resource="liveconf:section-1-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">INTRODUCTION</span>
+            </h1>
+            <p property="pattern:contains" resource="liveconf:section-1-paragraph-1" typeof="doco:Paragraph">
+	            <span property="pattern:contains" resource="liveconf:section-1-paragraph-1-sentence-1" typeof="doco:Sentence">
+		            <span property="c4o:hasContent">
+		            	A spread good practise in the semantic Web community is <q>eating our own dog food</q> <a href="#Warren2006" resource="liveconf:intext-reference-pointer-Warren2006" typeof="c4o:InTextReferencePointer"> </a><span about="liveconf:intext-reference-pointer-Warren2006" property="co:denotes" resource="liveconf:bibliographic-reference-Warren2006"/>.
+		            	The main example is the <em>Semantic Web Dog Food</em><a href="#fn_swdf" resource="liveconf:footnote-reference-fn_swdf" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-fn_swdf" property="dcterms:references" resource="liveconf:footnote-fn_swdf"/> (SWDF), 
+			            a corpus that 
+			            collects linked data about papers, people, organizations and events related to academic conferences.
+					</span>
+				</span>
+	            <span property="pattern:contains" resource="liveconf:section-1-paragraph-1-sentence-2" typeof="doco:Sentence">
+		            <span property="c4o:hasContent"> 
+			            Currently, all main semantic Web conferences and related events publish their data as linked data on SWDF.</span></span>
+			            <span property="pattern:contains" resource="liveconf:section-1-paragraph-1-sentence-3" typeof="doco:Sentence"><span property="c4o:hasContent">
+			            Another spread practise in our community (and beyond it) is to share experiences, opinions, materials
+			            on social networks.
+			        </span>
+			    </span>
+            </p>
+            
+            <p property="pattern:contains" resource="liveconf:section-1-paragraph-2" typeof="doco:Paragraph">
+	            <span property="pattern:contains" resource="liveconf:section-1-paragraph-2-sentence-1" typeof="doco:Sentence">
+	            	<span property="c4o:hasContent">
+	            		We developed a semantic Web application named <em>Conference Live</em> (a work in its early stage), which combines these practises.
+	            	</span>
+	            </span> 
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-2-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			It is deployed as a mobile as well as Web application, and exploits SWDF data for providing conference attendees
+            			with an enhanced experience, by integrating social network and crowdsourcing functionalities. 
+            		</span>
+            	</span>
+            </p>
+            
+            <p property="pattern:contains" resource="liveconf:section-1-paragraph-3" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-3-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+		            	The main advantages of <em>Conference Live</em> are:
+		            </span> 
+		        </span>
+		    </p>
+	        <ul property="pattern:contains" resource="liveconf:section-1-list-1" typeof="doco:List">
+	            <li property="pattern:contains" resource="liveconf:section-1-list-1-item-1" typeof="pattern:Block">
+	            	<p property="c4o:hasContent">it works with SWDF Linked Data;</p></li>
+	            <li property="pattern:contains" resource="liveconf:section-1-list-1-item-2" typeof="pattern:Block">
+	            	<p property="c4o:hasContent">it integrates social features: each paper has its own twitter widget, which displays its specific stream of tweets, 
+	            		and allows to publish tweets (by adding the paper hashtag as built-in function);
+	            	</p></li>
+	            <li property="pattern:contains" resource="liveconf:section-1-list-1-item-3" typeof="pattern:Block">
+	            	<p>it allows conference attendees to vote for the best contribution in each track with a <q>one vote per person</q> policy, 
+	            		helping the conference organizers to collect, count and rank votes with a simple query;
+	            	</p></li>
+	            <li property="pattern:contains" resource="liveconf:section-1-list-1-item-4" typeof="pattern:Block">
+	            	<p property="c4o:hasContent">it provides a feedback system: conference attendees can express their opinion on a specific conference contribution, 
+	            		e.g. a paper presentation, by means of natural language text;
+	            	</p></li>
+	            <li property="pattern:contains" resource="liveconf:section-1-list-1-item-5" typeof="pattern:Block">
+	            	<p property="c4o:hasContent">it acts as crowdsourcing system for semantic Web resource creation: the feedback system allows to build a validated
+						terminology for training and tuning sentiment analysis systems performing on opinions expressed on scientific publications 
+	            		and presentation events. One of the contributions of this paper is a terminology associated with validated sentiment polarity.
+	            	</p></li>
+	            </ul>
+           
+            <p property="pattern:contains" resource="liveconf:section-1-paragraph-4" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-4-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            		In this paper, we report about a use case based on the usage of <em>Conference Live</em> during the 11<sup>th</sup> Extended Semantic Web Conference, ESWC 2014, 
+            		held in Crete in May 2014.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-4-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            		After comparing <em>Conference Live</em> with other existing products (cf. <a href="#soa"> </a>), we describe the methodology we followed for 
+            		modeling, collecting, and cleaning the conference data (cf. <a href="#data"> </a>).
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-4-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            		<a href="#system"> </a> presents <em>Conference Live</em> functionalities, including details on the feedback system.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-1-paragraph-4-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            		Results of the ESWC 2014 use case are reported in <a href="#eswc2014"> </a>, while we report lessons learnt in <a href="#conclusions"> </a>.
+            		</span>
+            	</span>
+            </p>
+        </section>
+        
+        <section id="soa" property="pattern:contains" resource="liveconf:section-2" typeof="doco:Section deo:RelatedWork">
+        	<h1 property="pattern:contains" resource="liveconf:section-2-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">STATE OF THE ART</span>
+            </h1>
+            <p property="pattern:contains" resource="liveconf:section-2-paragraph-1" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-1-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The first considerable effort to offer comprehensive semantic descriptions of conference events is represented by the metadata projects at ESWC 2006 and ISWC 2006 
+            			conferences <a href="#Moller2007"> </a>, with the Semantic Web Conference (SWC) Ontology <a href="#Moller2009"> </a> being the vocabulary of 
+            			choice to represent such data.
+            		</span>
+            	</span>
+            </p> 
+            
+            <p property="pattern:contains" resource="liveconf:section-2-paragraph-2" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+	            		Several applications have been proposed in the years to explore and interact with such data, to offer a semantically enhanced experience during conferences.
+	            	</span>
+	            </span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+	            		Livecon app <a href="#Medini2013"> </a> provides a web interface to any SWDF dataset, by supporting the import of conference datasets in the SWC vocabulary.
+	            	</span>
+	            </span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			It also helps managing the conference schedule using a Google calendar-like interface.
+            		</span>
+            	</span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+			            EventMedia <a href="#Khrouf2012"> </a> is a system to gather, 
+			            reconcile and organize event-centric knowledge, 
+			            which is interlinked and published following the best practices of the Semantic Web community.
+			        </span>
+			    </span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-5" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+			            The system itself is not specifically tailored for scientific conferences, 
+			            but suitable for handling events in general, while one of its components, Confomaton <a href="#KhroufESWC2012"> </a>, has been specifically tested in the conference scenario.
+	             	</span>
+	            </span>
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-6" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+	            		Confomaton reconciles available social media with specific events. It starts from available metadata about the conference (e.g. from SWDF).
+	            	</span>
+	            </span>
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-7" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+	            		Its main goal is (i) to identify all events in the metadata and (ii) automatically align social data potentially referring to such events, gathered from various social platforms.
+	            	</span>
+	            </span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-8" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The Conference Explorer<a href="#explorer" resource="liveconf:footnote-reference-explorer" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-explorer" property="dcterms:references" resource="liveconf:footnote-explorer"/> is a Web application to browse semantic meta data about a conference. 
+	            	</span>
+	            </span>
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-9" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+	            		It offers visual and statistical tools for data exploration and complements the 
+	            		initial SWDF dataset with external data sources, such as information gathered from social networks.
+	            	</span>
+	            </span> 
+	            <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-10" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			One of the novelties of our proposed approach is that, besides browsing 
+            			capabilities over available data, we provide social features and dynamic gathering of feedback and social interaction during the conference.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-11" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+			            With respect to EventMedia and Conference Explorer, that also consider the social aspect, we introduce the usage of paper specific hashtags to provide explicit, real-time 
+			            integration with social media (as opposed to automatic post-process data reconciliation) and facilitate accurate live retrieval of social interactions about specific papers.
+			        </span>
+			    </span>
+			    <span property="pattern:contains" resource="liveconf:section-2-paragraph-2-sentence-12" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+	            		Another main novelty of our system is the introduction of an integrated voting system.
+	            	</span>
+	            </span>
+            </p>
+            
+            <p property="pattern:contains" resource="liveconf:section-2-paragraph-3" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-3-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			As for commercial solutions there are numerous existing customizable products, with a varying number of included features from scheduling to social network integration, 
+            			venue mapping etc. Some examples are: Sched<a href="#sched" resource="liveconf:footnote-reference-sched" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-sched" property="dcterms:references" resource="liveconf:footnote-sched"/>, EventBoard<a href="#eventboard" resource="liveconf:footnote-reference-eventboard" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-eventboard" property="dcterms:references" resource="liveconf:footnote-eventboard"/>, Eventmobi<a href="#eventmobi" resource="liveconf:footnote-reference-eventmobi" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-eventmobi" property="dcterms:references" resource="liveconf:footnote-eventmobi"/>, 
+            			Whova<a href="#whova" resource="liveconf:footnote-reference-whova" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-whova" property="dcterms:references" resource="liveconf:footnote-whova"/>, Quickmobile<a href="#quickmobile" resource="liveconf:footnote-reference-quickmobile" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-quickmobile" property="dcterms:references" resource="liveconf:footnote-quickmobile"/>, the guidebook event app<a href="#eventapps" resource="liveconf:footnote-reference-eventapps" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-eventapps" property="dcterms:references" resource="liveconf:footnote-eventapps"/>, 
+            			the doubledutch event app<a href="#doubledutch" resource="liveconf:footnote-reference-doubledutch" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-doubledutch" property="dcterms:references" resource="liveconf:footnote-doubledutch"/> and many others.
+            		</span>
+            	</span> 
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-3-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			Data for these applications must be provided in the required format or in some cases populated by the conference organizer, with the usage of an administration interface.
+             		</span>
+             	</span>
+             	<span property="pattern:contains" resource="liveconf:section-2-paragraph-3-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The drawbacks of these commercial tools are that (i) they are not free, (ii) customization is needed to work with SWDF data and (iii) conference specific requirements 
+            			(e.g. voting) must be built ad-hoc.
+            		</span>
+            	</span> 
+            	<span property="pattern:contains" resource="liveconf:section-2-paragraph-3-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+			            <em>Conference Live</em> addresses these gaps by providing a solution which (i) works with SWDF data, (ii) provides several features comparable 
+			            with commercial solutions, (iii) introduces feedback facilities and a voting system, which is typically required for certain tracks of various conferences.
+			        </span>
+			    </span>
+            </p>
+        </section>
+        
+        <section id="data" property="pattern:contains" resource="liveconf:section-3" typeof="doco:Section deo:Data">
+        	<h1 property="pattern:contains" resource="liveconf:section-3-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">SEMANTIC DATA COLLECTION</span>
+            </h1>
+            <p property="pattern:contains" resource="liveconf:section-3-paragraph-1" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-3-paragraph-1-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The collection of conference metadata is a task which has been promoted in the years in the Semantic Web community <a href="#Moller2007"> </a>.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-3-paragraph-1-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+            			Data collected from different unstructured and semi-structured resource and must be expressed with appropriate vocabularies to be exposed as linked data.
+            		</span>
+            	</span> 
+            	<span property="pattern:contains" resource="liveconf:section-3-paragraph-1-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			We follow recommendations in <a href="#Moller2007"> </a> and introduce a few novelties in data representation (cf. <a href="#ontology"> </a>) and 
+            			collection process (cf. <a href="#collection"> </a>) 
+            			to enrich conference metadata and provide novel features. 
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-3-paragraph-1-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The novelties added to the data follow a requirement analysis phase for the design of 
+            			<em>Conference Live</em> (described in <a href="#system"> </a>).
+            		</span>
+            	</span>
+            </p>
+            
+            <section id="ontology" property="pattern:contains" resource="liveconf:section-3_1" typeof="doco:Section">
+            	<h1 property="pattern:contains" resource="liveconf:section-3_1-title" typeof="doco:SectionTitle">
+            		<span property="dc:title">Ontology</span>
+            	</h1>
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-1" typeof="doco:Paragraph">
+	            	<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-1-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The Semantic Web Conference ontology <a href="#Moller2009"> </a> is one of the vocabularies of choice to describe academic conferences.
+	            		</span>
+	            	</span> 
+	            	<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-1-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The SWC ontology extends and combines existing widely accepted vocabularies (i.e. FOAF <a href="#Brickley2007"> </a>, SIOC <a href="#Berrueta2007"> </a>, 
+	            			Dublin Core <a href="#Beckett2002"> </a>) 
+	            			to provide a reference model to describe typical actors in an academic conference, such as accepted papers, authors, their affiliations, 
+	            			organizing committee and all other roles involved.
+	            		</span>
+	            	</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-2" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-2-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			Choosing the SWC ontology as reference vocabulary makes sure that (i) data is homogeneous with the SWDF corpus and (ii) an application using such data can be easily 
+            				initialized with data about any of the conferences available in the corpus. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-2-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Nevertheless, we decided to extend the SWC ontology with additional concepts, properties 
+            				and axioms in order to address the set of requirements for data modelling and exploitation that we collected at design time. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-2-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				These requirements are identified by the following list:
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<ul property="pattern:contains" resource="liveconf:section-3_1-list-1" typeof="doco:List">
+	            	<li property="pattern:contains" resource="liveconf:section-3_1-list-1-item-1" typeof="pattern:Block">
+		            	<p property="c4o:hasContent">
+		            		<em>R1 - External feedback</em>: the system must associate a hashtag to each conference paper. A hashtag can be used to uniquely refer to a paper in 
+	            			the Social Web (e.g. Twitter). Within the system the hashtag is used to retrieve external feedback on the paper from the social Web;
+	            		</p>
+	            	</li>
+	            	<li property="pattern:contains" resource="liveconf:section-3_1-list-1-item-2" typeof="pattern:Block">
+		            	<p property="c4o:hasContent">
+	            			<em>R2 - Internal feedback</em>: the system must provide a mechanism for collecting feedback about a paper from users. Additionally the system should 
+	            			be able to detect and store the sentiment behind a feedback;
+	            		</p>
+	            	</li>
+	            	<li property="pattern:contains" resource="liveconf:section-3_1-list-1-item-3" typeof="pattern:Block">
+		            	<p property="c4o:hasContent">	
+	            			<em>R3 - Voting system</em>: the system must provide a voting mechanism for determining the best paper in a certain conference track. 
+	            			Each user can vote only once for each track in which the voting mechanism is enabled;
+	            		</p>
+	            	</li>
+	            	<li property="pattern:contains" resource="liveconf:section-3_1-list-1-item-4" typeof="pattern:Block">
+		            	<p property="c4o:hasContent">
+		            		<em>R4 - Scheduling</em>: the system must provide to the users the conference calendar with the scheduling of events (either social or academic) and paper presentations;
+		            	</p>
+		            </li>
+	            	<li property="pattern:contains" resource="liveconf:section-3_1-list-1-item-5" typeof="pattern:Block">
+		            	<p property="c4o:hasContent">
+		            		<em>R5 - Browsing</em>: the system must provide a mechanism to browse papers and authors at the conference. Collected metadata is accessible to the end user, including 
+	            			basic information (author names, affiliations, paper titles...), roles covered by each person at the conference; optional data include: author picture, author additional contacts 
+	            			(e.g. social media account), thumbnail for each paper.
+	            		</p>
+	            	</li>
+            	</ul>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-3" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-3-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Starting from the SWC ontology, we introduced additional properties to address <em>R1-R5</em>. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-3-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The datatype property <code>eswc:hashtag</code><a href="#prefixes" resource="liveconf:footnote-reference-prefixes" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-prefixes" property="dcterms:references" resource="liveconf:footnote-prefixes"/>
+            				with domain <code>foaf:Document</code> and range <code>xsd:string</code> captures any hashtag used to identify a given paper in social networks.
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-4" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-4-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				User feedback is represented as an individual of the class <code>sioc:Post</code>, is associated to a paper 
+            				(i.e. instance of the class <code>swc:InProceedings</code>) 
+            				and has a recognized sentiment (i.e. instance of the class <code>kdo:Sentiment</code>). 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-4-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The associations between paper, feedback and sentiment are represented through the properties <code>eswc:hasArtefactAsTopic</code> and <code>kdo:hasSenqtuiemreynthe</code> respectively.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-4-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				A sentiment has two components: (i) a polarity, expressed via the property <code>kdo:hasPolarity</code>, which can be either <code>kdo:positivePolarity</code>, <code>kdo:negativePolarity</code> or 
+            				<code>kdo:neutralPolarity</code>, and (ii) a polarity score, 
+            				expressed via the property <code>kdo:hasScore</code>, defined as an integer number.
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-5" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-5-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				To capture user votes, we introduced the property <code>eswc:votes</code> for individual of the class <code>foaf:Person</code>, 
+            				holding a voter role (<code>eswc:voter</code>).
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-5-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Social media accounts are captured with the property <code>foaf:account</code> to individuals of the class <code>foaf:OnlineAccount</code>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-5-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				We associated depictions and images to people and proceeding articles, reusing the properties <code>foaf:depiction</code> and 
+            				<code>dbpedia-owl:thumbnail</code> respectively.
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_1-paragraph-6" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_1-paragraph-6-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The resulting ontology is available on-line<a href="#eswc_ontology" resource="liveconf:footnote-reference-eswc_ontology" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-eswc_ontology" property="dcterms:references" resource="liveconf:footnote-eswc_ontology"/>.
+            			</span>
+            		</span>
+            	</p>
+            </section>
+            
+            <section id="collection" property="pattern:contains" resource="liveconf:section-3_2" typeof="doco:Section">
+            	<h1 property="pattern:contains" resource="liveconf:section-3_2-title" typeof="doco:SectionTitle">
+            		<span property="dc:title">Data Collection and Cleaning</span>
+            	</h1>
+            	<p property="pattern:contains" resource="liveconf:section-3_2-paragraph-1" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+	            			As use case for the rest of this paper we use the ESWC 2014 conference.
+	            		</span>
+	            	</span> 
+	            	<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The initial set of data is collected with a script transformation 
+	            			of XML data obtained through the easychair conference management system<a href="#easychair" resource="liveconf:footnote-reference-easychair" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-easychair" property="dcterms:references" resource="liveconf:footnote-easychair"/>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The resulting RDF graph eswcMainGraph, 
+            				expressed with the SWC vocabulary, contains information about papers accepted to the main conference track and the in-use conference track; 
+            				<em>eswcMainGraph</em> does not contain data of conference related events (e.g. challenges, posters, demos and workshops).
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				We contacted all event organizers and collected CSV data from them, containing basic information about all accepted papers; 
+            				using an ad-hoc script we transformed this data in a rdf graph <em>eswcRelatedGraph</em>, in the same format of <em>eswcMainGraph</em>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				Both <em>eswcMainGraph</em> and <em>eswcRelatedGraph</em> do not contain data to fulfil requirements <em>R1-R6</em>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-6" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				We therefore complemented this information.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-7" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+	            			First, we submitted on-line forms<a href="#form_example" resource="liveconf:footnote-reference-form_example" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-form_example" property="dcterms:references" resource="liveconf:footnote-form_example"/> 
+            				to all paper authors to collect their photos and 
+            				twitter accounts, giving them the chance to amend any incorrect information (e.g. name misspelling) and to provide a thumbnail for their paper.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-8" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				All collected data has been integrated in the existing graphs, which are collated in a single <em>eswcGraph</em>. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-9" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Each person in the graph is identified by a URI, in the form <code><a href="http://data.semanticweb.org/person/&lt;firstname&gt;-&lt;surname&gt;">http://data.semanticweb.org/person/&lt;firstname&gt;-&lt;surname&gt;</a></code>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-10" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The convention to generate a URI for a person is to use <a href="http://data.semanticweb.org/person">http://data.semanticweb.org/person</a> as prefix
+            				and concatenate any fistname, middle names and surnames spared by the dash character. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-11" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				This procedure should make sure that if a person is already present in the SWDF corpus, 
+            				the same URI is reused.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-12" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				In practise this is not the case, especially for people with multiple names and surnames, which sometime are reported inconsistently in different papers.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-13" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Therefore we performed a simple automatic cleaning procedure. For each person URI, we query the SWDF corpus and check if it exists already.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-14" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				If not, we query for all possible alternative options (e.g. with a URI that does not use the middle name of a person).
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-15" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				If options are found, these are manually checked to confirm identity and the existing URI is reused in <em>eswcGraph</em>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-16" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				In the case that no option is found, the new generated URI is adopted.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-17" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Specifically, when generating metadata about the main track, we initially generated 478 URIs for people. Of those, 82 were not present on SWDF.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-18" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				We identified 19 of them with potential alternatives, by automatically selecting all people with multiple names or surnames and we check if any of those exists.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-19" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				If found, the alternative existing URIs are manually checked.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-20" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				As an example, the proposed URI for Maribel Acosta Deibe is <a href="http://data.semanticweb.org/person/maribel-acosta-deibe">http://data.semanticweb.org/person/maribel-acosta-deibe</a>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-21" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				By checking all combinations (removing multiple names and surnames one at the time, in this case, the only option is to remove the second surname) 
+            				we find an existing URI <a href="http://data.semanticweb.org/person/maribel-acosta">http://data.semanticweb.org/person/maribel-acosta</a>, 
+            				which is manually checked and chosen as the one to use.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-22" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				In four of the 19 cases we replaced the URI.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-23" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				This procedure does not exclude the case when people who previously used multiple names, only used their first name for example in the current conference.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-1-sentence-24" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				As future work, a search-like function over different Web sources can be introduced to address these cases.
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-3_2-paragraph-2" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-2-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			To fulfill <em>R4</em> we collected csv data about presentation schedule from all event organizers. 
+	            		</span>
+	            	</span>
+	            	<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-2-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			This data has been converted with a transformation script in an rdf graph, <em>eswcCalendar</em>, using the ical vocabulary<a href="#rdfcal" resource="liveconf:footnote-reference-rdfcal" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-rdfcal" property="dcterms:references" resource="liveconf:footnote-rdfcal"/>. 
+	            		</span>
+	            	</span>
+	            	<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-2-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The integration of <em>eswcCalendar</em> with <em>eswcGraph</em> is done by matching paper titles and representing the relation between a paper and its presentation event with the two inverse properties <code>eswc:isPresented</code> 
+            				and <code>eswc:presents</code>.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-2-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				As lesson learned, the csv solution to collect calendars is not the easiest to handle, as it is prone 
+            				to mistakes by the data providers which have to then be manually checked and solved for the scripts to function. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-3_2-paragraph-2-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				A better solution can be demanding the creation of calendars to data providers or using more structured tools to collect the data (as e.g. the forms that we used for papers and authors information, where 
+            				type checking can be enabled at input time). In the same guise, the final responsibility on data cleaning could be partially demanded to users themselves, 
+            				by implementing a user feedback mechanism where the user can notify and suggest changes (on all created metadata).
+            			</span>
+            		</span>
+            	</p>
+            </section>
+            
+        </section>
+        
+        <section id="system" property="pattern:contains" resource="liveconf:section-4" typeof="doco:Section deo:Contribution">
+        	<h1 property="pattern:contains" resource="liveconf:section-4-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">CONFERENCE LIVE SYSTEM</span>
+            </h1>
+            <p property="pattern:contains" resource="liveconf:section-4-paragraph-1" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-4-paragraph-1-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+           				The <em>Conference Live</em> mobile application has been designed to support conference attendees during the ongoing event.
+           			</span>
+           		</span>
+           		<span property="pattern:contains" resource="liveconf:section-4-paragraph-1-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The system is designed following the model-view-presenter approach (MVP) <a href="#Potel1996"> </a>.
+            		</span>
+            	</span>
+            </p>
+            
+            <p property="pattern:contains" resource="liveconf:section-4-paragraph-2" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+	            		The data (described in <a href="#data"> </a>) is stored in two different triple stores, a <em>static store</em> that contains data collected and loaded 
+	            		before the conference, and a <em>dynamic store</em>, which includes data collected during the conference via the front-end application (cf. <a href="#app"> </a>), 
+	            		mainly user feedback and votes.
+	            	</span>
+	            </span>
+	            <span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			Each feedback is complemented with a sentiment (a polarity connotation with a confidence score), which is automatically calculated through the 
+            			Sentiment Analysis Module (cf. <a href="#sentiment"> </a>) and can be manually corrected by the end user.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+						Votes are associated to each eligible publication (as indicated by conference organizers) and the system can implement multiple independent 
+				        votes collection, for example divided by track (e.g. poster track and demo track).
+				    </span>
+				</span> 
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			This is decided beforehand by the conference organizers.
+            		</span>
+            	</span> 
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-5" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			Users can vote only once, for each track. 
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-6" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			To cast a vote, users are given a unique one-time secret code, to assure the <q>one vote per person</q> policy.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-7" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The <em>static store</em> is accessible through a REST API<a href="#app_api" resource="liveconf:footnote-reference-app_api" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-app_api" property="dcterms:references" resource="liveconf:footnote-app_api"/>.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-2-sentence-8" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+            			The <em>dynamic store</em> is only internally accessible for privacy issues.
+            		</span>
+            	</span> 
+            </p>
+            
+            <p property="pattern:contains" resource="liveconf:section-4-paragraph-3" typeof="doco:Paragraph">
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-3-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			Additionally, the system incorporates external feedback on each paper from the Twitter social network.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-4-paragraph-3-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			This data is not stored internally, but retrieved by using the Twitter API.
+            		</span>
+            	</span>
+            </p>
+            
+            <figure id="figure_1" property="pattern:contains" resource="liveconf:section-4-figure-1" typeof="doco:FigureBox">
+            	<p>
+            		<img alt="Some screenshoot of the Conference Live mobile app" property="pattern:contains" src="./img/conference_live.png" resource="liveconf:./img/conference_live.png" typeof="doco:Figure"/>
+            	</p>
+            	<figcaption property="pattern:contains" resource="liveconf:section-4-figure-1-captioned-box" typeof="doco:CaptionedBox">
+            		<span property="dc:hasPart" resource="liveconf:section-4-figure-1-captioned-box-caption" typeof="deo:Caption">
+            			<span property="c4o:hasContent">
+            				Screenshots of the <em>Conference Live</em> System mobile application: browsing.
+            			</span>
+            		</span>
+            	</figcaption>
+            </figure>
+            
+            <section id="app" property="pattern:contains" resource="liveconf:section-4_1" typeof="doco:Section">
+	            <h1 property="pattern:contains" resource="liveconf:section-4-title" typeof="doco:SectionTitle">
+	            	<span property="dc:title">Mobile application functionalities</span>
+	            </h1>
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-1" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The mobile application implements functionalities to address the requirements <em>R1-R5</em> (cf. <a href="#data"> </a>).
+	            		</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-2" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-2-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				<strong>Browsing</strong>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				First, the application offers basic browsing capabilities (<em>R5</em>), through publications metadata.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				Accepted papers can be filtered by conference track (as shown in <a href="#figure_1"> </a>).
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				If desired, papers can be visualized in a calendar-like view (<em>R4</em>) of the conference (cf. <a href="#figure_1"> </a>).
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				A detailed view of each publication is also provided. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-1-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Beside abstract, track, authors, and other publication metadata, 
+            				such view offers access to additional features: the voting system (<em>R3</em>), the social network widget (<em>R1</em>), and the feedback system (<em>R2</em>).
+            			</span>
+            		</span> 
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-3" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-3-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+	            			<strong>Voting</strong>. 
+	            		</span>
+	            	</span>
+	            	<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-3-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The voting system is used to gather votes from the attendees with the <q>one vote per person</q> policy and data is sent to the <em>dynamic store</em>.
+	            		</span>
+	            	</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-4" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				<strong>Social network widget</strong>. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The social network widget contains the list of public tweets associated to each paper (the association is done using an ad-hoc hashtag, 
+            				pre-loaded in the Twitter timeline).
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			Embedded Twitter timelines<a href="#twitter_timelines" resource="liveconf:footnote-reference-twitter_timelines" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-twitter_timelines" property="dcterms:references" resource="liveconf:footnote-twitter_timelines"/> provide the capacity of displaying a collection of Tweets in an application or 
+            				Website with minimal coding effort.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				In addition, users can interact with the widget by posting Tweets that are automatically annotated with the widget information.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				There are different mechanisms to specify the timeline source of a certain widget, e.g. showing all the Tweets from: a given user, a user's favourites, search and hashtags, etc.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-6" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				The <em>Conference Live</em> application used the option of creating a timeline from each hashtag associated to a paper. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-7" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The version of the Twitter API (V1.1) used at the moment of 
+            				implementing the application, did not support the functionality of automatic creation of Twitter search widgets, therefore each widget was created and customized manually.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-8" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				Since this might become a scalability issue when dealing with large number of publications, embedded Twitter timelines can be replaced with self-developed widgets using the 
+            				Twitter REST API. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-4-sentence-9" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				However, this solution requires additional efforts to deal with data refreshens, pagination and supporting user interactive features.
+            			</span>
+            		</span> 
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-5" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-5-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				<strong>Feedback system</strong>.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-5-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				One of the novel features of <em>Conference Live</em> compared to other existing conference applications is the feedback system.
+            			</span>
+            		</span>
+            		 <span property="pattern:contains" resource="liveconf:section-4_1-paragraph-5-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				It is used to collect feedback about each paper, expressed as natural language text. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-5-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The text is processed by the Sentiment Analysis Module (cf. <a href="#sentiment"> </a>) and data is sent to the <em>dynamic store</em>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-5-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				The idea of the feedback system is to crowdsource a validated terminology (and its associated sentiment polarity) 
+            				by relying on the conference attendees who have the incentive of contributing to award-decision procedures on conference papers (cf. <a href="#eswc2014"> </a>).
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-6" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-6-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			<strong>Implementation details</strong>.
+	            		</span>
+            		</span>
+	            	<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-6-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The <em>Conference Live</em> mobile application consists in a cross-platform web application optimized for handheld devices.
+	            		</span>
+	            	</span> 
+	            	<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-6-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			It is developed in JavaScript, and it is based on the Backbone.js<a href="#backbone" resource="liveconf:footnote-reference-backbone" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-backbone" property="dcterms:references" resource="liveconf:footnote-backbone"/> JavaScript MVP approach.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-6-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The front-end adopts the <span/>Bootstrap<a href="#bootstrap" resource="liveconf:footnote-reference-bootstrap" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-bootstrap" property="dcterms:references" resource="liveconf:footnote-bootstrap"/> framework and the <span/>Underscore.js<a href="#underscore" resource="liveconf:footnote-reference-underscore" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-underscore" property="dcterms:references" resource="liveconf:footnote-underscore"/> templating engine.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-6-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				The adoption of Bootstrap eased the design and development of a responsive web application, a crucial factor in targeting mobile devices.
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_1-paragraph-7" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-7-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			The web application has been packaged as cross-platform, native mobile applications using the Apache Cordova framework<a href="#cordova" resource="liveconf:footnote-reference-cordova" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-cordova" property="dcterms:references" resource="liveconf:footnote-cordova"/>.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-7-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				The adoption of Cordova let us re-use the same web-based codebase to ship Android and iOS mobile applications.
+            			</span>
+            		</span> 
+            		<span property="pattern:contains" resource="liveconf:section-4_1-paragraph-7-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+	            			Hence, we targeted three different distribution platforms: a web-based application served by a regular <span/>web server<a href="#live_system" resource="liveconf:footnote-reference-live_system" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-live_system" property="dcterms:references" resource="liveconf:footnote-live_system"/>, 
+	            			the <span/>Google Play store<a href="#google_play" resource="liveconf:footnote-reference-google_play" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-google_play" property="dcterms:references" resource="liveconf:footnote-google_play"/>, and the <span/>iTunes<a href="#itunes" resource="liveconf:footnote-reference-itunes" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-itunes" property="dcterms:references" resource="liveconf:footnote-itunes"/> app store.
+            			</span>
+            		</span> 
+            	</p>
+            </section>
+            
+            <section id="sentiment" property="pattern:contains" resource="liveconf:section-4_2" typeof="doco:Section">
+            	<h1 property="pattern:contains" resource="liveconf:section-4_2-title" typeof="doco:SectionTitle">
+	            	<span property="dc:title">Sentiment Analysis Module</span>
+	            </h1>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_2-paragraph-1" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+	            			The Sentiment Analysis Module (SAM) has been developed in Python and deployed as a REST service.
+	            		</span>
+	            	</span> 
+	            	<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+							Its implementation is inspired by <a href="#Gangemi2014"> </a> and adapted to <em>Conference Live</em> requirements.
+						</span>
+					</span>
+					<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				SAM relies on two lexical resources: SenticNet <a href="#Cambria2012"> </a> and SentiWordNet <a href="#Baccianella2010"> </a>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-4" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				SenticNet associates a sentiment value to each word, in the interval range [-1,+1], where -1 connotes an extremely negative sentiment,
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-5" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				whereas +1 an extremely positive one. SentiWordNet associates three scores to each word: a <em>positive_score</em>, a <em>negative_score</em> and an <em>objective_score</em>.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-1-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				The three scores sum up to 1, and any of the three can be 0.
+            			</span>
+            		</span> 
+            	</p>
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_2-paragraph-2" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-2-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent"> 
+            				Given a natural language text <em>t</em> as input, the SAM module returns a polarity score, i.e. <em>polarityScore(t)</em>, for the overall text. 
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-2-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				After some pre-processing, e.g. tokenization, it transforms the text to a list of words <em>w<sub>1</sub></em>,..., <em>w<sub>n</sub></em>. For each <em>w<sub>i</sub></em>, SAM computes 
+            				(i) one score from SenticNet, i.e.  <em>snScore(w<sub>i</sub>)</em>, (ii) one score from SentiWordNet, i.e. <em>swnScore(w<sub>i</sub>)</em>, 
+	            			and (iii) calculates a final score, i.e. <em>polarityScore(w<sub>i</sub>)</em>, as the average of them<a href="#sentiment_note" resource="liveconf:footnote-reference-sentiment_note" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-sentiment_note" property="dcterms:references" resource="liveconf:footnote-sentiment_note"/>:
+            			</span>
+            		</span>
+            	</p>
+            	
+            	<figure id="formula_2" property="pattern:contains" resource="liveconf:section-4_2-formula-box-1" typeof="doco:FormulaBox">
+            		<p property="dc:hasPart" resource="liveconf:section-4_2-formula-box-1-formula" typeof="doco:Formula"> 
+            			<math xmlns="http://www.w3.org/1998/Math/MathML">
+            				<mi>polarityScore(<msub><mi>w</mi><mn>i</mn></msub>)</mi>
+            				<mo>=</mo>
+            				<mfrac>
+            					<mrow>
+            						<mi>snScore(<msub><mi>w</mi><mn>i</mn></msub>)</mi>
+            						<mo>+</mo>
+            						<mi>swnScore(<msub><mi>w</mi><mn>i</mn></msub>)</mi>
+            					</mrow>
+            					<mrow>
+            						<mi>2</mi>
+            					</mrow>
+            				</mfrac>
+            			</math>
+					</p>
+				</figure>
+				
+				<p property="pattern:contains" resource="liveconf:section-4_2-paragraph-3" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-3-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+							and finally (iv) it computes <em>polarityScore(t)</em> as the average value of all <em>polarityScore(w<sub>i</sub>)</em>.
+						</span>
+					</span>
+				</p>
+            	
+            	
+            	<p property="pattern:contains" resource="liveconf:section-4_2-paragraph-4" typeof="doco:Paragraph">
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-4-sentence-1" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				SAM also considers negations: it implements some heuristics for changing the sign of a score depending on the negation position within a sentence.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-4-sentence-2" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				When neither SenticNet or SentiWordNet allow computing a sentiment score for a word, SAM returns a code indicating <q>no result</q> for that word.
+            			</span>
+            		</span>
+            		<span property="pattern:contains" resource="liveconf:section-4_2-paragraph-4-sentence-3" typeof="doco:Sentence">
+	            		<span property="c4o:hasContent">
+            				Full details about SAM can be found in <a href="#Gangemi2014"> </a>.
+            			</span>
+            		</span>
+            	</p>
+            </section>
+              
+        </section>
+        
+        <section id="eswc2014" property="pattern:contains" resource="liveconf:section-5" typeof="doco:Section deo:Scenario">
+        	<h1 property="pattern:contains" resource="liveconf:section-5-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">USE CASE: ESWC 2014 CONFERENCE</span>
+            </h1>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-1" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-1-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+       					The first experience of <em>Conference Live</em> in use was ESWC 2014, held in Crete, with around three hundred participants.
+       				</span>
+       			</span> 
+       			<span property="pattern:contains" resource="liveconf:section-5-paragraph-1-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				The app could (and can) be downloaded and installed either from Google Playstore or Apple Store, or 
+        				used online as web application<a href="#live_system" resource="liveconf:footnote-reference-live_system" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-live_system" property="dcterms:references" resource="liveconf:footnote-live_system"/>.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-1-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				During the conference, <em>Conference Live</em> was downloaded 79 times from the Google Playstore, and 54 times from the Apple Store.
+        			</span>
+        		</span> 
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-2" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Thanks to the dedicated hashtags, we collected all tweets about conference papers and grouped them by paper.
+        			</span>
+        		</span> 
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+            			In total, there have been 172 paper-specific tweets<a href="#paper_tweets" resource="liveconf:footnote-reference-paper_tweets" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-paper_tweets" property="dcterms:references" resource="liveconf:footnote-paper_tweets"/>.
+            		</span>
+            	</span>
+            	<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+						Each tweet is associated with a polarity value, which is computed by using the approach described in <a href="#sentiment"> </a>.
+					</span>
+				</span>
+				<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				We noticed that many tweets came from paper authors who wanted to advertise their own work and presentation for attracting votes and attendees.
+        			</span>
+        		</span> 
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-5" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				This simple behavioral observation suggests more sophisticated ways of computing sentiment scores on tweets that are specific for authored works, during an event including their presentation.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-2-sentence-6" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				For example by matching the identity of a tweet author with the identity of the paper authors (when their twitter accounts are provided), possible ad-hoc strategies can be performed.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-3" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Another way of better evaluating the sentiment polarity of opinions expressed on scientific papers and related events is to identify the most used terms and their sentiment attitude, in this specific domain. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				This is one of the aims of the feedback system (cf. <a href="#sentiment"> </a>): crowdsourcing a specific validated terminology of sentiment expressions on scientific conference publications and presentations. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				During ESWC 2014, we collected 102 feedback corresponding to 76 distinct terms and expressions from the conference crowd.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				In future uses of <em>Conference Live</em>, this terminology will be extended and further validated.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-5" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				A longer-term goal is to build a validated terminology for the domain of scientific publication/presentation feedback, which can be used for tuning sentiment analysis systems on this specific context.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-3-sentence-6" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+            			The current validated terminology with its associated polarity is publicly accessible online<a href="#feedbacks" resource="liveconf:footnote-reference-feedbacks" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-feedbacks" property="dcterms:references" resource="liveconf:footnote-feedbacks"/>.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-4" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-4-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				In addition to the above, <em>Conference Live</em> allowed us to extract some interesting statistics on the ESWC 2014 event, we identified: 
+        				the most used terms for expressing a positive feedback on paper presentations, i.e. <q>cool</q>, as well as the most used one for expressing a negative feedback, i.e. <q>boring</q>; 
+        				the most tweeted papers; the papers with most positive feedback, etc.
+        			</span>
+        		</span> 
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-5" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-5-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Finally, through the voting system, the organizing committee was able to identify the best poster and the best demonstration relying on a <em>cheating-free</em> mechanism of voting 
+        				(as opposed to the usual <q>paper-in-the-box</q> procedure).
+        			</span>
+        		</span> 
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-5-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				With such procedure, it is also possible to prevent authors of a paper to vote for themselves, if the organizing committee requires so.
+        			</span>
+        		</span> 
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-5-paragraph-6" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-5-paragraph-6-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+			        	From the ESWC 2014 use case, we learned that there is interest and willingness to contribute from the conference crowd (which is important as for incentive aspects), 
+			        	at least in the Semantic Web domain.
+			        </span>
+			    </span> 
+			    <span property="pattern:contains" resource="liveconf:section-5-paragraph-6-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Although <em>Conference Live</em> was used less than the potential offered by the conference (79 downloads from the Google Playstore and 54 from the Apple Store), it met our expectations as we have used 
+        				ESWC 2014 as a test-bed for the app. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-6-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				We received a significant number of useful feedback on usability improvements and possible new desirable functionalities, 
+        				which proved the general interest of conference attendees on such a service.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-5-paragraph-6-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				Also, the app usage was spread enough, in fact the collected data provided us with enough 
+        				insights for drawing useful statistics, and planning improvements to the app services.
+        			</span>
+        		</span>
+        	</p>
+        </section>
+        
+        <section id="conclusions" property="pattern:contains" resource="liveconf:section-6" typeof="doco:Section deo:Conclusion">
+        	<h1 property="pattern:contains" resource="liveconf:section-6-title" typeof="doco:SectionTitle">
+            	<span property="dc:title">CONCLUSIONS AND FUTURE WORK</span>
+            </h1>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-1" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-1-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				In this paper we described a novel application, named <em>Conference Live</em>, which provides conference attendees with an enhanced event experience. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-1-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				<em>Conference Live</em> was built with the semantic Web community case in mind, but can be easily adapted to other contexts.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-2" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-2-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Using <em>Conference Live</em> during the last ESWC conference, allowed us to identify a number of weak points on the whole methodology as well as to receive several useful 
+        				suggestions on how to improve the app for future development, e.g. integrating other useful conference information, such as conference venue map, 
+        				travel information, links to slides, links to conference proceedings and adding additional features such as keyword and author search.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-3" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-3-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				As far as the methodology is concerned, we identified some missing components in the Semantic Web Conference ontology. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-3-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				However, the most significant issue was collecting and cleaning data.
+        			</span>
+        		</span> 
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-3-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				A good practise is to integrate data collection in the conference organization procedure as early as possible. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-3-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				In our case, as the app was being developed during 
+        				the conference organization, we realized certain requirements only late in the process, which caused additional effort for reaching all stakeholders.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-3-sentence-5" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+            			We are planning to use the app also during next WWW conference<a href="#www2015" resource="liveconf:footnote-reference-www2015" typeof="deo:Reference"> </a><span about="liveconf:footnote-reference-www2015" property="dcterms:references" resource="liveconf:footnote-www2015"/> and next ESWC event, hence we will have the chance 
+        				to improve the methodology in this respect by cooperating with the conference organizers much earlier.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-4" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-4-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Cleaning data is a simple but time-consuming activity. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-4-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				A possible way to reduce the effort is to distribute it to the crowd during data collection. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-4-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Once potential expressions referencing the same entity are identified, i.e. different spelled names for a same person, the crowd can fix such expressions by indicating whether they can be merged or not.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-5" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-5-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				As for the social features, we need to identify a scalable solution for the automatic creation of twitter search widgets, which were built and customized manually.
+        			</span>
+        		</span>
+        	</p>
+        	
+        	<p property="pattern:contains" resource="liveconf:section-6-paragraph-6" typeof="doco:Paragraph">
+           		<span property="pattern:contains" resource="liveconf:section-6-paragraph-6-sentence-1" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				Finally, it is important to ensure wide adoption during a conference in order to guarantee that final results are significant and interesting enough to the community and the conference organizers.
+        			</span>
+        		</span> 
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-6-sentence-2" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				In this first experience, we started advertising the app only at conference time, and also experienced some bug-fixing situations during the pre-conference days. 
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-6-sentence-3" typeof="doco:Sentence">
+            		<span property="c4o:hasContent">
+        				We believe that this had an impact on the potential adoption of the app, although it was acceptable considering that the app was just born.
+        			</span>
+        		</span>
+        		<span property="pattern:contains" resource="liveconf:section-6-paragraph-6-sentence-4" typeof="doco:Sentence">
+            		<span property="c4o:hasContent"> 
+        				Still, we managed to collect useful data, which confirms the high potential of <em>Conference Live</em> adoption in its future versions and use cases.
+        			</span>
+        		</span>
+        	</p>
+        </section>
+        
+        <!-- References -->
+        <section id="bibreflist" property="pattern:contains" resource="liveconf:bibliography" typeof="doco:Bibliography" role="doc-bibliography">
+        	<h1 property="pattern:contains" resource="liveconf:bibliography-title" typeof="doco:Title">
+            	<span property="dc:title">References</span>
+            </h1>
+            <ul property="dc:hasPart" resource="liveconf:bibliographic-reference-list" typeof="doco:BibliographicReferenceList">
+            	<li id="Warren2006" property="pattern:contains" resource="liveconf:bibliographic-reference-Warren2006" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">W. Harrison, Eating your own dog food. IEEE Software 23(3):5-7, 2006</p></li>
+            	<li id="Moller2007" property="pattern:contains" resource="liveconf:bibliographic-reference-Moller2007" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">K. Möller, T. Heath, S. Handschuh, J. Domingue. Recipes for Semantic Web Dog Food: The ESWC and ISWC Metadata Projects. 
+            	In Proceedings of ISWC'07/ASWC'07, pages 802-815. Berlin, Germany, 2007. Springer-Verlag.</p></li>
+            	<li id="Moller2009" property="pattern:contains" resource="liveconf:bibliographic-reference-Moller2009" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">K. Möller, S. Bechofer, and T. Heath. Semantic web conference ontology. Retrievable on line at 
+            	<a href="http://data.semanticweb.org/ns/swc/swc_2009-05-09.html">http://data.semanticweb.org/ns/swc/swc_2009-05-09.html</a>, 2009.</p></li>
+            	<li id="Medini2013" property="pattern:contains" resource="liveconf:bibliographic-reference-Medini2013" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	L. Médini, F. Bâcle, and H. D. T. Nguyen. Dataconf: Enriching conference publications with a mobile mashup application. In Proceedings of WWW 2013, Companion Volume, pages 477–478, 2013.
+            	</p></li>
+            	<li id="Khrouf2012" property="pattern:contains" resource="liveconf:bibliographic-reference-Khrouf2012" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	H. Khrouf and R. Troncy. Eventmedia: A lod dataset of events illustrated with media. Semantic Web journal, Special Issue on Linked Dataset descriptions, pages 1570–0844, 2012.
+            	</p></li>
+            	<li id="KhroufESWC2012" property="pattern:contains" resource="liveconf:bibliographic-reference-KhroufESWC2012" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	H. Khrouf, G. Atemezing, T. Steiner, G. Rizzo, and R. Troncy. Confomaton: A conference enhancer with social media from the cloud. In Proceedings of ESWC 2012. Berlin, Germany, 2007. Springer-Verlag.
+            	</p></li>
+            	<li id="Brickley2007" property="pattern:contains" resource="liveconf:bibliographic-reference-Brickley2007" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	D. Brickley and L. Miller. FOAF Vocabulary Specification. Technical report, FOAF project, May 2007. Published online on May 24th, 2007 at <a href="http://xmlns.com/foaf/spec/20070524.html">http://xmlns.com/foaf/spec/20070524.html</a>.
+            	</p></li>
+            	<li id="Berrueta2007" property="pattern:contains" resource="liveconf:bibliographic-reference-Berrueta2007" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	D. Berrueta, D. Brickley, S. Decker, S. Fernández, C. Görn, A. Harth, T. Heath, K. Idehen, K. Kjernsmo, A. Miles, A. Passant, A. Polleres, L. Polo, and M. Sintek. SIOC Core Ontology Specification. W3c member submission, W3C, June 2007.
+            	</p></li>
+            	<li id="Beckett2002" property="pattern:contains" resource="liveconf:bibliographic-reference-Beckett2002" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	D. Beckett, E. Miller, and D. Brickey. Expressing simple dublin core in rdf/xml. retrievable on line at <a href="http://dublincore.org/documents/dcmes-xml/">http://dublincore.org/documents/dcmes-xml/</a>, 2002.
+            	</p></li>
+            	<li id="Potel1996" property="pattern:contains" resource="liveconf:bibliographic-reference-Potel1996" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	M. Potel. MVP: Model-View-Presenter the taligent programming model for C++ and Java. Taligent Inc, 1996.
+            	</p></li>
+            	<li id="Gangemi2014" property="pattern:contains" resource="liveconf:bibliographic-reference-Gangemi2014" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	A. Gangemi, V. Presutti, and D. R. Recupero. Frame-based detection of opinion holders and topics: A model and a tool. IEEE Comp. Int. Mag., 9(1):20–30, 2014.
+            	</p></li>
+            	<li id="Cambria2012" property="pattern:contains" resource="liveconf:bibliographic-reference-Cambria2012" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	E. Cambria, C. Havasi, and A. Hussain. Senticnet 2: A semantic and affective resource for opinion mining and sentiment analysis. In FLAIRS Conference, 2012.
+            	</p></li>
+            	<li id="Baccianella2010" property="pattern:contains" resource="liveconf:bibliographic-reference-Baccianella2010" typeof="biro:BibliographicReference" role="doc-biblioentry"><p property="c4o:hasContent">
+            	S. Baccianella, A. Esuli, and F. Sebastiani. Sentiwordnet 3.0: An enhanced lexical resource for sentiment analysis and opinion mining. In Proc. of LREC’10, Valletta, Malta, may 2010. ELRA.
+            	</p></li>
+            </ul>
+        </section>
+        
+        <!-- Footnotes -->
+        <section id="fnlist" role="doc-endnotes">
+            <section id="fn_swdf" typeof="doco:Footnote" resource="liveconf:footnote-fn_swdf" role="doc-endnote">
+                <p property="c4o:hasContent">SWDF: <a href="http://data.semanticweb.org">http://data.semanticweb.org</a></p>
+            </section>
+            <section id="explorer" typeof="doco:Footnote" resource="liveconf:footnote-explorer" role="doc-endnote">
+                <p property="c4o:hasContent"><a href="http://conference-explorer.fluidops.net">http://conference-explorer.fluidops.net</a></p>
+            </section>
+            <section id="sched" typeof="doco:Footnote" resource="liveconf:footnote-sched" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="https://sched.org">https://sched.org</a></p>
+            </section>
+            <section id="eventboard" typeof="doco:Footnote" resource="liveconf:footnote-eventboard" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.eventboardmobile.com">http://www.eventboardmobile.com</a></p>
+            </section>
+            <section id="eventmobi" typeof="doco:Footnote" resource="liveconf:footnote-eventmobi" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.eventmobi.com">http://www.eventmobi.com</a></p>
+            </section>
+            <section id="whova" typeof="doco:Footnote" resource="liveconf:footnote-whova" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.whova.com">http://www.whova.com</a></p>
+            </section>
+            <section id="quickmobile" typeof="doco:Footnote" resource="liveconf:footnote-quickmobile" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.quickmobile.com">http://www.quickmobile.com</a></p>
+            </section>
+            <section id="eventapps" typeof="doco:Footnote" resource="liveconf:footnote-eventapps" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="https://guidebook.com/event-apps">https://guidebook.com/event-apps</a></p>
+            </section>
+            <section id="doubledutch" typeof="doco:Footnote" resource="liveconf:footnote-doubledutch" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://doubledutch.me/event-app.html">http://doubledutch.me/event-app.html</a></p>
+            </section>
+            <section id="prefixes" typeof="doco:Footnote" resource="liveconf:footnote-prefixes" role="doc-endnote">
+            	<p property="c4o:hasContent">Prefixes used hereafter are:</p>
+            	<ul> 
+            	<li><p><code>xsd:</code><a href="http://www.w3.org/2001/XMLSchema">&lt;http://www.w3.org/2001/XMLSchema#&gt;</a></p></li>
+            	<li><p><code>eswc:</code><a href="http://ontologydesignpatterns.org/ont/eswc/ontology.owl">&lt;http://ontologydesignpatterns.org/ont/eswc/ontology.owl#&gt;</a></p></li>
+            	<li><p><code>foaf:</code><a href="http://xmlns.com/foaf/0.1/">&lt;http://xmlns.com/foaf/0.1/&gt;</a></p></li>
+            	<li><p><code>scioc:</code><a href="http://rdfs.org/sioc/ns">&lt;http://rdfs.org/sioc/ns#&gt;</a></p></li>
+            	<li><p><code>swc:</code><a href="http://data.semanticweb.org/ns/swc/ontology">&lt;http://data.semanticweb.org/ns/swc/ontology#&gt;</a></p></li>
+            	<li><p><code>dbpedia-owl:</code><a href="http://dbpedia.org/ontology/">&lt;http://dbpedia.org/ontology/&gt;</a></p></li>
+            	</ul>
+            </section>
+            <section id="eswc_ontology" typeof="doco:Footnote" resource="liveconf:footnote-eswc_ontology" role="doc-endnote">
+            	<p property="c4o:hasContent">The ontology is available at <a href="http://ontologydesignpatterns.org/ont/eswc/ontology.owl">http://ontologydesignpatterns.org/ont/eswc/ontology.owl</a></p>
+            </section>
+            <section id="easychair" typeof="doco:Footnote" resource="liveconf:footnote-easychair" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.easychair.org/">http://www.easychair.org/</a></p>
+            </section>
+            <section id="form_example" typeof="doco:Footnote" resource="liveconf:footnote-form_example" role="doc-endnote">
+            	<p property="c4o:hasContent">Example of form: <a href="http://wit.istc.cnr.it/conference-live/data">http://wit.istc.cnr.it/conference-live/data</a></p>
+            </section>
+            <section id="rdfcal" typeof="doco:Footnote" resource="liveconf:footnote-rdfcal" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.w3.org/TR/rdfcal">http://www.w3.org/TR/rdfcal</a></p>
+            </section>
+            <section id="app_api" typeof="doco:Footnote" resource="liveconf:footnote-app_api" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://isotta.cs.unibo.it:9292/api">http://isotta.cs.unibo.it:9292/api</a></p>
+            </section>
+            <section id="twitter_timelines" typeof="doco:Footnote" resource="liveconf:footnote-twitter_timelines" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="https://dev.twitter.com/docs/embedded-timelines">https://dev.twitter.com/docs/embedded-timelines</a></p>
+            </section>
+            <section id="backbone" typeof="doco:Footnote" resource="liveconf:footnote-backbone" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://backbonejs.org">http://backbonejs.org</a></p>
+            </section>
+            <section id="bootstrap" typeof="doco:Footnote" resource="liveconf:footnote-bootstrap" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://getbootstrap.com">http://getbootstrap.com</a></p>
+            </section>
+            <section id="underscore" typeof="doco:Footnote" resource="liveconf:footnote-underscore" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://underscorejs.org">http://underscorejs.org</a></p>
+            </section>
+            <section id="cordova" typeof="doco:Footnote" resource="liveconf:footnote-cordova" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://cordova.apache.org">http://cordova.apache.org</a></p>
+            </section>
+            <section id="live_system" typeof="doco:Footnote" resource="liveconf:footnote-live_system" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://2014.eswc-conferences.org/Live">http://2014.eswc-conferences.org/Live</a></p>
+            </section>
+            <section id="google_play" typeof="doco:Footnote" resource="liveconf:footnote-google_play" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://play.google.com">http://play.google.com</a></p>
+            </section>
+            <section id="itunes" typeof="doco:Footnote" resource="liveconf:footnote-itunes" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.apple.com/itunes">http://www.apple.com/itunes</a></p>
+            </section>
+            <section id="sentiment_note" typeof="doco:Footnote" resource="liveconf:footnote-sentiment_note" role="doc-endnote">
+            	<p property="c4o:hasContent">If one of them is zero, we keep the other one.</p>
+            </section>
+            <section id="paper_tweets" typeof="doco:Footnote" resource="liveconf:footnote-paper_tweets" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://staffwww.dcs.shef.ac.uk/people/A.L.Gentile/demo/twitter.html">http://staffwww.dcs.shef.ac.uk/people/A.L.Gentile/demo/twitter.html</a></p>
+            </section>
+            <section id="feedbacks" typeof="doco:Footnote" resource="liveconf:footnote-feedbacks" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://bit.ly/WcshWS">http://bit.ly/WcshWS</a></p>
+            </section>
+            <section id="www2015" typeof="doco:Footnote" resource="liveconf:footnote-feedbacks" role="doc-endnote">
+            	<p property="c4o:hasContent"><a href="http://www.www2015.it">http://www.www2015.it</a></p>
+            </section>
+        </section>
+    </body>
+</html>

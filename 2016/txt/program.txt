@@ -1,0 +1,161 @@
+### 09:00-10:30 | Session 1
+
+*	__09:00-09:15 | Opening__
+
+*	__09:15-10:05 | Keynote__
+	
+	Invited speaker: Alex Wade (Microsoft)
+	
+	_The Microsoft Academic Graph: New Applications and Research Opportunities_
+	
+	Available in [RASH (HTML)](papers/html/wade-savesd2016.html) and [PDF](papers/pdf/wade-savesd2016.pdf) 
+	
+*	__10:05-10:30 | Poster & Demo highlights__
+	
+	10:05-10:10
+	
+	Bahar Sateli and René Witte
+	
+	_From Papers to Triples: An Open Source Workflow for Semantic Publishing Experiments_
+	
+	Available in [PDF](papers/pdf/sateli2-savesd2016.pdf) 
+	
+	---
+	
+	10:10-10:15
+	
+	Erwin Marsi and Pinar Øzturk
+	
+	_Text mining of related events from natural science literature_
+		
+	Available in [PDF](papers/pdf/marsi-savesd2016.pdf) 
+	
+	---
+	
+	10:15-10:20
+	
+	Giorgos Alexiou, Sahar Vahdati, Christoph Lange, George Papastefanatos and Steffen Lohmann
+	
+	_OpenAIRE LOD services: Scholarly Communication Data as Linked Data_
+
+	Available in [RASH (HTML)](papers/html/alexiou-savesd2016.html) and [PDF](papers/pdf/alexiou-savesd2016.pdf) 
+	
+	---
+	
+	10:20-10:25
+	
+	Kata Gábor, Haïfa Zargayouna, Isabelle Tellier, Davide Buscaldi and Thierry Charnois
+	
+	_A Typology of Semantic Relations Dedicated to Scientific Literature Analysis_
+	
+	Available in [PDF](papers/pdf/gabor-savesd2016.pdf) 
+	
+	---
+	
+	10:25-10:30
+	
+	Jason Portenoy and Jevin West
+	
+	_Dynamic Visualization of Citation Networks Showing the Influence of Scholarly Fields Over Time_
+
+	Available in [RASH (HTML)](papers/html/portenoy-savesd2016.html) and [PDF](papers/pdf/portenoy-savesd2016.pdf) 
+
+
+### 10:30-11:00 | Coffee Break
+
+
+### 11:00-12:30 | Session 2
+
+* 	__11:00-12:30 | Papers, part 1__
+	
+	11:00-11:25
+	
+	Angelo Salatino and Enrico Motta
+	
+	_Detection of Embryonic Research Topics by Analysing Semantic Topic Networks_
+	
+	Available in [RASH (HTML)](papers/html/salatino-savesd2016.html) and [PDF](papers/pdf/salatino-savesd2016.pdf) 
+	
+	---
+	
+	11:25-11:50
+	
+	Bahar Sateli, Felicitas Löffler, Birgitta König-Ries and René Witte
+	
+	_Semantic User Profiles: Learning Scholars’ Competences by Analyzing their Publications_
+	
+	Available in [PDF](papers/pdf/sateli-savesd2016.pdf) 
+	
+	---
+	
+	11:50-12:15
+	
+	Francesco Ronzano and Horacio Saggion
+	
+	_Knowledge Extraction and Modeling from Scientific Publications_
+
+	Available in [PDF](papers/pdf/ronzano-savesd2016.pdf) 
+	
+	---
+	
+	12:15-12:30
+	
+	Joakim Philipson
+	
+	_Citation functions for knowledge export - a question of relevance, or, can CiTO do the trick?_
+	
+	Available in [RASH (HTML)](papers/html/philipson-savesd2016.html) and [PDF](papers/pdf/philipson-savesd2016.pdf) 
+	
+
+### 12:30-14:00 | Lunch
+
+
+### 14:00-15:05 | Session 3
+
+* 	__14:00-15:05 | Papers, part 2__
+	
+	14:00-14:25
+	
+	Sahar Vahdati, Anastasia Dimou, Christoph Lange and Angelo Di Iorio
+	
+	_Semantic Publishing Challenge: Bootstrapping a Value Chain for Scientific Data_
+	
+	Available in [RASH (HTML)](papers/html/vahdati-savesd2016.html) and [PDF](papers/pdf/vahdati-savesd2016.pdf) 
+	
+	---
+	
+	14:25-14:50
+	
+	Vidas Daudaravicius
+	
+	_A framework for keyphrase extraction from scientific journals_
+	
+	Available in [PDF](papers/pdf/daudaravicius-savesd2016.pdf) 
+	
+	---
+	
+	14:50-15:05
+	
+	Pracheta Sahoo, Ujwal Gadiraju, Ran Yu, Sriparna Saha and Stefan Dietze
+	
+	_Analysing Structured Scholarly Data Embedded in Web Pages_
+	
+	Available in [PDF](papers/pdf/sahoo-savesd2016.pdf) 
+	
+### 15:05-15:30 | Preparation for poster and demo session
+
+### 15:30-16:00 | Coffee Break
+
+
+### 16:00-17:30 Session 4
+
+*	__16:00-17:00: Poster & Demo session__
+
+* 	__17:00-17:20: Award Ceremony__
+	* 	Selected papers for journal special issues (PeerJ CS + RIO)
+
+	* 	Best Paper Award
+
+	* 	Best RASH Paper Award (sponsored by Springer)
+
+*	__17:20-17:30: Closing__

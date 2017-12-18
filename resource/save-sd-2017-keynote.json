@@ -1,0 +1,29 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-keynote",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2017 keynote",
+        "has_title": "Keynote",
+        "has_part": ["page/save-sd-2017-keynote/feeney-bio", "page/save-sd-2017-keynote/feeney-talk"],
+        "has_url": "keynote.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-keynote/feeney-bio",
+        "has_type": "section",
+        "has_id": "wade-bio",
+        "has_label": "SAVE-SD 2017 keynote, section 'Patricia Feeney (Crossref)'",
+        "has_title": "The speaker",
+        "has_url": "txt/feeney-bio.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-keynote/feeney-talk",
+        "has_type": "section",
+        "has_id": "wade-talk",
+        "has_label": "SAVE-SD 2017 keynote, section 'Keynote overview'",
+        "has_title": "The talk",
+        "has_url": "txt/feeney-talk.txt"
+    }
+]

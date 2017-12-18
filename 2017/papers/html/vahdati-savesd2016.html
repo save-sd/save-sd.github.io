@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    prefix="
+        schema: http://schema.org/
+        prism: http://prismstandard.org/namespaces/basic/2.0/
+        cito: http://purl.org/spar/cito/
+        dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+				<meta charset="UTF-8"/>
+				<meta name="viewport" content="width=device-width, initial-scale=1"/>
+				<link rel="stylesheet" href="css/bootstrap.min.css"/>
+				<link rel="stylesheet" href="css/rash.css"/>
+				<script src="js/jquery.min.js"> </script>
+				<script src="js/bootstrap.min.js"> </script>
+				<script src="js/rash.js"> </script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title property="dcterms:title">Semantic Publishing Challenge: Bootstrapping a Value Chain for Scientific Data </title>
+
+        <!-- Author's data (one or more) -->
+        <meta about="#sv" name="dc.creator" content="Sahar Vahdati"/>
+        <meta about="#ad" name="dc.creator" content="Anastasia Dimou"/>
+        <meta about="#cl" name="dc.creator" content="Christoph Lange"/>
+        <meta about="#adi" name="dc.creator" content="Angelo Di Iorio"/>
+        <meta about="#sv" property="schema:email" content="vahdati@uni-bonn.de"/>
+        <meta about="#ad" property="schema:email" content="anastasia.dimou@ugent.be"/>
+        <meta about="#cl" property="schema:email" content="math.semantic.web@gmail.com"/>
+        <meta about="#adi" property="schema:email" content="angelo.diiorio@unibo.it"/>
+        <!-- <link about="#ga" property="schema:affiliation" href="#imis-athena"/> -->
+	<!-- <link about="#ga" property="schema:affiliation" href="#ece-ntua"/> -->
+        <link about="#sv" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#iais-FhG"/>
+        <link about="#adi" property="schema:affiliation" href="#unibo"/>
+        <link about="#ad" property="schema:affiliation" href="#iminds-ugent"/>
+        <!-- <link about="#gp" property="schema:affiliation" href="#imis-athena"/> -->
+        <!-- <link about="#sl" property="schema:affiliation" href="#eis-uni-bonn"/> -->
+        <!-- <link about="#sl" property="schema:affiliation" href="#iais-FhG"/> -->
+
+        <!-- Affiliations -->
+      <!-- <meta about="#imis-athena" property="schema:name" content="Institute for the Management of Information Systems, Athena Research Center, Greece"/>  -->
+      <!--     <meta about="#ece-ntua" property="schema:name" content="School of Electrical and Computer Enginnering, National Technical University of Athens, Greece"/> -->
+      <meta about="#unibo" property="schema:name" content="Università di Bologna, Italy"/>
+      <meta about="#iminds-ugent" property="schema:name" content="Ghent University – iMinds – Data Science Lab, Belgium"/>
+      <meta about="#eis-uni-bonn" property="schema:name" content="University of Bonn, Germany"/>
+      <meta about="#iais-FhG" property="schema:name" content="Fraunhofer IAIS, Sankt Augustin, Germany"/>
+ <!--
+        <meta property="prism:keyword" content="OpenAIRE"/>
+        <meta property="prism:keyword" content="Linked Data"/>
+        <meta property="prism:keyword" content="Open Access"/>
+        <meta property="prism:keyword" content="Semantic Publishing"/>
+
+
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Markup languages"/>
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Annotation"/>
+         -->
+
+<!--
+         Adding Turtle to the document
+        <script type="text/turtle">
+            @prefix pro: &lt;http://purl.org/spar/pro/&gt; .
+            @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+            &lt;#sp&gt; a foaf:Person ;
+                foaf:givenName "Silvio" ;
+                foaf:familyName "Peroni" ;
+                foaf:homepage &lt;http://www.essepuntato.it&gt; ;
+                pro:holdsRoleInTime [
+                    a pro:RoleInTime ;
+                    pro:withRole pro:author ;
+                    pro:relatesToDocument &lt;&gt;
+                ] .
+
+        </script>
+-->
+        <!-- Adding JSON-LD to the document -->
+<!--
+        <script type="application/ld+json">
+                {
+                    "@context":
+                        {
+                          "nick": "http://xmlns.com/foaf/0.1/nick"
+                        },
+                    "@id": "#sp",
+                    "nick": ["S.", "essepuntato"]
+                }
+        </script>
+-->
+    </head>
+    <body>
+
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>The objective of the Semantic Publishing (SemPub) challenge series is to bootstrap a value chain for scientific data to enable services, such as assessing the quality of scientific output with respect to novel metrics.
+The key idea was to involve participants in extracting data from heterogeneous resources and producing datasets on scholarly publications, which can be exploited by the community itself.
+Differently from other challenges in the semantic publishing domain, whose focus is on <em>exploiting</em> semantically enriched data, SemPub focuses on <em>producing</em> Linked Open Datasets.
+The goal of this paper is to review both (i) the overall organization of the Challenge, and (ii) the results that the participants have produced in the first two challenges of 2014 and 2015 – in terms of data, ontological models and tools – in order to better shape future editions of the challenge, and to better serve the needs of the semantic publishing community.
+</p>
+            <!--
+            <p>The current version of this document is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It documents the <em>Research Articles in Simplified HTML</em> (<em><code>RASH</code></em>) <a href="#RASH2015"></a> (<a href="../grammar/rash.rng">version 0.4.1</a>), i.e., a markup language defined as a subset of <a href="http://www.w3.org/TR/rdfa-in-html/">HTML+RDFa</a> for writing scientific articles. A full example of a real research article <a href="#CDN2014"></a> written in RASH format is <a href="../examples/evaluating-citation-functions-in-cito.html">available online</a>. In addition, a <a href="../rash.zip">ZIP package</a> containing this documentation, scripts, stylesheets and other exemplar files is available for downloading and use.</p>
+            <p>For any feedback please <a href="mailto:essepuntato@gmail.com">send me an email</a> or use the tools in the official GitHub repository (<a href="http://github.com/essepuntato/rash">github.com/essepuntato/rash</a>).</p>
+            -->
+       </section>
+
+         <!-- introduction section start -->
+        <section id="intro">
+            <h1>Introduction</h1>
+            <p>Semantic publishing – defined as the <em>use of Semantic Web technologies to make scholarly publications and data easier to discover, browse and interact with</em> <a href="#Shotton13"></a> – is a lively research area in which a big number of projects and events have emerged and showcase the potential of Linked Data technology.
+			   Extracting, annotating and sharing scientific data (by which, here, we mean standalone research datasets, data inside documents, as well as metadata about datasets and documents), up to building new research on them, will lead to a <em>data value chain</em> producing value for the scientific community <a href="#Miller13"></a>.</p>
+			   <p>Bootstrapping and enabling such value chains is not easy.
+A solution that has proved to be successful in other communities is to run <em>challenges</em>, i.e. competitions in which participants are asked to complete tasks and have their results ranked, often in objective way, to determine the winner.
+            Even a number of <em>projects</em> have been launched to accelerate this process, for instance LinkedUp<a href="#fn1"></a> or Apps for Europe<a href="#fn2"></a>.
+			   The success of the LAK<a href="#fn3"></a> or Linked Up<a href="#fn4"></a> Challenges is worth mentioning here.
+			   However, these challenges focus on <em>exploiting</em> scholarly linked data for different purposes (for instance, to monitor progress) but less on actually <em>producing</em> such datasets.
+			</p>
+            <p>To this end, we started a series of Semantic Publishing Challenges (SemPub), aiming at the production of datasets on scholarly publications.
+			To the best of our knowledge, this was the first challenge of its kind.
+			Now, in 2016, we are running the 3rd edition of SemPub and we believe it is good time to review the challenge and share some lessons learned with the community.
+			On the other hand, community feedback can help us shape the future of SemPub.
+			Continuous refinement is in fact a key aspect of our vision.
+			</p>
+  <!--      <section id="intro-structure">
+            <h1>Structure of this Paper</h1> -->
+	    <p><a href="#challenge"></a> of this paper reviews the background of SemPub, its history, structure and evaluation methods.
+            <a href="#organization"></a> presents lessons learned from the challenge organization and <a href="#results"></a> from the overall approaches of the submitted solutions.<!-- and more specifically from the tools developed (<a href="#tools"></a>), from the ontologies the participants used to model their data (<a href="#ontologies"></a>), from the datasets generated (<a href="#__lessonsRDF"></a>), and finally from evaluating the solutions (<a href="#__lessons_solutions_wrt_eval"></a>)-->
+            <a href="#__conclusions"></a> concludes and provides an outlook to how future SemPub challenges will take these lessons into account.
+        </p>
+        </section>
+        
+         <!-- introduction section end -->
+            <!-- approach section start -->
+           <section id="challenge">
+            <h1>History of the SemPub Challenge</h1>
+	        <p>We draw a brief history of the SemPub Challenge to provide the necessary background for the following discussion.
+			More detailed reports have been published separately for the 2014 <a href="#SemPub14"></a> and 2015 <a href="#SemPub15"></a> challenges.
+			</p>
+		    <p>We started in 2014, reasoning about a challenge in the semantic publishing domain that could be measured in an objective way.
+			This was difficult because of the tension between finding appealing and novel tasks and measuring them.
+			We thus asked participants to extract data from scholarly papers and to produce an RDF dataset that could be used to answer some relevant queries: concretely, queries about the <em>quality</em> of scientific output.
+			We were aware of other topics of interest for the community – nanopublications, research objects, etc. – but focused on papers only to bootstrap the initiative and to start collaboratively producing initial data.
+			</p>
+		    <p>We designed different tasks, sharing the same organization, rules and evaluation procedure.
+            For each task, we published a set of queries in natural language and asked participants to translate them into SPARQL and to submit a dataset on top of which these queries would run.
+			In line with the general rules for the new Semantic Web Evaluation Challenge track at ESWC, we also published a training dataset (TD) on which the participants could test and train their extraction tools.
+			A few days before the submission deadline, we published an evaluation dataset (ED): the input for the final evaluation.
+			</p>
+			<p>The evaluation consisted of comparing the output of these queries, given as CSV, against a gold standard and measuring precision and recall.
+			All three editions used the same evaluation procedure, but the tasks were refined over time.
+			<a href="#table_1"></a> summarizes all tasks, their data sources and queries.
+			</p>
+			<figure id="table_1">
+                    <table>
+                        <tr>
+						    <th rowspan="1" colspan="1"></th>
+                            <th rowspan="1" colspan="1">2014</th>
+                            <th rowspan="1" colspan="1">2015</th>
+                            <th rowspan="1" colspan="1">2016</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" colspan="1"><p>Task1</p></td>
+                            <td rowspan="1" colspan="3"><p>Extracting data on workshops’ quality indicators;  Source: CEUR-WS.org</p></td>
+                        </tr>
+                    	<tr>
+                            <td rowspan="1" colspan="1"><p>Format: HTML+PDF</p></td>
+							<td rowspan="1" colspan="1"><p>Format: HTML</p></td>
+							<td rowspan="1" colspan="1"><p>Format: HTML</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Task2</p></td>
+                            <td rowspan="1" colspan="1"><p>Extracting data  on citations</p><p> Source: PubMed</p><p>  Format: XML</p></td>
+                            <td rowspan="1" colspan="1"><p>Extracting data  on affiliations,  citations, funding</p><p>  Source: CEUR-WS.org</p><p> Format: PDF</p></td>
+							<td rowspan="1" colspan="1"><p>Extracting data  on affiliations,  internal structure, fundings</p><p> Source: CEUR-WS.org</p><p> Format: PDF</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Task3</p></td>
+                            <td rowspan="1" colspan="1"><p>Open tasks: showcase   semantic publishing  applications</p></td>
+                            <td rowspan="1" colspan="1"><p>Interlinking</p><p> Sources: CEUR-WS.org,  Colinda, DBLP, Lancet,  Semantic Web Dog Food (SWDF),  Springer LD)</p></td>
+							<td rowspan="1" colspan="1"><p>Interlinking</p><p>  Sources: CEUR-WS, Colinda,   DBLP, Springer LD.</p></td>
+                        </tr>
+                    </table>
+                    <figcaption>Description, source and format of the tasks in SemPub editions (2014–2016).</figcaption>
+                </figure>
+			<p>Two tasks have been defined at the very beginning (see <a href="#SemPub14"></a> for full details and statistics):</p>
+		 <ul>
+			<li><p><strong>Task 1</strong>: participants were asked to extract information from selected <a href="http://ceur-ws.org/">CEUR-WS.org</a> workshop proceedings volumes (HTML tables of content using different levels of semantic markup, plus PDF full text) to enable the computation of indicators for the workshops’ quality assessment.
+			They were asked to answer 20 different queries.</p></li>
+			<li><p><strong>Task 2</strong>: participants were asked to extract data about citations, to enable precise assessment of linking, sharing and evaluating research through citations.
+			The dataset included a set of XML-encoded research papers, taken from PubMedCentral and Pensoft Open Access archives, and heterogeneous in terms of internal structure, styles and numbers.
+			Both dataset and queries were completely disjoint from Task 1.</p></li>
+		</ul>
+
+		<p>Having called for submissions, we received feedback from the community that mere information extraction, even if motivated by quality assessment, was not the most exciting task related to the future of scholarly publishing, as it assumed a traditional publishing model.
+		Furthermore, to address the primary target of the challenge, i.e. “publishing” rather than just “metadata extraction”, we widened the scope by adding an <em>open task</em>, whose participants were asked to showcase data-driven applications that would eventually support publishing.
+		We received a good number of submissions; winners were selected by a jury.
+        </p>
+		<p>In 2015 we were asked to include only tasks that could be evaluated in a fully objective manner, and thus discarded the open task<!--, even though it had provided interesting results and discussions-->.
+		We reduced the distance between Tasks 1 and Task 2 by using the same dataset for both.
+		We transformed Task 2 into a PDF mining task and thus moved all PDF-related queries there.
+		The rationale was to differentiate tasks on the basis of the competencies and tools required to solve them, but to make tasks interplay on the same dataset.
+		</p>
+		<p>CEUR-WS.org data has become the central focus of the whole Challenge, for two reasons:
+		on the one hand, the data provider (CEUR-WS.org) takes advantage of a broader community that builds on its data, which, before the SemPub Challenges, had not been available as linked data.
+		On the other hand, data consumers gain the opportunity to assess the quality of scientific venues by taking a deeper look into their history, as well as the quality of the publications.
+        While Task 1 queries remained largely stable from 2014 to 2015, the queries for Task 2 changed, mainly because the setting was completely new (PDF rather than XML sources), and we wanted to explore participants’ interest and available solutions.
+		We asked them to extract data not only on citations but also on affiliations and fundings.
+		</p>
+		<p>In 2015 we added a new Task 3, focusing on interlinking the dataset the winners of the first Challenge had extracted from a single source to further relevant datasets.
+		Participants had to make such links explicit and exploit them to answer comprehensive queries about events and persons.
+		CEUR-WS.org on its own provides incomplete information about conferences and persons, which can be complemented by interlinking with other datasets to broaden the context and to allow for more reliable conclusions about the quality of scientific events and the qualification of researchers.
+		</p>
+		<p>Continuity is the key aspect of 2016 edition.
+		The tasks are unchanged (allowing previous participants to use and refine their tools), except for details: Task 2, in particular, is extended to structural components of papers and does not include citations anymore.
+		</p>
+        </section>
+
+        <section id="organization">
+            <h1>Lessons learned from the Challenge organization</h1>
+	        <p>In this section we discuss lessons learned from our experience in organizing the challenge.
+			Our goal is to distill some generic guidelines that could be applied to similar events, starting from the identification of critical issues, errors and strengths of our initiative.
+      The primary focus of the paper is on (even unexpected) aspects that emerged while running the challenge.
+			This section will also present the lessons learned by looking at the solutions and data produced by the participants.
+      We have grouped the lessons in four categories for clarity, even though there is some overlap between them.
+			</p>
+			<!-- <p>Table <a href="#table_2"></a> summarizes our findings.  -->
+			<!-- They have been split in four groups for the sake of clarity, though there is some overlap between categories. -->
+			<!-- </p> -->
+<!--
+			<figure id="table_2">
+                    <table>
+                        <tr>
+                            <td rowspan="1" colspan="1">Tasks structure and definition</td>
+                            <td rowspan="1" colspan="1"> <strong>1.1</strong> Continuity: allow users to re-submit the improved version of their tool over different editions of the challenge </p><p>
+							                             <strong>1.2</strong> Split tasks with a clear distinction of the competencies required to complete them </p><p>
+														 <strong>1.3</strong> Involve participants in advance in task definition</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1">Input datasets</td>
+                            <td rowspan="1" colspan="1"> <strong>2.1</strong> Use the same data source for multiple editions </p><p>
+                                                         <strong>2.2</strong> Design all tasks around the same dataset</p><p>
+							                             <strong>2.3</strong> Provide an exhaustive description of the expected output on the training dataset</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1">Evaluation</td>
+                            <td rowspan="1" colspan="1"> <strong>3.1</strong> Consider all papers in the final evaluation </p><p>
+							                             <strong>3.2</strong> Make evaluation tool available during the training phase </p><p>
+							                             <strong>3.3</strong> Use disjoint training and evaluation dataset</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1">Produced Output and organizational aspects</td>
+                            <td rowspan="1" colspan="1"> <strong>4.1</strong> Define clearly how the output of the challenge will be used </p><p>
+							                             <strong>4.2</strong> Define clearly the license of produced output </p><p>
+							                             <strong>4.3</strong> Study conflicts and synergies with other events</td>
+                        </tr>
+                    </table>
+                    <figcaption>Lessons learned on the Challenge organization.</figcaption>
+                </figure>
+					-->
+
+		 <section id="taskdefining">
+            <h1>Lessons learned on defining tasks</h1>
+			<p>The definition of the tasks is the most critical part of organizing a challenge.
+			In our case, it was difficult to define appealing tasks that bridge the gap between building up initial datasets and exploring possibilities for innovative semantic publishing.
+			As discussed in <a href="#challenge"></a>, we refined the tasks over the years according to the participants' and organizers' feedback.
+			Overall, we think that tasks could have been improved in some parts – and undeniably other interesting ones could have been defined – but they were successful.
+			There are other less evident issues which are worth discussing here.</p>
+            <p><strong>L1.1. Continuity: allow users to re-submit the improved version of their tool over different editions.</strong>
+			One of the goals of the first edition of the challenge was also to explore the interest of the participants. Exploiting such feedback and creating a direct link between different editions is a success key factor. In 2015, in fact, the Challenge was re-organized aiming to commit participants to re-submit overall improved versions of their first year submissions.
+			Results were very good, as the majority of first year’s participants competed for the second year too.
+			Continuity is also a key aspect of SemPub2016, whose tasks are the same as last year’s edition, allowing participants to reuse their tools to adapt to the new call after some tuning.</p>
+            <p><strong>L1.2. Split tasks with a clear distinction of the competencies required to complete them.</strong>
+			One of the main problems we faced was that some tasks were too difficult.
+			In particular the Task 2 – extraction from XML and PDF – showed unexpectedly low performance.
+			The main reason, in our opinion, is that the task was actually composed of two sub-tasks that required very different tools and technologies: some queries required participants to basically map data from XML/PDF to RDF, while the others required additional processing on the content. Some people were discouraged to participate as they only felt competitive for the one and not for the other.
+            Our initial goal was to explore a larger amount of information and to give participants more options but, in retrospect, such heterogeneity was a limitation.
+            A sharper distinction between tasks would have been more appropriate.
+            In particular, it is important to separate tasks on plain data extraction from those on natural language processing and semantic analysis.</p>
+            <p><strong>L1.3. Involve participants in advance in the task definition.</strong>
+			Though we collected some feedback when designing the tasks, we noticed that such preliminary phase was not given enough relevance.
+            The participants’ early feedback can help to identify practical needs of researchers and to shape tasks.
+            Talking with participants, in fact, we envisioned alternative tasks, such as finding high-profile venues for publishing a work, summarizing publications, or helping early career researchers to find relevant papers.
+            Proposing tasks emerged from the community can be a winning incentive to participate. </p>
+		</section>
+
+		 <section id="input">
+            <h1>Lessons learned on building input datasets</h1>
+			<p>The continuity between tasks (L1.1) can be applied to the datasets as well:</p>
+            <p><strong>L2.1. Use the same data source for multiple editions.</strong>
+			We noticed benefits of using the same data sources across multiple editions of the Challenge.
+			From the task 1 of the 2014 edition, in fact, we obtained an RDF dataset that served as the foundation to build the same task in 2015 and 2016.
+			Participants were able to reuse their existing tools and to extend the previously-created knowledge-bases with limited effort.
+			For the other tasks, which were not equally stable, we had to <em>rebuild the competition</em> every year without being able to exploit the past experience.</p>
+            <p><strong>L2.2. Design all three tasks around the same dataset.</strong>
+			Similarly, it is valuable to use the same dataset for multiple tasks.
+			First of all, for the participants: they could extend their existing tools to compete for different tasks, with a quite limited effort.
+			This also opens new perspectives for future collaboration: participants’ work could be extended and integrated in a shared effort for producing useful data.
+			It is also worth highlighting the importance of such uniformity for the organizers.
+			It reduces the time needed to prepare and validate data, as well as the risk of errors and imperfections.
+			Last but not least, it enables designing interconnected tasks and producing richer output.</p>
+            <p><strong>L2.3. Provide an exhaustive description of the expected output on the training dataset.</strong>
+			An aspect that we underestimated in the first editions of the Challenge was the description of the training dataset.
+			While we completely listed all papers we did not provide enough information on the expected output: we went into details for the most relevant and critical examples but we did not provide the exact expected output for all papers in the training dataset.
+			Such information should instead be provided as it impacts directly the quality of the submissions and help participants to refine their tools.</p>
+		</section>
+		 <section id="evaluation">
+            <h1>Lessons learned on evaluating results</h1>
+			<p>All three editions of the Challenge shared the same evaluation procedure (see <a href="#challenge"></a> for more details).
+			The workflow presented some weaknesses, especially in the first two years, which we subsequently addressed.
+			Three main guidelines can be derived from these issues.</p>
+            <p><strong>L3.1. Consider all papers in the final evaluation.</strong>
+			Even though we asked participants to run their tools on the whole evaluation dataset, we considered only some exemplary papers for the final evaluation.
+			These papers have been randomly selected from clusters representing different cases, which participants were required to address.
+			Since these papers were representative of these cases we received a fair indication of the capabilities of each tool.
+			On the other hand, some participants were penalized as their tool could have worked well on other values, which were not taken into account for the evaluation.
+			In the third edition, we will radically increase the coverage of the evaluation queries and their number in order to assure that greatest part of the dataset (or the whole dataset) is covered.</p>
+            <p><strong>L3.2. Make evaluation tool available during the training phase.</strong>
+			The evaluation was totally transparent and all participants received detailed feedback about their scores, together with links to the open source tool used for the final evaluation.
+			However we were able to release the tool only after the Challenge.
+			It is instead more helpful to make it available during the training phase, as participants can refine their tool and improve the overall quality of the output.
+			Such an approach reduces the (negative) impact of output imperfections.
+			Though the content under evaluation was normalized and minor differences were not considered as errors, some imperfections were not expected and were not handled in advance.
+			Some participants, for instance, produced CSV files with columns in a different order or with minor differences in the IRI structure.
+			These all could have been avoided if participants received feedback during the training phase, with the evaluation tool available as a downloadable stand-alone application or as a service.</p>
+		    <p><strong>L3.3. Use disjoint training and evaluation datasets.</strong>
+			A 2015 participant raised the issue that we underestimated when designing the evaluation process: the evaluation dataset was a superset of the training one.
+			This resulted in some over-training of the tools, and caused imbalance in the evaluation. It is more appropriate to use completely disjoint datasets, a solution we are implementing for the last edition.</p>
+		</section>
+
+		<section id="output">
+            <h1>Lessons learned on expected output and organizational aspects</h1>
+			<p>Further suggestions can also be derived from the Challenge’s organizational aspects, in particular regarding the expected outcome:</p>
+            <p><strong>L4.1. Define clearly the license of produced output.</strong>
+			Some attention should be given to the licensing of the output produced by the participants.
+			We did not explicitly say which license they should use: we just required them to use an open license on data (at least permissive as the source of data) and we encouraged open-source licenses on the tools (but not mandatory).
+            Most of the participants did not declare which exact license applies to their data.
+			This is an obstacle for the reusability: especially when data come from heterogeneous sources and are heterogeneous in content and format, as in the case of CEUR-WS papers, it is very important to provide an explicit representation of the licensing information.</p>
+		   <p><strong>L4.2. Define clearly how the output of the challenge will be used.</strong>
+			The previous observation can be generalized into a wider guideline about reusability.
+			It is in fact critical to state how the results of the challenge will be eventually used, in order to encourage and motivate participants.
+			The basic idea of the Challenge was to identify the best performing tool on a limited number of papers and to use the winning tool – or a refined version – to extract the same data on the whole CEUR-WS corpus <a href="#fn5"></a>.
+			The production of the CEUR-WS Linked Open Dataset was actually slower than expected and we are finalizing it in these days.
+			This is a critical issue: participants’ work should not target the challenge only, but it should produce an output that is directly reusable by the community.</p>
+		   <p><strong>L4.3. Study conflicts and synergies with other events.</strong> <!-- a candidate for to be removed if space needed-->
+			The last guideline is not surprising and was confirmed by our experience as well.
+			In 2015, in fact, we introduced a task on interlinking.
+			The community has been studying interlinking for many years and a lot of research groups could have participated in the task (and produced very good results).
+			However we did not receive enough submissions.
+			One of the issues – not the only one, communication might be another –  is the conflict with events like OAEI (Ontology Alignment Evaluation Initiative).
+			Even though Task 3 of SemPub2015 did not intend to cover the specialized scope of OAEI, but rather put the interlinking task in a certain use case scope that merely serves in aligning the tasks output among each other and with the rest LOD cloud.
+			The study of overlapping and similar events should always be kept in mind.
+			Not only to identify potential conflicts but also to generate interest: the fact that the SePublica workshop was at ESWC 2014, for instance, was positive since we had fruitful discussions with the participants and the two events could benefit each other.</p>
+		</section>
+     </section>
+
+	 <section id="results">
+            <h1>Lessons learned from submitted solutions</h1>
+                        <p>In this section we discuss lessons learned from the participants' solution.
+We start with an overview of the solutions; next, we group the lessons into four categories: lessons on submitted tools, used ontologies, submitted data and evaluation process; even though there is some overlap between these aspects.</p>
+			<section id="solutions">
+            <h1>Solutions by Task</h1>
+
+			<section id="results-task1">
+            <h1>Task 1 solutions – 2015 and 2014</h1>
+			<p>There were four different solutions proposed to address Task 1 in 2014 and 2015.
+			Three participated in both editions, whereas the fourth solution participated only in the second edition.</p>
+			<p><strong>Solution 1.1.</strong> <a href="#Kolchin15"></a> <a href="#Kolchin14"></a> presented a case-specific crawling based approach for addressing Task 1.
+			 It relies on an extensible template-dependent crawler that uses sets of special predefined templates based on XPath and regular expressions to extract the content from HTML and to convert it in RDF.
+			 The RDF is then processed to merge resources using fuzzy-matching. The use of the crawler turns the system tolerant to invalid HTML pages.
+			 This solution improved its precision in 2015 as well the richness of the data model.</p>
+			<p><strong>Solution 1.2.</strong> <a href="#Heyvaert15"></a> <a href="#Dimou14"></a> exploited a generic tool for generating RDF data from heterogeneous data.
+			It uses the RDF Mapping Language (RML)<a href="#fn6"></a> to define how data extracted from CEUR-WS Web pages should be semantically annotated. RML extends R2RML to express mapping rules from heterogeneous data to RDF.
+			CSS3 selectors are considered to extract the data from the HTML pages.
+			The RML mapping rules are parsed and executed by the RML Processor<a href="#fn7"></a>.
+			In 2015 the solution reconsidered its data model and was extended to validate both the mapping documents and the final RDF, resulting in an overall improved quality dataset.</p>
+            <p><strong>Solution 1.3.</strong> <a href="#Ronzano15"></a> <a href="#Ronzano14"></a> designed a case-specific solution based on a linguistic and structural analyzer.
+			It uses a pipeline based on the GATE Text Engineering Framework.
+			To produce annotations, it relies on chunk-based and sentence-based support vector machine (SVM) classifiers which are trained using the CEUR-WS proceedings with microformat annotations.
+			The annotation sanitizer has a set of heuristics which are applied to fix imperfections and interlink annotations.
+			The produced dataset is also extended with information retrieved from external resources.</p>
+			<p><strong>Solution 1.4.</strong> <a href="#Milicka15"></a> presented an application of the FITLayout framework <a href="#fn8"></a>
+			This solution participated in the Semantic Publishing Challenge only in 2015. It combines different page analysis methods, i.e. layout analysis and visual and textual feature classification to analyze the rendered pages, rather than their code.
+			The solution is quite generic but needs to be domain/case-specific at certain phases (model building step).</p>
+			<p>All solutions are summarised in <a href="#table_5"></a>, which also add details about the languages and technologies exploited by the participants. </p>
+				<figure id="table_5">
+                    <table>
+					    <tr>
+						    <th rowspan="1" colspan="1"></th>
+							<th rowspan="1" colspan="1">Solution 1</th>
+                            <th rowspan="1" colspan="1">Solution 2</th>
+                            <th rowspan="1" colspan="1">Solution 3</th>
+                            <th rowspan="1" colspan="1">Solution 4</th>
+                        </tr>
+						 <tr>
+                            <td rowspan="1" colspan="1"><p>Primary Method</p></td>
+                            <td rowspan="1" colspan="1"><p>Crawling</p></td>
+							<td rowspan="1" colspan="1"><p>Generic solution for abstracted mappings</p></td>
+							<td rowspan="1" colspan="1"><p>Linguistic and structural analysis</p></td>
+							<td rowspan="1" colspan="1"><p>Visual layout Multi-aspect content analysis</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Case-specific</p></td>
+                            <td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+							<td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Template-based</p></td>
+                            <td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+							<td rowspan="1" colspan="1"><p>~NO</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Implementation basis</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>RML tools</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>FITLayout</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Implementation Language</p></td>
+                            <td rowspan="1" colspan="1"><p>Python</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>Java/HTML</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Mappings/Rules</p></td>
+                            <td rowspan="1" colspan="1"><p>XPath (embedded in the code)</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>RML/CSS (abstracted from the code)</p></td>
+							<td rowspan="1" colspan="1"><p>Hard coded</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>RegEx</p></td>
+                            <td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>YES</p></td>
+                        </tr>
+                    </table>
+                    <figcaption>HTML-code-based and content-based solutions for Task 1.</figcaption>
+                </figure>
+
+            </section>
+
+		   	<section id="results-task2">
+            <h1>Task 2 solutions – 2015</h1>
+			<p><strong>Solution 2.1.</strong> CERMINE <a href="#CERMINE15"></a> is an open source system for extracting structured metadata and references from scientific publications published as PDF files.
+			It has a loosely captured architecture and a modular workflow which is based on supervised and unsupervised machine-learning techniques which simplifies the system’s adoption to new document layouts and styles.</p>
+			<p><strong>Solution 2.2.</strong> <a href="#Klampfl15"></a> implemented a processing pipeline that analyzes the structure of a PDF document incorporating a diverse set of machine learning techniques, unsupervised to extract text blocks and supervised to classify blocks into different meta-data categories.
+			Heuristic are applied to detect the reference section and sequence classification to categorize the tokens of individual references strings.
+			Finally, named entity recognition (NER) are used to extract references to grants, funding agencies and EU projects.</p>
+			<p><strong>Solution 2.3.</strong> <a href="#Nuzzolese15"></a> presented Metadata And Citations Jailbreaker (MACJa – IPA), a tool that integrates hybrid techniques based on Natural Language Processing (NLP) and incorporating FRED, a novel machine reader.
+			It also includes modules to query external services to enhance and validate data.</p>
+            <p><strong>Solution 2.4.</strong> <a href="#Sateli15"></a>  presented a system composed by two modules: a text mining pipeline based on the GATE framework to extract structural and semantic entities, leveraging also existing NER tools, and a LOD exporter, to translate the document annotations into RDF according to custom rules. </p>
+            <p><strong>Solution 2.5.</strong> <a href="#Kovriguina15"></a> relies on a rule-based and pattern matching approach, implemented in Python and some external services for improving the quality of the results (for instance, DBLP for validating author’s data).
+			It also relies on an external tool to extract the plain text from PDFs.</p>
+			<p><strong>Solution 2.6.</strong> <a href="#Ronzano15"></a> extended their framework used for Task 1 (and indicated as Solution 1.3 before) to extract data from PDF as well.
+			Their pipeline includes text processing and entity recognition modules and employs external services for mining PDF articles.
+			<a href="#table_3"></a> represents tools and its components:</p>
+
+			<figure id="table_3">
+                    <table>
+					    <tr>
+						    <th rowspan="1" colspan="1"></th>
+							<th rowspan="1" colspan="1">Solution 2.1</th>
+                            <th rowspan="1" colspan="1">Solution 2.2</th>
+                            <th rowspan="1" colspan="1">Solution 2.3</th>
+                            <th rowspan="1" colspan="1">Solution 2.4</th>
+							<th rowspan="1" colspan="1">Solution 2.5</th>
+                            <th rowspan="1" colspan="1">Solution 2.6</th>
+                        </tr>
+						 <tr>
+                            <td rowspan="1" colspan="1"><p>Implementation language</p></td>
+                            <td rowspan="1" colspan="1"><p>Java/HTML</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+							<td rowspan="1" colspan="1"><p>Java/Python</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+							<td rowspan="1" colspan="1"><p>Python/HTML</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Implementation on basis</p></td>
+                        	<td rowspan="1" colspan="1"><p>CERMINE<a href="#fn9"></a></p></td>
+							<td rowspan="1" colspan="1"><p>code-annotator<a href="#fn10"></a></p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Components</p></td>
+                            <td rowspan="1" colspan="1"><p>LibSVM<a href="#fn11"></a>, GRMM<a href="#fn12"></a>, Mallet<a href="#fn13"></a></p></td>
+							<td rowspan="1" colspan="1"><p>OpenNLP<a href="#fn14"></a>, GATE<a href="#fn-gate"></a>, ParsCit<a href="#fn16"></a>, crfsuite<a href="#fn17"></a></p></td>
+							<td rowspan="1" colspan="1"><p>FRED<a href="#fn18"></a> </p><p> CrossRef API<a href="#fn19"></a>, FreeCite<a href="#fn20"></a>, Stanford CoreNLP<a href="#fn21"></a>, NLTK<a href="#fn22"></a>, (WordNet<a href="#fn23"></a>, BabelNet<a href="#fn24"></a>)</p></td>
+							<td rowspan="1" colspan="1"><p>GATE<a href="#fn-gate"></a></p></td>
+							<td rowspan="1" colspan="1"><p>Grab spider<a href="#fn26"></a>, BeautifulSoup<a href="#fn27"></a></p></td>
+							<td rowspan="1" colspan="1"><p>GATE<a href="#fn-gate"></a>, Poppler<a href="#fn29"></a>, CrossRef API<a href="#fn30"></a>, FreeCite<a href="#fn31"></a>, Bibsonomy API<a href="#fn32"></a></p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>PDF/character extraction</p></td>
+                            <td rowspan="1" colspan="1"><p>iText<a href="#fn33"></a></p></td>
+							<td rowspan="1" colspan="1"><p>Apache PDFBox<a href="#fn34"></a></p></td>
+							<td rowspan="1" colspan="1"><p>PDFMiner<a href="#fn35"></a></p></td>
+							<td rowspan="1" colspan="1"><p>Xpdf<a href="#fn36"></a></p></td>
+							<td rowspan="1" colspan="1"><p>PDFMiner</p></td>
+							<td rowspan="1" colspan="1"><p>PDFX<a href="#fn37"></a></p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Open Source</p></td>
+                            <td rowspan="1" colspan="1"><p>NO</p></td>
+							<td rowspan="1" colspan="1"><p>YES/broken</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+							<td rowspan="1" colspan="1"><p>YES</p></td>
+							<td rowspan="1" colspan="1"><p>NO</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Intermediate representation</p></td>
+                            <td rowspan="1" colspan="1"><p>XML/TrueViz, NLM JATS/XML</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>JSON</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>TXT, HTML</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1"><p>Ontologies reused<a href="#fn-onto"></a></p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p><!-- fred, -->dul, dbpedia, schema</p></td>
+							<td rowspan="1" colspan="1"><p>SPAR ontologies<!--, fred--></p></td>
+							<td rowspan="1" colspan="1"><p>http://lod.semanticsoftware.info/pubo/, deo, sro</p></td>
+							<td rowspan="1" colspan="1"><p>bibo, foaf, dc, swrc, dbpedia, arpfo</p></td>
+							<td rowspan="1" colspan="1"><p>swrc, biro, fabio, pro</p></td>
+                        </tr>
+                    </table>
+                    <figcaption>Tools and its components.</figcaption>
+                </figure>
+
+			</section>
+
+			<!-- <p>Table <a href="#table_4"></a>  summarizes the lessons learned from the results of these tools. They have been split in four groups for the sake of clarity, though there is some overlap between categories.</p> -->
+
+<!--
+			<figure id="table_4">
+                    <table>
+						<tr>
+                            <td rowspan="1" colspan="1">Tools</td>
+                            <td rowspan="1" colspan="1"> <strong>5.1</strong> Both generic solutions and ad-hoc ones </p><p>
+							                             <strong>5.2</strong> Both HTML-code-based and content-based solutions for Task 1 </p><p>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1">Model and Vocabularie</td>
+                            <td rowspan="1" colspan="1"> <strong>6.1</strong> All solutions used almost the same model for Task 1</p><p>
+							                             <strong>6.2</strong> All solutions used almost the same vocabularies for the same data for Task 1</p><p>
+														 <strong>6.3</strong> Different solutions, different annotations for Task 1</p><p>
+														 <strong>6.4</strong> Different solutions, different vocabularies for Task 2 </p><p>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1">Dataset</td>
+                            <td rowspan="1" colspan="1"> <strong>7.1</strong> Overall dataset was improved over successive challenges</p><p>
+							                             <strong>7.2</strong> Result RDF dataset in respect to custom Vs generic solutions </p><p>
+														 <strong>7.3</strong> Result RDF dataset and input coverage</p><p>
+														 <strong>7.4</strong> Significantly different RDF dataset in terms of statistics </p><p>
+														 <strong>7.5</strong> No provenance or other metadata</p><p>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1">Solutions in respect to the evaluation</td>
+                            <td rowspan="1" colspan="1"> <strong>8.1</strong> Performance ranking of the tools evolved but not as expected</p><p>
+							                             <strong>8.2</strong> New and legacy solutions were both valuable </p><p>
+														 <strong>8.3</strong> Newly introduced approaches have equal chances in winning the challenge</p><p>
+                        </tr>
+                    </table>
+                    <figcaption>lessons learned from the results tools.</figcaption>
+                </figure>
+
+-->
+	 </section>
+	 <section id="tools">
+            <h1>Lessons learned from the tools</h1>
+			<p><strong>L5.1. There are both generic and ad hoc solutions.</strong>  All solutions were methodologically different among each other.
+			For Task 1, for instance, two solutions (1.1 and 1.3) primarily consisted of a tool developed specific to this task, whereas the other two solutions wrote task-specific templates in the otherwise generic implementations (adaptive to other domains).
+			In the later case, Solution 1.2 abstracted the case-specific aspects from the implementation, whereas Solution 1.4 kept them inline with the implementation.
+			It becomes, therefore, clear that there are alternative approaches which can be used to produce RDF datasets.</p>
+			<p><strong>L5.2. There are HTML code and content-based approaches to information extraction.</strong> Even though solutions were methodologically different, two main approaches for dealing with the HTML pages prevailed: HTML-code-based and content-based.</p>
+	 </section>
+
+
+     <section id="ontologies">
+            <h1>Lessons learned from models and ontologies</h1>
+			<p><strong>L6.1.  All solutions used almost the same data model (Task 1).</strong> All solutions of Task 1 tend to converge regarding the model of the data.
+			The same occurs but on a higher level in the case of Task 2.
+			In particular for Task 1, Solution 1.4 domain modeling was inspired by the model used in Solution 1.2, with some simplifications. Note also that Solution 1.2 was the winner solution in 2014.
+			Based on the aforementioned, we observe a trend of converging regarding the model the CEUR-WS data set should have, as most of the solutions converge on the main identified concepts in the data (Conference, Workshop, Proceedings, Paper and Person).</p>
+	        <p><strong>L6.2. All solutions used almost the same vocabularies for the same data (Task 1).</strong>  There is a wide range of vocabularies and ontologies that can be used to annotate scholarly data.
+			However, most of the solutions preferred to (re)use almost the same existing ontologies and vocabularies (see <a href="#table_6"></a> for Task 1).
+			This is a good evidence that the spirit of vocabulary reuse gains traction.
+			However, it is interesting that different solutions used the same ontologies to annotate the same data differently (see L6.3).</p>
+
+	 	<figure id="table_6">
+                    <table>
+					    <tr>
+						    <th rowspan="1" colspan="1">Vocabulary<a href="#fn-onto"></a></th>
+							<th rowspan="1" colspan="1">Solution 1</th>
+                            <th rowspan="1" colspan="1">Solution 2</th>
+                            <th rowspan="1" colspan="1">Solution 3</th>
+                            <th rowspan="1" colspan="1">Solution 4</th>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>bibo</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>biro</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>co</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>dbpedia</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>dc</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>Java</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>dcterms</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>event</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>fabio</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>foaf</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>frbr</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+						 </tr>
+						 <tr>
+                            <td rowspan="1" colspan="1"><p>pro</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+						 </tr>
+						 						<tr>
+                            <td rowspan="1" colspan="1"><p>skos</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>swc</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>swrc</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>timeline</p></td>
+                            <td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+						 </tr>
+						 <tr>
+                            <td rowspan="1" colspan="1"><p>others/custom</p></td>
+                            <td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>–</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+							<td rowspan="1" colspan="1"><p>&#10004;</p></td>
+						 </tr>
+                    </table>
+                    <figcaption>Vocabularies for the same data for Task 1.</figcaption>
+                </figure>
+
+	 <p><strong>L6.3. Different solutions used different annotations (Task 1). </strong> Even though all solutions used almost the same vocabularies, not all solutions used the same classes to annotate same entities.
+	 To be more precise, all solutions only converged on annotating persons using <em>foaf:Person</em>.
+	 For the other main concepts the situation was heterogeneous, as reported in <a href="#table_7"></a>.</p>
+
+	 	 	<figure id="table_7">
+                    <table>
+					    <tr>
+						    <th rowspan="1" colspan="1">Task 1 / 2015</th>
+							<th rowspan="1" colspan="1">Solution 1</th>
+                            <th rowspan="1" colspan="1">Solution 2</th>
+                            <th rowspan="1" colspan="1">Solution 3</th>
+                            <th rowspan="1" colspan="1">Solution 4</th>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Person</p></td>
+                            <td rowspan="1" colspan="1"><p>foaf:Person</p></td>
+							<td rowspan="1" colspan="1"><p>foaf:Person</p></td>
+							<td rowspan="1" colspan="1"><p>foaf:Person</p></td>
+							<td rowspan="1" colspan="1"><p>foaf:Person</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Paper</p></td>
+                            <td rowspan="1" colspan="1"><p>bibo:Article</p></td>
+							<td rowspan="1" colspan="1"><p>swrc:InProceedings</p></td>
+							<td rowspan="1" colspan="1"><p>swrc:Publication</p></td>
+							<td rowspan="1" colspan="1"><p>swc:Paper</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Conference</p></td>
+                            <td rowspan="1" colspan="1"><p>swc:OrganizedEvent</p></td>
+							<td rowspan="1" colspan="1"><p>bibo:Conference</p></td>
+							<td rowspan="1" colspan="1"><p>swrc:Conference</p></td>
+							<td rowspan="1" colspan="1"><p>swc:ConferenceEvent</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Proceeding</p></td>
+                            <td rowspan="1" colspan="1"><p>bibo:Proceeding</p></td>
+							<td rowspan="1" colspan="1"><p>bibo:Proceedings</p></td>
+							<td rowspan="1" colspan="1"><p>swrc:Proceedings</p></td>
+							<td rowspan="1" colspan="1"><p>swc:Proceedings</p></td>
+                        </tr>
+						<tr>
+                            <td rowspan="1" colspan="1"><p>Proceeding</p></td>
+                            <td rowspan="1" colspan="1"><p>bibo:Workshop</p></td>
+							<td rowspan="1" colspan="1"><p>bibo:Workshop</p></td>
+							<td rowspan="1" colspan="1"><p>swrc:Workshop</p></td>
+							<td rowspan="1" colspan="1"><p>swc:section</p></td>
+                        </tr>
+                    </table>
+                    <figcaption>Vocabularies for different annotations for Task 1.</figcaption>
+                </figure>
+	  <p><strong>L6.4. Different solutions used different vocabularies for the same data (Task 2). </strong> In contrast to Task 1 solutions which all intuitively converged on using the same vocabularies and ontologies, Task 2 solutions use relatively different vocabularies and ontologies, but again pre-existing ones, to annotate same entities appearing in the same data.
+	  However, most of the Task 2 solutions use sub-ontologies of the family of SPAR ontologies.
+	  It is interesting to observe if the Task 2 solutions of 2016 will converge towards using same ontologies, being inspired one from the other, or if solutions will keep using different vocabularies.</p>
+	 </section>
+
+	 <section id="__lessonsRDF">
+   <h1>Lessons learned from submitted RDF</h1>
+
+	<p><strong>L7.1. Overall dataset improved over successive challenges.</strong></p>
+    <p>From the first edition to the second edition of the Semantic Publishing Challenge, we expected that participants who re-submit their solutions would have improve the overall dataset, rather than optimize it for answering the queries. All three solutions of Task 1 both in 2014 and 2015 edition modified the way they represented their model in 2014 for their submissions in 2015 which resulted in corresponding improvements to the overall dataset. Although this happens to a certain extend and indeed the results were more satisfying, we still see that there is room for overall improvement.</p>
+
+    <p><strong>L7.2. Participants preferred custom solutions.</strong>
+    Custom solutions for a particular task, such as publishing CEUR-WS.org proceedings, may obviously result in more accurate output in terms of answers to queries, however they lack repurposeability, as they cannot be reused for other input data. Moreover, despite the fact that there are generic tools for extracting RDF datasets, challenge participants preferred to develop custom solutions. This can be interpreted as a lack of alternatives of HTML specific tools to address the task.</p>
+
+	<p><strong>L7.3. Striking differences in coverage.</strong>
+	We further observed that solutions rarely agree upon the extracted information. Overall, we observe significant differences in respect to the number of identified entities per category. The results for Task 1 are summarized in the <a href="#table_8"></a>.</p>
+
+    <!-- TABLE -->
+
+    <figure id="table_8">
+      <table>
+         <tr>
+         	<th>–</th>
+			<th>Solution 1.1</th>
+			<th>Solution 1.2</th>
+			<th>Solution 1.3</th>
+			<th>Solution 1.4</th>
+		 </tr>
+		<tr>
+		 <th>#Conferences</th>
+		 <td><p>46</p></td>
+		 <td><p>46</p></td>
+		 <td><p>51</p></td>
+		 <td><p>47</p></td>
+		</tr>
+		<tr>
+		 <th>#Workshops</th>
+		 <td><p>252</p></td>
+		 <td><p>1393</p></td>
+		 <td><p>127</p></td>
+		 <td><p>198</p></td>
+		</tr>
+		<tr>
+		 <th>#Proceedings</th>
+		 <td><p>243</p></td>
+		 <td><p>1392</p></td>
+		 <td><p>202</p></td>
+		 <td><p>1353</p></td>
+		</tr>
+		<tr>
+		 <th>#Papers</th>
+		 <td><p>3801</p></td>
+		 <td><p>2452</p></td>
+		 <td><p>720</p></td>
+		 <td><p>2470</p></td>
+		</tr>
+		<tr>
+		 <th>#Persons</th>
+		 <td><p>6700</p></td>
+		 <td><p>6414</p></td>
+		 <td><p>3402</p></td>
+		 <td><p>11034</p></td>
+		</tr>
+		</table>
+     	<figcaption>The number of instances produced for each class (for Task 1).</figcaption>
+    </figure>
+
+    <p>Let us consider the proceedings for example. Apparently, Solution 1.1 and Solution 1.3 used the individual pages to identify the proceedings, whereas Solution 2 and Solution 4 used the index page to identify the proceedings, this is the reason that there is so big difference in the numbers. The number of identified papers is also significantly different among the different solutions, but in the case of persons we observe the most variation in terms of numbers. However, the more the solutions improve, the more we expect to find solutions that converge at least regarding the number of retrieved and/or distinctly identified entities.</p>
+
+	<p><strong>L7.4. RDF datasets differed significantly w.r.t. statistics.</strong>
+	Produced datasets were also very heterogeneous in term of size, number of triples, entities and so on. <a href="#table_datasetstats"></a> summarizes the statistics for Task 1.</p>
+
+	<!-- TABLE -->
+
+    <figure id="table_datasetstats">
+      <table>
+         <tr>
+         	<th>–</th>
+			<th>Solution 1.1</th>
+			<th>Solution 1.2</th>
+			<th>Solution 1.3</th>
+			<th>Solution 1.4</th>
+		 </tr>
+		<tr>
+		 <th>dataset size</th>
+		 <td><p>9.6M</p></td>
+		 <td><p>6.6M</p></td>
+		 <td><p>3.8M</p></td>
+		 <td><p>5.1M</p></td>
+		</tr>
+		<tr>
+		 <th>#triples</th>
+		 <td><p>177,752</p></td>
+		 <td><p>95,015</p></td>
+		 <td><p>62,231</p></td>
+		 <td><p>79,444</p></td>
+		</tr>
+		<tr>
+		 <th>#entities</th>
+		 <td><p>11,208</p></td>
+		 <td><p>11,719</p></td>
+		 <td><p>11,589</p></td>
+		 <td><p>19,090</p></td>
+		</tr>
+		<tr>
+		 <th>#properties</th>
+		 <td><p>46</p></td>
+		 <td><p>23</p></td>
+		 <td><p>42</p></td>
+		 <td><p>23</p></td>
+		</tr>
+		<tr>
+		 <th>#classes</th>
+		 <td><p>10</p></td>
+		 <td><p>10</p></td>
+		 <td><p>10</p></td>
+		 <td><p>6</p></td>
+		</tr>
+		</table>
+     	<figcaption>Statistics about the produced dataset (for Task 1).</figcaption>
+    </figure>
+	<p>Note that the size of the largest dataset is almost double the size (9.6M) of the smallest (5.1M). Similarly, the largest dataset in terms of triples (~180,000), contains three times more triples compared to the smallest (~63,000) to model the same data set.  Solution 4 is the only one which required significant larger number of entities to represent the same data. Considering that Solution 4 presents a very large number of persons, the correspondingly high number of entities is not so surprising.</p>
+
+	<p><strong>L7.5. No provenance or other metadata.</strong>
+	Unfortunately, no team intuitively provided any provenance or other metadata information. In particular licensing metadata information is of crucial importance for subsequent use of datasets.</p>
+</section>
+
+
+
+
+<section id="__lessons_solutions_wrt_eval">
+   <h1>Lessons learned from the solutions with respect to the evaluation</h1>
+
+	<p><strong>L8.1. Performance ranking of the tools evolved but not as expected.</strong>
+    In 2015 the performance ranking of the three tools evolved from 2014 has not changed but their performance has improved except for Kolchin et al., who improved precision but not recall. Disregarding the two queries that were new in 2015, the tool by Kolchin et al., which had won the best performance award in 2014, performs almost as well as Milicka’s/Burget’s.</p>
+
+	<p><strong>L8.2. New and legacy solutions were both valuable.</strong>
+    Task 1 participants both in 2014 and 2015 and they all had an improved version of different aspects of their solution which resulted in correspondingly improved versions of the final dataset. The new solution which introduced a fundamentally new approach and participated in Task 1 achieved equally good results as the best solution of 2014.
+    In conclusion, legacy solutions might be able to improve and bring stable and good results, however there is still room for improvement and mainly for fundamentally new ideas that surpass problems that legacy solutions can not deal with.</p>
+	<p><strong>L8.3. Newly introduced approaches have equal chances in winning the challenge.</strong>
+    The winners of Task1 in 2014 participated in 2015 with an improved version of their tool but they did not win. The 2015 winner was a new tool with a brand new approach. The winners were not the same in the two versions of the challenge, creativity won.</p>
+
+</section>
+
+     </section>
+
+	 <section id="__conclusions">
+<h1>Conclusions</h1>
+<p>One of the objectives of the SemPub Challenge series is to produce Linked Data that contribute to improving the scholarly communication. This includes supporting researchers finding relevant and high-quality papers by exploiting the information available in these datasets. Semantic Web technologies in this context do not only solve isolated problems, but generates further value in that data can be shared, linked to each other, and reasoned on.</p>
+<p>The goal of this work is to shade light on the first editions of the Challenge and to distill some lessons learned from our experience. In particular, we were interested in both organizational aspects and evidences from the solutions proposed by the participants.
+Our conclusion is that we are moving in the right direction but the goal has not been fully reached yet. There are several positive aspects, among which the high participation and the quality of the produced results. The possibility of sharing knowledge and solutions among participants was another key factor of SemPub. The Challenge allowed us to share experience on semantifying scholarly data, using some ontological models, refining and extending existing datasets.
+On the other hand, our analysis showed that some other aspects have to be necessarily improved. In particular, we have to make the produced output well integrated in the Linked Open Data ecosystem and exploited by the community. </p>
+<p>The next step in fact is to investigate what are the services that we can build on top of the produced data and how they can be offered. Some natural (and challenging) questions arise: what services can already be delivered based on the data we currently have? How do we need to extend these data to provide novel services? What would be the interface of such services look like? Which functionalities should be implemented first?
+The challenge will also be to turn all these questions into new material for a new Challenge, even better if measurable in an objective way.</p>
+<p><em>Acknowledgments:</em> We would like to thank our peer reviewers for their constructive feedback.
+This work has been partially funded by the European Commission under grant agreement no. 643410.</p>
+</section>
+
+        <!-- References -->
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol>
+				<li id="Milicka15" role="doc-biblioentry"><p>Milicka, M., Burget, R.: Information extraction from web sources based on multi-aspect content analysis. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Kovriguina15" role="doc-biblioentry"><p>Kovriguina, L. et al. Metadata Extraction From Conference Proceedings Using Template-Based Approach. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Nuzzolese15" role="doc-biblioentry"><p>Nuzzolese, A. G., Peroni, S., Reforgiato Recupero, D. MACJa: Metadata And Citations Jailbreaker. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Klampfl15" role="doc-biblioentry"><p>Klampfl, S., Kern, R. Machine Learning Techniques for Automatically Extracting Contextual Information from Scientific Publications.  SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="CERMINE15" role="doc-biblioentry"><p>Tkaczyk, D., Bolikowski, L. Extracting contextual information from scientific literature using CERMINE system. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Sateli15" role="doc-biblioentry"><p>Sateli, B., Witte, R. Automatic Construction of a Semantic Knowledge Base from CEUR Workshop Proceedings. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Ronzano15" role="doc-biblioentry"><p>Ronzano, F. et al. On the automated generation of scholarly publishing Linked Datasets: the case of CEUR-WS Proceedings.  SemWebEval. CCIS 548. Springer, 2015.</p></li>
+				<li id="Ronzano14" role="doc-biblioentry"><p>Ronzano, F., Casamayor Del Bosque, G., Saggion, H. Semantify CEUR-WS Proceedings: towards the automatic generation of highly descriptive scholarly publishing Linked Datasets. SemWebEval. CCIS 475. Springer, 2014.</p></li>
+				<li id="Shotton13" role="doc-biblioentry"><p>Shotton, D. (2013). Publishing: Open citations. Nature, 502(7471)<!--: 295-297-->.</p></li>
+                <li id="Miller13" role="doc-biblioentry"><p>Miller, G. &amp; Mork, P., (2013). From Data to Decisions: A Value Chain for Big Data, Spart IT, ITPro<!--: 57-59-->.</p></li>
+                <li id="SemPub14" role="doc-biblioentry"><p>Lange, C., &amp; Di Iorio, A., Semantic publishing challenge – assessing the quality of scientific output. SemWebEval. CCIS 475. Springer, 2014.</p></li>
+		        <li id="SemPub15" role="doc-biblioentry"><p>Di Iorio, A., Lange, C., Dimou, A., &amp; Vahdati, S. Semantic Publishing Challenge – Assessing the Quality of Scientific Output by Information Extraction and Interlinking. SemWebEval. CCIS 548. Springer, 2015.</p></li>
+                <li id="Kolchin15" role="doc-biblioentry"><p>Kolchin, M., et al.: CEUR-WS-LOD: conversion of CEUR-WS workshops to linked data.  SemWebEval. CCIS 548. Springer, 2015</p></li>
+		        <li id="Kolchin14" role="doc-biblioentry"><p>Kolchin, M., Kozlov, F.: A template-based information extraction from web sites with unstable markup. SemWebEval. CCIS 475. Springer 2014</p></li>
+				<li id="Heyvaert15" role="doc-biblioentry"><p>Heyvaert, P., et al.: Semantically annotating CEUR-WS workshop proceedings with RML. SemWebEval. CCIS 548. Springer, 2015</p></li>
+				<li id="Dimou14" role="doc-biblioentry"><p>Dimou, A., Vander Sande, M., Colpaert, P., De Vocht, L., Verborgh, R., Mannens, E., Van de Walle, R.: Extraction and semantic annotation of workshop proceedings in HTML using RML. SemWebEval. CCIS 475. Springer 2014</p></li>
+		 </ol>
+        </section>
+
+<!-- Footnotes -->
+<section id="fnlist" role="doc-footnotes">
+            <section id="fn1" role="doc-footnote">
+				<p><a href="http://linkedup-project.eu/">http://linkedup-project.eu/</a></p>
+            </section>
+			<section id="fn2" role="doc-footnote">
+				<p><a href="http://www.appsforeurope.eu/">http://www.appsforeurope.eu/</a></p>
+            </section>
+			<section id="fn3" role="doc-footnote">
+			<p>Learning Analytics and Knowledge; see <a href="http://meco.l3s.uni-hannover.de:9080/wp2/?page_id=18">http://meco.l3s.uni-hannover.de:9080/wp2/?page_id=18</a></p>
+            </section>
+			<section id="fn4" role="doc-footnote">
+				<p><a href="http://linkedup-challenge.org/">http://linkedup-challenge.org/</a></p>
+            </section>
+			<section id="fn5" role="doc-footnote">
+				<p>At least, on the subset of CEUR-WS.org whose license scheme allowed us to republish metadata.</p>
+            </section>
+			<section id="fn6" role="doc-footnote">
+				<p><a href="http://rml.io">http://rml.io</a></p>
+            </section>
+			<section id="fn7" role="doc-footnote">
+				<p><a href="https://github.com/RMLio/RML-Mapper">https://github.com/RMLio/RML-Mapper</a></p>
+            </section>
+			<section id="fn8" role="doc-footnote">
+				<p><a href="http://www.fit.vutbr.cz/~burgetr/FITLayout/">http://www.fit.vutbr.cz/~burgetr/FITLayout/</a></p>
+            </section>
+            <section id="fn9" role="doc-footnote">
+            	<p><a href="https://github.com/CeON/CERMINE">https://github.com/CeON/CERMINE</a></p>
+            </section>
+
+            <section id="fn10" role="doc-footnote">
+            	<p><a href="http://code-annotator.know-center.at">http://code-annotator.know-center.at</a></p>
+            </section>
+            <section id="fn11" role="doc-footnote">
+            	<p><a href=" https://www.csie.ntu.edu.tw/~cjlin/libsvm/"> https://www.csie.ntu.edu.tw/~cjlin/libsvm/</a></p>
+            </section>
+            <section id="fn12" role="doc-footnote">
+            	<p><a href="http://mallet.cs.umass.edu/grmm/">http://mallet.cs.umass.edu/grmm/</a></p>
+            </section>
+            <section id="fn13" role="doc-footnote">
+            	<p><a href="http://mallet.cs.umass.edu/">http://mallet.cs.umass.edu/</a></p>
+            </section>
+            <section id="fn14" role="doc-footnote">
+            	<p><a href="https://opennlp.apache.org/">https://opennlp.apache.org/</a></p>
+            </section>
+            <section id="fn-gate" role="doc-footnote">
+            	<p><a href="https://gate.ac.uk/">https://gate.ac.uk/</a></p>
+            </section>
+            <section id="fn16" role="doc-footnote">
+            	<p><a href="http://wing.comp.nus.edu.sg/parsCit/">http://wing.comp.nus.edu.sg/parsCit/</a></p>
+            </section>
+            <section id="fn17" role="doc-footnote">
+            	<p><a href="http://www.chokkan.org/software/crfsuite/">http://www.chokkan.org/software/crfsuite/</a></p>
+            </section>
+            <section id="fn18" role="doc-footnote">
+            	<p><a href="http://wit.istc.cnr.it/stlab-tools/fred">http://wit.istc.cnr.it/stlab-tools/fred</a></p>
+            </section>
+            <section id="fn19" role="doc-footnote">
+            	<p><a href="http://api.crossref.org/">http://api.crossref.org/</a></p>
+            </section>
+            <section id="fn20" role="doc-footnote">
+            	<p><a href="http://freecite.library.brown.edu/">http://freecite.library.brown.edu/</a></p>
+            </section>
+            <section id="fn21" role="doc-footnote">
+            	<p><a href="http://stanfordnlp.github.io/CoreNLP/">http://stanfordnlp.github.io/CoreNLP/</a></p>
+            </section>
+            <section id="fn22" role="doc-footnote">
+            	<p><a href="http://www.nltk.org/">http://www.nltk.org/</a></p>
+            </section>
+            <section id="fn23" role="doc-footnote">
+            	<p><a href="https://wordnet.princeton.edu/">https://wordnet.princeton.edu/</a></p>
+            </section>
+            <section id="fn24" role="doc-footnote">
+            	<p><a href="http://babelnet.org/">http://babelnet.org/</a></p>
+            </section>
+            <section id="fn26" role="doc-footnote">
+            	<p><a href="http://grablib.org/"> http://grablib.org/</a></p>
+            </section>
+            <section id="fn27" role="doc-footnote">
+            	<p><a href="http://www.crummy.com/software/BeautifulSoup/">http://www.crummy.com/software/BeautifulSoup/</a></p>
+            </section>
+            <section id="fn29" role="doc-footnote">
+            	<p><a href="http://poppler.freedesktop.org/">http://poppler.freedesktop.org/</a></p>
+            </section>
+            <section id="fn30" role="doc-footnote">
+            	<p><a href="http://api.crossref.org/">http://api.crossref.org/</a></p>
+            </section>
+            <section id="fn31" role="doc-footnote">
+            	<p><a href="http://freecite.library.brown.edu/">http://freecite.library.brown.edu/</a></p>
+            </section>
+            <section id="fn32" role="doc-footnote">
+            	<p><a href="http://www.bibsonomy.org/help/doc/api.html">http://www.bibsonomy.org/help/doc/api.html</a></p>
+            </section>
+            <section id="fn33" role="doc-footnote">
+            	<p><a href="http://itextpdf.com/">http://itextpdf.com/</a></p>
+            </section>
+            <section id="fn34" role="doc-footnote">
+            	<p><a href="https://pdfbox.apache.org/">https://pdfbox.apache.org/</a></p>
+            </section>
+            <section id="fn35" role="doc-footnote">
+            	<p><a href="http://www.unixuser.org/~euske/python/pdfminer/">http://www.unixuser.org/~euske/python/pdfminer/</a></p>
+            </section>
+            <section id="fn36" role="doc-footnote">
+            	<p><a href="http://www.foolabs.com/xpdf/">http://www.foolabs.com/xpdf/</a></p>
+            </section>
+            <section id="fn37" role="doc-footnote">
+            	<p><a href="pdfx.cs.man.ac.uk">pdfx.cs.man.ac.uk</a></p>
+            </section>
+            <section id="fn-onto" role="doc-footnote">
+            	<p>We abbreviate well-known ontologies by their prefixes according to <a href="http://prefix.cc">prefix.cc</a>.</p>
+            </section>
+
+</section>
+    </body>
+</html>
+
+<!--  LocalWords:  OpenAIRE foaf sp givenName Silvio familyName HBase
+ -->
+<!--  LocalWords:  Peroni holdsRoleInTime RoleInTime withRole OAI PMH
+ -->
+<!--  LocalWords:  relatesToDocument SRU SRW OpenURL CERIF RDFization
+ -->
+<!--  LocalWords:  ExternalReference RDFized OpenAIRE's rdf xml LOV
+ -->
+<!--  LocalWords:  CiteSeer Datasource OAID Hadoop's hashcode HDFS WS
+ -->
+<!--  LocalWords:  RDFizing OpenLink BibBase CEUR ODC ePrint JDBC sd
+ -->
+<!--  LocalWords:  RQ Triplify LoC Europeana Papadakis Alexiou VLDB
+ -->
+<!--  LocalWords:  Papastefanatos Koutrika Auer Dietzold Lehmann th
+ -->
+<!--  LocalWords:  Hellmann Aumueller Berners Bizer ISWC Springer Sep
+ -->
+<!--  LocalWords:  Haslhofer Schandl Ciancarini Iorio Nuzzolese CiTO
+ -->
+<!--  LocalWords:  Vitali Presutti d'Amato Gandon d'Aquin Staab ESWC
+ -->
+<!--  LocalWords:  Tordai Sporny Prud'hommeaux Carothers Lanthaler LD
+ -->
+<!--  LocalWords:  Schreiber Ngomo Poggi Zhao Redding Krech LCSH de
+ -->
+<!--  LocalWords:  Spanos Stavrou Mitrou Sompel Beit Arie Volz Gaedke
+ -->
+<!--  LocalWords:  Kobilarov LDOW Vahdati bla essepuntato SemPub LAK
+ -->
+<!--  LocalWords:  LinkedUp nanopublications PubMed  Colinda SWDF RML
+ -->
+<!--  LocalWords:  PubMedCentral Pensoft OAEI SePublica SVM FITLayout
+ -->
+<!--  LocalWords:  CERMINE NER Jailbreaker MACJa NLP LibSVM GRMM NLTK
+ -->
+<!--  LocalWords:  OpenNLP ParsCit crfsuite CrossRef FreeCite CoreNLP
+ -->
+<!--  LocalWords:  BabelNet BeautifulSoup Poppler Bibsonomy iText NLM
+ -->
+<!--  LocalWords:  PDFBox PDFMiner Xpdf PDFX TrueViz JATS TXT dul deo
+ -->
+<!--  LocalWords:  dbpedia sro bibo swrc arpfo biro fabio  RegEx frbr
+ -->
+<!--  LocalWords:  dcterms skos swc InProceedings OrganizedEvent CCIS
+ -->
+<!--  LocalWords:  ConferenceEvent repurposeability Kolchin Milicka
+ -->
+<!--  LocalWords:  Burget semantifying SemWebEval Kovriguina Recupero
+ -->
+<!--  LocalWords:  Reforgiato Klampfl Tkaczyk Bolikowski Sateli Witte
+ -->
+<!--  LocalWords:  Ronzano Casamayor Bosque Saggion Semantify Shotton
+ -->
+<!--  LocalWords:  Mork Spart ITPro Dimou Kozlov Heyvaert Vander
+ -->
+<!--  LocalWords:  Sande Colpaert Vocht Verborgh Mannens Walle
+ -->

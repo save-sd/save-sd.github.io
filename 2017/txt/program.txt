@@ -1,0 +1,53 @@
+### 09:15-10:30 | Opening
+
+### 09:30-10:30 | Session 1: Keynote
+
+Invited speaker: Patricia Feeney (Crossref)
+	
+_Making connections between data_
+		 
+
+### 10:30-11:00 | Coffee Break
+
+
+### 11:00-12:00 | Session 2: Papers, part 1
+	
+11:00-11:30
+	
+Andreas Behrend, Sahar Vahdati, Christoph Lange, Christiane Engels
+	
+_Towards a Cloud-Based Service for Maintaining Data About Scientific Events_ [research paper]
+
+Available in [HTML](papers/html/behrend-savesd2017.html)
+
+	
+---
+	
+11:30-12:00
+	
+Anastasia Dimou, Gerald Haesendonck, Martin Vanbrabant, Laurens De Vocht, Ruben Verborgh, Steven Latré, Erik Mannens
+	
+_iLastic: Linked Data Generation Workflow and User Interface for iMinds Scholarly Data_ [research paper]
+
+Available in [PDF](papers/pdf/dimou-savesd2017.pdf)
+
+	
+
+### 12:30-14:00 | Lunch
+
+
+### 14:00-14:45 | Session 3: Papers, part 2
+	
+14:00-14:30
+	
+Joakim Philipson
+	
+_About a BUOI: joint custody of universally unique identifiers on the web, or, making PIDs more FAIR_ [position paper]
+
+Available in [HTML](papers/html/philipson-savesd2017.html)
+	
+	
+---	
+
+
+### 14:30-15:00 Closing and Award

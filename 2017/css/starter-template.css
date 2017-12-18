@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.article {
+    border-left: 2px solid lightgrey;
+    border-top: 2px solid lightgrey;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.addpad {
+    padding: 5px;
+}

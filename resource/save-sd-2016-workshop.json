@@ -1,0 +1,12 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "workshop/save-sd-2016",
+        "has_type": "workshop",
+        "has_label": "SAVE-SD 2016 workshop",
+        "has_homepage": "http://cs.unibo.it/save-sd/2016/",
+        "has_twitter_account": "savesdworkshop",
+        "has_name": "SAVE-SD 2016 Workshop",
+        "has_hashtag": "#savesd2016"
+    }
+]

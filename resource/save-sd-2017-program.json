@@ -1,0 +1,31 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-program",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2017 program",
+        "has_title": "Program",
+        "has_part": [
+            "page/save-sd-2017-program/venue", 
+            "page/save-sd-2017-program/schedule"],
+        "has_url": "program.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home/venue",
+        "has_type": "section",
+        "has_id": "venue",
+        "has_label": "SAVE-SD 2017 program, section 'When and where'",
+        "has_title": "When and where",
+        "has_url": "txt/venue.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-home/schedule",
+        "has_type": "section",
+        "has_id": "schedule",
+        "has_label": "SAVE-SD 2017 program, section 'Schedule'",
+        "has_title": "Schedule",
+        "has_url": "txt/program.txt"
+    }
+]

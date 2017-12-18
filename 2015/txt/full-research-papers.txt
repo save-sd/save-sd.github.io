@@ -1,0 +1,15 @@
+Angelo Di Iorio, Raffaele Giannella, Francesco Poggi and Fabio Vitali. *Exploring bibliographies for research-related tasks*
+
+Anna Lisa Gentile, Maribel Acosta, Luca Costabello, Andrea Giovanni Nuzzolese, Valentina Presutti and Diego Reforgiato. *Conference Live: Accessible and Sociable Conference Semantic Data*
+
+Bahar Sateli and René Witte. *What's in this paper? Combining Rhetorical Entities with Linked Open Data for Semantic Literature Querying*
+
+Ilaria Tiddi, Mathieu D'Aquin and Enrico Motta. *Using Linked Data Traversal to Label Academic Communities*
+
+Luigi Di Caro, Mario Cataldi, Myriam Lamolle and Claudio Schifanella. *It is not What but Who you Know: a Time-Sensitive Collaboration Impact Measure of Researchers in Surrounding Communities*
+
+Patrick Golden and Ryan Shaw. *Period assertion as nanopublication*
+
+Theresa Velden, Shiyan Yan, Kan Yu and Carl Lagoze. *Mapping The Temporal Evolution of Scientific Community Structures*
+
+Yan Wu, Srinivasan Venkatramanan and Dah Ming Chiu. *Research Collaboration and Topic Trends in Computer Science-- An Analysis Based on UCP Authors*

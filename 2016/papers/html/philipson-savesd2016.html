@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><!-- --><html xmlns="http://www.w3.org/1999/xhtml" prefix="     fabio: http://purl.org/spar/fabio/     cito: http://purl.org/spar/cito/     schema: http://schema.org/     library: http://purl.org/library/     prism: http://prismstandard.org/namespaces/basic/2.0/     dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/rash.css"/>
+
+        <script src="js/jquery.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="js/bootstrap.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="js/rash.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title property="dcterms:title">Citation functions for knowledge export - a question of
+            relevance, or, can CiTO do the trick?</title>
+
+        <!-- Author's data (one or more) -->
+        <meta about="#jph" typeof="schema:Person" name="dc.creator" content="Joakim Philipson"/>
+        <meta about="#jph" property="schema:email" content="joakim.philipson@kb.se"/>
+        <link about="#jph" property="schema:affiliation" href="#kb-isd"/>
+
+
+
+
+        <!-- Affiliations -->
+        <meta about="#kb-isd" property="schema:name" typeof="schema:Organization" content="Kungliga biblioteket - National Library of Sweden, Information Systems Department, Stockholm, Sweden"/>
+        <meta about="http://www.kb.se" property="schema:name" typeof="schema:Organization" content="National Library of Sweden"/>
+
+
+        <!-- Paper keywords (one or more) -->
+        <meta property="prism:keyword" content="knowledge export"/>
+        <meta property="prism:keyword" content="relevance"/>
+        <meta property="prism:keyword" content="citation functions"/>
+        <meta property="prism:keyword" content="cross-disciplinarity"/>
+
+        <!-- /END Metadata -->
+
+        <!-- Other RDF statements -->
+        <script type="text/turtle"><![CDATA[
+        
+            @prefix cito: <http://purl.org/spar/cito/>
+            @prefix fabio: <http://purl.org/spar/fabio/> 
+            @prefix schema: <http://schema.org/>
+            @prefix library: <http://purl.org/library/>
+            @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/>
+            @prefix dcterms: <http://purl.org/dc/terms/> .
+           
+            
+        ]]></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><!--//--><![CDATA[ ]]><!--//--></script></head>
+    <body prefix="         fabio: http://purl.org/spar/fabio/         cito: http://purl.org/spar/cito/         schema: http://schema.org/         library: http://purl.org/library/         prism: http://prismstandard.org/namespaces/basic/2.0/         dcterms: http://purl.org/dc/terms/">
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>This paper explores the possibility of promoting knowledge export by means
+                of citation function indexing using <em>CiTO</em>, the Citation
+                Typing Ontology <a href="#shotton-2015"> </a>. Instances of knowledge export are
+                exemplified by cross-disciplinary citations, which, it is suggested, may 
+                indicate a prolonged life time use of documents. For CiTO to serve the purpose of promoting knowledge export, 
+                it should be more specific about citation functions, separating them from evaluation, and then be put to test as a discovery tool.</p>
+        </section>
+        <!-- Sections -->
+        <section id="sec_rationale">
+            <h1>Introduction: the relevance of citation functions</h1>
+            <p>Citations can often be seen as observable results of a transfer of knowledge, as records of used information.
+                Citations as a potential measure of relevance was noted at least implicitly by
+                <em>Gilbert</em> <a href="#gilbert-1977"> </a>:116. However, 
+                the use of citations vary greatly. We focus here in particular on cross-disciplinary citations and the
+                different functions they fulfil. What purpose do they serve? We want to know how the cited information is 
+                used in the citing context, fully aware that there may
+                be other reasons behind citations than strictly intra-scientific judgments of
+                relevance, e.g. as a purely rhetorical device <a href="#gilbert-1977"> </a> <a href="#moed-2005"> </a>. 
+                The references ultimately appearing in an article may also be determined by
+                factors outside the author's immediate control, such as peer review and journal policies.</p>
+            <p>Still, why is it that certain documents are being found relevant for the most various
+                purposes over and over again long time after their publication, while others tend to
+                fall into oblivion only a few years after their appearance. Which factors are
+                involved in distinguishing the potentially long-lived cited document from the less
+                successful, more short-lived ones? <em>Van Raan</em> and more recently <em>Ke et al.</em> 
+                studied so called <q>sleeping beauties</q> in science, i.e. instances of <q>a publication that goes unnoticed (&#x91;sleeps&#x92;) for a long time
+                    and then, almost suddenly, attracts a lot of attention (&#x91;is awakened by a prince&#x92;).</q> <a href="#vanRaan-2004"> </a> 
+                Studying long 'sleeping beauties' (SBs) for the purpose of identifying cross-disciplinary citation functions promises to be rewarding,
+                since <q>top SBs achieve delayed exceptional importance in disciplines different from those where they were originally published.</q> <a href="#ke-2015"> </a>
+                <em>Levitt and Thelwall</em> <a href="#levitt-2009"> </a> found a link between multi-disciplinarity and a high citedness rate. 
+                However, their study did not address the question of cross-disciplinary knowledge export. Multi-disciplinarity and even more so 
+                interdisciplinarity or transdisciplinarity have more to do with the
+                  <em>integration</em> or <em>synthesis</em> of scientific disciplines working on
+                a common research project, as in the emerging so called I2S, Integration and
+                Implementation Sciences <a href="#bammer-2015"> </a>:322. Cross-disciplinarity, on
+                the other hand, is more about researchers in one scientific discipline seeking to
+                apply new methodologies, solutions or problems taken from another, sometimes very
+                distant discipline. Thus, results from studies of interdisciplinarity,
+                transdisciplinarity or multi-disciplinarity cannot automatically be applied to cases
+                of cross-disciplinary knowledge export. By knowledge export we understand here the
+                transfer of knowledge from one discipline to another as documented by cross-disciplinary
+                citations.</p>
+
+            <p>Apart from the phenomenon of sleeping beauties, citation analyses have 
+                shown substantial variations in citation patterns over time from one discipline to another. 
+                There are indications e.g. that documents within the social sciences continue to be cited for a
+                longer period of time than what is the case for the natural sciences <a href="#garfield-1979"> </a>. However, there are also examples of remarkably long-lived 
+                documents from the natural sciences. 
+                A classic paper by <em>Albert Einstein</em> from 1906 was still being cited in journal articles
+                within fields so diverse as dairy sciences, pharmacology,
+                physiology, ceramics, water pollution, acoustics, fluid mechanics,
+                sedimentary petrology and molecular biology during the 1960s <a href="#garfield-1979"> </a>, and well into this
+                 century again within ceramics, mechanics and sedimentology.</p>
+            <p>Another example is that of <em>Molina and Rowland</em>
+                <a href="#molina-1974"> </a>, a paper from the field of atmospheric
+                chemistry published in 1974, which has continually been cited at least up until 
+                the mid 1990s also within disciplines such as computer science, law, management,
+                ophthalmology, optics, political science, pharmacology, sociology, 
+                and, even more recently, risk management and medicine. 
+                Noteworthy in cases like these, where papers continue to be used and cited over a long period of
+                time, is precisely the subject dispersion of citing papers. 
+                In the case of <a href="#molina-1974"> </a>, the fact that the paper 
+                was published in a prestigious multi-disciplinary scientific journal like <em>Nature</em> 
+                most likely promoted its exposure also to scientists from outside atmospheric chemistry.
+                The attention it received was no doubt renewed in 1995 when the authors, together
+                with Paul Crutzen, were awarded the Nobel prize <q>for their work in atmospheric
+                chemistry, particularly concerning the formation and decomposition of ozone</q>.</p> 
+            <p>Still, most articles published in <em>Nature</em> never come near the very high
+                citation score attained by this paper. Moreover, <a href="#molina-1974"> </a> 
+                received most citations years after its publication, not while it was
+                still new and <q>outsiders</q>, with a fresh issue of Nature in hand, were more likely to
+                be <q>accidentally</q> exposed to the paper, but still before the Nobel prize award
+                (although admittedly there was a new peak in its citation count in
+                1995, still lower though than in the top year 1976).</p>
+            <p>Understanding the multipurposeness of scientific papers and their potential for
+                knowledge export calls for an explanation of the function that the cited source
+                fulfils in the context of the citing documents. How does the cited information fit into
+                this sometimes completely new disciplinary environment? In this paper
+                we examine a few examples of cross-disciplinary citation functions, to see if they could also 
+                be expressed by the emerging standard citation typing ontology <em>CiTO</em>
+                <a href="#shotton-2015"> </a> for the purpose of promoting knowledge export.</p>
+        </section>
+
+        <section id="sec_CCA_and_citationfunctions">
+            <h1>Content-based citation analysis and citation functions</h1>
+            
+            <p>Most citation analysis studies so far have been quantitative. Citation counts
+                have been made, e.g, in order to identify the core literature of a
+                scientific discipline and co-citation clustering has been used for mapping the
+                structure of scientific disciplines <a href="#garfield-1979"> </a>. 
+                <em>Lipetz</em>, pioneer of <em>qualitative</em> citation analysis, 
+                investigated the relationship between cited reference and citing document, aiming to improve
+                the selectivity of citation indexes, but the 29
+                categories he proposed were obviously not intended to constitute a final judgment on
+                the matter <a href="#lipetz-1965"> </a>.</p>
+           
+             <p>Since then qualitative or <em>content-based citation analysis</em> <a href="#ding-2014"> </a> 
+                studies have produced a multitude of different schemes describing the various functions of
+                citations, with considerable overlap between categories, although the exact labels
+                used for classification differ among authors <a href="#liu-1993"> </a>. </p>
+            <p>The earlier classification schemes for citation functions relied essentially on manual 
+                citation analysis of relatively small sets of
+                articles (typically 10 to 100 items), while later attempts have been made to use
+                semi-automated or computational methods for citation classification of larger samples
+                of full-text articles. An overview of these attempts is found in <em>Ding et al.</em>
+                <a href="#ding-2014"> </a>.</p>
+
+            <p>However, automated methods for citation classification, relying 
+                on explicit signals or cue words for identification of citation functions 
+                <a href="#teufel-2006a"> </a>, may not capture more complex cross-disciplinary citation relationships of the syntagmatic kind
+                described by <em>Green and Bean</em> <a href="#green-1995"> </a>, where the relevance of the cited source to the
+                citing document stems rather from the provision of a missing piece of information
+                serving e.g. as part of an evidence chain. An example of this kind of
+                relationship is given in the next section where we will be 
+                looking closer at some cross-disciplinary citations apparently
+                representing instances of knowledge export. Thus, this paper still depends on a small number 
+                of manually extracted citations from a limited set of articles. The purpose is simply 
+                to understand why a scientific article was found useful also outside its original field of research.
+                What follows are some selected examples of citations of papers from the field of atmospheric
+                chemistry or stratospheric ozone monitoring <a href="#philipson-1996"> </a>, all
+                introduced by a description of the identified citation function
+                followed by an analysis and discussion of a possible application of CiTO object
+                properties.</p>
+        </section>
+
+        <section id="sec_Cross-disciplinary_citationfunctions">
+            <h1>Cross-disciplinary citation functions</h1>
+
+              <p><strong>Comparison</strong>: Citation refers to similar results from another field of research.
+                It may appear as a metaphorical type of relation, in which <q>one complex unit is
+                    perceived as being structurally equivalent (as a whole or in part) to
+                    another</q> <a href="#green-1995"> </a>:660. The importance of analogical, structural
+                comparison (of similar or dissimilar elements) for knowledge transfer has been
+                extensively described by <em>Day and Goldstone</em>
+                <a href="#day-2012"> </a>. So it seems only natural that it figures in cases of
+                cross-disciplinary knowledge export and use of scientific data another field of 
+                research. A possible instance of this type is <a href="#mastenbrook-1983"> </a>:</p>
+            <blockquote><p>
+                <q>Similar long-term trends are to be found in total column ozone measurements.... 
+                    London and Kelley (1974) examining global total ozone found an increase in both 
+                    the Northern and the Southern Hemisphere during the 1960s.</q>
+            </p></blockquote>
+                       
+            <p>This article had at the time of access no shared subject descriptors with the cited document 
+            <a href="#london-1974"> </a> in two different research databases 
+          (<a href="http://media2.proquest.com/documents/pq_advanced_tech_aerospace_prof_prosheet.pdf">Aerospace database</a>, 
+                accessed March, 1996, and the <a href="http://media2.proquest.com/documents/pascal.pdf">Pascal database</a>,
+                using exclusively English descriptors.) Thus, this is not a case of <em>topic matching</em>. 
+                However, the citation link between <a href="#mastenbrook-1983"> </a> and
+                <a href="#london-1974"> </a> appears to be rather strong, with the citation
+                providing both <em>measurement data</em>, functioning as an item of
+                    <em>comparison</em> and lending supporting <em>evidence</em> together with other
+                cited documents to the conclusion that</p>
+            <blockquote>
+                <p><q>the long-term trend in stratospheric water and its similarity to the long-term
+                    trend in stratospheric ozone suggest that these changes arise from long-term
+                    changes in the intensity of the circulation.</q> <a href="#mastenbrook-1983"> </a>:2164 </p>
+            </blockquote>
+            <p>But obviously, the article is not <em>about</em> stratospheric ozone variation, which
+                is the topic of <a href="#london-1974"> </a>. The main topic of <a href="#mastenbrook-1983"> </a> is described 
+                by the title: <em>Stratospheric water vapor variability for Washington, DC/ Boulder,
+                    CO: 1964-82</em>. Citations for this type of <q>non-topical</q> comparisons seem
+                difficult to represent by means of CiTO. A possible candidate for a suitable CiTO
+                object property in this case would perhaps be 
+                <a href="http://purl.org/spar/cito#http://purl.org/spar/cito/extends"><em>cito:extends</em></a>
+                <a about="#mastenbrook-1983" rel="cito:extends" href="#london-1974"> </a>, but it
+                does not capture accurately the <q>non-topical</q> quality of this instance.</p>
+
+            <p><strong>Evidence</strong>: Citation is used for support of propositions in citing entity. 
+                Instances of conclusive, logically binding proofs may be rare; 
+                rather, reference is often to the apparent agreement 
+                between measurement data and predictions of a theory or a model. 
+                This type of citation might seem more natural for
+                specialists within a narrower field of research, as it may sometimes require
+                expertise in the field to seize the arguments involved. However, there are also
+                clear examples of cross-disciplinary citations for evidence. 
+                Consider the following extract from an article published in a botanical journal 
+                as an illustration:</p>
+            <blockquote>
+                <p><q>Good estimates of the present stratospheric distribution of ozone and subsequent
+                    UV radiation are known (Koller, 1952; Dütsch, 1969; Cutchis, 1974). The total
+                    amount of ozone in the northern hemisphere is maximal in spring and minimal in
+                    fall. ... It is suggested that among flowering plants of the northern
+                    hemisphere, many of which have white or yellow flowers (Table 2), there has been
+                    convergent evolution in floral UV absorption. Yellow and white flowers are high
+                    in flavonoid pigments which strongly absorb UV light. The seasonality of UV
+                    radiation may be one major selective pressure. Yellow and white flowers comprise
+                    as much as 85% of an arctic flora (Kevan, 1972).</q><a href="#utech-1975"> </a>:26f</p>
+            </blockquote>
+
+            <p> Discerning some of the more important of premisses involved in the inference leading to the 
+                hypothesis in the third sentence of the extract, there is first
+                the observation of the seasonal variation of stratospheric ozone and the subsequent
+                seasonal variation of ultraviolet radiation reaching the earth, leading to a spring
+                maximum of stratospheric ozone and a subsequent spring minimum of UV-radiation in
+                the northern hemisphere (since stratospheric ozone absorbs UV-radiation). 
+                Then there is the knowledge that yellow and white flowers are strong absorbants of
+                UV-radiation. Finally there is the evidence of the predominance of yellow and white
+                flowers in the northern hemisphere. Together these premisses make probable the
+                hypothesis that UV-absorption ability has acted as a selective evolutionary
+                mechanism for flowers in the northern hemisphere. It is important to note here that
+                the different premisses come from different subject areas. The first three cited
+                sources in the extract belong to geophysics or climatology, whereas <em>(Table 2)</em> and <em>(Kevan, 1972)</em>
+                are from botany. Despite the differences in subject, the premisses apparently
+                    <q>fit</q> together, as <q>slots in a framework</q> <a href="#green-1995"> </a>:660. 
+                One describes certain environmental conditions. Another describes an important property of the
+                object being studied, influencing its adaptation to the conditions described by the
+                first. The third premiss describes the frequency of occurrence of the
+                object being studied, thereby corroborating the importance of the property described
+                by the second premiss. Together they make up an evidential structure, that accounts 
+                for the relevance of the cited entities to the purpose of the citing document. 
+                Thus, all the cited entities here could apparently be ascribed the CiTO object property <a href="http://purl.org/spar/cito#http://purl.org/spar/cito/isCitedAsEvidenceBy"><em>cito:isCitedAsEvidenceBy</em></a> <a href="#utech-1975"> </a>. Alternatively, some of these citations, e.g. those of
+                the strictly botanical sources, might also be described by the CiTO property <a href="http://purl.org/spar/cito#http://purl.org/spar/cito/isCitedAsDataSourceBy">
+                    <em>cito:isCitedAsDataSourceBy</em></a>
+                <a href="#utech-1975"> </a>.</p>
+
+            <p><strong>Force</strong>: Citation refers to a likely
+                    <em>structure</em>, <em>mechanism</em> or <em>cause</em> behind observed
+                phenomena. A typical example is a reference to a chemical reaction described by the cited entity. 
+                Again this type of citation function would seem to be essentially an internal affair 
+                among specialists within a field of research, but examples of <q>outsiders</q> 
+                making use of it also occur, as this excerpt from a medical journal illustrates:</p>
+
+            <blockquote>
+                <p><q>Stratospheric ozone depletion, accompanied by increases in ambient, biologically
+                    destructive ultraviolet-B radiation,<sup>104</sup> may exacerbate the effect of
+                    climate change on infectious diseases. Arising from a different anthropogenic
+                    process than climate change, ozone destruction is occurring primarily from
+                    reactions between ozone and halogen free radicals derived from
+                    chlorofluorocarbons, other halocarbons, and methyl bromide.</q><sup>105</sup>
+                    <a href="#patz-1996"> </a> ; ref. (105) is to <a href="#molina-1974"> </a></p>
+            </blockquote>
+
+            <p>No specific object property was found in CiTO for citations referring to
+                a likely cause, mechanism or explanatory force. A significant difference between 
+                the <em>evidence</em> and the <em>force</em> citation functions appeared in <a href="#philipson-1996"> </a>, 
+                where the 32 citations of <a href="#molina-1974"> </a> for <em>evidence</em> had a median
+                publishing year of 1975, only one year after the cited source, whereas the 26
+                citations of the <em>force</em> type appeared to be among the most
+                <q>long-lived</q>, in the sample, with a median publishing year of 1984, ten years
+                after the cited source. The sample in that study was too small to allow any
+                definite conclusions, but the apparent difference in age distribution may not be surprising
+                anyway. The reference to an explanatory force in the form of a chemical reaction or
+                structure should be of such permanence that it can be expected to be found not only
+                in articles in scientific journals, but even in textbooks.</p>
+
+            <p><strong>Method</strong>: Citation refers to the method employed in the cited work.
+                This does not necessarily mean that the same method is used or even advocated by
+                the citing article, as observed in the following example:</p>
+
+            <blockquote>
+                <p><q>Total ozone data were previously analyzed by a number of authors including Angell
+                    and Korshover (1973), London and Kelly [sic!] (1974) with particular interest in
+                    quantifying long-term trends. The statistical procedure commonly used in these
+                    studies is linear regression analysis (i.e. fitting a straight line) applied to
+                    adjusted total ozone values (e.g. deviations from monthly means ...). However,
+                    problems arise in the interpretation of results from these linear regression
+                    models since these models fail to take account of the positive autocorrelation
+                    that is present in the ozone data. Hence, we consider time series analysis that
+                    accounts for autocorrelation in a quantitative trend assessment of ozone data.</q><a href="#tiao-1983"> </a>:460)</p>
+            </blockquote>
+
+            <p>In CiTO, the object property relating to method presupposes that the cited method is
+                actually used by the citing document, 
+                <a href="http://purl.org/spar/cito#http://purl.org/spar/cito/usesMethodIn">
+                    <em>cito:usesMethodIn</em></a>. This is a problematic feature of CiTO; while some
+                properties seem to be too general to distinguish between different specific citation
+                functions, other properties, like this one, presuppose
+                an active use or endorsement of the function expressed cited entity. There are of course a
+                number of other object properties in CiTO expressing a negative evaluation of the
+                cited entity, but these are again more general and hold no information about which
+                function or part of the cited entity that is negatively evaluated. The
+                methodological citations in the aforementioned study <a href="#philipson-1996"> </a>
+                were few in number, but their relatively <q>long life</q> might be more than just 
+                an accidental effect of the selection. If so, support
+                could be gained from the results of <a href="#small-1977"> </a>, showing 
+                how a scientific paper that was formerly frequently cited
+                for <q>theoretical</q> reasons as describing the structure of collagen suddenly ceased
+                to be among the highly cited papers for a short time, when
+                the focus of research in the field shifted from structural studies to biosynthesis,
+                only to reappear as one of the high ranking cited sources a year later, but then
+                cited rather for its methodology <a href="#garfield-1979"> </a>:127f.</p>
+           
+            <p><strong>Result</strong>: Citation involves an implication, viz. <q><em>if</em>
+                    information C<sub>0</sub> contained in cited document is true, and if
+                    furthermore conditions C<sub>1</sub>, C<sub>2</sub>, ... C<sub>n</sub> hold
+                    good, <em>then</em> the consequences will be such and such</q>. Hence, the
+                citing article does not necessarily have to endorse a claim of truth for the cited
+                information; the only claim is for the potential <em>result</em>, given the
+                conditions described by the antecedent of the implication. The auxiliary conditions
+                    C<sub>1</sub>, C<sub>2</sub>, ... C<sub>n</sub> furthermore do not have to be
+                topically related to the cited information. The only requirement 
+                is that there must be no contradiction among them.
+                In <a href="#philipson-1996"> </a> several instances of this type of citation
+                appeared in articles from journals, that were clearly peripheral to
+                the field of research concerned with stratospheric ozone monitoring,
+                coming from such disciplines as molecular biology, botany, or ophthalmology. 
+                Researchers from <q>outside</q> naturally should be more concerned with 
+                the implications of the cited information for their own field of research, rather than with trying to assess the
+                validity of that information, lacking the necessary specialist competence for that. 
+                The following passage may serve as an example:</p>
+
+            <blockquote>
+                <p><q>Recent studies by Cicerone (4) and <em>Molina and Rowland</em> (7) state that
+                    increased use of fluorocarbons in aerosols and refrigerants could severely
+                    deplete the protective layer of ozone in the stratosphere. This would increase
+                    the level of UV-B radiation reaching the earth's surface. ...
+                    The object of this study was to determine the effects of UV-B
+                    irradiation on local lesion development of Chenopodium quinoa Willd. 'Valdivia'
+                    plants inoculated with potato virus S (PVS).</q>(<em>Semeniuk and Goth</em>
+                    <a href="#semeniuk-1980"> </a>; ref. (7) is to <a href="#molina-1974"> </a>)</p>
+            </blockquote>
+            <p>Cito has an object property <a href="http://purl.org/spar/cito#http://purl.org/spar/cito/usesConclusionsFrom"><em>cito:usesConclusionsFrom</em></a> 
+                that might fit for this kind of citation function, but again it seems the CiTO object property presupposes an active claim of truth for
+                the cited information, whereas the <strong>result</strong> function described here is more neutral and conditional. 
+                In general it would be preferable to separate citation functions from evaluative judgement as clearly as possible, 
+                so that each citation function identified could be given one of three values, positive (+), negative (-) or neutral (0).</p>
+            
+            <p>Now, as we  have seen, not all the above examples of citation functions are directly translatable
+                into CiTO object properties, but they nevertheless shed some light on the use of
+                scientific information outside the discipline whence it originated. Possibly other, 
+                even more compelling examples such as these can be found, where the age distance between cited and citing documents is larger, 
+                as we already saw in section 1 for <em>Einstein (1906)</em> and <a href="#molina-1974"> </a>.
+                </p>
+        </section>
+
+        <section>
+            <h1>Conclusions: indexing for knowledge export - can CiTO do the trick?</h1>
+
+            <p>Could citation indexing with <em>CiTO</em>
+                <a href="#shotton-2015"> </a> serve the purpose of <q>knowledge export</q>? 
+                From the examples above it appears CiTO is not specific enough to capture 
+                the finer differences between citation functions. At the
+                same time there seems to be some redundancy in the present version of
+                CiTO <a href="#ciancarini-2014"> </a>, so having index terms more
+                more accurately describe citation functions while separating them from value judgments, does not
+                necessarily imply that the number of object properties would have to grow
+                substantially.</p>
+
+            <p>We have seen some instances of cross-disciplinary citations characterized by the kind of 
+                <em>hierarchical</em> or <em>structural</em>, <em>syntagmatic</em> relationships between citing and cited source, 
+               described by <em>Green and Bean</em> <a href="#green-1995"> </a>. 
+                With the citing entity representing the user need, 
+                 <q>the topic of the user need and the topic of the cited passage are related as class and
+                    subclass, or... as class and class-member</q> <a href="#green-1995"> </a>:659. This kind of <q>type-token</q> relationship can be expressed in
+                citations by the provision of an instance of the class referred
+                to. It may also appear in the form of the citation function referred to above as
+                <em>comparison </em> with a structurally equivalent unit.</p>
+
+            <p>Structural (or <em>syntagmatic</em>) relationships are those where <q>the topic of
+                    the cited passage corresponds to a component within a conceptual syntagmatic
+                    structure (...), while the topic of the user need corresponds to another
+                    component within the structure, or again, the structure at large</q> <a href="#green-1995"> </a>:660. We saw an example of this relationship 
+                    in the <em>evidence</em> function in the case of <a href="#utech-1975"> </a> above.</p>
+
+            <p>The limited importance of topic matching relationships in citations was confirmed in
+                a study by <em>Harter et al.</em> <a href="#harter-1993"> </a> from the area of 
+                library and information science, in which the subject similarity among pairs of 
+                cited and citing documents was found to be very small. However,
+                independence from topic matching may vary between disciplines.
+               <em>Guerrero-Bote et al.</em> found a significant correlation
+                between the knowledge export and import rates of different subject categories: 
+                <q>This indicates that there are Subject Categories which are more independent, importing and
+                    exporting little knowledge, and others with greater flows of knowledge across
+                    subject boundaries.</q> <a href="#guerrero-2007"> </a>:440</p>
+                    
+
+            <p>Indexing citation functions is not so much about representing <q>mental models</q> or capturing the original 
+                <q>intention</q> of the citing author <a href="#ciancarini-2014"> </a> <a href="#teufel-2006a"> </a>, 
+                but rather about describing the actual and potential <em>use</em> - past, present and future - of
+                document contents. It is essential then to look at both sides of citation relationship simultaneously, 
+                the <em>citing</em> entity and the <em>cited</em> source. A combination of citation functions 
+                 and subject headings, extracted from both citing and cited entities might
+                 offer even better prospects for knowledge export and provide researchers and readers with new context, 
+                 adding new relevance to old documents, opening new opportunities for <q>evidence mining</q>. 
+                 What is needed is a proper test of the capability of an indexing system of citation functions like CiTO, possibly revised and 
+                 revamped, to serve as a <em>discovery tool</em> across scientific disciplines. Preparation for such a test could perhaps start 
+                by indexing a sample of outside 'princes', who have awakened some of those long 'sleeping beauties', and then have a panel
+                of independent researchers, unknowing of her history, find their way to <q>la Belle au bois dormant</q>.</p>
+           
+
+            <p>
+                The resulting indexing scheme of a conclusive test should be sufficiently easy to use, 
+                so that virtually anyone who reads and writes and cites would be able to contribute to the indexing effort.
+                Online publishers of scientific journals, managers of digital repositories like
+                JSTOR and existing citation indexes like  the Web of Science
+                and CiteSeerX could make it happen by means of crowd-sourcing from the users.
+                Ideally, tagging a scientific article online with citation functions from a
+                controlled index language should be just little more complicated than liking a
+                post on social media.</p>
+
+        </section>
+
+
+
+
+
+        <!-- References -->
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol rel="cito:cites">
+                <li id="bammer-2015" role="doc-biblioentry">
+                    <p about="bammer-2015" typeof="fabio:Book" property="dcterms:bibliographicCitation">Bammer, G. <em>Change! Combining
+                            Analytic Approaches with Street Wisdom.</em> Australian National
+                            University.<span about="bammer-2015" typeof="fabio:Expression" property="prism:isbn"> ISBN: 9781925022650(ebook).</span></p>
+                </li>
+
+    
+                <li id="ciancarini-2014" role="doc-biblioentry">
+                    <p about="ciancarini-2014" typeof="fabio:BookChapter" property="dcterms:bibliographicCitation">Ciancarini, P., Di Iorio, A.,
+                        Nuzzolese, A., Peroni, S., Vitali, F. (2014). <em>Evaluating citation
+                            functions in CiTO: cognitive issues.</em>
+                        <a about="ciancarini-2014" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1007/978-3-319-07443-6_39">http://dx.doi.org/<span about="ciancarini-2014" property="prism:doi">10.1007/978-3-319-07443-6_39</span></a></p>
+                </li>
+
+                <li id="day-2012" about="day-2012" typeof="fabio:JournalArticle" role="doc-biblioentry">
+                    <p about="day-2012" property="dcterms:bibliographicCitation">Day, S.B.,
+                        Goldstone, R.L. (2012). <em>The import of knowledge export: connecting
+                            findings and theories of transfer of learning.</em> Educational
+                        psychologist, 47:3, 153-176. <a about="day-2012" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1080/00461520.2012.696438">http://dx.doi.org/<span about="day-2012" property="prism:doi">10.1080/00461520.2012.696438</span></a></p>
+                </li>
+                
+                <li id="ding-2014" role="doc-biblioentry">
+                    <p about="ding-2014" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Ding, Y., Zhang, G., Chambers,T.,
+                        Song, M., Wang, X., Zhai, C. (2014). <em>Content-based citation analysis:
+                            the next generation of citation analysis.</em> Journal of the
+                        Association for Information Science and Technology, 65:9, 1820-1833. <a about="ding-2014" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1002/asi.23256">http://dx.doi.org/<span about="ding-2014" property="prism:doi">10.1002/asi.23256</span></a></p>
+                </li>
+           
+               <li id="garfield-1979" role="doc-biblioentry">
+                    <p about="garfield-1979" typeof="fabio:Book" property="dcterms:bibliographicCitation">Garfield, E. (1979). <em>Citation
+                            indexing: its theory and application in science, technology, and
+                            humanities.</em>
+                        <span about="garfield-1979" typeof="fabio:Expression" property="prism:isbn">ISBN: 0-471-02559-3</span></p>
+                </li>  
+
+                <li id="gilbert-1977" role="doc-biblioentry">
+                    <p about="gilbert-1977" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Gilbert, G.N. (1977).
+                            <em>Referencing as persuasion.</em> Social Studies of Science, 7:
+                        113–122. <a about="gilbert-1977" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1177/030631277800800305">http://dx.doi.org/<span about="gilbert-1977" property="prism:doi">10.1177/030631277700700112</span></a></p>
+                </li>
+
+                <li id="green-1995" role="doc-biblioentry">
+                    <p about="green-1995" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Green, R., Bean, C.A.
+                            (1995)<em> Topical relevance relationships: I. why topic matching
+                                fails ; II. an explanatory study
+                                and preliminary typology.</em> Journal of the American Society for Information
+                        Science,46:9, 646-662.
+                        <a about="green-1995b" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1002/(SICI)1097-4571(199510)46:9&lt;646::AID-ASI2&gt;3.0.CO;2-1">http://dx.doi.org/<span about="green-1995b" property="prism:doi">10.1002/(SICI)1097-4571(199510)46:9&lt;646::AID-ASI2&gt;3.0.CO;2-1</span></a> ;
+                        <a about="green-1995b" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1002/(SICI)1097-4571(199510)46:9&lt;654::AID-ASI3&gt;3.0.CO;2-3">http://dx.doi.org/<span about="green-1995b" property="prism:doi">10.1002/(SICI)1097-4571(199510)46:9&lt;654::AID-ASI3&gt;3.0.CO;2-3</span></a>
+                    </p>
+                </li>
+                
+                <li id="guerrero-2007" role="doc-biblioentry">
+                    <p about="guerrero-2007" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation"> Guerrero-Bote, V., Zapico-Alonso,
+                        F., Espinosa-Calvo, M., Gómez-Crisóstomo, R., Moya-Anegón, F. (2007).
+                            <em>Import-export of knowledge between scientific subject categories:
+                            the iceberg hypothesis.</em> Scientometrics, 71:3, 423-441. <a about="guerrero-2007" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1007/s11192-007-1682-3">http://dx.doi.org/<span about="guerrero-2007" property="prism:doi">10.1007/s11192-007-1682-3</span></a></p>
+                </li>
+
+                <li id="harter-1993" role="doc-biblioentry">
+                    <p about="harter-1993" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Harter, S. P., Nisonger, T. E.,
+                        Weng, A. (1993). <em>Semantic relationships between cited and citing
+                            articles in library and information science journals.</em> Journal of
+                        the American Society for Information Science, 44:9, 543-552. <a about="harter-1993" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1002/(SICI)1097-4571(199310)44:9&lt;543::AID-ASI4&gt;3.0.CO;2-F">http://dx.doi.org/<span about="harter-1993" property="prism:doi">10.1002/(SICI)1097-4571(199310)44:9&lt;543::AID-ASI4&gt;3.0.CO;2-F</span></a></p>
+                </li>
+
+                <li id="ke-2015" role="doc-biblioentry">
+                    <p about="ke-2015" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Ke, Q., Ferrara, E., Raddichi, F.
+                        and Flammini, A.(2015). <em>Defining and identifying Sleeping Beauties in
+                            science</em> PNAS, 112:24, 7426–7431. <a about="ke-2015" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1073/pnas.1424329112">http://dx.doi.org/
+                                <span about="ke-2015" property="prism:doi">10.1073/pnas.1424329112</span></a></p>
+                </li>
+
+                <li id="levitt-2009" role="doc-biblioentry">
+                    <p about="levitt-2009" typeof="fabio:JornalArticle" property="dcterms:bibliographicCitation">Levitt, J.M., Thelwall, M. (2009). <em>The most highly cited Library and Information Science articles: 
+                            interdisciplinarity, first authors and citation patterns.</em> Scientometrics, 78:1, 45-67. <a about="levitt-2009" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1007/s11192-007-1927-1">http://dx.doi.org/<span about="levitt-2009" property="prism:doi">http://dx.doi.org/10.1007/s11192-007-1927-1</span></a></p>
+                </li>
+
+                <li id="lipetz-1965" role="doc-biblioentry">
+                    <p about="lipetz-1965" typeof="fabio:JornalArticle" property="dcterms:bibliographicCitation">Lipetz, B-A. (1965).
+                            <em>Improvement of the selectivity of citation indexes to science
+                            literature through inclusion of citation relationship indicators.</em>
+                        American documentation, 16:2, 81-90.</p>
+                </li>
+
+                <li id="liu-1993" role="doc-biblioentry">
+                    <p about="liu-1993" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Liu, M.(1993). <em>Progress in
+                            documentation - the complexities of citation practice: a review of
+                            citation studies.</em> Journal of documentation, 49:4, 370-408. <a about="liu-1993" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1108/eb026920">http://dx.doi.org/<span about="liu-1993" property="prism:doi">10.1108/eb026920</span></a></p>
+                </li>
+
+                <li id="london-1974" role="doc-biblioentry">
+                    <p about="london-1974" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">London, J., Kelley, J.(1974).
+                            <em>Global trends in total atmospheric ozone.</em> Science, 184:4140,
+                        987-989. <a about="london-1974" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1126/science.184.4140.987">http://dx.doi.org/<span about="london-1974" property="prism:doi">10.1126/science.184.4140.987</span></a></p>
+                </li>
+
+                <li id="mastenbrook-1983" role="doc-biblioentry">
+                    <p about="mastenbrook-1983" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation"> Mastenbrook, H.J., Oltmans, S.J.
+                            (1983).<em>Stratospheric water vapor variability for Washington,
+                            DCIBoulder, CO: 1964-82.</em> Journal of the Atmospheric Sciences, 40:9,
+                        2157–2165.<a about="mastenbrook-1983" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1175/1520-0469(1983)040&lt;2157:SWVVFW&gt;2.0.CO;2">http://dx.doi.org/<span about="mastenbrook-1983" property="prism:doi">10.1175/1520-0469(1983)040&lt;2157:SWVVFW&gt;2.0.CO;2</span></a></p>
+                </li>
+
+                <li id="moed-2005" role="doc-biblioentry">
+                    <p about="moed-2005" typeof="fabio:Book" property="dcterms:bibliographicCitation">Moed, H. F. (2005). <em>Citation
+                            analysis in research evaluation.</em> Dordrecht: Springer. <span about="moed-2005" typeof="fabio:Expression" property="prism:isbn">ISBN:
+                            9781402037146 (ebook).</span>
+                        <a about="moed-2005" typeof="fabio:Expression" href="http://dx.doi.org/10.1007/1-4020-3714-7">http://dx.doi.org/<span about="moed-2005" property="prism:doi">10.1007/1-4020-3714-7</span></a></p>
+                </li>
+                <li id="molina-1974" role="doc-biblioentry">
+                    <p about="molina-1974" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Molina, M.J., Rowland, F.S. (1974).
+                            <em>Stratospheric sink for chlorofluoromethanes: chlorine atom catalysed
+                            destruction of ozone.</em> Nature, 249:5460, 810-812. <a about="molina-1974" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1038/249810a0">http://dx.doi.org/<span about="molina-1974" property="prism:doi">10.1038/249810a0</span></a>
+                     <!--   <a about="molina-1974" typeof="fabio:ResearchPaper"
+                            property="fabio:hasRepresentation"
+                            href="http://www.nature.com/nature/journal/v249/n5460/pdf/249810a0.pdf">
+                            http://www.nature.com/nature/journal/v249/n5460/pdf/249810a0.pdf</a> --></p>
+                </li>             
+
+                <li id="patz-1996" role="doc-biblioentry">
+                    <p about="patz-1996" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Patz JA, Epstein PR, Burke TA,
+                        Balbus JM.(1996). <em>Global climate change and emerging infectious
+                            diseases.</em> JAMA, 275:3, 217-223. <a about="patz-1996" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1001/jama.1996.03530270057032">http://dx.doi.org/<span about="patz-1996" property="prism:doi">10.1001/jama.1996.03530270057032</span></a></p>
+                </li>
+             
+                <li id="philipson-1996" role="doc-biblioentry">
+                    <p about="philipson-1996" typeof="fabio:MastersThesis" property="dcterms:bibliographicCitation">Philipson, J. (1996). <em>The
+                            relevance of citations: a case study of stratospheric ozone
+                            monitoring.</em>
+                        <span about="philipson-2006" typeof="fabio:Expression" property="prism:issn">ISSN: 1401-5358</span>
+                        <a about="philipson-2008" typeof="fabio:Expression" href="http://hdl.handle.net/2320/13707">http://hdl.handle.net/2320/13707</a></p>
+                </li>
+
+                         
+                <li id="semeniuk-1980" role="doc-biblioentry">
+                    <p about="semeniuk-1980" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation"> Semeniuk, P., Goth, R.W. (1980).
+                            <em>Effects of ultraviolet irradiation on local lesion development of
+                            potato virus S on Chenopodium Quinoa 'Valdivia' leaves. </em>
+                        Environmental and experimental botany, 20:1, 95-98. <a about="semeniuk-1980" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1016/0098-8472(80)90224-5">http://dx.doi.org/
+                                <span about="semeniuk-1980" property="prism:doi">10.1016/0098-8472(80)90224-5</span></a>
+                    </p>
+                </li>
+
+
+                <li id="shotton-2015" role="doc-biblioentry">
+                    <p about="shotton-2015" typeof="fabio:OntologyDocument" property="dcterms:bibliographicCitation"> Shotton, D., Peroni, S.,
+                        Ciccarese, P., Clark, T. (2015). <em>CiTO, the Citation Typing
+                            Ontology.</em>
+                        <a about="shotton-2015" typeof="fabio:WebPage" href="http://purl.org/spar/cito/">http://purl.org/spar/cito/</a></p>
+                </li>
+                <li id="small-1977" role="doc-biblioentry">
+                    <p about="small-1977" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation"> Small, H.G. (1977). <em>A
+                            co-citation model of a scientific specialty : a longitudinal study of
+                            collagen research.</em> Social studies of science, 7: 139-166. <a about="small-1977" typeof="fabio:ResearchPaper" property="fabio:hasRepresentation" href="http://www.jstor.org/stable/284873">http://www.jstor.org/stable/284873</a></p>
+                </li>
+
+        <!--        <li id="sterman-2006" role="doc-biblioentry">
+                    <p about="sterman-2006" typeof="fabio:JournalArticle"
+                        property="dcterms:bibliographicCitation"> Sterman, J.D. (2006). <em>Learning
+                            from evidence in a complex world.</em> American journal of public
+                        health, 96:3, 505–514. <a about="sterman-2006" typeof="fabio:ResearchPaper"
+                            href="http://dx.doi.org/10.2105/AJPH.2005.066043">http://dx.doi.org/
+                                <span about="sterman-2006" property="prism:doi"
+                                >10.2105/AJPH.2005.066043</span></a>
+                    </p>
+                </li>    -->
+
+                <li id="tiao-1983" role="doc-biblioentry">
+                    <p about="tiao-1983" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation"> Tiao, G.C. (1983). 
+                        <em>Use of statistical methods in the analysis of environmetal data.</em> 
+                        American statistician, 37:4b, 459-470. <a about="tiao-1983" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1080/00031305.1983.10483166">http://dx.doi.org/ <span about="tiao-1983" property="prism:doi">10.1080/00031305.1983.10483166</span></a>
+                    </p>
+                </li>
+
+                <li id="teufel-2006a" role="doc-biblioentry">
+                    <p about="teufel-2006a" typeof="fabio:ConferencePaper" property="dcterms:bibliographicCitation"> Teufel, S., Siddharthan, A.,
+                        Tidhar, D. (2006). <em>Automatic classification of citation function.</em>
+                        Proceedings of the 2006 Conference on Empirical Methods in Natural Language
+                        Processing (EMNLP 2006),103–110. <a about="teufel-2006a" typeof="fabio:Expression" href="http://www.aclweb.org/anthology/W/W06/W06-1613.pdf">http://www.aclweb.org/anthology/W/W06/W06-1613.pdf</a>
+                    </p>
+                </li>
+
+                <li id="utech-1975" role="doc-biblioentry">
+                    <p about="utech-1975" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Utech, F. H., Kawano, S. (1975).
+                            <em>Spectral polymorphisms in angiosperm flowers determined by
+                            differential ultraviolet reflectance.</em>The botanical magazine =
+                        Shokubutsu-gaku-zasshi, 88:1, 9-30. <a about="utech-1975" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1007/BF02498877">http://dx.doi.org/<span about="utech-1975" property="prism:doi">10.1007/BF02498877</span></a>
+                    </p>
+                </li>
+
+                <li id="vanRaan-2004" role="doc-biblioentry">
+                    <p about="vanRaan-2004" typeof="fabio:JournalArticle" property="dcterms:bibliographicCitation">Van Raan, A.F.J.(2004).
+                            <em>Sleeping beauties in science.</em> Scientometrics. 59:3, 467-472. <a about="vanRaan-2004" typeof="fabio:ResearchPaper" href="http://dx.doi.org/10.1023/B:SCIE.0000018543.82441.f1">http://dx.doi.org/<span about="vanRaan-2004" property="prism:doi">10.1023/B:SCIE.0000018543.82441.f1</span></a></p>
+                </li>
+
+            </ol>
+        </section>
+
+    </body>
+</html>

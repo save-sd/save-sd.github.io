@@ -1,0 +1,72 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2016-website",
+        "has_type": "expression_collection",
+        "has_label": "SAVE-SD 2016 Web site",
+        "has_title": "SAVE-SD 2016",
+        "has_description": [
+            "Semantics, Analytics, Visualisation: Enhancing Scholarly Data",
+            "Workshop co-located with the 25th International World Wide Web Conference",
+            "April 11, 2016 - Montreal, Canada"
+         ],
+        "has_part": [
+            "page/save-sd-2016-home", 
+            "page/save-sd-2016-submission",
+            "page/save-sd-2016-organisation",
+            "page/save-sd-2016-accepted-papers",
+            "page/save-sd-2016-program",
+            "page/save-sd-2016-keynote",
+            "page/save-sd-2016-sponsors",
+            "page/save-sd-2016-contacts"
+         ],
+        "has_url": "/save-sd/2016/",
+        "has_embodiment": "website/save-sd-2016-website/manifestation" 
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2016-website/manifestation",
+        "has_type": "web_site",
+        "has_label": "SAVE-SD 2016 Web site (Manifestation)"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-home",
+        "has_representation": "save-sd-2016-home.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-submission",
+        "has_representation": "save-sd-2016-submission.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-organisation",
+        "has_representation": "save-sd-2016-organisation.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-accepted-papers",
+        "has_representation": "save-sd-2016-papers.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-program",
+        "has_representation": "save-sd-2016-program.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-keynote",
+        "has_representation": "save-sd-2016-keynote.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-sponsors",
+        "has_representation": "save-sd-2016-sponsors.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-contacts",
+        "has_representation": "save-sd-2016-contacts.json"
+    }
+]

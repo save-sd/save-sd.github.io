@@ -1,0 +1,17 @@
+All papers must represent original and unpublished work that is not currently under review. Papers will be evaluated according to their significance, originality, technical content, style, clarity, and relevance to the workshop. Papers are to be submitted through the [Easychair Conference Management System](https://easychair.org/conferences/?conf=savesd2015).
+
+All submissions must be written in English. Two formats are possible for the submission: PDF and HTML.
+
+## PDF
+
+A PDF file formatted according to the [ACM SIG Proceedings template](http://www.acm.org/sigs/publications/proceedings-templates).
+
+## HTML
+
+A zip archive containing an HTML file compliant with the *Research Articles in Simplified HTML* (*RASH*) format with the additional stylesheets and scripts included in the [style package](/save-sd/rash/rash.zip) for guaranteeing a correct visualisation of the document on browsers. 
+
+RASH is a XML-based format composed by a few of the available HTML tags and allows one to add RDFa annotations to any element.
+
+The current version of the RASH format (v. 0.3.1) is fully introduced in its [documentation page](/save-sd/rash/index.html) (written in RASH), which includes several examples. The complete RelaxNG grammar of the language is [available online](/save-sd/rash/grammar/rash.rng). The whole style package of this format (which includes the documentation, the examples and the grammar) is also [available](/save-sd/rash/rash.zip) as a ZIP archive. 
+
+We encourage to use the earliest version of browsers for guaranteeing the best visualisation of the RASH documents. In addition, the translation from your RASH submission into the appropriate publishing format that will be used in the official proceedings of the workship **will be totally handled by us** through a semi-automatic process.

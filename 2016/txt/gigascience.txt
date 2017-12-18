@@ -1,0 +1,1 @@
+Free t-shirts will be offered by [GigaScience](http://www.gigasciencejournal.com/) to all participants. GigaScience is the open access journal and repository for data-intensive biological and biomedical research that publishes all research objects (articles + data + code + workflows + VMs/Docker files) to promote more reproducible science.

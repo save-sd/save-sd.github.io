@@ -1,0 +1,5 @@
+The invited speaker for the opening keynote of the workshop will be [Alex Wade](http://research.microsoft.com/en-us/people/awade/) from Microsoft.
+
+Alex Wade is Director of Scholarly Communications at Microsoft Research, currently focused on Microsoft Academic, involving aspects of knowledge acquisition, knowledge representation, intentionality, dialog systems, semantic search and intelligent agents. 
+
+Alex holds a Bachelor's degree in Philosophy from U.C. Berkeley, and a Masters of Librarianship degree from the University of Washington. During his career at Microsoft, Alex has managed Microsoft’s corporate intranet search services, has worked on Windows Search, and has implemented an Open Access policy governing Microsoft Research’s scholarly output. Prior to joining Microsoft, Alex worked in the library systems of the University of Washington, the University of Michigan and the University of California at Berkeley.

@@ -1,0 +1,72 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2015-website",
+        "has_type": "expression_collection",
+        "has_label": "SAVE-SD 2015 Web site",
+        "has_title": "SAVE-SD 2015",
+        "has_description": [
+            "Semantics, Analytics, Visualisation: Enhancing Scholarly Data",
+            "Workshop co-located with the 24th International World Wide Web Conference",
+            "May 19, 2015 (full-day) - Florence, Italy"
+         ],
+        "has_part": [
+            "page/save-sd-2015-home", 
+            "page/save-sd-2015-submission",
+            "page/save-sd-2015-organisation",
+            "page/save-sd-2015-accepted-papers",
+            "page/save-sd-2015-program",
+            "page/save-sd-2015-keynote",
+            "page/save-sd-2015-sponsors",
+            "page/save-sd-2015-contacts"
+         ],
+        "has_url": "/save-sd/2015/",
+        "has_embodiment": "website/save-sd-2015-website/manifestation" 
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2015-website/manifestation",
+        "has_type": "web_site",
+        "has_label": "SAVE-SD 2015 Web site (Manifestation)"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-home",
+        "has_representation": "save-sd-2015-home.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-submission",
+        "has_representation": "save-sd-2015-submission.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-organisation",
+        "has_representation": "save-sd-2015-organisation.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-accepted-papers",
+        "has_representation": "save-sd-2015-papers.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-program",
+        "has_representation": "save-sd-2015-program.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-keynote",
+        "has_representation": "save-sd-2015-keynote.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-sponsors",
+        "has_representation": "save-sd-2015-sponsors.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2015-contacts",
+        "has_representation": "save-sd-2015-contacts.json"
+    }
+]

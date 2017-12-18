@@ -1,0 +1,20 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-sponsors",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2017 sponsors",
+        "has_title": "Sponsors",
+        "has_part": ["page/save-sd-2017-sponsors/springer"],
+        "has_url": "sponsors.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2017-sponsors/springer",
+        "has_type": "section",
+        "has_id": "springer",
+        "has_label": "SAVE-SD 2017 sponsors, section 'Springer'",
+        "has_title": "Springer",
+        "has_url": "txt/springer.txt"
+    }
+]

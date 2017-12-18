@@ -1,0 +1,5 @@
+The invited speaker for the opening keynote of the workshop will be [Paul Groth](http://pgroth.com/) from Elsevier Labs.
+
+Paul Groth holds a Ph.D. in Computer Science from the University of Southampton (2007), has done research at the University of Southern California, and has been an assistant professor in the Web and Media Group at the VU University of Amsterdam and a member of its Network Institute.
+
+His research focuses on dealing with large amounts of diverse contextualised knowledge with a particular focus on the Web and science applications. This includes research in data provenance, Web and data science, knowledge and data integration and knowledge sharing. Paul was co-chair of the W3C Provenance Working Group that created a standard for provenance interchange. He is co-author of Provenance: an Introduction to PROV. Currently, he is a key contributor to [Open PHACTS](http://www.openphacts.org) - a project to develop a provenance-enabled platform for large scale pharmacological information. He blogs at http://thinklinks.wordpress.com. You can find him on [twitter](http://www.twitter.com/pgroth). 

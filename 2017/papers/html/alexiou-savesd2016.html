@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    prefix="
+        schema: http://schema.org/
+        prism: http://prismstandard.org/namespaces/basic/2.0/
+        cito: http://purl.org/spar/cito/
+        dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+				<meta charset="UTF-8"/>
+				<meta name="viewport" content="width=device-width, initial-scale=1"/>
+				<link rel="stylesheet" href="css/bootstrap.min.css"/>
+				<link rel="stylesheet" href="css/rash.css"/>
+				<script src="js/jquery.min.js"> </script>
+				<script src="js/bootstrap.min.js"> </script>
+				<script src="js/rash.js"> </script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+        <!-- Metadata -->
+        <title property="dcterms:title">OpenAIRE LOD services: Scholarly Communication Data as Linked Data </title>
+
+        <!-- Author's data (one or more) -->
+        <meta about="#ga" name="dc.creator" content="Giorgos Alexiou"/>
+        <meta about="#sv" name="dc.creator" content="Sahar Vahdati"/>
+        <meta about="#cl" name="dc.creator" content="Christoph Lange"/>
+        <meta about="#gp" name="dc.creator" content="George Papastefanatos"/>
+        <meta about="#sl" name="dc.creator" content="Steffen Lohmann"/>
+        <meta about="#ga" property="schema:email" content="galexiou@imis.athena-innovation.gr"/>
+        <meta about="#sv" property="schema:email" content="vahdati@uni-bonn.de"/>
+        <meta about="#cl" property="schema:email" content="langec@cs.uni-bonn.de"/>
+        <meta about="#gp" property="schema:email" content="gpapas@imis.athena-innovation.gr"/>
+        <meta about="#sl" property="schema:email" content="steffen.lohmann@iais.fraunhofer.de"/>
+        <link about="#ga" property="schema:affiliation" href="#imis-athena"/>
+		<link about="#ga" property="schema:affiliation" href="#ece-ntua"/>
+        <link about="#sv" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#cl" property="schema:affiliation" href="#iais-FhG"/>
+        <link about="#gp" property="schema:affiliation" href="#imis-athena"/>
+        <link about="#sl" property="schema:affiliation" href="#eis-uni-bonn"/>
+        <link about="#sl" property="schema:affiliation" href="#iais-FhG"/>
+
+        <!-- Affiliations -->
+      <meta about="#imis-athena" property="schema:name" content="Institute for the Management of Information Systems, Athena Research Center, Greece"/>
+	  <meta about="#ece-ntua" property="schema:name" content="School of Electrical and Computer Enginnering, National Technical University of Athens, Greece"/>
+      <meta about="#eis-uni-bonn" property="schema:name" content="Enterprise Information Systems (EIS) department, University of Bonn, Germany"/>
+      <meta about="#iais-FhG" property="schema:name" content="Fraunhofer Institute for Intelligent Analysis and Information Systems (IAIS), Sankt Augustin, Germany"/>
+ <!--
+        <meta property="prism:keyword" content="OpenAIRE"/>
+        <meta property="prism:keyword" content="Linked Data"/>
+        <meta property="prism:keyword" content="Open Access"/>
+        <meta property="prism:keyword" content="Semantic Publishing"/>
+
+
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Markup languages"/>
+        <meta name="dcterms.subject" content="Applied computing,Document management and text processing,Document preparation,Annotation"/>
+         -->
+
+<!--
+         Adding Turtle to the document
+        <script type="text/turtle">
+            @prefix pro: &lt;http://purl.org/spar/pro/&gt; .
+            @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+            &lt;#sp&gt; a foaf:Person ;
+                foaf:givenName "Silvio" ;
+                foaf:familyName "Peroni" ;
+                foaf:homepage &lt;http://www.essepuntato.it&gt; ;
+                pro:holdsRoleInTime [
+                    a pro:RoleInTime ;
+                    pro:withRole pro:author ;
+                    pro:relatesToDocument &lt;&gt;
+                ] .
+
+        </script>
+-->
+        <!-- Adding JSON-LD to the document -->
+<!--
+        <script type="application/ld+json">
+                {
+                    "@context":
+                        {
+                          "nick": "http://xmlns.com/foaf/0.1/nick"
+                        },
+                    "@id": "#sp",
+                    "nick": ["S.", "essepuntato"]
+                }
+        </script>
+-->
+    </head>
+    <body>
+
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>OpenAIRE, the Open Access Infrastructure for Research in Europe, enables search, discovery and monitoring of the publications and datasets from 100,000+ research projects.
+              Increasing the reusability of the OpenAIRE research metadata, connecting them to other open data about projects, publications, people and organizations, and reaching out to further related domains <!-- such as Open Educational Resources -->requires better technical interoperability, which we aim at achieving by exposing the OpenAIRE Information Space as <em>Linked Data</em>.
+              We present a scalable and maintainable architecture that converts the OpenAIRE data from its original HBase NoSQL source to RDF.
+              We furthermore explore how this novel integration of data about research can facilitate scholarly communication.</p>
+       </section>
+
+         <!-- introduction section start -->
+        <section id="intro">
+            <h1>Introduction</h1>
+            <p>OpenAIRE (<em>OA</em>)<a href="#fn6"></a> is the European Union's flagship project for an Open Access Infrastructure for Research; 
+                it enables search, discovery and monitoring of scientific outputs (more than 13M 
+                publications, 12M authors and scientific datasets), harvested from over 6K data 
+                providers and linked to more than 100K research projects funded by EU and 
+                Australian bodies. To increase the interoperability of the OA Information Space (IS), we have published 
+                its data as Linked Open Data (LOD).
+              In our previous work <a href="#MTSR2015"></a>, we have specified a vocabulary for the OA LOD and 
+                experimented with different implementations of publishing the OA IS as LOD.
+              Based on this preliminary work, we have developed and now present a scalable 
+                implementation over Hadoop that can efficiently address the publishing of large 
+                volumes of scholarly data, through which OA can offer three different LOD 
+                services: i. fine-grained exploration of data records about individual entities in the OA IS, 
+                ii. a downloadable all-in-one data dump, and iii. interactive querying via a SPARQL endpoint, i.e., a standardized query interface.  On top of this setup we can add further services, e.g., for visual exploration or data analysis, and proceed with linking the OA data to related datasets.</p>
+            	<p>The OA infrastructure is a data <em>aggregator</em> rather than a primary producer, i.e., it processes information from many different repositories in arbitrary harvesting cycles.
+              In this setting, the process of publishing and interlinking scholarly data as LOD has revealed a number of interesting technical challenges.
+              A typical problem is related to the <em>persistent identification</em> of published entities.
+              Harvesting information from multiple, inherently dynamic and heterogeneous sources leads to duplication of content; thus, deduplication before publishing aggregated data is a common practice.
+              Deduplication identifies groups of entities that represent the same real-world object (e.g. 
+                    author) based on schema and content characteristics <a href="#papadakis2015"></a> and merges them into one representative record.
+                    Content harvesting and deduplication are repeatedly performed to sync the IS with 
+                    updated information at the sources; however, these processes do not guarantee persistent identifiers for the disambiguated entities.
+              Thus, we enhanced the OA Data Model by temporal characteristics to ease tracking changes between updates in the IS. A second challenge relates to the <em>performance</em> of the LOD production process and its <em>scalability</em> 
+                    to the huge data volume.  The process must be performed efficiently, such 
+                    that it seamlessly integrates into the OA data lifecycle, avoiding the 
+                    provisioning of outdated LOD. Therefore, we pursue a parallel Map-Reduce processing 
+                    strategy.</p>
+        
+         <!-- introduction section end -->
+            <!-- approach section start -->
+           <!--<section id="approach">
+						 <h1>Overall Approach</h1> -->
+            <p>Our first step was to model the Linked Data vocabulary (ontology) and 
+                the mappings between the OA Data model entities and the ontology classes.
+                For the publishing process, we convert and assign URIs to all individual records except representative ones. 
+                This is performed incrementally, using temporal annotations, such that 
+                only new or updated records are converted.
+                The result is stored in an RDF triple store.
+              Next, we process and store all information concerning duplicate relations (e.g. 
+                <em>sameAs</em>) between the aforementioned records. The reason for excluding <em>representative</em> records is 
+                that their identification is based on the duplicate records they are derived 
+                from, which, given the evolving nature of the sources and the varying 
+                performance of deduplication, is not persistent across harvesting cycles (even if the original entities stay intact). Instead, we choose to 
+                publish all the original records and explicitly mark them as duplicates with the <code>owl:sameAs</code> 
+                property. Our approach has been implemented as Hadoop workflow, and integrated into the OA production system as a parallel job to all other data processing activities.
+             </p>
+		  </section>
+           <!-- approach section end -->
+           <!-- intro section end -->
+             <!-- LOD section start -->
+            <section id="LOD">
+             <h1>OpenAIRE LOD Framework</h1>
+							<p>The OA LOD framework aims at providing a set of services for publishing OA resources as LOD and providing an infrastructure for data access, retrieval and citation (e.g., a SPARQL endpoint or a LOD API);
+								Furthermore, one of its main purposes is interlinking with popular LOD datasets and services (DBLP, ACM, CiteSeer, DBpedia, etc.) and enriching the OA IS with information from the LOD cloud. The OA LOD is downloadable as a dump through <a href="http://lod.openaire.eu">http://lod.openaire.eu</a><a href="#fn13"></a> and queryable via a SPARQL endpoint. According to the recommended best practices <a href="#Haslhofer2008"></a>, we use content negotiation to handle incoming HTTP requests: requests from Linked Data clients, which ask for an RDF-specific media type (i.e., <code>application/rdf+xml</code>) in their HTTP header, are answered by the RDF store, while all other HTTP requests to <a href="http://lod.openaire.eu">http://lod.openaire.eu</a> are answered with human-readable HTML pages.</p>
+
+							<section id="ONTOLOGY">
+             <h1>OpenAIRE Linked Data Vocabulary</h1>
+             <p>An major requirement for designing the OA LOD vocabulary was to reuse
+               concepts, properties and terms from existing standards and 
+                 initiatives, to maximize the interoperability of the OA LOD 
+                 with other data sources.
+               Given the rich OA data model, the main challenges were to identify the most suitable vocabularies for reuse, but also to define our own, 
+                 i.e., OA specific vocabulary terms for attributes not captured by existing vocabularies.
+               As the schema of the OA LOD, we specified an OWL ontology by mapping the entities of the OA data model to OWL classes, and its attributes and relationships to OWL properties.
+               Vocabularies reused include Dublin Core for general metadata, SKOS for classification and CERIF <a href="#fn12"></a> for research organizations and activities.
+               We linked new, OA-specific terms to reused ones, e.g., by declaring <code>Result</code> a superclass of <a href="http://purl.org/ontology/bibo/AcademicArticle">http://purl.org/ontology/bibo/AcademicArticle</a> and <a href="http://www.w3.org/ns/dcat#Dataset">http://www.w3.org/ns/dcat#Dataset</a>.
+             </p>
+             <p>For the URI scheme, our goal was to assign user-friendly URIs; though this was partially impossible because of inherent restrictions of OA's current way of identifying entities.
+                As <em>base URI</em>, we use our own domain with the <code>data</code> path to distinguish actual resources from pages about the resources, i.e., <code>http://lod.OpenAIRE.eu/data/</code>.
+                Subsequently, we add the type of each resource (Datasource, Organization, Person, Project and Result) represented by a URI, and finally add the unique identification of that resource, i.e., <code>http://lod.openaire.eu/data/organization/{id}</code>.
+							</p>
+            </section>
+        <!-- LOD SUB section start -->
+           <section id="RDF">
+             <h1>LOD Production</h1>
+
+             <p>In the following, we present the technical details of our framework.
+             <!-- START: candidate for cutting off -->
+							 The data of the OA IS is available in three source formats: HBase (a NoSQL database), XML and CSV.
+               A comparison of mappings from each of these three source formats to RDF led to the observation that mapping from HBase 
+                 may be faster in terms of performance, however, mapping from CSV is not significantly slower but at the same time much more maintainable; it 
+                 is thus our preferred option <a href="#MTSR2015"></a>.
+						 </p>
+        <p>The first mapping step involves the RDFization process.
+               This process takes as input <strong>two</strong> CSV files, one with all records, and a second one with all the relations about 
+            duplicate records, converts them to RDF and stores them as separate named graphs in our RDF triple store. The first graph, which holds all OA entities, is the largest graph and is updated incrementally based on 
+            <strong>temporal</strong> properties that we have introduced in both the OA vocabulary and data model while the second graph, which holds all the relationships, is a small graph that is dropped 
+            and recreated in every run of our workflow following the output of the deduplication 
+            process.</p>
+
+						<!-- <p>
+							 We followed this specific strategy mostly for performance-related issues: It is more efficient to drop a small graph and re-create it in every run than computing the differences in the relations between two versions of the dataset each time.
+						 	 Also for performance-related issues, we exploit the power of parallel processing of the Apache Hadoop map-reduce framework in order to accomplish an efficient conversion to RDF.
+						 </p> -->
+             <figure id="figure_1">
+                    <p>
+                        <img src="img/RDFization-workflow.png" alt="rdfization"/>
+                    </p>
+                    <figcaption>RDFization of the OpenAIRE IS with Hadoop Parallel Processing.</figcaption>
+            </figure>
+            <p><a href="#figure_1"></a> shows the functionality of our approach in terms of M/R jobs.
+						In the first step, the CSV file that contains the entities is loaded (<em>input</em>) and automatically split (<em>splitting</em>) by the Hadoop framework into smaller chunks and distributed between the mappers.
+            The entities are split in <em>key-value pairs</em>, where the <em>key</em> is an ID auto-assigned by the framework and the <em>value</em> is the actual entity.
+            Then, mappers parse the CSV and map the entities from the CSV according to <em>map(ID, value)</em> where <em>ID=OAID{ID}</em> and <em>value=entity_attributes</em>.
+						In that stage, we omit entities whose last modification date precedes the last execution date of the process (<em>pruning</em>).
+            The output is usually a small subset of our initial input, containing only the entities that have changed since the last execution of our workflow.
+						</p>
+        <p>
+              Subsequently, the output is <em>shuffled and grouped by ID</em> and distributed to the <em>reducers</em>.
+              <em>ID=OAID{ID}</em> was selected as key because Hadoop's default hashcode-based partitioning algorithm distributes entities uniformly to reducers based on their IDs (<code>ID.hashCode() mod numReduceTasks</code>).
+			Finally, the <em>reducers</em> extract each input entity's attributes, convert them to RDF and store them directly in the RDF store (<em>RDFizing and storing</em>).
+            We insert the data directly to the RDF store instead of saving it to HDFS and then 
+              loading it to our database. With the use of appropriate connection pooling, our RDF store (OpenLink Virtuoso) can scale and handle efficiently the aforementioned approach largely automatically.</p>
+            </section>
+
+           <!-- LOD SUB section end -->
+           </section>
+           <!-- LOD section end -->
+
+      <!-- related work section start -->
+        <section id="relwork">
+            <h1>Related Work</h1>
+    				<p>OAI2LOD Server <a href="#Haslhofer2008"></a> is a tool designed to publish Linked Data content from aggregators and repositories which are compatible with the Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH).
+            While it follows most of the Linked Data directives concerning URI design, it currently does not sufficiently address the problem of URI persistence and data volume, in terms of scalability <a href="#Heath2011"></a>.</p>
+            <p>Among the first adopters of the Linked Data approach in the digital libraries community was the Library of Congress (LoC) <a href="#Summers2008"></a>.
+            It exposes millions of data records from 175 libraries describing various types of resources, including persons, books, authors, subjects, etc.
+            The records were made available by building a straightforward RDF wrapper on top of the integrated library system.</p>
+            <p>Concerning Data Aggregators, one of the biggest efforts of publishing RDF data from aggregated data is <em>data.europeana.eu</em> <a href="#Haslhofer2011"></a>, with its data source being the European Union's digital library Europeana<a href="#fn7"></a>.
+            There is an ongoing effort of making Europeana metadata available as LOD; however, scaling issues are again not addressed sufficiently and RDF stores are used for read-only access after an initial dump import.
+              Moreover, the persistence of the URIs is a constant challenge in that approach:
+            Despite having a robust URI design, Europeana is an aggregator and its collections are constantly being re-harvested, which leads to frequent changes of URIs.
+            </p>
+          </section>
+		  <!-- related work section end -->
+
+             <!-- examples section start -->
+            <section id="conclusion">
+              <h1>Conclusion and Ongoing Work</h1>
+              <p>We have presented the architecture that performs the efficient large-scale translation of the OA research metadata to Linked Data at <a href="http://lod.openaire.eu">http://lod.openaire.eu</a>.
+                 We will extend this setup to interlink OpenAIRE with related datasets.
+                 While the implementation of the efficient incremental interlinking workflow is still in progress, we have already identified candidate datasets to interlink with and are in the process of determining rules to match OpenAIRE entities to entities in other datasets, and we made an initial collection of scholarly communication use cases that our interlinked datasets will support.
+              </p>
+                <p>
+                <strong>Acknowledgments.</strong> This work has been partially funded by EU project OpenAIRE2020 (643410) and DFG grant AU 340/9-1.
+                </p>
+            <!--</section>-->
+            </section>
+
+        <!-- References -->
+        <section id="bibreflist" role="doc-bibliography">
+            <h1>References</h1>
+            <ol>
+              <li id="papadakis2015" role="doc-biblioentry"><p>Papadakis, G., Alexiou, G., Papastefanatos, G.,  &amp; Koutrika, G. (2015). Schema-agnostic vs schema-based configurations for blocking methods on homogeneous data. Proceedings of the VLDB Endowment, 9(4), 312-323.</p></li>
+              <li id="Haslhofer2008" role="doc-biblioentry"><p>Haslhofer, B., &amp; Schandl, B. (2008). The OAI2LOD Server: Exposing OAI-PMH metadata as linked data. </p></li>
+              <li id="Heath2011" role="doc-biblioentry"><p>Heath, T. &amp; Bizer, C. (2011). Linked data: Evolving the web into a global data space. Synthesis lectures on the semantic web: theory and technology. 1(1): 1-136</p></li>
+              <li id="Haslhofer2011" role="doc-biblioentry"><p>Haslhofer B., &amp; Isaac A. (2011). data.europeana.eu: The Europeana linked open data pilot. In: International Conference on Dublin Core and Metadata Applications 2011 Sep 21. 94-104.</p></li>
+
+              <li id="MTSR2015" role="doc-biblioentry"><p>Vahdati, S., Karim, F., Huang, J.-Y., &amp; Lange, C. (2015). Mapping Large Scale Research Metadata to Linked Data: A Performance Comparison of HBase, CSV and XML. In Metadata and Semantics Research, CCIS 544, Springer.</p></li>
+              <li id="Vahdati2015" role="doc-biblioentry"><p>Vahdati, S., Lange, C., Alexiou, G., &amp; Papastefanatos, G., Deliverable 8.2-OpenAIRE LOD Services, 2015.</p></li>
+              <li id="Summers2008" role="doc-biblioentry"><p>Summers, E., Isaac, A., Redding, C., &amp; Krech, D. (2008). LCSH, SKOS and linked data. arXiv preprint arXiv:0805.2855. </p></li>
+            </ol>
+        </section>
+
+        <!-- Footnotes -->
+        <section id="fnlist" role="doc-footnotes">
+            <section id="fn6" role="doc-footnote">
+			<p><a href="http://www.openaire.eu">http://www.openaire.eu</a></p>
+            </section>
+            <section id="fn7" role="doc-footnote">
+			<p><a href="http://www.europeana.eu">http://www.europeana.eu</a></p>
+            </section>
+            <section id="fn12" role="doc-footnote">
+			<p><a href="http://www.eurocris.org/cerif/main-features-cerif">Common European Research Information Format</a></p>
+            </section>
+            <section id="fn13" role="doc-footnote">
+			<p>For the moment, this URL redirects to <a href="http://beta.lod.openaire.eu">http://beta.lod.openaire.eu</a> to indicate that the OpenAIRE LOD Services are currently in beta.</p>
+            </section>
+        </section>
+    </body>
+</html>
+
+<!--  LocalWords:  OpenAIRE foaf sp givenName Silvio familyName HBase
+ -->
+<!--  LocalWords:  Peroni holdsRoleInTime RoleInTime withRole OAI PMH
+ -->
+<!--  LocalWords:  relatesToDocument SRU SRW OpenURL CERIF RDFization
+ -->
+<!--  LocalWords:  ExternalReference RDFized OpenAIRE's rdf xml LOV
+ -->
+<!--  LocalWords:  CiteSeer Datasource OAID Hadoop's hashcode HDFS WS
+ -->
+<!--  LocalWords:  RDFizing OpenLink BibBase CEUR ODC ePrint JDBC sd
+ -->
+<!--  LocalWords:  RQ Triplify LoC Europeana Papadakis Alexiou VLDB
+ -->
+<!--  LocalWords:  Papastefanatos Koutrika Auer Dietzold Lehmann th
+ -->
+<!--  LocalWords:  Hellmann Aumueller Berners Bizer ISWC Springer Sep
+ -->
+<!--  LocalWords:  Haslhofer Schandl Ciancarini Iorio Nuzzolese CiTO
+ -->
+<!--  LocalWords:  Vitali Presutti d'Amato Gandon d'Aquin Staab ESWC
+ -->
+<!--  LocalWords:  Tordai Sporny Prud'hommeaux Carothers Lanthaler LD
+ -->
+<!--  LocalWords:  Schreiber Ngomo Poggi Zhao Redding Krech LCSH de
+ -->
+<!--  LocalWords:  Spanos Stavrou Mitrou Sompel Beit Arie Volz Gaedke
+ -->
+<!--  LocalWords:  Kobilarov LDOW Vahdati bla essepuntato sameAs OA's
+ -->
+<!--  LocalWords:  DFG Karim CCIS
+ -->

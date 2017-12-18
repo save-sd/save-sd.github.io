@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="../grammar/rash.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><html xmlns="http://www.w3.org/1999/xhtml" prefix="         schema: http://schema.org/         prism: http://prismstandard.org/namespaces/basic/2.0/         fabio: http://purl.org/spar/fabio/         cito: http://purl.org/spar/cito/         rash: http://cs.unibo.it/save-sd/rash/   dcterms: http://purl.org/dc/terms/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/rash.css"/>
+        
+        <script src="../js/jquery.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="../js/bootstrap.min.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <script src="../js/rash.js"><!--//--><![CDATA[ ]]><!--//--></script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+        
+        <!-- Metadata -->
+        <title property="dcterms:title">Increasing the Productivity of Scholarship: The Case for Knowledge Graphs -- SAVE-SD 2015 Keynote Talk</title>
+        
+        <!-- Author's data (one or more) -->
+        <meta about="http://orcid.org/0000-0003-0183-6910" typeof="schema:Person" property="schema:name" name="dc.creator" content="Paul Groth"/>
+        <meta about="http://orcid.org/0000-0003-0183-6910" property="schema:email" content="p.groth@elsevier.com"/>
+        <link about="http://orcid.org/0000-0003-0183-6910" property="schema:affiliation" href="#elsevier"/>
+      
+        <!-- Affiliations -->
+        <meta about="#elsevier" typeof="schema:Organization" property="schema:name" content="Elsevier, Amsterdam, The Netherlands"/>
+        
+        <meta name="dcterms.subject" content="E.0,Data,General"/>
+        <meta property="prism:keyword" content="scholarship"/>
+        <meta property="prism:keyword" content="scholarly knowledge graphs"/>
+        
+        <script type="text/turtle"><![CDATA[
+        
+            @prefix fabio: <http://purl.org/spar/fabio/> . 
+            @prefix dcterms: <http://purl.org/dc/terms/> .
+            <> a fabio:WorkshopPaper ;
+                dcterms:creator <http://orcid.org/0000-0003-0183-6910> .
+            
+        ]]></script>
+   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><!--//--><![CDATA[ ]]><!--//--></script></head>
+   <body>
+       <!-- Abstract -->
+       <section role="doc-abstract">
+           <h1>Abstract</h1>
+           <p>Over the past several years, we have seen an explosion in the number of tools and services that enable scholars to improve their personal productivity whether it is socially enabled reference managers or cloud-hosted experimental environments. However, we have yet to see a step-change in the productivity of the system of scholarship as a whole.</p> 
+           <p>While there are certainly broader social reasons for this, in this talk I argue that we are just now at a technical position to create radical change in how scholarship is performed. Specifically, I will discuss how recent advances in machine reading, developments in open data and explicit social networks, can be used to create scholarly knowledge graphs. These graphs can connect the underlying intellectual corpus with ongoing discourse allowing the development of algorithms that hypothesize, filter and reflect alongside humans.</p>
+       </section>
+       
+       <!-- BIO -->
+       <section>
+           <h1>Biography</h1>
+           <p>Paul Groth is <em>Distruptive Technology Director</em> at <a href="http://www.elsevier.com">Elsevier Labs</a>. He holds a Ph.D. in Computer Science from the <a href="http://www.southampton.ac.uk/">University of Southampton</a> (2007) and has done research at the <a href="http://www.usc.edu/">University of Southern California</a> and the <a href="http://www.vu.nl">VU University Amsterdam</a>.</p> 
+           <p>His research focuses on dealing with large amounts of diverse contextualized knowledge with a particular focus on the web and science applications. This includes research in data provenance, data science, data integration and knowledge sharing. Paul was co-chair of the W3C Provenance Working Group that created a standard for provenance interchange.</p> 
+           <p>He is co-author of <em>Provenance: an Introduction to PROV</em> <a href="#prov"> </a>, <em>The Semantic Web Primer: 3rd Edition</em> <a href="#swprimer"> </a>, as well as numerous <a href="http://scholar.google.com/citations?user=0tHSHCIAAAAJ&amp;hl=en">academic articles</a>. He blogs at <a href="http://thinklinks.wordpress.com">http://thinklinks.wordpress.com</a>. You can find him on twitter: <a href="https://twitter.com/pgroth">@pgroth</a>.</p>
+       </section>
+       <section role="doc-bibliography">
+           <h1>References</h1>
+           <ul>
+               <li id="prov" role="doc-biblioentry"><p>Luc Moreau and Paul Groth (2013). Provenance: An Introduction to PROV. Synthesis Lectures on the Semantic Web: Theory and Technology. Morgan &amp; Claypool. <a property="cito:cites" href="http://dx.doi.org/10.2200/S00528ED1V01Y201308WEB007">http://dx.doi.org/10.2200/S00528ED1V01Y201308WEB007</a></p></li>
+               <li id="swprimer" role="doc-biblioentry"><p>Grigoris Antoniou, Paul Groth, Frank van Harmelen and Rinke Hoekstra (2012). A Semantic Web Primer. Third edition. Computer Science and Intelligent Systems. MIT Press. <span property="cito:cites" resource="urn:isbn:978-0-262-01828-9">ISBN: 978-0-262-01828-9</span></p></li>
+           </ul>
+       </section> 
+    </body>
+</html>

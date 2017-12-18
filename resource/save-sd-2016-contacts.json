@@ -1,0 +1,32 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-contacts",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2016 contacts",
+        "has_title": "Contacts and Social",
+        "has_part": [
+            "page/save-sd-2016-contacts/contacts",
+            "page/save-sd-2016-contacts/social"
+        ],
+        "has_url": "contacts.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-contacts/contacts",
+        "has_type": "section",
+        "has_id": "contacts",
+        "has_label": "SAVE-SD 2016 contacts, section 'Contacts'",
+        "has_title": "Contacts",
+        "has_url": "txt/contacts.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2016-contacts/contacts",
+        "has_type": "section",
+        "has_id": "social",
+        "has_label": "SAVE-SD 2016 contacts, section 'Social'",
+        "has_title": "Social",
+        "has_url": "txt/social.txt"
+    }
+]

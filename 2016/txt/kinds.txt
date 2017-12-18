@@ -1,0 +1,7 @@
+SAVE-SD welcomes the submission of original research and application papers dealing with the three aforementioned fields. We encourage theoretical, methodological, empirical and applications papers. We appreciate the submission of papers incorporating links to datasets and other material used for evaluation as well as to live demos and software source code.
+
+We invite four kinds of submissions:
+- full research papers (max. 15 pages)
+- position papers (max. 10 pages)
+- demo papers (max. 5 pages)
+- poster papers (max. 5 pages)

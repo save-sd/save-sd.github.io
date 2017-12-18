@@ -1,0 +1,7 @@
+In order to evaluate the submitted papers, we have three different [program committees (PCs)](organisation.html), i.e.:
+
+- the *Senior PC*, whose members will act as meta-reviewers and have the crucial role of balancing the scores provided by the reviews from the other two PCs (see below);
+- the *Industrial PC*, who will evaluate the submissions from an industrial perspective mainly – by assessing how much the theories/applications described in the papers do/may influence (positively or negatively) the publishing domain and whether they could be concretely adopted by publishers and scholarly data providers;
+- the *Academic PC*, who will evaluate the papers from an academic perspective mainly – by assessing the quality of the research described in such papers.
+
+All submissions will be reviewed by (at least) one Senior PC member, one Industrial PC member and two Academic PC members. The final decision of acceptance/rejection will be made in consensus by the chairs.
