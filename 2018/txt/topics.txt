@@ -8,7 +8,6 @@ We would encourage submission of papers covering, but not limited to, one or mor
   - From digital libraries of scholarly papers to Linked Open Datasets: models, applicability and challenges
   - Definition and description of scholarly publishing processes
   - Modelling licences for scholarly documents and data
-
 - **Analytics**
   - Assessing the quality and/or trust of scholarly data
   - Pattern discovery of scholarly data
@@ -21,7 +20,6 @@ We would encourage submission of papers covering, but not limited to, one or mor
   - Citation generation
   - Automatic semantic enhancement of existing scholarly libraries and papers
   - Reconstruction, forecasting and monitoring of scholarly data
-
 - **Visualisation & Interaction**
   - Novel user interfaces for interaction with paper, metadata, content, sofware and data
   - Visualisation of citation networks according to multiple dimensions (e.g., citation counting, citation functions, kinds of citing/cited entities)
