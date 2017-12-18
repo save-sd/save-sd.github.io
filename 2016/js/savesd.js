@@ -1,6 +1,6 @@
 var app = angular.module('savesd', ['ui.bootstrap', 'angular.filter', 'angulike']);
 app.controller('savesdCtrl', function($scope, $http, $interpolate) {
-    var context = "/save-sd/context/context-local.json";
+    var context = "/context/context.json";
     
     $scope.createHTML = function(id, source) {
         $http.get(source).success(function(data) {
