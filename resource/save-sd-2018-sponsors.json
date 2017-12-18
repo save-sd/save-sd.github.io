@@ -1,0 +1,29 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-sponsors",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2018 sponsors",
+        "has_title": "Sponsors",
+        "has_part": ["page/save-sd-2018-sponsors/springer", "page/save-sd-2018-sponsors/l3s"],
+        "has_url": "sponsors.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-sponsors/l3s",
+        "has_type": "section",
+        "has_id": "l3s",
+        "has_label": "SAVE-SD 2018 sponsors, section 'L3S'",
+        "has_title": "L3S",
+        "has_url": "txt/l3s.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-sponsors/springer",
+        "has_type": "section",
+        "has_id": "springer",
+        "has_label": "SAVE-SD 2018 sponsors, section 'Springer'",
+        "has_title": "Springer",
+        "has_url": "txt/springer.txt"
+    }
+]

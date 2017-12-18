@@ -1,0 +1,71 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2018 submission",
+        "has_title": "Submission",
+        "has_part": [
+            "page/save-sd-2018-submission/dates",
+            "page/save-sd-2018-submission/instructions",
+            "page/save-sd-2018-submission/submission-kinds",
+            "page/save-sd-2018-submission/review-process", 
+            "page/save-sd-2018-submission/publication-venues",
+            "page/save-sd-2018-submission/award"],
+        "has_url": "submission.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/dates",
+        "has_type": "section",
+        "has_id": "dates",
+        "has_label": "SAVE-SD 2018 submission, section 'Dates'",
+        "has_title": "Dates",
+        "has_url": "txt/dates.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/instructions",
+        "has_type": "section",
+        "has_id": "instructions",
+        "has_label": "SAVE-SD 2018 submission, section 'Instructions'",
+        "has_title": "Instructions",
+        "has_url": "txt/instructions.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/submission-kinds",
+        "has_type": "section",
+        "has_id": "kinds",
+        "has_label": "SAVE-SD 2018 submission, section 'Kinds of papers'",
+        "has_title": "Kinds of paper",
+        "has_url": "txt/kinds.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/review-process",
+        "has_type": "section",
+        "has_id": "review",
+        "has_label": "SAVE-SD 2018 submission, section 'Evaluation of submissions'",
+        "has_title": "Review process and evaluation of submissions",
+        "has_url": "txt/reviews.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/publication-venues",
+        "has_type": "section",
+        "has_id": "publication",
+        "has_label": "SAVE-SD 2018 submission, section 'Publication venues'",
+        "has_title": "Proceedings and Special Issue",
+        "has_url": "txt/publications.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission/award",
+        "has_type": "section",
+        "has_id": "award",
+        "has_label": "SAVE-SD 2018 submission, section 'Award'",
+        "has_title": "Best paper award",
+        "has_url": "txt/awards.txt"
+    }
+]

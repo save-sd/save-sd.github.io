@@ -1,0 +1,52 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2018 organisation",
+        "has_title": "Organisation",
+        "has_part": [
+            "page/save-sd-2018-organisation/organising-committee",
+            "page/save-sd-2018-organisation/senior-program-committee",
+            "page/save-sd-2018-organisation/industrial-program-committee",
+            "page/save-sd-2018-organisation/academic-program-committee"
+        ],
+        "has_url": "organisation.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation/organising-committee",
+        "has_type": "section",
+        "has_id": "oc",
+        "has_label": "SAVE-SD 2018 organisation, section 'Workshop Chairs'",
+        "has_title": "Workshop Chairs",
+        "has_url": "txt/chairs.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation/senior-program-committee",
+        "has_type": "section",
+        "has_id": "spc",
+        "has_label": "SAVE-SD 2018 organisation, section 'Senior Program Committee'",
+        "has_title": "Senior Program Committee",
+        "has_url": "txt/senior-pc.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation/industrial-program-committee",
+        "has_type": "section",
+        "has_id": "ipc",
+        "has_label": "SAVE-SD 2018 organisation, section 'Industrial Program Committee'",
+        "has_title": "Industrial Program Committee",
+        "has_url": "txt/industrial-pc.txt"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation/academic-program-committee",
+        "has_type": "section",
+        "has_id": "apc",
+        "has_label": "SAVE-SD 2018 organisation, section 'Academic Program Committee'",
+        "has_title": "Academic Program Committee",
+        "has_url": "txt/academic-pc.txt"
+    }
+]

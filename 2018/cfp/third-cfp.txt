@@ -1,0 +1,111 @@
+CFP - SAVE-SD 2017 Third Call - Best HTML paper award
+==== Third Call for Papers ====
+2017 Workshop on Semantics, Analytics, Visualisation: Enhancing Scholarly Data (SAVE-SD 2017)
+Date: April 3 or 4, 2017
+Venue: Perth, Western Australia (co-located with WWW 2017)
+Twitter: @savesdworkshop
+Twitter Hashtag: #savesd2017
+Website: http://cs.unibo.it/save-sd/2017/index.html
+Workshop chairs:
+- Alejandra Gonzalez-Beltran (University of Oxford, UK)
+- Francesco Osborne (The Open University, UK)
+- Silvio Peroni (University of Bologna, Italy)
+- Sahar Vahdati (University of Bonn, Germany)
+
+# HIGHLIGHTS
+- Submission deadline extended: January 31, 2017
+- Four formats for submissions: HTML, ODT, DOCX, and PDF
+- Best HTML paper award sponsored by Springer Nature
+- LNCS Proceedings and Data Science Journal Special Issue
+
+# IMPORTANT DATES
+- Submission deadline: January 31, 2017 (23:59 Hawaii Standard Time)
+- Acceptance notification: February 9, 2017 (23:59 Hawaii Standard Time)
+- Camera ready deadline: March 15, 2017
+- Post-proceedings deadline: April 30, 2017
+
+
+# DESCRIPTION
+
+After the great success of the past two editions, we are pleased to announce SAVE-SD 2017, which wants to bring together publishers, companies and researchers from different fields (including Document and Knowledge Engineering, Semantic Web, Natural Language Processing, Scholarly Communication, Bibliometrics, Human-Computer Interaction, Information Visualisation, Bioinformatics, and Life Sciences) in order to bridge the gap between the theoretical/academic and practical/industrial aspects in regards to scholarly data.
+
+The following topics will be addressed:
+- semantics of scholarly data, i.e. representing in a semantic way, categorising, connecting and integrating scholarly data, in order to foster reusability and knowledge sharing;
+- analytics on scholarly data, i.e. designing and implementing novel and scalable algorithms for knowledge extraction with the aim of understanding research dynamics, forecasting research trends, fostering connections between groups of researchers, informing research policies, analysing and interlinking experiments and deriving new knowledge;
+- visualisation of and interaction with scholarly data, i.e. providing novel user interfaces and applications for navigating and making sense of scholarly data and highlighting their patterns and peculiarities.
+
+
+# TOPICS OF INTEREST
+
+We would encourage submission of papers covering, but not limited to, one or more of the following topics:
+
+Semantics:
+- Data models (e.g., ontologies, vocabularies, schemas) for the description of scholarly data and the linking between scholarly data and academic papers that report or cite them
+- Description of citations and citation networks
+- Theoretical models describing the rhetorical and argumentative structure of scholarly papers and their application in practice
+- Description and use of provenance information of scholarly data
+- From digital libraries of scholarly papers to Linked Open Datasets: models, applicability and challenges
+- Definition and description of scholarly publishing processes
+- Modelling licences for scholarly documents and data
+
+Analytics:
+- Assessing the quality and/or trust of scholarly data
+- Pattern discovery of scholarly data
+- Citation analysis and prediction
+- Scientific claims identification from textual contents
+- New indicators for measuring the quality and relevance of research
+- Comparison between standard metrics (e.g., h-index, impact factor, citation counting) and alternative metrics in real-case scenarios
+- Automatic or semi-automatic approaches to making sense of research dynamics
+- Content- and data-based semantic similarity of scholarly papers
+- Citation generation
+- Automatic semantic enhancement of existing scholarly libraries and papers
+- Reconstruction, forecasting and monitoring of scholarly data
+
+Visualisation & Interaction:
+- Novel user interfaces for interaction with paper, metadata, content, and data
+- Visualisation of citation networks according to multiple dimensions (e.g., citation counting, citation functions, kinds of citing/cited entities)
+- Visualisation of related papers or data according to multiple dimensions (semantic similarity of abstracts, keywords, etc.)
+- Applications for making sense of scholarly data
+- Usability studies on existing interfaces (e.g., Web sites, Web applications, smartphone apps) for browsing scholarly data
+- Scholarly data and ubiquity: accessing scholarly information from multiple devices (PC, tablet, smartphones)
+- Applications for the (semi-)automatic annotation of scholarly papers
+
+
+# SUBMISSIONS
+
+SAVE-SD welcomes the submission of original research and application papers dealing with the three aforementioned fields. We encourage theoretical, methodological, empirical and applications papers. We appreciate the submission of papers incorporating links to datasets and other material used for evaluation as well as to live demos and software source code.
+
+All submissions must be written in English.
+Several formats are possible for the submission: HTML (which is strongly encouraged), DOCX, ODT, and PDF. For details: http://cs.unibo.it/save-sd/2017/submission.html.
+
+We invite four kinds of submissions:
+- full research papers (max. 8300 words)
+- position papers (max. 5500 words)
+- demo papers (max. 2800 words)
+- poster papers (max. 2800 words)
+
+All the aforementioned limits include metadata (title, authors, keywords, abstract), acknowledgements, references and the whole content of the paper. Figures, tables, and listings count 300 words each.
+
+Papers have to be submitted through Springer Nature Online Conference Service: https://ocs.springer.com/ocs/home/SAVE-SD2017
+
+
+# EVALUATION OF SUBMISSIONS
+
+In order to evaluate the submitted papers, we have three different programme committees (PCs), i.e.:
+- the Senior PC, whose members will act as meta-reviewers and have the crucial role of balancing the scores provided by the reviews from the other two PCs (see below);
+- the Industrial PC, who will evaluate the submissions from an industrial perspective mainly – by assessing how much the theories/applications described in the papers do/may influence (positively or negatively) the publishing domain and whether they could be concretely adopted by publishers and scholarly data providers;
+- the Academic PC, who will evaluate the papers from an academic perspective mainly – by assessing the quality of the research described in such papers.
+
+All submissions will be reviewed (at least) by one Senior PC member, one Industrial PC member and two Academic PC members. The final decision of acceptance/rejection will be made in consensus by the chairs.
+
+
+# PUBLICATION VENUES
+
+All the papers of SAVE-SD will be made available on the workshop website and published in a Lecture Notes in Computer Science volume by Springer Nature (http://www.springer.com/lncs). The LNCS volume will be published after the workshop in order to give the authors an opportunity to revise their papers in the light of the discussions of their works at the workshop. Note that the WWW 2017 organisers will require that at least one of the authors of the papers accepted to be registered at the workshop.
+
+We are also pleased to announce that the authors of selected papers (of any type) of the workshop will be invited to submit an extended version of their works to a special issue that will be published on the Data Science Journal by IOS Press (http://datasciencehub.net/).
+
+
+# AWARD
+
+An award of 250 euros as a voucher for buying Springer Nature's products, kindly sponsored by Springer Nature, will be assigned to the best workshop submission in HTML. The decision will be taken by considering the quality of the markup (i.e., the less syntactical mistakes there are in the markup, the better) and the number of RDF statements defined.

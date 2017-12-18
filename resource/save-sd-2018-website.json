@@ -1,0 +1,54 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2018-website",
+        "has_type": "expression_collection",
+        "has_label": "SAVE-SD 2018 Web site",
+        "has_title": "SAVE-SD 2018",
+        "has_description": [
+            "Semantics, Analytics, Visualisation: Enhancing Scholarly Data",
+            "Workshop co-located with the 27th International World Wide Web Conference",
+            "24 April 2018 - Lyon, France"
+         ],
+        "has_part": [
+            "page/save-sd-2018-home", 
+            "page/save-sd-2018-submission",
+            "page/save-sd-2018-organisation",
+            "page/save-sd-2018-sponsors",
+            "page/save-sd-2018-contacts"
+         ],
+        "has_url": "/save-sd/2018/",
+        "has_embodiment": "website/save-sd-2018-website/manifestation" 
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "website/save-sd-2018-website/manifestation",
+        "has_type": "web_site",
+        "has_label": "SAVE-SD 2018 Web site (Manifestation)"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-home",
+        "has_representation": "save-sd-2018-home.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-submission",
+        "has_representation": "save-sd-2018-submission.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-organisation",
+        "has_representation": "save-sd-2018-organisation.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-sponsors",
+        "has_representation": "save-sd-2018-sponsors.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-contacts",
+        "has_representation": "save-sd-2018-contacts.json"
+    }
+]

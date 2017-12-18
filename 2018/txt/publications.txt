@@ -1,0 +1,4 @@
+All the papers of SAVE-SD will be made available on the workshop website and published in a [Lecture Notes in Computer Science](http://www.springer.com/lncs) volume by [Springer Nature](http://www.springer.com) (final confirmation pending). The LNCS volume will be published after the workshop in order to give the authors an opportunity to revise their papers in the light of the discussions of their works at the workshop, and it will include the paper accepted in SAVE-SD 2017 and SAVE-SD 2018. 
+
+Please note that at least one author is required to register for the conference and to present their work at the workshop, in order for the paper to be included in the proceedings.
+We are also pleased to announce that the authors of selected papers (of any [type](#kinds)) of the workshop will be invited to submit an extended version of their works to a special issue that will be published on the [Data Science Journal](http://datasciencehub.net/) by IOS Press.

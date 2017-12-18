@@ -1,0 +1,9 @@
+- Workshop papers and reviews published in the workshop’s website
+
+- Workshop proceedings in the renowned Springer Nature LNCS (final confirmation pending)
+
+- Four formats for submissions: HTML, ODT, DOCX, and PDF
+
+- Best paper award sponsored by Springer Nature
+
+- Special issue of SAVE-SD 2017 and SAVE-SD 2018 selected extended papers on the [Data Science Journal](http://datasciencehub.net/) by IOS Press
