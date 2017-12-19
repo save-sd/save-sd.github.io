@@ -105,7 +105,6 @@ While we need that the authors submit through that submission system in order to
 Early-bird registrations deadline of the workshop is aligned with the conference registration. If an article is approved, at least one author must register for the conference and present it during the SAVE-SD workshop.
 
 
-
 # REVIEW PROCESS AND EVALUATION OF SUBMISSIONS
 
 The submitted papers will be publicly posted on the SAVE-SD 2018 web site upon submission. The authors will be known to reviewers (i.e., submissions are NOT anonymous).
@@ -121,7 +120,7 @@ All submissions will be reviewed (at least) by one Senior PC member, one Industr
 
 # PUBLICATION VENUES
 
-All the papers of SAVE-SD will be made available on the workshop website and published in a Lecture Notes in Computer Science (http://www.springer.com/lncs) volume by Springer Nature (final confirmation pending). The LNCS volume will be published after the workshop in order to give the authors an opportunity to revise their papers in the light of the discussions of their works at the workshop, and it will include the paper accepted in SAVE-SD 2017 and SAVE-SD 2018. 
+All the papers of SAVE-SD will be made available on the workshop website and published in a Lecture Notes in Computer Science (http://www.springer.com/lncs) volume by Springer Nature (final confirmation pending). The LNCS volume will be published after the workshop in order to give the authors an opportunity to revise their papers in the light of the discussions of their works at the workshop, and it will include the papers accepted in SAVE-SD 2017 and SAVE-SD 2018. 
 
 Please note that at least one author is required to register for the conference and to present their work at the workshop, in order for the paper to be included in the proceedings.
 We are also pleased to announce that the authors of selected papers (of any type) of the workshop will be invited to submit an extended version of their works to a special issue that will be published on the Data Science Journal by IOS Press (http://datasciencehub.net/).
