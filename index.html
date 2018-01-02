@@ -17,25 +17,25 @@
 
   <link rel="shortcut icon" href="../img/favicon.ico"><!-- Bug fix --></link>
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- Bug fix --></link>
+  <link href="../css/bootstrap.min.css" rel="stylesheet"><!-- Bug fix --></link>
   <!-- Documentation extras -->
-  <link href="css/docs.min.css" rel="stylesheet"><!-- Bug fix --></link>
+  <link href="../css/docs.min.css" rel="stylesheet"><!-- Bug fix --></link>
   <!-- SAVE-SD extras -->
-  <link href="css/savesd.css" rel="stylesheet"><!-- Bug fix --></link>
+  <link href="../css/savesd.css" rel="stylesheet"><!-- Bug fix --></link>
 
   <!--[if lt IE 9]><script src="../js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="js/ie-emulation-modes-warning.js"> </script>
-  <script src="js/jquery.min.js"> </script>
-  <script src="js/bootstrap.min.js"> </script>
-  <script src="js/docs.min.js"> </script>
+  <script src="../js/ie-emulation-modes-warning.js"> </script>
+  <script src="../js/jquery.min.js"> </script>
+  <script src="../js/bootstrap.min.js"> </script>
+  <script src="../js/docs.min.js"> </script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="js/ie10-viewport-bug-workaround.js"> </script>
+  <script src="../js/ie10-viewport-bug-workaround.js"> </script>
   <!-- Angular -->
-  <script src="js/angular.min.js"> </script>
-  <script src="js/angular-filter.min.js"> </script>
-  <script src="js/ui-bootstrap-tpls-0.11.2.min.js"> </script>
-  <script src="js/marked.min.js"> </script>
-  <script src="js/angulike.js"> </script>
+  <script src="../js/angular.min.js"> </script>
+  <script src="../js/angular-filter.min.js"> </script>
+  <script src="../js/ui-bootstrap-tpls-0.11.2.min.js"> </script>
+  <script src="../js/marked.min.js"> </script>
+  <script src="../js/angulike.js"> </script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -43,8 +43,10 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  <!-- Favicons: TODO -->
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+  <!-- <link rel="icon" href="/favicon.ico"> -->
 </head>
-
 <body ng-controller="savesdCtrl" class="ng-cloak">
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 <!-- Docs master nav -->
@@ -89,6 +91,32 @@
 </div>
 <!-- /end Header -->
 
+<!-- Content -->
+<div class="container bs-docs-container" id="content">
+  <div class="row">
+    <!-- Main text -->
+    <div class="col-md-9" role="main">
+      <div class="bs-docs-section" ng-repeat="section in data | pick: 'has_type == \'section\''">
+        <h1 id="{{section.has_id}}" class="page-header"
+            data-ng-init="createHTML(section.has_id, section.has_url)">{{section.has_title}}</h1>
+      </div>
+    </div>
+    <!-- /end Main text -->
+    <!-- Right menu -->
+    <div class="col-md-3">
+      <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm bg_white border_blue no_padding" role="complementary">
+        <ul class="nav bs-docs-sidenav five_padding no_margin">
+          <li ng-repeat="section in data | pick: 'has_type == \'section\''">
+            <a ng-href="#{{section.has_id}}">{{section.has_title}}</a>
+          </li>
+        </ul>
+        <a class="back-to-top five_padding no_margin right_align bg-primary colour_white" href="#top"> Back to top </a>
+      </div>
+    </div>
+    <!-- /end Right menu -->
+  </div>
+</div>
+<!-- /end Content -->
 
 <p>
   <a href="https://save-sd.github.io/2018/"> <img border="0" alt="SAVESD 2018" src="img/logo-2018.png" width="200" height="50">
@@ -109,6 +137,39 @@
   <a href="https://save-sd.github.io/2015/"> <img border="0" alt="SAVESD 2015" src="img/logo-2015.png" width="200" height="50">
   </a>
 </p>
+
+
+
+
+<!-- Footer -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+      <ul class="bs-docs-social-buttons" ng-repeat="item in getFirstItemByKeyValue('has_type', 'workshop', workshop)">
+        <li ng-init="twitter_content = item.has_name + ' (@' + item.has_twitter_account + ') ' + item.has_hashtag">
+          <div tweet="twitter_content"></div>
+        </li>
+      </ul>
+    </div>
+    <p>The content of this page is licensed under <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+  </div>
+</footer>
+<!-- /end Footer -->
+<!-- Core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- Data to load -->
+<script id="data_to_load">
+    var page_data = {
+        head: ["save-sd-website.json"],
+        data: ["save-sd-home.json"],
+        workshop: ["save-sd-workshop.json"]
+    };
+</script>
+<script src="../js/savesd.js"></script>
+
+
 
 
 </body>

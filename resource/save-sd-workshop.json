@@ -1,0 +1,12 @@
+[
+    {
+        "@context": "http://save-sd.github.io/context/context.json",
+        "@id": "workshop/save-sd",
+        "has_type": "workshop",
+        "has_label": "SAVE-SD workshop",
+        "has_homepage": "http://save-sd.github.io/context/context.json",
+        "has_twitter_account": "savesdworkshop",
+        "has_name": "SAVE-SD Workshop",
+        "has_hashtag": "#savesd2018"
+    }
+]
