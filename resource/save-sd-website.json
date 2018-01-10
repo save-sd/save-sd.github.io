@@ -1,0 +1,29 @@
+[
+    {
+        "@context": "http://save-sd.github.io/context/context.json",
+        "@id": "website/save-sd-website",
+        "has_type": "expression_collection",
+        "has_label": "SAVE-SD Web site",
+        "has_title": "SAVE-SD",
+        "has_description": [
+            "Semantics, Analytics, Visualisation: Enhancing Scholarly Dissemination",
+            "Workshop co-located with The Web Conference"
+         ],
+        "has_part": [
+            "page/save-sd-home"
+         ],
+        "has_url": "/",
+        "has_embodiment": "website/save-sd-website/manifestation"
+    },
+    {
+        "@context": "http://save-sd.github.io/context/context.json",
+        "@id": "website/save-sd-website/manifestation",
+        "has_type": "web_site",
+        "has_label": "SAVE-SD Web site (Manifestation)"
+    },
+    {
+        "@context": "http://save-sd.github.io/context/context.json",
+        "@id": "page/save-sd-home",
+        "has_representation": "save-sd-home.json"
+    }
+]

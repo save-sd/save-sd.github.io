@@ -17,11 +17,11 @@
         
         <link rel="shortcut icon" href="img/favicon.ico"><!-- Bug fix --></link>
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet"><!-- Bug fix --></link>
+        <link href="../css/bootstrap.min.css" rel="stylesheet"><!-- Bug fix --></link>
         <!-- Documentation extras -->
-        <link href="css/docs.min.css" rel="stylesheet"><!-- Bug fix --></link>
+        <link href="../css/docs.min.css" rel="stylesheet"><!-- Bug fix --></link>
         <!-- SAVE-SD extras -->
-        <link href="css/savesd.css" rel="stylesheet"><!-- Bug fix --></link>
+        <link href="../css/savesd.css" rel="stylesheet"><!-- Bug fix --></link>
         
         <!--[if lt IE 9]><script src="../js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="js/ie-emulation-modes-warning.js"> </script>
@@ -67,7 +67,7 @@
         <div class="bs-docs-header bg-primary" id="header">
             <div class="container" ng-repeat="website in getFirstItemByKeyValue('has_type', 'expression_collection', head)">
                 <h1>
-                    <img src="img/logo.png"/>
+                    <img src="../img/logo-2015.png"/>
                     <small class="bg-primary">{{getFirstObjectByKeyValue("has_type", "web_content", data).has_title}}</small>
                 </h1>
                 <p>
