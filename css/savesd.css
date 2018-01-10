@@ -48,3 +48,10 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.pictkey {
+    max-width: 150px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom:20px;
+}

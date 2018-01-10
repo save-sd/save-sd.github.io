@@ -1,4 +1,4 @@
-<img src="img/noy.jpg" style="max-width: 150px; float: left;" class="img-rounded img-responsive" alt="Natasha Noy's portrait" />
+<img src="img/noy.jpg" class="img-rounded img-responsive pictkey" alt="Natasha Noy's portrait" />
 
 The invited speaker for the opening keynote of the workshop will be [Natasha Noy](https://research.google.com/pubs/NatalyaNoy.html) from Google.
 
