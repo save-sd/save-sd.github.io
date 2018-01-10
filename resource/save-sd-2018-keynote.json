@@ -1,0 +1,20 @@
+[
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-keynote",
+        "has_type": "web_content",
+        "has_label": "SAVE-SD 2018 keynote",
+        "has_title": "Keynote",
+        "has_part": ["page/save-sd-2018-keynote/noy-bio"],
+        "has_url": "keynote.html"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-keynote/noy-bio",
+        "has_type": "section",
+        "has_id": "noy-bio",
+        "has_label": "SAVE-SD 2018 keynote, section 'Natasha Noy (Google)'",
+        "has_title": "The speaker",
+        "has_url": "txt/noy-bio.txt"
+    }
+]

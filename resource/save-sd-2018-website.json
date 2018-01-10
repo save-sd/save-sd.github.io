@@ -43,6 +43,11 @@
     },
     {
         "@context": "http://cs.unibo.it/save-sd/context/context.json",
+        "@id": "page/save-sd-2018-keynote",
+        "has_representation": "save-sd-2018-keynote.json"
+    },
+    {
+        "@context": "http://cs.unibo.it/save-sd/context/context.json",
         "@id": "page/save-sd-2018-sponsors",
         "has_representation": "save-sd-2018-sponsors.json"
     },

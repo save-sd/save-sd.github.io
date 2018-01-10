@@ -1,0 +1,5 @@
+<img src="img/noy.jpg" class="img-rounded float-left img-responsive" alt="Natasha Noy's portrait" />
+
+The invited speaker for the opening keynote of the workshop will be [Natasha Noy](https://research.google.com/pubs/NatalyaNoy.html) from Google.
+
+Natasha Noy is a staff scientist at Google where she works on making structured data accessible and useful. Prior to joining Google, Natasha worked at Stanford Center for Biomedical Informatics Research where she made major contributions in the areas of ontology development and alignment, and collaborative ontology engineering. Natasha is the Immediate Past President of the Semantic Web Science Association and is on the Editorial Board of several Semantic Web and Information Systems journals.
