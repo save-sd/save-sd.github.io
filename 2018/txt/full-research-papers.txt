@@ -1,0 +1,7 @@
+* Marco Corbatto and Antonina Dattolo: [A Web application for creating and sharing visual bibliographies](submission/corbatto/index.html)
+* Jessica Cox, Corey Harper and Anita Dewaard: [Optimised Machine Learning Methods Predict DIscourse Segment Type in Biological Research Articles](submission/cox/index.pdf)
+* Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis: [Coloring citations for scholars: investigating palettes](submission/diiorio/index.html)
+* Said Fathalla and Christoph Lange: [EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities](submission/fathalla/index.pdf)
+* Ivan Heibi, Silvio Peroni and David Shotton: [OSCAR: A customisable tool for free-text search over SPARQL endpoints](submission/heibi/index.html)
+* Andrea Mannocci, Francesco Osborne and Enrico Motta: [Geographical trends in research: a preliminary analysis on authors' affiliations](submission/mannocci/index.pdf)
+* Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini: [Extending Scholarly Data with research impact indicators](submission/nuzzolese/index.html)

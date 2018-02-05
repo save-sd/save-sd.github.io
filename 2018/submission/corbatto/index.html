@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!-- 
+Basic RASH template - Version 1.1, December 31, 2016
+by Silvio Peroni
+
+This work is licensed under a Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/).
+You are free to:
+* Share - copy and redistribute the material in any medium or format
+* Adapt - remix, transform, and build upon the material
+for any purpose, even commercially.
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+* Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+-->
+<html 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    prefix="
+        schema: http://schema.org/
+        prism: http://prismstandard.org/namespaces/basic/2.0/">
+    <head>
+        <!-- Visualisation requirements (mandatory for optimal reading) -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/rash.css"/>
+        
+        <script src="js/jquery.min.js"> </script>
+        <script src="js/bootstrap.min.js"> </script>
+        <script src="js/rash.js"> </script>
+        
+        <!-- MathJax for multi-browser support of LaTeX formulas and MathML -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"> </script>
+        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+        
+        <!-- Metadata -->
+        <title property="dcterms:title">A Web application for creating and sharing visual bibliographies</title>
+        
+        <!-- Author's data (one or more) -->
+        <meta about="#author-1" name="dc.creator" content="Marco Corbatto"/>
+        <meta about="#author-1" property="schema:email" content="marco.corbatto@uniud.it"/>
+        <link about="#author-1" property="schema:affiliation" href="#organization-1"/>
+        
+        <meta about="#author-2" name="dc.creator" content="Antonina Dattolo"/>
+        <meta about="#author-2" property="schema:email" content="antonina.dattolo@uniud.it"/>
+        <link about="#author-2" property="schema:affiliation" href="#organization-1"/>
+<!--        <link about="#author-2" property="schema:affiliation" href="#organization-2"/>-->
+        
+        <!-- Affiliations -->
+        <meta about="#organization-1" property="schema:name" content="SASWEB Lab, DMIF, University of Udine, Italy"/>
+<!--        <meta about="#organization-2" property="schema:name" content="Your own company, USA"/>-->
+        
+        <!-- Paper keywords (one or more) -->
+        <meta property="prism:keyword" content="Visual bibliography"/>
+        <meta property="prism:keyword" content="Graphic organizer"/>
+        <meta property="prism:keyword" content="Holistic view"/>
+        <meta property="prism:keyword" content="Information visualization"/>
+        <meta property="prism:keyword" content="Visualization design and evaluation methods"/>        
+        <meta property="prism:keyword" content="Human computer interaction (HCI)"/>        
+        <!-- ACM category (one or more) -->
+        <meta name="dcterms.subject" content="Human-centered computing,Information visualization"/>
+        <meta name="dcterms.subject" content="Human-centered computing,Scientific visualization"/>
+        <meta name="dcterms.subject" content="Human-centered computing,Visualization design and evaluation methods"/>
+        <meta name="dcterms.subject" content="Human-centered computing,HCI design and evaluation methods"/>
+        <meta name="dcterms.subject" content="Human-centered computing,Human computer interaction (HCI)"/>
+        <!-- /END Metadata -->
+		<style type="text/css">
+		figure img {border:none !important}
+		</style>
+    </head>
+    <body>
+        <!-- Abstract -->
+        <section role="doc-abstract">
+            <h1>Abstract</h1>
+            <p>The increasing availability of  repositories of peer-reviewed scientific literature, like Scopus and WOS, and the growth of Open Access data providers and specialized search engines offer to the users a huge amount of data, which is often difficult to connect and aggregate in sharable formats. Furthermore the deriving bibliographic metadata represent an interesting  resource for research evaluation and for highlighting the groups and the progress in specific areas.<br>
+			In order to build reasoned bibliographies on specific topics, key items are the papers, the authors, the interrelationships among papers and authors together with the connections given by citations.<br>
+			Traditional repositories, although contain the single pieces of information, generally do not offer for them holistic, aggregated, and graphical views; each search furnishes new results, which are difficult to correlate with previous ones.
+			Our work faces these issues proposing VisualBib, a Web application prototype: it enables user to progressively create, visualize and share bibliographies, which are represented by narrative views.<br>
+			This paper presents VisualBib, a Web application realized to support the researchers who wish to create, refine and visualize bibliography; starting with a small set of significant papers or from a restricted number of authors, the users can enrich it by exploring citing/cited references.
+			The narrative view and the explicit representation of the authorship and citing relations help users to build cohesive bibliographies and to disseminate the research on a specific topic through the sharing of personal points of view.
+		</p>
+        </section>
+        
+        <!-- Sections -->
+        <section id="Introduction">
+            <h1>Introduction</h1>
+            <p>The search in scientific literature is traditionally carried on by specifying a set of words in specialized search engines. Generally a massive volume of documents are returned at every search and this involves a significant effort for the researcher in trying to map the results in a general vision of the topic. The results are generally presented in a long list that brings the user in a poor understanding of the relationships between the documents, forcing him/her to play out complex heuristic strategies to rank the items and to build a consistent mental vision of the research topic. Using repository as Scopus or WOS is difficult to follow a paper in the time, and identify the relations among papers of different authors.<br>
+			A way to discover significant documents is to start from the publications of given key authors or from a restricted set of well known papers, analysing and expanding the cited references. Also the citing references play an important role in discovering relevant documents, in understanding the direction of the research and to get inspiration for new projects.
+			</p>
+			<p>In this paper we introduce VisualBib, a Web application which interacts with external data providers in order to retrieve bibliographic metadata, offering to researchers an interactive visual representation of the set of retrieved documents. The used representation is a time-based narrative view that shows the authors and citation relationships between papers, giving the users the opportunity to manage a bibliography,  deleting documents or adding new ones, starting with an author, a document id or exploring the citing/cited references for every paper.<br>
+			The idea is to give the users the opportunity to progressively build a reasoned and shareable bibliography, supported by a holistic view which highlights the collaborations between authors and help to get answers to questions like the following: who worked with whom in a certain period of time and on what; what are the sources of inspiration of a specific paper or what subsequent papers have followed a specific work.
+			</p>
+			<p>This paper is organized as follows: <a href="#section_2"></a> discusses related work, emphasizing open issues and challenges in graphical representation of bibliographies; <a href="#section_3"></a> presents our prototype, VisualBib, introducing to its basic functionalities and user interface; <a href="#section_4"></a> proposes its architecture and some implementation details; it follows in <a href="#section_5"></a> the evaluation carried out as a comparative study between VisualBib and Scopus. Conclusions and future work end our work. 
+
+			</p>
+		</section>
+        <section id="section_2">
+            <h1>Related work</h1>
+            <p>
+			In the last years, several tools have been proposed to graphically represent bibliographic data and to support the researchers in analysing and exploring data and relationships. 
+			</p>
+			<p>Two recent  surveys can be found in <a href="#Federico2017"></a>, where 109 different approaches, emerged between 1991 and 2016, are analysed using two dimensions for the classification, data types and analysis tasks; in  <a href="#Kucher2015"></a>, where authors present an interactive visual survey of text visualization techniques, which display 400 different techniques.
+			</p>
+			<p>Some projects and tools emerged from the InfoVis2004 contest <a href="#InfoVis2004Contest"></a>: among them, BiblioViz <a href="#Shen2006"></a> which integrates table and network 2D/3D views of bibliographic data; PaperLens <a href="#Lee2005"></a> where tightly couples views across papers, authors, and references are presented in order to understand the popularity of a topic, the degree of separation of authors and the most cited papers/authors.<br>
+			Other visual interfaces for bibliographic visualization tools have been more recently  proposed: for example, CitNetExplorer <a href="#vanEck2014"></a> provides the visualization of citation networks offering expansion and reduction operations and clustering of the publications in groups; PivotPaths <a href="#Dork2012"></a> uses a node-link representation of authors, publications, and keywords, all integrated in an attractive interface with smoothly animations; JigSaw <a href="#Kihm2013"></a> is a visual analytic system which provides multiple coordinated views of document entities with visual connections across the documents; PaperCube <a href="#Bergstrom2009"></a> offers a suite of alternative visualizations based on graph, hierarchy, and timeline integrated into an analysis framework, although the project appears stopped in 2009. The genealogy of citation patterns, Citeology <a href="#Matejka2012"></a>, connects papers titles organized in a chronological layout controlling the number of generations to display and the shortest path between two selected papers.<br>
+			In spite of the great number of existing tools, we highlight some open challenges and lacks in the current apps, and relative to the importance of:
+			</p>
+			<ul>
+			<li><p>creating a personal view of a bibliography, selecting authors and papers;</p></li>
+			<li><p>saving personal views and sharing them in write or only-read modalities;</p></li>
+			<li><p>providing a holistic narrative view of papers, authors and cited/citing relationships;</p></li>
+			<li><p>retrieving metadata from multiple online repositories and not from static datasets;</p></li>
+			<li><p>using an online, real-time Web app.</p></li>
+			</ul>
+			<p>
+			Our contribute focus on these objectives and propones an online Web application that distinguishes, from existing others, for these primary features.
+			</p>
+		</section>
+        <section id="section_3">
+            <h1>Basic functionalities and user interface of VisualBib</h1>
+            <p>VisualBib is an online app prototype (<a href="http://sasweb.uniud.it/visualBib/">http://sasweb.uniud.it/visualBib/</a>) conceived for supporting  the researchers in the creation of reasoned bibliographies, starting from papers or authors of their interest. <br>
+			<a href="#figure_1"></a> shows a typical visual representation of a bibliography, generated by VisualBib, when searching an author by last name. In order to disambiguate among homonyms, the list of authors is enriched with their name, afference (if present and only in Scopus), subject areas (if present and only in Scopus), id and ORCID (if present) is displayed; once chosen the author, the user will see  a temporally ordered list of his/her publications. The selection by the user of all (or part of) the publications, will allow him/her to visualize a narrative diagram, as shown in the bottom of <a href="#figure_1"></a>.
+
+			</p>
+			<figure id="figure_1">
+				<p>
+					<img src="img/01-visualbib-autor-search.png" alt="A look of VisualBib interface"/>
+				</p>
+				<figcaption>
+					A look of VisualBib interface: search of an author given his/her last name.
+				</figcaption>
+			</figure>
+            <p>The narrative diagram is 2-dimensional space: one dimension is the time, arranged horizontally and discretized by years; the vertical dimension is spatial and is used to properly organize authors, papers and their relationships. The coloured, round-corners square items (of blue and green colour in <a href="#figure_1"></a>) represent the publications retrieved from a data providers. <br>
+The diagram includes the last names of the authors involved in at least one paper of the current set: each author is associated with a goldenrod line that connects all his/her papers, from the older to the newest, showing a sort of his/her professional path (clearly limited to the current set of imported publications) over the years.
+
+			</p>
+			<figure id="figure_2">
+				<p>
+					<img src="img/02-visualbib-citations.png" alt="Adding citing/cited relationships."/>
+				</p>
+				<figcaption>
+					Adding citing/cited relationships.
+				</figcaption>
+			</figure>
+            <p>The cited/citing relationships among papers are not automatically retrieved, but must be explicitly requested for the single paper: clicking over a paper icon (in the example in <a href="#figure_1"></a>, on the last (bottom) paper of the 2010), a pop-up window opens (see <a href="#figure_2"></a>, left-top) to show the complete bibliographic reference, where a list of data are linked to dedicated Web pages  (in our example, each of the authors, the title, the id and the doi of the paper). A click on the four-arrows icon  (see <a href="#figure_2"></a>, left-top) loads, in a separate pop-up window, the list of cited /citing papers (<a href="#figure_2"></a>, center). Among them, all the cited/citing papers, already present in the diagram, are automatically highlighted in blue. The user may select, from the two lists (cited/citing papers), the documents of his/her interest and import them (with the relative relations) in the diagram.<br>
+			In the example of <a href="#figure_2"></a>, the user chooses to import the preloaded three papers and, as shown on the right of the same <a href="#figure_2"></a>, right, the cited/citing relations are visualized as blue dashed lines. Due to the potentially high number of citations, the system offers the possibility to recursively hide all cited papers through a <q>minus</q> icon situated on the left of the paper items.
+			</p>
+			<p>Following the legend of <a href="#figure_1"></a>, expanded in <a href="#figure_3"></a>:
+			<ul>
+			<li><p>the three different icons associated to publications enable users to distinguish among three paper’s typologies: journal papers; books  or book chapters; conference or workshop proceedings. If the type is different or unknown, no specific icon is associated to the items;</p></li>
+			<li><p>the icons’ colour indicates the papers state: <span style="color:blue">blue</span> is associated to a completely loaded paper (all the available data and metadata have been loaded); <span style="color:gray">gray</span> indicates a partially loaded paper, which has been retrieved during a cited/citing search (this operation returns only a subset of paper’s metadata); <span style="color:red">red</span> is used to emphasize semantic relationships during user interaction, as described later; and, finally, <span style="color:green">green</span> marks the found papers of a textual search (in <a href="#figure_1"></a>, they are the papers found looking for <q>folksonomies</q>);</p></li>
+			<li><p>the two toggle switches allows user to hide/show respectively the connections between cited/citing papers and those jointing an author with his/her papers.</p></li>
+			</ul>
+			<figure id="figure_3">
+				<p>
+					<img src="img/03-legenda.png" alt="Legend."/>
+				</p>
+				<figcaption>
+					The legend.
+				</figcaption>
+			</figure>
+            <p>Finally, moving the cursor over an <em>author name</em> the application will emphasize, in red, all his/her papers in the current view (<a href="#figure_4"></a> - top: the author Vassileva); moving the cursor over a <em>paper</em> the application will emphasize in red all its authors' last names (<a href="#figure_4"></a> - down left) and/or citing/cited connections (<a href="#figure_4"></a> - down right).</p>
+			<figure id="figure_4">
+				<p>
+					<img src="img/04-visualbib-selections.png" alt="Focus on author(s) and citing/cited relations among papers."/>
+				</p>
+				<figcaption>
+					Focus on author(s) and citing/cited relations among papers.
+				</figcaption>
+			</figure>
+		</section>
+		<section id="section_4">
+            <h1>Architecture and Implementation</h1>
+            <p>VisualBib is organized as a single page Web application, based on:</p>
+			<ul>
+			<li><p> HTML5, CSS3 and SVG W3C standard languages;</p></li>
+			<li><p>D3js <a href="#D3"></a>, an efficient  framework for data and DOM manipulation, and visual element management;</p></li>
+			<li><p>AJAX techniques to perform Cross Origin Resource Sharing (CORS) calls and client-server interactions.</p></li>
+			</ul>
+            <p><a href="#figure_5"></a> shows the architecture of VisualBib, and its main modules, described in next subsections 4.1-4.5.</p>
+			<figure id="figure_5">
+				<p>
+					<img src="img/05-visualbib-schema-semplice.png" alt="The architecture of the VisualBib application."/>
+				</p>
+				<figcaption>
+					The architecture of the VisualBib application.
+				</figcaption>
+			</figure>
+
+            <section>
+                <h1>Data providers</h1>
+                <p>
+				VisualBib retrieves data from two repositories, the well-known Scopus and the open access OpenCitations (OC) <a href="#OpenCitations"></a>; other repositories will be considered in next future.
+				Scopus <a href="#Scopus"></a> is the world's largest abstract and citation database of peer-reviewed research literature; it currently indexes more than 70 millions of bibliographic data, and  is accessible programmatically via dedicated Application Programming Interface (API) which offers 11 different query types <a href="#ScopusAPI"></a>, aggregated in four groups: data search, data retrieval, other metadata retrieval, author feedback. Furthermore, each query returns data in various forms, called views, and organized in levels: each level provides a superset of the data exposed by the previous level; the access to the views is subject to restrictions due to service entitlements. To avoid misuses of data, the platform imposes some limitations <a href="#ScopusAPIsettings"></a> including selective weekly limits in the number of API calls, in the number of results returned in the response and in the number of calls per minute. To access to the service it is firstly necessary to require a personal API Key which permits the app to overcome the imposed restriction of the user agents in performing cross-origin HTTP requests. The platform manages both simple requests based on API key and preflighted requests which generate a secured auth-token for the subsequent main request.
+			</p>
+			<p>
+				The OpenCitations (OC) platform <a href="#OpenCitations"></a> is the expansion of the Open Citations Corpus (OCC) <a href="#OpenCitationsCorpus"></a>, an open repository of scholarly citation data made available under a Creative Commons public domain; OCC is  an ontology currently explorable through the use of SPARQL query language <a href="#SPARQL"></a> and provides accurate bibliographic references harvested from the scholarly literature, that others may freely build upon, enhance and reuse for any purpose, without restriction under copyright or database law. OC aggregates different open access data sources and on December 25, 2017, published 298,797 citing bibliographic resources, 6,488,914 cited bibliographic resources and 12,652,601 citation links. The data can be freely downloaded but we chose to harvest the repository using specific SPARQL queries through the API service made available by the platform <a href="#SPARQL_OC"></a>.
+			</p>
+			</section>	
+            <section>
+                <h1>Internal data model</h1>
+                <p>For each bibliography, VisualBib manages an internal representation of significant  metadata:</p>
+				<ul>
+				<li><p>for papers: authors (with links), title (with link), publication year, abstract, subject areas, Scopus or OC ids (with links), doi (as link) , issn, references list. The links connect the metadata to the corresponding resource on the used repository (Scopus or OC);</p></li>
+				<li><p>for authors: first, middle and last name (with link), preferred name, afference, ORCID, Scopus or OC id, and the list of his/her papers loaded into the narrative view.</p></li>
+				</ul>
+				<p> A suitable data structure, represented by two multiple lists, contains cross-references, in order to replicate the many-to-many relations given by citations and authorships. The consistency of the structure is preserved during deletions of single or groups of papers, the loadings of new author’s papers and citing/cited references.
+				</p>
+			</section>	
+            <section>
+                <h1>Requests management and metadata homogenization</h1>
+                <p>The data retrieval procedures from the two repositories differ substantially: although the availability of a common format for the data interchange (JSON), the typologies and the numbers of queries needed to get a same piece of information (for example the list of publications of an author or the paper metadata including citing/cited references) are not comparable. 
+				</p>
+				<p>
+				The <em>request management module</em> prepares the correct sequence of queries and manages the responses and the error conditions.
+				Due to the asynchronous nature of the AJAX calls, each query must be executed from the listen function of the previous call; furthermore, in case of fragmented responses, due to the existing limits on the number of results per single request, the internal retrieve loop must be managed through recursive functions to assure that the next fragment is requested after receiving the previous one. The actions to be taken at the end of the process can be triggered only in the inner execution of the function, when the complete data transfer condition is observed.
+				</p>
+				<p>The <em>metadata homogenization</em> module:</p>
+				<ul>
+				<li><p>handles the data received from each repository;
+				<li><p>carries out the necessary conversions of format to make the data compatible with the internal data model;</p></li>
+				<li><p>performs the match of the incoming data, in order to map new papers and authors to those already present in the internal data model;</p></li>
+				<li><p>builds and shows suitable forms to let the users choose the set of papers and citations to import into the current bibliography;</p></li>
+				<li><p>merges the new items into the internal data model and create new data connections according to the detected authorship and citing relations. </p></li>
+				</ul>
+				<p>The AJAX requests are triggered by the following user actions:</p>
+				<ul>
+				<li><p><em>search of an author given his/her last name.</em> After sending the query, each fragment, received from the chosen data provider, is merged in the  ordered list of authors with same last names; after the  user disambiguation,  the list of author publications is retrieved and visualized following the steps shown in <a href="#figure_1"></a>;</p></li>
+				<li><p><em>search of an author given his/her ORCID, Scopus id or a specific url of the OC ontology.</em> In this case the system will query the data provider to retrieve the list of all papers of a specific author. The list is compared with the internal data model in order to recognize which papers are already loaded in the current bibliography and which are new; a selection form, where existing papers are properly highlighted, is then presented to the user (Figure 1, top right);  </p></li>
+				<li><p><em>search of a paper given its doi or Scopus id.</em> In this case the system verifies the existence of the requested paper in the selected data provider and subsequently retrieves all the available metadata, including the information about citing/cited papers. Each citing/cited paper is compared with current set in order to recognize possible matching papers. Then a selection form is presented to the users to allow them the selection of the papers to import (<a href="#figure_2"></a> - center).</p></li>
+				</ul>
+			</section>	
+            <section>
+                <h1>Graphic engine</h1>
+                <p>The <em>graphic engine</em> module maps the internal data model into an interactive visual representation, called narrative view; examples are visible in previous <a href="#figure_1"></a>, <a href="#figure_2"></a>, <a href="#figure_4"></a>.
+				The scale of the axes is dynamically computed at every change in the bibliography in order to cover, respectively, the entire temporal span and the maximum number of items per column.
+				</p>
+				<p>
+				The positioning of the items along the vertical dimension is critical for a proper interpretation of the information in the diagram; a specific algorithm has been designed in order to achieve:
+				</p>
+				<ul>
+				<li><p>no overlapping of the items in the same column;</p></li>
+				<li><p>a balanced distribution of the papers icons along the vertical dimension;</p></li>
+				<li><p>the correct positioning of the authors’ labels on the immediate left of his/her older paper, in correspondence of the previous year;</p></li>
+				<li><p>a regular space distribution between papers and authors’ labels in every year column.</p></li>
+				</ul>
+			</section>	
+            <section>
+                <h1>Server side management</h1>
+                <p>In order to store and retrieve user generated bibliographies, VisualBib includes a server side module equipped with a MySql database server and a Php interpreter. User diagrams are described by title, content represented in JSON format, email address relative to the owner and two unique urls: every time a new bibliography is saved (clicking on ‘Save on cloud’ button in Figure 1), the user is asked to specify an email address; the system generates a couple of unique urls for future accesses and/or for sharing with other users in both read-write and read-only modalities. Successively, the users may retrieve by email the list of their  bibliographies, clicking on the ‘List my bibliographies’ button in <a href="#figure_1"></a>.
+				VisualBib has also a simpler mechanism (activatable by clicking on ‘Save on localstorage’ button in <a href="#figure_1"></a>) to save a bibliography on client-side in the localstorage of the browser: it is a permanent (but erasable) not shareable space, fast and useful for frequent and temporary savings.
+</p>
+			</section>
+		</section>	
+        <section id="section_5">
+			<h1>Evaluation</h1>
+            <p>The evaluation has been carried out as a comparative study between VisualBib and Scopus, with the goal to collect user opinions and feelings after experiencing the platform by means of some search activities described later. It is important to clarify that the activities performed by the participants involved a subset of the functionalities of the two platforms; for this reason, the SUS values referred only to the considered aspects.
+			</p>
+			<p>In particular, we intended to evaluate:
+			</p>
+			<ul>
+			<li><p>the perceived usability level of the application using the well-known SUS (System Usability Scale) questionnaire <a href="#brooke2013"></a>;</p></li>
+			<li><p>the feelings about the aesthetic and the innovative solution of the user interface, using 5-likert scales.</p></li>
+			</ul>
+            <section>
+                <h1>Study design and procedures</h1>
+                <p>The participants were recruited on a voluntary basis among undergraduate students, researchers and professors of University of Udine and other universities.<br>
+				The overall participants were 67 (37 F, 30 M): 31 of them (21 F, 10 M) evaluated the Scopus platform and the other 36 (16 F, 20 M) our application VisualBib.<br>
+				We prepared two short presentations (about 15 slides each) of the two platforms and distributed them to each participant in order to illustrate the interfaces and the basic functionalities available in each application.<br>
+				For undergraduate students, with no significative experience in bibliographic search,  we organized a live presentation to illustrate both the platforms, to clarify technical terms and to familiarize with the interfaces.<br>
+				Before taking the survey, we asked the participants to perform 12 activities consisting in specific bibliographic searches in order to guide them in interacting with the platform under test. The activities were the same for the two platforms, took about 20-30 minutes to be carried out and consisted in searching the publications of some authors, counting the papers written in collaboration during a temporal interval, individuating the type of each publication, performing textual search in the metadata, searching specific citing and cited papers and the relative authors. To be sure that all the activities were executed correctly by all the participants, we asked them to fill the answers of each activity in an online form which provided the users with a negative feedback in case of wrong answer, forcing them in a loop until the right answer was acquired.
+
+				</p>
+				<p>
+				For the SUS evaluation, we adopted an Italian version of the standard SUS questionnaire, leaving out the first question: “I think that I would like to use this system frequently” <a href="#lewis2017"></a>; this choice comes from observing that the systems under study would probably be used infrequently from the participants and the presence of that question would distort the score and probably confuse the participants.<br>
+				We will refer to the this questionnaire as SUS-01: as the SUS, it is a mixed-tone questionnaire but, having dropped the first question, the odd-numbered items have now a negative tone and the even-numbered items have a positive tone.
+				</p>
+				<p>Finally, we asked to the user to evaluate in a likert scale from 1 (not at all) to 5 (very much):
+				</p>
+				<ul>
+				<li><p>the presence of innovative solutions in the application;</p></li>
+				<li><p>the level of appreciation of the user interface and its aesthetic.</p></li>
+				</ul>
+			</section>
+            <section>
+                <h1>Data Analysis and results</h1>
+                <p>Lewis and Sauro <a href="#lewis2017"></a> studied the effects of dropping an item from the standard SUS questionnaire: specifically, when leaving out the first question, they measured a mean difference from the score the full SUS survey of -0.66 points, considering a 95% confidence interval. <br>
+				Furthermore we are interested in estimating the difference between the SUS score of the two platforms more than in absolute values.<br>
+				The value of SUS-01 was computed for each participants with the formula:<br>
+				<span role="math">SUS_{-01}=\left (\sum_{k=0}^{4}\left ( 5-A_{2k+1} \right )+\sum_{k=1}^{4}\left ( A_{2k} -1\right )  \right )*\frac{100}{36}</span><br>
+				The distribution of SUS-01 is summarized, for the two samples, in <a href="#table_1"></a> and in the graph of <a href="#figure_6"></a>.
+				<figure id="table_1">
+					<table>
+						<tr>
+							<th rowspan="1" colspan="1">Platform</th>
+							<th rowspan="1" colspan="1">Sample size</th>
+							<th rowspan="1" colspan="1">Min</th>
+							<th rowspan="1" colspan="1">1st Qu.</th>
+							<th rowspan="1" colspan="1">Median</th>
+							<th rowspan="1" colspan="1">Mean</th>
+							<th rowspan="1" colspan="1">Std. dev.</th>
+							<th rowspan="1" colspan="1">3rd Qu.</th>
+							<th rowspan="1" colspan="1">Max</th>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1"><p>Scopus</p></td>
+							<td rowspan="1" colspan="1"><p>31</p></td>
+							<td rowspan="1" colspan="1"><p>31.00</p></td>
+							<td rowspan="1" colspan="1"><p>43.00</p></td>
+							<td rowspan="1" colspan="1"><p>53.00</p></td>
+							<td rowspan="1" colspan="1"><p>52.39</p></td>
+							<td rowspan="1" colspan="1"><p>12.76</p></td>
+							<td rowspan="1" colspan="1"><p>58.00</p></td>
+							<td rowspan="1" colspan="1"><p>86.00</p></td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1"><p>VisualBib</p></td>
+							<td rowspan="1" colspan="1"><p>36</p></td>
+							<td rowspan="1" colspan="1"><p>36.00</p></td>
+							<td rowspan="1" colspan="1"><p>53.00</p></td>
+							<td rowspan="1" colspan="1"><p>72.00</p></td>
+							<td rowspan="1" colspan="1"><p>68.53</p></td>
+							<td rowspan="1" colspan="1"><p>17.20</p></td>
+							<td rowspan="1" colspan="1"><p>78.00</p></td>
+							<td rowspan="1" colspan="1"><p>100.00</p></td>
+						</tr>
+					</table>
+					<figcaption>The distributions’ parameters of the two samples.</figcaption>
+				</figure>	
+				<figure id="figure_6">
+					<p>
+						<img src="img/06-sus.png" alt="The evaluated SUS-01 distributions for the two platforms."/>
+					</p>
+					<figcaption>
+						The evaluated SUS-01 distributions for the two platforms.
+					</figcaption>
+				</figure>				
+				
+				<p>We note that the  VisualBib’s SUS-01 results present a mean value significantly higher in comparison with Scopus and a wider distribution. The absolute values of SUS for both platforms are relatively low; probably this fact reflects the difficulty of part of participants to face with bibliographic search tasks.<br>
+				The distributions of the single SUS-01 answers, grouped per platform, are visible in the following Figures 7 and 8; for an easier data reading, in <a href="#figure_7"></a>, we reported the odd questions (negative tone questions), while in <a href="#figure_8"></a> the even questions (positive tone ones).
+				</p>
+				<figure id="figure_7">
+					<p>
+						<img src="img/07-susQuestionsOdd.png" alt="SUS-01: the comparative distributions of answers to the odd questions (negative tone questions) for the two platforms."/>
+					</p>
+					<figcaption>
+						SUS-01: the comparative distributions of answers to the odd questions (negative tone questions) for the two platforms.
+					</figcaption>
+				</figure>
+				
+				<figure id="figure_8">
+					<p>
+						<img src="img/08-susQuestionsEven.png" alt="SUS-01: the comparative distributions of answers to the even questions (positive tone questions) for the two platforms."/>
+					</p>
+					<figcaption>
+						SUS-01: the comparative distributions of answers to the even questions (positive tone questions) for the two platforms.
+					</figcaption>
+				</figure>
+								<p>Analysing the answers to the single questions, we observe an always positive difference in scores in favor of VisualBib, more pronounced in questions 1, 2, 6, 7, 8. This seems to underline the intuitiveness of the simpler interface of VisualBib which presents a smaller number of data and details in the page.
+				</p>
+				<p> <a href="#figure_9"></a> shows the distributions of the user opinions, grouped per platform, about the overall application and interface in a likert scale from 1 (not at all) to 5 (very much).
+				</p>
+				<figure id="figure_9">
+					<p>
+						<img src="img/09-appr+orig.png" alt="The evaluation of the overall application."/>
+					</p>
+					<figcaption>
+						The evaluation of the overall application.
+					</figcaption>
+				</figure>
+
+				<p>Also in this case the results encourage our work for the creation of this new app.
+				</p>
+			</section>
+        </section>
+		<section id="section_6">
+			<h1>Conclusions and Future Work</h1>
+			<p>The user experience during the search and building of reasoned bibliographies is often unsatisfactory for many reasons. In this paper we identified some critical aspects of this activity and proposed a prototype of a Web application which offers some original features to support the researchers in creating and refining a personal bibliography around a initial set of papers and authors. The system assists the user in creating a holistic view of a bibliography making visible the relationships between papers and authors and easily expand them through the exploration of citing/cited papers without losing the overview of the entire bibliography.<br>
+			The partial user evaluation carried on, although still incomplete, highlights some interest from the user community for interactive visual representations of data which encourages us in proposing new applicable models and in investigating how  they may help the users in reducing the cognitive overload and gathering, at a glance, significant relationships.  Future work will involve improvements of VisualBib and the introduction of new features: i.e. we plan to implement the import and export of papers using the Bibtex format, to provide the editing of papers’ data also to manage publications not found in current data providers, to expand the list of the repositories to query, to experiment new forms of visual representations in order to improve the harvesting of bibliographic information.
+			</p>
+        </section>
+        
+        <!-- Acknowledgements -->
+        <section role="doc-acknowledgements">
+            <h1>Acknowledgments</h1>
+            <p>We would like to thank Meshna Koren for confirming the Elsevier interest in our project and for having enabled us to use the Scopus API, applying specific settings; Silvio Peroni, for having enthusiastically contributed to support us in many occasions during the implementation of the remote access procedures relative to OpenCitations repository.</p>
+        </section>
+        
+        <!-- References -->
+<section id="bibreflist" role="doc-bibliography">
+    <h1>References</h1>
+    <ol>
+        <li id="Federico2017" role="doc-biblioentry">
+            <p>
+                P. Federico, F. Heimerl, S. Koch, S. Miksch.(2017). A survey on visual approaches
+for analyzing scientiﬁc literature and patents. IEEE Transactions on Visualization and Computer Graphics 23:(9), pp. 2179–2198, doi: <a href="https://doi.org/10.1109/TVCG.2016.2610422"> 10.1109/TVCG.2016.2610422</a>.
+</p>
+<li id="Kucher2015" role="doc-biblioentry">
+            	<p>
+K. Kucher, A. Kerren. (2015). Text visualization techniques: Taxonomy, visual
+survey, and community insights. Proceedings of the  2015 8th IEEE Paciﬁc Visualization Symposium - PaciﬁcVis 2015,  Hangzhou, China, April 14-15 2015, Vol. 2015-July, pp. 117–121, doi:  <a href="https://doi.org/10.1109/PACIFICVIS.2015.7156366">10.1109/PACIFICVIS.2015.7156366</a>.
+</p>
+</li>
+
+<li id="InfoVis2004Contest" role="doc-biblioentry">
+            	<p>
+Infovis 2004 contest: dataset and tasks. (2004). <a href="http://www.cs.umd.edu/hcil/iv04contest/info.html">http://www.cs.umd.edu/hcil/
+iv04contest/info.html</a> (last visited, February, 1 2018).
+</p>
+</li>
+
+<li id="Shen2006" role="doc-biblioentry">
+            	<p>
+Z. Shen, M. Ogawa, S. T. Teoh, K.L. Ma. (2006). Biblioviz: A system for visu
+alizing bibliography information. Proceedings of the 2006 Asia-Paciﬁc
+Symposium on Information Visualisation - APVis ’06, Tokyo, Japan, February 1-3 2006, Volume 60, pp. 93–102.35, Australian Computer Society, Inc.. <a href="http://dl.acm.org/citation.cfm?id=1151903.1151918">http://dl.acm.org/citation.cfm?id=1151903.1151918</a>
+</p>
+</li>
+
+<li id="Lee2005" role="doc-biblioentry">
+            	<p>
+B. Lee, M. Czerwinski, G. Robertson, B. B. Bederson. (2005). Understanding research trends in conferences using paperlens.  Proceedings of  the International Conference on Human Factors in Computing Systems - CHI ’05 Extended Abstracts, Portland, Oregon, USA, April 2-7 2005, pp. 1969–1972,  doi: <a href="https://doi.org/10.1145/1056808.1057069">10.1145/1056808.1057069</a>.
+
+
+</p>
+</li>
+
+<li id="vanEck2014" role="doc-biblioentry">
+            	<p>
+N. van Eck, L. Waltman. (2014).  Citnetexplorer: A new software tool for analyzing
+and visualizing citation networks. Journal of Informetrics 8:(4), pp. 802–823,  doi: <a href="https://doi.org/10.1016/j.joi.2014.07.006">10.1016/j.joi.2014.07.006</a>.
+</p>
+</li>
+
+<li id="Dork2012" role="doc-biblioentry">
+            	<p>
+M. Dork, N. Henry Riche, G. Ramos, S. Dumais. (2012).  Pivot paths: Strolling
+through faceted information spaces. IEEE Transactions on Visualization and Computer Graphics 18:(12), pp. 2709–2718.
+</p>
+</li>
+
+<li id="Kihm2013" role="doc-biblioentry">
+            	<p>
+C. Görg, Z. Liu, J. Kihm, J. Choo, H. Park, J. Stasko. (2013). Combining computational analyses and interactive visualization for document exploration and sensemaking in Jigsaw. IEEE Transactions on Visualization and Computer Graphics 19:(10), pp. 1646–1663,  
+doi: <a href="https://doi.org/10.1109/TVCG.2012.324">10.1109/TVCG.2012.324</a>.
+
+</p>
+</li>
+
+<li id="Bergstrom2009" role="doc-biblioentry">
+            	<p>
+P. Bergström, D. C. Atkinson. (2009).  Augmenting the exploration of digital libraries with web-based visualizations. Proceedings of the Fourth International Conference on Digital Information Management - ICDIM 2009, Ann Arbor, Michigan, USA, November 1-9 2009, pp. 1–7, doi: <a href="https://doi.org/10.1109/ICDIM.2009.5356798">10.1109/ICDIM.2009.5356798</a>.
+</p>
+</li>
+
+<li id="Matejka2012" role="doc-biblioentry">
+            	<p>
+J. Matejka, T. Grossman, G. Fitzmaurice, Citeology: Visualizing paper genealogy. Proceedings of the International Conference on the Human Factors in Computing Systems - CHI 2012, Austin, TX; United States; May, 5-10 2012, pp. 181–189,
+doi: <a href="https://doi.org/10.1145/2212776.2212796">10.1145/2212776.2212796</a>.
+</p>
+</li>
+
+<li id="D3" role="doc-biblioentry">
+            	<p>
+D3: Data Driven Documents. <a href="https://d3js.org/">https://d3js.org/ </a> (last visited, October, 23 2017).
+</p>
+</li>
+
+<li id="OpenCitations" role="doc-biblioentry">
+            	<p>
+OpenCitations. <a href="http://opencitations.net/">http://opencitations.net/</a>(last visited, January, 26 2018).
+</p>
+</li>
+
+<li id="Scopus" role="doc-biblioentry">
+            	<p>
+Scopus.  <a href="https://scopus.com">https://scopus.com</a> (last visited, January, 26 2018).
+</p>
+</li>
+
+
+
+<li id="ScopusAPI" role="doc-biblioentry">
+            	<p>
+Elsevier Developers -  API interface speciﬁcation. <a href="https://dev.elsevier.com/api_docs.html">https://dev.elsevier.com/api_docs.html</a> (last visited, January, 26 2018)
+</p>
+</li>
+
+<li id="ScopusAPIsettings" role="doc-biblioentry">
+            	<p>
+Elsevier Developers - API key settings. <a href="https://dev.elsevier.com/api_key_settings.html">https://dev.elsevier.com/api_key_settings.html</a>(last visited, January, 26 2018).
+
+
+</p>
+</li>
+
+<li id="OpenCitationsCorpus" role="doc-biblioentry">
+            	<p>
+OpenCitations corpus. <a href="http://opencitations.net/corpus">http://opencitations.net/corpus</a> (last visited, January, 26 2018).
+
+</p>
+</li>
+
+<li id="SPARQL" role="doc-biblioentry">
+            	<p>
+SPARQL Query Language for RDF. <a href="https://www.w3.org/TR/rdf-sparql-query/">https://www.w3.org/TR/rdf-sparql-query/
+</a> (last visited, January, 26 2018).
+</p>
+</li>
+
+<li id="SPARQL_OC" role="doc-biblioentry">
+            	<p>
+OCC SPARQL endpoint GUI.  <a href="http://opencitations.net/sparql">http://opencitations.net/sparql</a>(last visited, January, 26 2018).
+
+
+
+</p>
+</li>
+
+<li id="brooke2013" role="doc-biblioentry">
+            	<p>
+J. Brooke. (2013).  SUS: a retrospective. Journal of usability studies 8:(2), pp. 29–40.
+
+</p>
+</li>
+
+<li id="lewis2017" role="doc-biblioentry">
+            	<p>
+J. R. Lewis, J. Sauro. (2017).  Can I leave this one out? The eﬀect of dropping an
+item from the SUS. Journal of Usability Studies 13:(1), pp. 38-46.
+</p>
+</li>
+
+  </ol>
+</section>
+        
+        <!-- Footnotes -->
+  <!--      <section id="fnlist" role="doc-endnotes">
+            <section id="fn1" role="doc-endnote">
+                <p>Footnote 1.</p>
+            </section>
+            <section id="fn2" role="doc-endnote">
+                <p>Footnote 2.</p>
+            </section>
+            <section id="fn3" role="doc-endnote">
+                <p>Footnote 3.</p>
+            </section>
+        </section>
+		-->
+    </body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" prefix="schema: http://schema.org/ prism: http://prismstandard.org/namespaces/basic/2.0/"><head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/rash.css">
+  <!-- Local MathJax -->
+  <!-- <script src="js/MathJax/MathJax.js"></script> -->
+
+  <!-- online MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+  <!-- JQuery -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap.js -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Rash.js -->
+  <script src="js/rash.js"></script>
+
+  <title>Striving for Semantics of Plant Phenotyping Data</title>
+  
+  
+  
+  
+  
+<meta about="mailto:hcwi@igr.poznan.pl" typeof="schema:Person" property="schema:name" name="dc.creator" content="Hanna Ćwiek-Kupczyńska"><meta about="mailto:hcwi@igr.poznan.pl" property="schema:email" content="hcwi@igr.poznan.pl"><link about="mailto:hcwi@igr.poznan.pl" property="schema:affiliation" href="#affiliation_1"><meta about="#affiliation_1" typeof="schema:Organization" property="schema:name" content="Institute of Plant Genetics, Polish Academy of Sciences, Poznań, Poland"><meta property="prism:keyword" content="semantic publishing"><meta property="prism:keyword" content="plant data"><meta property="prism:keyword" content="phenotypic and environmental traits"><meta property="prism:keyword" content="reporting guidelines"><meta property="prism:keyword" content="research data policy"><meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0"></head>
+
+<body>
+<section role="doc-abstract" id="doc-abstract">
+<h1>Abstract</h1>
+<p>Addressing the goal of the workshop, i.e. to bridge the gap between academic and industrial aspects in regard to scholarly data, we inspect the case of plant phenotyping data publishing. We discuss how the publishers could foster advancements in the field of plant research and data analysis methods by warranting good quality phenotypic data with foreseeable semantics.</p>
+<p>Examining of a set of scientific journals dealing with life sciences for their policy with respect to plant phenotyping data publication shows that this type of resource seems largely overlooked by the data policy makers. Current lack of recognition, and resulting lack of recommended repositories, for plant phenotypic data leads to depreciation of such datasets and its dispersion within general-purpose, unstructured data storages. No clear incentive for individual researchers to follow data description and deposition guidelines makes it difficult to develop and promote new approaches and tools utilising public phenotypic data resources. </p>
+</section>
+<section id="section1">
+<h1>Background</h1>
+<p>Understanding plant phenotypes is the ultimate goal of plant research, motivated by the desire to improve plants with respect to such traits like yield, taste or disease resistance, for the benefit of mankind. To discover complex biological mechanisms behind certain phenotypic traits, a large amount of elementary analyses must be done and eventually integrated. To allow this, sufficient amount of constitutive datasets with adequate experimental metadata must be available. </p>
+<p>Quality publications and dataset submissions should ensure that the published data is comprehensible, replicable and reusable. Validation against a set of established requirements, deposition and indexing of datasets should guarantee that good quality plant phenotyping datasets are accessible for both biological researchers and developers of new methodological approaches to its analysis.</p>
+<p>Surprisingly, despite being a valuable and very basic type of resource that plant researchers deal with, plant phenotypic data tend to be overlooked by the publishers and their policy makers. Among the journals examined for requirements and recommendations with respect to plant phenotyping datasets, only one names this kind of data explicitly and mentions a repository where phenotypic traits can be stored. As a result, the data get dispersed among general-purpose, unstructured repositories and lose its chance to stimulate new discoveries and dedicated methodology development.</p>
+</section>
+<section id="section2">
+<h1>Research data publication guidelines</h1>
+<p>Having selected a non-exhaustive set of popular life science journals where plant research involving phenotypic data has been published or submitted within the previous months, we have examined their current data policy with respect to plant phenotyping datasets. A summary of the information covering plant phenotypic data is shown in <a href="#table_1"> </a>. </p>
+<figure id="table_1">
+<table>
+
+<tbody><tr>
+<th>Journal Title</th>
+<th>Data Category covering plant phenotypic data</th>
+<th>Suggested data location</th>
+<th>Suggested reporting standards</th>
+</tr>
+<tr>
+<td>
+<p>Plant Journal</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR; SI; IR/AuR</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>New Phytologist</p>
+</td>
+<td>
+<p>n/a</p>
+</td>
+<td>
+<p>SI; (PR)</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Journal of Applied Genetics</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Figshare, Dryad</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Euphytica</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Figshare, Dryad; (SI)</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Scientific Data</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Plant Methods</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework,Zenodo; IR</p>
+</td>
+<td>
+<p>field-specific standards reported at BioSharing website</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Theoretical and Experimental Plant Physiology</p>
+</td>
+<td>
+<p>n/a</p>
+</td>
+<td>
+<p>n/a</p>
+</td>
+<td>
+<p>"By data we mean the minimal dataset that would be necessary to interpret, replicate and build upon the findings reported in the article"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Genetic Resources and Crop Evolution</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Figshare, Dryad; SI</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>GigaScience</p>
+</td>
+<td>
+<p><strong>plant</strong>; other</p>
+</td>
+<td>
+<p><strong>PGP</strong>; GigaDB, FigShare, Dryad, Zenodo; IR</p>
+</td>
+<td>
+<p>minimum reporting guidelines at FAIRsharing Portal</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Integrative Biology</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Figshare, Dryad; IR, SI</p>
+</td>
+<td>
+<p>MIBBI checklists for reporting biological and biomedical research</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>BMC Plant Biology</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Plant Science</p>
+</td>
+<td>
+<p>life science; other</p>
+</td>
+<td>
+<p>PR: Dryad; Mendeley Data, Data in Brief</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Frontiers in Plant Science</p>
+</td>
+<td>
+<p>other; <strong>traits</strong></p>
+</td>
+<td>
+<p>PR: Dryad; <strong>TRY</strong></p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Genetics</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Figshare, Dryad; (SI)</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Plos One</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p>prescriptive checklists for reporting biological and biomedical research at FAIRsharing Portal</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Journal of Experimental Botany</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare or Zenodo</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>The Plant Journal</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare or Zenodo; (SI)</p>
+</td>
+<td>
+<p>"Reporting standards for large-scale omics datasets are constantly evolving and TPJ will follow common sense standards currently accepted in the field"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Nature Plants</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p>Life Sciences Reporting Summary</p>
+<p>(internal of Nature Publishing Group)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Nature Genetics</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p>Life Sciences Reporting Summary</p>
+<p>(internal of Nature Publishing Group)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Scientific Reports</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Heredity</p>
+</td>
+<td>
+<p>other</p>
+</td>
+<td>
+<p>PR: Dryad, Figshare, Harvard Dataverse, Open Science Framework, Zenodo</p>
+</td>
+<td>
+<p>Life Sciences Reporting Summary</p>
+<p>(internal of Nature Publishing Group)</p>
+</td>
+</tr>
+
+</tbody></table>
+<figcaption>A summary of data policy of selected life science journals towards plant phenotyping data.<br>PR = Public Repository; SI = Supplementary Information; IR = Institution Repository; AuR = Available upon Request;<br>() = if need be; n/a - information not available <br><em>Finding definitive information about data policies was not straightforward due to the information being frequently scattered across journals’ and publishers’ websites. Multiple declarations about journal-specific data policies, those of the publisher, supported or adopted external initiatives, recommended data repositories, reporting standards, and data archiving policies appear at different locations. Having this information published in a standardised form and place would greatly improve the access and comprehensibility. </em></figcaption>
+</figure>
+<p>Most of the journals declare adoption of some research open data and data archiving policy, and <em>'data availability statement'</em> is required in a paper. With minor exceptions of confidential data, '<em>data not shown</em>' statements are no longer accepted; instead, the research data underlying all claims and conclusions must be provided. If the data cannot be included in the paper itself, its deposition in public repositories is suggested. Institutional or private repositories are rarely allowed. In some cases attaching small dataset as size-constrained supplementary information to the online article is also accepted. </p>
+<p>Only a few specific data types are governed and validated against domain-specific metadata standards or reporting guidelines. A set of required repositories are usually explicitly given for well established measurement types resulting in homogeneous data such as nucleotide sequences (DDBJ, ENA, GeneBank), amino acid sequences (UniProt/Swiss-Prot) and structures (PDB), microarrays (ArrayExpress), metabolites (MetaboLights) or chemical structures (ChemSpider, PubChem). More heterogeneous submissions of selected species are appointed to dedicated repositories, e.g. Arabidopsis genome functional annotation data (TAIR) or human genome-phenome interactions (dbGaP, EGA). Other data types are expected to be put into general-purpose repositories such as <a href="http://datadryad.org" rel="noopener">Dryad</a>, <a href="https://figshare.com" rel="noopener">figshare</a> or <a href="https://zenodo.org" rel="noopener">Zenodo</a>, or a more scientific <a href="http://gigadb.org" rel="noopener">GigaDB</a>. For all but one journals, this is the case of plant phenotyping data, not being explicitly mentioned in the data policy described at their website.</p>
+<p>The only publisher accounting for plant data covering phenotypes is <a href="https://academic.oup.com/gigascience" rel="noopener">GigaScience</a>, which directs to a dedicated public repository of <a href="https://edal.ipk-gatersleben.de/repos/pgp/" rel="noopener">PGP</a>. Another type-specific repository assigned to an ambiguous category of ‘trait data’ is the TRY database. Although the storage is indeed dedicated to a wide range of plant trait information, its advertised <a href="#biblioentry_1"> </a> purpose is not being a running repository for experimental datasets, but an analytical processing database for environmental compilations.</p>
+<p>Some journals direct an ambitious author to a policy register <a href="https://fairsharing.org" rel="noopener">FAIRsharing</a> (formerly MIBBI and BioSharing, still referenced to as such) to identify and follow a suitable standard on their own. Some other links provided by the journals, lead to <a href="https://www.datacite.org" rel="noopener">DataCite</a>’s <a href="https://www.re3data.org" rel="noopener">re3data.org</a> repository catalog that lists institutional, project- or community-specific resources, where also phenotypic databases of different scope and governed by diverse requirements can be found. </p>
+<p>Alas, dataset publishing alone does not ensure sufficient data comprehensibility or reproducibility. No systematic validation of whether the dataset comply with recognised standards seems to be done by the journals. General-purpose storages, contrary to the explicitly recommended dedicated databases, do not impose any constraints on the content and quality of the submissions. Individual repositories for phenotypic data might be governed by provisional guidelines appropriate for current applications rather than long terms storage with the view of replicability and interoperability. Lack of journals' consistent data validation policy poses a threat of missing out some important metadata qualities and thus losing a unique and potentially valuable contribution to explanation of biological mechanisms, at the same time letting the storages fill with non-reusable datasets. </p>
+</section>
+<section id="section3">
+<h1>Plant phenotypic data</h1>
+<section id="section4">
+<h1>Data characteristics</h1>
+<p>Plant phenotypic data constitute one of the fundamental bricks of plant science. Phenotypic traits result from the interaction of organism’s genome and environment, and are manifested as organism's observable characteristics. Phenotypic traits are of different nature (qualitative or quantitative) and granularity (e.g cellular or whole plant properties). They can be determined by diverse techniques (e.g. visual observation, manual measurement, automated imaging and processing, or analysis of samples by sophisticated devices) in different time regimes (one-time capture, repeated or time-series) and expressed in different scales and units. The general notion of plant phenotyping encompasses many types of measurements done at different levels of material granularity and technical complexity, and pertains to a huge fraction of the plant research. </p>
+<p>As mentioned before, many types of measurements that produce a homogeneous set of specific, in-depth observations are well-standardized, and have a dedicated standard for data description and formatting, as well as measurement-specific data repositories. Meanwhile, a wide range of “traditional” measurements done with a variety of non-standardised, non-automated or low-throughput methods are collected and analysed in laboratories every day. Frequently they apply to basic plant qualities like yield, fruit taste and colour, or disease resistance. Those basic phenotyping data are indispensable for interpretation of the in-depth "-omics" analyses, by providing the ultimate observable result of the biological mechanisms studied. </p>
+<p>In plant experiments the relationships between the phenotypic qualities and environmental conditions are to be explained. Thus, a precise description of the environment is an integral part of all plant phenotyping datasets, and makes them unique. The well-documented datasets are valuable not only due to specific environmental conditions that contribute to observed phenotype, but also because they are frequently expensive and time-consuming to produce. Thus each experiment deserves scrupulous data handling.</p>
+<p>Huge diversity of plant studies performed by researchers to investigate mechanisms of plant reactions to different stimuli makes it difficult to establish one fixed approach to handling the description of the process and its results. However, irrespective of the types of plant treatments and measurements done, a set of common abstract properties of such experiment can be distinguished. Similarly, a number of environmental properties and forseeable steps in preparation of the plant material and its growth can be identified, named and described; and eventually used at data searching, processing and analysis.</p>
+<p>Plant phenotyping dataset can be used on their own by the researchers, breeders and farmers to screen plant varieties and identify genotypes that behave in a special way in certain conditions. Together with genomic marker data they make a crucial part of <a href="https://en.wikipedia.org/wiki/Quantitative_trait_locus" rel="noopener">QTL</a> or <a href="https://en.wikipedia.org/wiki/Genome-wide_association_study" rel="noopener">GWAS</a> analyses, and in conjunction with environmental data serve in <a href="https://en.wikipedia.org/wiki/Gene–environment_interaction" rel="noopener">genome-environment interaction</a> analysis. The lack of explicit consideration (in recommendations, validation process, encouragement to publish, and access to databases or keywords) for this non-specific yet important data type, even in biological journals, makes it dissipate in the general repositories and limits the possible biological research findings. </p>
+</section>
+<section id="section5">
+<h1>Plant phenotyping community</h1>
+<p>In the community of plant researchers dealing with phenotyping data the work on new improved approaches to plant experimental data description, modelling and processing is ongoing. Numerous project- or organism-specific databases and tools exist. The work of many groups in plant phenotyping community is aimed at facilitating plant phenotypic data standardisation, exchange and reuse through improvement of experimental data description guidelines. </p>
+<section id="section6">
+<h1>Proposed solutions and ongoing efforts</h1>
+<p>To improve the quality of plant phenotypic experiment description the <a href="http://www.miappe.org/" rel="noopener">Minimum Information About a Plant Phenotyping Experiment (MIAPPE)</a> recommendations have been proposed <a href="#biblioentry_2"> </a><a href="#biblioentry_3"> </a> by a joint effort of big projects dedicated to plant infrastructure development: <a href="http://www.transplantdb.eu" rel="noopener">transPLANT</a>, <a href="http://www.plant-phenotyping-network.eu" rel="noopener">EPPN</a>, and <a href="https://www.elixir-europe.org/about-us/how-funded/eu-projects/excelerate" rel="noopener">Elixir-Excelerate</a>. MIAPPE constitutes a checklist of general properties needed to describe a plant experiment, so that the observed phenotypes can be interpreted as a result of interaction of genome and environment. To enable standardisation of the wording used in description of all MIAPPE elements, a set of ontologies and taxonomies for their semantic annotation has been recommended. Specific vocabularies to use with environment characterisation are being collaboratively developed by phenotyping community projects (<a href="https://eppn2020.plant-phenotyping.eu" rel="noopener">EPPN2020</a>, <a href="https://emphasis.plant-phenotyping.eu" rel="noopener">EMPHASIS</a>).</p>
+<p>The MIAPPE recommendations have been implemented in a number of databases (<a href="https://edal.ipk-gatersleben.de/repos/pgp/" rel="noopener">PGP</a>,  <a href="https://urgi.versailles.inra.fr/ephesis" rel="noopener">EphesIS</a>, <a href="http://cropnet.pl/plantphenodb/" rel="noopener">PlantPhenoDB</a>, and <a href="https://gwas.gmi.oeaw.ac.at/" rel="noopener">GWA-Portal</a>). There is an ongoing work on harmonising implementations of <a href="https://brapi.org" rel="noopener">Breeding API</a> (a standard interface for plant phenotype/genotype databases) with MIAPPE. A reference implementation for MIAPPE-compliant flat file data exchange has been proposed in <a href="http://isa-tools.org/format/specification/" rel="noopener">ISA-Tab format</a>. A <a href="http://agroportal.lirmm.fr/ontologies/PPEO" rel="noopener">semantic representation</a> of MIAPPE-compliant plant phenotyping experiment model is being developed. On top of the phenotyping dataset description standard, a number of data processing, validation, quality assessment and statistical analysis tools are under construction. As a follow-up, applications taking advantage of the enhanced data semantics will be built, conceivably offering advanced and innovative approach for data exploration and analysis. </p>
+</section>
+<section id="section7">
+<h1>Limitations</h1>
+<p>The solutions proposed by plant phenotyping community projects work towards establishing best practices in data management across phenotyping facilities. They would be even more successful if the individual researchers, also those with smaller amounts of phenotypic observations possibly linked to other data types, were incentivised to provide good quality phenotyping datasets to repositories and papers. Without journals' putting more stress on publication of complete and well-described phenotypic datasets, the work on harmonising phenotyping resources and tools taking advantage of data semantics will be restricted only to huge players, i.e. research institutions administering own permanent storage systems and implementing own solutions. </p>
+<p>This leaves out smaller research units and researchers who are not motivated to publish the phenotyping observations together with the standardised and adequate metadata, leading to single-use-by-author-only datasets.</p>
+</section>
+</section>
+</section>
+<section id="section8">
+<h1>Conclusions</h1>
+<p>The field of plant phenotyping data publishing, lacking explicite recommendations, public dedicated repositories and curation, is likely to generate lots of dataset whose storage might be questionable. Unsupervised data publications tend to be incomplete, and thus provide data unsuitable for understanding, replication and re-analysis of the original experiment. To avoid data loss and confusion by single-use-by-author-only datasets, individual researchers should be encouraged and assisted in publishing phenotypic observation with the standardised and adequate metadata. </p>
+<p>Despite the variety of plant phenotyping studies and difficulties in pointing to one, unequivocally accepted data description standard, some approach of the publishers to systematically validate the quality of the phenotyping data submissions might be beneficial. Initially, it could be required of the authors to follow some phenotyping-specific reporting guidelines (possibly one of a few reasonable ones), or explicitly stating if this cannot be done in some respects and why. Thus the gaps should be identified and a commonly accepted standards should be successively shaped.</p>
+<p>An explicit consideration of plant phenotypic data by the biological journals, especially plant-focused ones, is desirable. Recommendations for data-aware storage and a registry of phenotyping dataset could be made available to stimulate progress in both biological research and development of smarter tools and algorithms to deal with it. </p>
+<p>We hope that with the ongoing initiatives of the phenotyping community, and with the raising awareness of both publishers and researchers, the presence of public phenotyping datasets in complex and innovative analyses will be facilitated and promoted. Introducing better semantics to public plant phenotyping data will trigger development of integrative analyses methods, leading to new great discoveries. </p>
+</section>
+<section id="doc-acknowledgements" role="doc-acknowledgements">
+<h1>Acknowledgements</h1>
+<p>The work was funded by National Science Centre, Poland, project No. 2016/21/N/ST6/02358.</p>
+</section>
+<section id="doc-bibliography" role="doc-bibliography">
+<h1>References</h1>
+<ul>
+<li role="doc-biblioentry" id="biblioentry_1">
+<p>Kattge J, Ogle K, Bönisch G, Díaz S, Lavorel S, Madin J, Nadrowski K, Nöllert S, Sartor K and Wirth C. (2011), A generic structure for plant trait databases. Methods in Ecology and Evolution, 2: 202–213. doi:10.1111/j.2041-210X.2010.00067.x</p>
+</li>
+<li role="doc-biblioentry" id="biblioentry_2">
+<p>Krajewski P, Chen D, Ćwiek H, et al. Towards recommendations for metadata and data handling in plant phenotyping. J Exp Bot. 2015;66:5417–5427. doi: 10.1093/jxb/erv271</p>
+</li>
+<li role="doc-biblioentry" id="biblioentry_3">
+<p>Ćwiek-Kupczyńska H, Altmann T, Arend D, et al. Measures for interoperability of phenotypic data: minimum information requirements and formatting. Plant Methods. 2016;12:44. doi:10.1186/s13007-016-0144-4.</p>
+</li>
+</ul>
+<p></p>
+<p></p>
+</section></body></html>

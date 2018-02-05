@@ -1,0 +1,2 @@
+* Gustavo Publio, Diego Esteves, Agnieszka Ławrynowicz, Panče Panov, Larisa Soldatova, Tommaso Soru and Joaquin Vanschoren: [ML Schema: Exposing the Semantics of Machine Learning with Schemas and Ontologies](submission/publio/index.html)
+* Gabriele Scalia, Matteo Pelucchi, Alessandro Stagni, Tiziano Faravelli and Barbara Pernici: [Storing combustion data experiments: new requirements emerging from a first prototype](submission/scalia/index.pdf)
