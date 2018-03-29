@@ -21,7 +21,7 @@
         "@context": "http://cs.unibo.it/save-sd/context/context.json",
         "@id": "page/save-sd-2018-keynote/noy-talk",
         "has_type": "section",
-        "has_id": "noi-talk",
+        "has_id": "noy-talk",
         "has_label": "SAVE-SD 2018 keynote, section 'Keynote overview'",
         "has_title": "The talk",
         "has_url": "txt/noy-talk.txt"
