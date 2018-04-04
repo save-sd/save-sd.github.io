@@ -1,8 +1,8 @@
-## Gustavo Publio, Diego Esteves, Agnieszka Ławrynowicz, Panče Panov, Larisa Soldatova, Tommaso Soru and Joaquin Vanschoren: [ML Schema: Exposing the Semantics of Machine Learning with Schemas and Ontologies](submission/publio/index.html)
+**Paper: ** Gustavo Publio, Diego Esteves, Agnieszka Ławrynowicz, Panče Panov, Larisa Soldatova, Tommaso Soru and Joaquin Vanschoren: [ML Schema: Exposing the Semantics of Machine Learning with Schemas and Ontologies](submission/publio/index.html)
 
-### Decision: reject
+**Decision: reject** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 This is a good read & good work: a well written paper based on authors' activities within the according W3C community group. The story of the paper is straightforward and makes the point: there are existing vocabularies & ontologies, and now ML Schema provides not only more elaborated model (in terms of coverage of different ML aspects) but also serves as a glue between existing work.
 
 Authors do not make a too strong connection to SAVE-SD topics but obviously if there is a way to better semantify ML and its parts & different settings this will also greatly support scholarly communication.
@@ -15,7 +15,7 @@ Further on this: if ML models are better interpretable for robotic users, what c
 
 Finally, is there somewhere data about ML models & experiments annotated using ML Schema? And if not, why not? I would certainly like to check.
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 The authors present the ML Schema and argue that exposing semantics of machine learning algorithms, datasets, and experiments to achieve the full interoperability of experiments.
 
 Figure 1 is confusing because it contains many arrows between the components inside without explanation in the text. In addition, there are several acronyms without mentioning the full title such as MLF, IDE, and SWFS.
@@ -29,7 +29,7 @@ Table 1, takes much space without a big contribution, again, information density
 Message to authors:
 I would like to remind that direct copy of sentences and paragraphs, even if they are yours, is allowed. Please re-write, re-phrase and summarize the whole paper and resubmit, maybe to another venue or SAVE-SD 2019.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This paper introduces a schema meant to describe machine learning models in order to facilitate reuse and interoperability. The intention behind this short paper has its merits, however, I have to admit that I found the paper somewhat poorly presented, significantly lacking in clarity, and the actual schema presentation raised several key questions.
 
 First of all, the paper discusses a "schema to describe machine learning algorithms,...", while, what you really seem after is a representation of "machine learning models" (and their provenance). Then, the paper does not even clarify whether it's main intention is to address supervised or unsupervised learning. It appears that the authors have supervised learning in mind, yet this is nowhere stated.
@@ -38,7 +38,7 @@ Figure 1 seems not very well explained (what is "MLF"?, what is "SWFS"? etc ). F
 
 Given the provided information, this work seems not still in its early stages, i.e. presenting some work in progress, which deserves more work and clarity w.r.t. presentation.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 This paper describes the ML-Schema, a comprehensive schema for modeling machine learning algorithms, datasets, and experiments, which aligns more fine-grained ontologies and vocabularies in the Machine Learning domain.
 
 It may well be that this is a very useful addition to current ontologies for describing computer science efforts, but although the abstract promises us that the paper will ‘argue that exposing [the] semantics of machine learning algorithms, models, and experiments may pave the way to better interpretability’, this is not the case. The paper simply presents the ontology, and that is that.
@@ -49,16 +49,16 @@ If those issues were added, this could be a useful paper. As it stands, I am afr
 
 If the paper is rewritten the paper with the above comments in mind, I would be happy to rereview it.
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 This paper is insufficiently elaborated. A new ontology is presented to describe "information on machine learning algorithms, datasets, and experiments". While this is potentially interesting, the paper actually fails to discuss the ontology in sufficient detail. In addition, as pointed out by some reviewers, the information presented in this paper has already been published and has been presented better in other publications. Hence, it is hard to see what is the new contribution provided here. And, aside from this problem, in any case the paper is not developed enough even for a workshop submission.
 
 - - -
 
-## Gabriele Scalia, Matteo Pelucchi, Alessandro Stagni, Tiziano Faravelli and Barbara Pernici: [Storing combustion data experiments: new requirements emerging from a first prototype](submission/scalia/index.pdf)
+**Paper: ** Gabriele Scalia, Matteo Pelucchi, Alessandro Stagni, Tiziano Faravelli and Barbara Pernici: [Storing combustion data experiments: new requirements emerging from a first prototype](submission/scalia/index.pdf)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 This paper presents an approach on solving data sharing and integration challenges in the field of combustion research. The authors identify and explain requirements and sketch a possible architecture. The paper is well written, but it is unclear what its type and main message are.
 
 The requirements are described in detail, but their proposed architecture is only described very briefly and informally. The title mentions a prototype, but sections 4 and 5 are silent about any existing partial implementation.
@@ -75,7 +75,7 @@ Some more minor comments:
 
 - "semantics" instead of "semantic" when used as a noun
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 The paper presents a very comprehensive overview of the solutions available for storing combustion data experiments in the chemical kinetics domain. It also defines requirements for the scenario in which such solutions can be made interoperable and used together, instead of checking each of them.
 
 The paper provides a really nice introduction to the domain and overview of existing solutions. The description of the requirements is nicely structured and is also clear. It seems to be novel, and constitutes the main contribution of the paper. However, the proposed architecture is hardly making a substantial contribution, because, as far as I understood from the paper, it is just an idea which was not tested. In other similar solutions, e.g., if one wants to build a repository harvesting bibliographic data via OAI-PMH protocol from various preprint repositories, one would need: input files from the external repositories, a kind of ETL process to load the data, a database (triple store) to store the data and some infrastructure on top to support the data management. Complement this with some reporting/analytics functionality and generation of output files in a specific format and, voila, we get the architecture very similar to Fig. 2. It would be great to see that architecture tested in practice, while the current paper can just focus on the requirements.
@@ -94,10 +94,10 @@ In the following, I will provide more specific comments on the paper, hoping the
 
 The paper is nicely written and very easy to read even for a non-expert in the combustion domain like myself. I encourage authors to continue this work and to have one of the next papers on "Google Scholar for combustion experiments".
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This position paper looks at the area of combustion data experiments, at the current practices and existing repositories, to extract a set of detailed requirements regarding the dicovery, enrichement, validation and general management of such experimental data. The paper also briefly describes a general architecture to address those requirements. The contribution of the paper is not very concrete but the general discussion based on a specific area of research is certainly very valuable for the workshop. Part of the discussion could in particular be on how much of the requirements (and therefore components of the architecture) would be shared with other domains (I suspect a lot).
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 In the paper the challenges related to the management and use of experimental data in the field of chemical kinetics modelling are discussed. The authors conclude that a successful solution could consist in a service-oriented infrastructure based on semantic data model for the domain.
 
 Initially, the authors provide a good introduction to kinetics modeling by describing the characteristics of combustion experiments, resulting data and its modelling, both undergoing iterative improvements. The authors name a few research groups and initiatives active in the domain, and point to some repositories and tools that deal with such data.
@@ -108,7 +108,7 @@ It seems that common conceptualisation of the information in the domain could in
 
 The paper's section on the proposed architecture could be developed a bit more, and the draft of the infrastructure presented in Fig. 2 could be improved to provide more precise links between individual components. Fig.1 is difficult to read due to small font size and seems cut on on side. Overall, an interesting and unfolding topic.
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 Having looked at the main reviews: All reviewers note the same strengths and weaknesses of the paper, only the evaluation note is different. I agree with the overall review statements. To bottom line:
 
 Pro: the requirements of the data environment, though may be a bit specific to the application area, are of interest and a source of valuable discussion during the Workshop.

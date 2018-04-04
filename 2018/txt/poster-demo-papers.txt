@@ -1,8 +1,8 @@
-## Hanna Ćwiek-Kupczyńska: [Striving for Semantics of Plant Phenotyping Data](submission/cwiek-kupczynska/index.html)
+**Paper: ** Hanna Ćwiek-Kupczyńska: [Striving for Semantics of Plant Phenotyping Data](submission/cwiek-kupczynska/index.html)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 In "Striving for Semantics of Plant Phenotyping Data" the author provides an overview of the guidelines that are currently adopted by journal and authors, when publishing open repositories for the field of plant phenotyping.
 The author highlight how important are well documented repositories. To this end, she is urging the community for the adoption of particular standards for publishing such datasets and she is seeking the support of publishers in persuading authors to publish comprehensive and high quality datasets.
 
@@ -12,12 +12,12 @@ This paper perfectly fits the call of SAVESD, although I strongly encourage the 
 Minor:
 - The paper presents many typos which make challenging the reading. Please proof read it.
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 This paper refers to the issue of lack of repositories and data description guidelines for plant phenotypic data. Phenotypic features result from the interaction of organism’s genome and environment, so a description of the environment is an essential part of datasets of this type. The author included a review of the data policy concerning plant phenotyping datasets of a set of popular life science journals. Based on this study, submissions of data-sets in public repositories are suggested by these journals. Only a few specific data types are validated against domain-specific metadata standards, and other data types are expected to be stored in general-purpose repositories. Besides, some journals let authors identify their standard. Following a unique guideline facilitates reusing datasets. The suggested solution in the paper - MIAPPE creates a checklist of common properties to describe a plant experiment and the interaction by the environment. The MIAPPE suggestions are implemented in some databases such as PlantPhenoDB.
 
 This paper is well aligned to the workshop goal. The article is well structured, and the author explained the problem and subsequently proposed solutions. Introducing and promoting a well-defined semantic for public plant phenotyping data has a significant influence on this domain. In general, my impression about the paper is positive.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This poster paper investigates the case of plant phenotyping in data publishing. The paper examines the data publication guidelines that are currently being practice by the life science journals and describes the proposed solutions that can be found in capturing and improving the quality of plant phenotypic experiment data.
 
 The paper presented a good argument on the importance in capturing plant phenotyping in data publishing with a comprehensive table summarizing the data policy of several life science journals for plant phenotyping data. There is however only a small section describing how individual researchers can be incentivize to deposit their phenotyping datasets to repositories and papers. This section should be further expanded. It would also be interesting to read a discussion on the existing applications that are currently being built using the enhanced data semantics (MIAPPE).
@@ -28,7 +28,7 @@ Some minor comments:
 - Missing urls or references to the EPPN2020, EMPHASIS, EphesIS, ISA-Tab, etc.
 - Possible missing reference: PGP repository: a plant phenomics and genomics data publication infrastructure (https://doi.org/10.1093/database/baw033)
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 Merits
 
 This submission explores the existing state of support for plant phenotyping data publication by analyzing how plant phenotype data is handled across a set of 21 life sciences journals.
@@ -39,7 +39,7 @@ Criticism
 
 Section 3.2.2 could use a few concrete examples but overall it’s a very good summary.
 
-### Meta-review (Cameron Neylon)
+**Meta-review (Cameron Neylon)** 
 This paper makes an important point about standardisation of plant phenotypic data and offers an analysis of current data sharing/description requirements. It is a valuable contribution to the development of improved data sharing practice.
 
 The referees all note the good structure and relevance to the workshop.
@@ -50,9 +50,9 @@ On a personal note, I would have liked to have seen more detail on specific chal
 
 - - -
 
-## Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: [Towards Development of Ontology for the National Digital Library of India](submission/sadhu/index.pdf)
+**Paper: ** Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: [Towards Development of Ontology for the National Digital Library of India](submission/sadhu/index.pdf)
 
-### Decision: reject
+**Decision: reject** 
 
 Paper withdrawn - reviews not available yet
 

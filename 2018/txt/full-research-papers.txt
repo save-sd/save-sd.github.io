@@ -1,8 +1,8 @@
-## Marco Corbatto and Antonina Dattolo: [A Web application for creating and sharing visual bibliographies](submission/corbatto/index.html)
+**Paper: ** Marco Corbatto and Antonina Dattolo: [A Web application for creating and sharing visual bibliographies](submission/corbatto/index.html)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 The paper presents “VisualBib”, a tool the authors developed to visualize and explore bibliographies in scientific articles. The paper is difficult to read as it is not well written with regards to the English language and would benefit hugely from copy editing by a native speaker. Sometimes the reader has to guess as to what the authors actually mean (for example the word "afference" is used while probably "affiliation" is meant). Further specific suggestions for improvement are given below but fixing these would only moderately increase the readability. The paper does do a good job of illustrating and presenting the use cases for the tool; visualizing collaboration networks and tracking the subject matter of a paper over time are very useful applications. In section 5 the authors also show a positive response to the tool from the prospective user community. The fact that the tool uses real time data is very useful, as is the fact that the tool is fully web based. An unfortunate point is that although the tool is mentioned in the paper as being available at http://sasweb.uniud.it/visualBib/ the tool was not available for this reviewer as access to the page was username/password restricted (tried to access at 6 feb 2018, 14:03 CET). It would have been nice to actually experience the user interface instead of relying only on the figures in the paper. The tool relies for one part on Scopus data which may mean access is restricted for many users as Scopus data is not Open Source but a subscription based commercial service? If this is true then this caveat does not seem to be mentioned in the paper. It would have been nice to know the authors’ reasoning for using Scopus data as there may be other sources available with less restrictions. For example the work of CrossRef (CR), which also operates a service to machine access all CR metadata (e.g. containing >94 million records of article metadata, references, cited-by counts, funding data, license information, full-text links, ORCID iDs, abstracts, retractions, corrections) is not mentioned, same for the I4OC open citations initiative. The other data source, OpenCitations, is OS. In general a report on this tool is worth publishing as it presents interesting use cases and a novel way of visualizing bibliographies. But the paper would need to undergo extensive copy editing in order for it to properly convey the contribution that the tool makes to the existing 109 different approaches the authors mention already exist today. I would recommend it be conditionally accepted only after the authors seek guidance from a native English copy editor.
 
 Abstract
@@ -46,7 +46,7 @@ What does “afference” mean? affiliation?
 “consisting in” > “consisting of”
 “from the participants” > “by the participants”
 
-### Review 2 (Steve Pettifer)
+**Review 2 (Steve Pettifer)** 
 This is a well-written paper describing a nice visualisation tool for tracking the citation graph between articles to create what the authors describe as 'narrative views'. The article's structure is coherent, and leads from a description of the application's purpose, through it's use and architecture to an initial evaluation of it's usability. The prose is fluid and clear (with a few minor tweaks suggested at the end of this review).
 
 The link to the web-based software mentioned in the paper requires a username and password (which I was able to obtain for the purposes of this review by contacting the authors). On the whole, the application behaves as described in the article, though has some browser compatibility issues that aren't mentioned in the paper. The application itself provides for a slightly confused user experience, borrowing in some places from 'desktop' interation paradigms, elsewhere from web-app paradigms, and in some cases feeling as though it's created it's own approach to user interaction. These issues, combined with usage limits arising from the use of the Scopus API I would suggest put the tool in the 'well developed proof of concept' or 'demonstrator' category, rather than something that's quite ready for wide deployment at the moment, and it would perhaps be wise to mention this in the paper. It's also worth noting that it has problems dealing with unicode characters which are common in the metadata for articles, and appear as odd renderings in authors' names. These quibbles about the app however do not detract from the fact that this is a very nice piece of work with real potential that is definitely of interest to the SAVESD audience.
@@ -63,7 +63,7 @@ Throughout, I'd suggest "they" and "their" is now an acceptable gender neutral a
 
 [reviewer: Steve Pettifer] (Happy for my name to be associated with the review -- I've already blown my cover by contacting the authors to get access to the software anyway)
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This paper introduces VisualBib, a Web application designed to visualize, explore and create bibliographies.
 
 The paper is well structured, reads well and it's highly relevant for the SaveSD workshop. I just found a few typos, which I list at the end of my review. I would also suggest the authors to do a second proof read. The topic of the paper is not novel, but this is the first system that I see that allows selecting and editing a customized bibliography in an interactive manner. I am also impressed by the evaluation, which is of an uncommon quality for a workshop paper. Hence, I think that this work would be a nice contribution to the workshop, and recommend its acceptance.
@@ -81,7 +81,7 @@ Question: What is a reasoned bibliography? It's never explained, and I am not su
 Typos: "the deriving bibliographic metadata represent" -> deriving bibliographic metadata represents
 "appears stopped" -> appears to not be supported anymore/ appears to have stopped
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 This paper presents a web-based visual interface for retrieving and browsing research publications from a number of sources (two at present). The idea behind the interface is to provide a common access point for browsing data scattered across different databases, to enhance the experience in searching for research literature and to enable users to build and share bibliographies. The application is currently a prototype and although a link to it was shared in the paper I wasn’t able to access it (the website asked for a password).
 
 Overall evaluation:
@@ -95,18 +95,18 @@ Specific details:
 - Evaluation: Why was the comparison done with Scopus? Why not Google Scholar, Microsoft Academic, ArnetMiner or another tool? How were the participants distributed into the two groups? Why did the authors focus on usability? In the introduction and related work section the authors state some of the novel aspects of their work, for example creating personal bibliographies, selecting authors and papers. I think it would be useful to demonstrate through the evaluation how well the visualization helps in achieving these goals instead of focusing purely on usability.
 - It would be useful in the conclusion to provide a discussion of how were the specific goals of the visualization achieved.
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 Although it would be nice to see this tool presented at the workshop and the evaluation appears to be positive, the paper itself is not written well enough and in particular it is quite difficult to make sense of the proposed functionality and understand why it improves on other existing solutions. As one of the reviewers pointed out, the paper is rather disconnected, the key section describing the functionalities is not very clear and then a lot of space is allocated to technical details that are not essential.
 
 Hence, I am giving a borderline score. As I said it would be nice to see this tool at the workshop but the paper requires significant improvements, as pointed out by the other reviewers
 
 - - -
 
-## Jessica Cox, Corey Harper and Anita Dewaard: [Optimised Machine Learning Methods Predict DIscourse Segment Type in Biological Research Articles](submission/cox/index.pdf)
+**Paper: ** Jessica Cox, Corey Harper and Anita Dewaard: [Optimised Machine Learning Methods Predict DIscourse Segment Type in Biological Research Articles](submission/cox/index.pdf)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (Andreas Behrend)
+**Review 1 (Andreas Behrend)** 
 In this paper, the authors employ machine learning methods for automatically
 detect so-called Discourse Segment Types (DSTs) in biological research articles.
 In order to improve the classification results, they could successively
@@ -128,7 +128,7 @@ guidelines.
 
 Reviewer's name: Andreas Behrend
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 This paper presents machine learning methods to predict discourse segment types, e.g., hypothesis, goal or method, in biological research articles. The learning algorithms define features based on verb type and form. The authors use an iterative approach where experiments are tuned and modified in order to improve the output. Final results show that verb tense alone could be enough to predict the discourse type corresponding to a segment.
 
 Although the paper is well written, reorganizing the methods and results section could improve readability. Somehow you are describing at least two approaches (if not three). So, first, I suggest to separate methods from results. Second, I suggest to separate the different approaches and their corresponding experiments. By the way, are 'experiment' and 'approach' synonyms for you? It looks like from the narrative ('We then took a second approach' and later 'we designed a fourth experiment'). A diagram showing how and why you move from one experiment to the other would make it easier to understand. I also suggest to better clarify the connection between the previous works [1] and [4] and the presented in this manuscript. Is it a continuation, a variation, an improvement?
@@ -150,17 +150,17 @@ The manuscript is easy to read, follow and understand. Problem, motivation, meth
 * do some additional proof-reading to avoid duplication and typos (look for 'described above, as described in' or 'there didn’t appear'),
 * make sure you close any opened quotes (look for '“Discourse Segment Type, as outlined in Table 1.')
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 The objective of this study was to determine effective methods for predicting discourse segment types in biomedical research papers. The methods were described clearly, as were the results and rationale for adjusting methodology. That verb tense was the most significant predictor of segment type, was both an interesting and troubling result.
 
 This reviewer is concerned about the strength of this result. The sample segments are drawn 10 papers in related fields. All of these papers were manually marked up. While the methodology was clear, for the purpose of testing their hypothesis, it could be expected to apply the methods to additional datasets, from papers in the same fields and other biomedical fields, to see if verb tense remains a predictor. I would have liked to see this at least discussed in the paper; better would have been to include methods testing on additional data sets.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 This work illustrates a series of experiments for the machine learning classification of fragments of biomedical scholarly papers. The fragments are initially classified into several classes, with poor results and with class balancers making more difference than ML methods. When the fragments are classified into only two types, conflating some of the previous ones, class balancers are not required any more and performance shows great improvement.
 While I find the experiments very relevant to the scope of this workshop, I’m not too sure we are looking at much more than a confirmation of previous or largely expected results (even the authors qualify them as “unsurprising”). In my view, this is also reflected in the excessive length of tables, which could have left more room to an overview of the state of the art or to more details of aspects that are often only mentioned in passing. For instance, the authors state that “their approach diverges from other traditional methodology”, it would be interesting to read how. Also, they lament “mediocre results” for the first set of experiments, but a baseline is not offered.
 Finally, while the text is clear and easy to follow, a little bit of more polishing is needed for typos (e.g. “as as”), style (“do” might be replaced in a few occurrences with a more specific verb) or placeholders (“insert mendeley dataset here”).
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 All the reviewers agree on the relevance of the paper to be presented at the workshop.
 However, they also provide important suggestions to improve the quality of the paper, and its readability.
 
@@ -170,11 +170,11 @@ I also would like to see a discussion about why tense results to be a good predi
 
 - - -
 
-## Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis: [Coloring citations for scholars: investigating palettes](submission/diiorio/index.html)
+**Paper: ** Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis: [Coloring citations for scholars: investigating palettes](submission/diiorio/index.html)
 
-### Decision: downgrade to short paper
+**Decision: downgrade to short paper** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 The authors are working on an interesting problem, that of characterizing citations across scholarly papers and presenting such enrichments to the reader.
 
 The data model is interesting but it is hardly a data model. These are more like facets, data elements that may be presented to the reader and that enrich the citations. “The basic idea is to let scholars access enhanced publications in which the bibliography is not a monolithic unit, as it happens today, but a collection of entries that can be shown, ltered and aggregated according to multiple criteria (colours)”. This is interesting and I think it should really be the core of the paper; everything should be around this. The problem is that the authors try to support their model on a very poor experimental design. One could remove all in section 4 and very little would be lost. One can disagree with the facets/data elements/classes being presented but in general no one will disagree with the fact that citations should be more interactive and that should provide some insight as to why is this being cited. Again, this is the interesting part of the work. No matter how early work this may be, the authors should consider just discussing the importance of these data elements and provide the reader with some examples illustrating how could these be useful, what could they be used for, how could they technically be implemented given the pre-eminence of the PDF in scholarly communication, etc.
@@ -192,7 +192,7 @@ The authors are right, “the results of the survey has strengthened our intuiti
 
 The work will contribute for an interesting discussion. In its current form the paper has quite a few flaws; however, it is ok for a workshop. Better experimental design leads to better data which generates stronger results; I strongly encourage the authors to re-think their experiment, improve the organization of this paper, have it proof read by a native English speaker and continue with their work.
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 What I miss is a clear research question and a use case. The authors mention a retrieval use case but more explanation would be very helpful. E.g. How to use which "colors" for search?
 Also an analysis of large corpuses of citations is missing. I think this would be more helpful than the survey.
 Related work is great. I like the SCAR data model a lot (tab. 1).
@@ -202,7 +202,7 @@ What is the survey bringing in the paper in terms of colors?
 
 A good workshop paper.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This paper presents some results from a survey on how people perceive the importance of the semantics of a citation, for instance if the citation is a positive or negative citation.
 
 The topic is an interesting one, and the related work section is nice. Unfortunately, the results of the survey (which is the major contribution here) are fairly light in detail, and could be presented better (see comment below). Additionally, it would have been more interesting to see some further work on the actual system to capture this information about citations, or to search and/or visualize the results. For me the work is too early stage.
@@ -213,7 +213,7 @@ The title should also change since it doesn't match the content of the paper at 
 
 Significant reworking of the English is required.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 The paper presents a data model (basically, a list of factors) to be used to annotate citations in scientific works, i.e., to "color" the reference list of papers based on that model. The ultimate goal of this research (not part of this paper though) is to use this model to automatically categorize citations along the dimensions of the data model. After a review of existing categorizations for citations, the authors present and describe the data model they created. Finally, they report on the results of a questionnaire evaluating the proposed categories and having been completed by more than 300 subjects. The results indicate that the citation categories used in the data model seem to be relevant, with slight variations in the ratings among scientific disciplines.
 
 The paper is a nice and insightful read. The topic is within the scope of the workshop, with some potential to stimulate discussions. Although not a new idea, the work is well-motivated and easy to follow.
@@ -234,7 +234,7 @@ The following sentence needs some more elaboration and/or examples: "Only some o
 
 CiTO is introduced twice (in Sec. 2.2 and Sec. 3) in a similar fashion.
 
-## Minor issues:
+**Paper: ** Minor issues:
 - Better avoid the word "cite" in the following sentence in the first paragraph: "... and several other examples could be cited here".
 - The following sentence part would benefit from examples (as the other parts of the sentence): "some on objective properties, some others on more subjective ones..."
 - "Thus, the paper is structured as follows" -> why "Thus"?
@@ -266,16 +266,16 @@ These issues might result from using RASH. Please check before publication, also
 - The paragraph marks are not ideally set in all cases (e.g., in Section 2.2)
 - Use consistent terminology (sometimes, you refer to "this paper", sometimes to "this article", sometimes to "respondents", in other cases to "testers") and use consistently either AE or BE ("color" vs. "colour", "characterizations" vs. "characterisations")
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 The four reviewers for this paper have expressed large concerns about the methodological rigor behind this submission. The reviewers felt the paper would generate significant discussion, but that the current manuscript failed to meet several scientific standards. Specifically, while they all find the topic to be relevant and of interest to this community, there is concern that the current paper lacks a clear research question, well-designed and executed methods, and coherent use cases. The changes requested by the reviewers are substantial to the point that they would not be easily addressed in a revision. Given this, I would recommend that the paper be moved to a different format where the methodological components do not receive full treatment, but rather it is used to generate discussion on this area of inquiry.
 
 - - -
 
-## Said Fathalla and Christoph Lange: [EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities](submission/fathalla/index.pdf)
+**Paper: ** Said Fathalla and Christoph Lange: [EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities](submission/fathalla/index.pdf)
 
-### Decision: downgrade to short paper
+**Decision: downgrade to short paper** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 The paper presents EVENTS a dataset about conference metadata.
 The authors selected 25 top computer science conferences from 5 different fields of study and analysed and integrated manually up to 15 properties per conference instance.
 The paper is well written and its extent is clear; the analysis is quite straightforward.
@@ -298,7 +298,7 @@ Minor observations:
 - repeated footnotes 13, 14
 - footnote 17 format
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 The paper presents a dataset of scientific events in 5 Computer Science domains, including information about time, venue and acceptance rate. The process of collecting and putting together the information was mostly manual.
 
 The work is interesting as it provides a global overview of trends in the aforementioned CS domains, for a quite broad period of time. The drawbacks, in my opinion are two: first, this view of scholarly communication is quite coarse-grained and high level, hampering a more detailed qualitative analysis of the events (but it may circumvented by retrieving the accepted articles). The second drawback, probably more important, is that since the process is manual there is little room to extend the dataset to further events in an automatic, or semi-automatic way. So it is difficult to imagine a different use of the dataset from the one already presented in the paper. This analysis is in any case worth publication, so my orientation is towards accepting it for publication in SAVE-SD.
@@ -310,7 +310,7 @@ Some additional comments:
 - Figure 5: since US is a very popular venue, maybe it would be more interesting to show geographical data at a lower administrative level (US states instead of country)
 - Table 3 is exceeding the margins
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 In this full paper the authors present a dataset containing conference and symposia event descriptions published in RDF format under a Creative Commons license. This dataset is derived from IEEE Xplore, DBLP, ACM Digital Libraries and OpenResearch.org and is also manually curated to some degree (the authors correct submission numbers). The authors also perform some data analysis based on this dataset. The aim of the authors is to support conference organization (steering committees, chairs) in their decision making by providing an overview of their events and related events.
 
 The paper is entirely on topic for the SAVE-SD workshop and sharing data in machine readable format is always welcome. However, at this point the authors appear to aim for a little bit of everything. On the one hand the paper describes the dataset creation and on the other hand provides data analysis on the dataset itself. The dataset creation isn't described very much in depth and provides more a high-level methodology as a summary. The data analysis doesn't go into too much detail either and the trends seen seem unsurprising. The latter may be as the dataset is constrained to 25 now major conferences in the Computer Science domain. The analysis also includes h5-index values which are not actually included in the dataset itself as far as I could tell.
@@ -340,7 +340,7 @@ Page 4: "These events provide different tracks.." should be "events have differe
 Page 10: "We observed that USA leads by far, for having hosted…" Please remove for so that it is "… by far, having…"
 It should be "Canada comes second, hosting most.." Removing the currently included for.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 ** Summary of the paper **
 The paper presents the EVENT dataset that includes a colection of metadata describing a varied set of aspects of 25 series of conferences and symposia since 1969. Each conference/symposia edition is characterized by 15 attriubtes including name, year location, submitted / accepted papers, etc. After reviewing other similar studies and bibliometric analyses mainly dealing with the evolution through time of conference series and research communities, the authors provide a detailed description of the EVENT dataset in terms of statistical info about its content, possibility of extension and format and availability of data. The manual process of creation of the dataset is described by spotting the difficutlies related to data integration, normalization and name unification that had to be faced. Several use cases and examples of analyses that can be performed by relying on the EVENT adataset are presented by discussing some aspect of their results.
 
@@ -352,7 +352,7 @@ The core contribution of this work is the compilation - and sharing - of a manua
 - When repsesenting as RDF the metadata describing a conference in your dataset you rely on a set of properties defined in the openresearch.org namespace - it would be great to explore if there are properties of other (scholarly publishing) ontologies that could be reused in the EVENT dataset.
 - Figure 4 caption: "...distribution of all events int erms of the most frequency of occurrence during the year" - seems unclear. Could you reformulate it?
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 This is the meta-review for this paper that collects and summarises the opinions of the 4 main reviewers of the scientific committee.
 
 There is an overall agreement that the content of the paper is underwhelming: "The use cases are not groundbreaking" (reviewer 1), "it is difficult to imagine a different use of the dataset from the one already presented in the paper" (reviewer 2), "the paper is trying to do too much and lacks focus" (reviewer 3), "The core contribution of this work is the compilation [...] of a manually curated dataset" (reviewer 4).
@@ -365,11 +365,11 @@ Overall I believe that the score of 0, borderline paper, correctly characterises
 
 - - -
 
-## Ivan Heibi, Silvio Peroni and David Shotton: [OSCAR: A customisable tool for free-text search over SPARQL endpoints](submission/heibi/index.html)
+**Paper: ** Ivan Heibi, Silvio Peroni and David Shotton: [OSCAR: A customisable tool for free-text search over SPARQL endpoints](submission/heibi/index.html)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 This paper describes ‘OSCAR’, an RDF Search Application for the OpenCitations corpus, built as a javascript tool which can be embedded in a web page. After a brief mention of four other RDF search tools, the paper describes the architecture of OSCAR, the logical flow of the system, and how to configure it. Then, it describes a user study, where five users of the system perform five proscribed tasks, and rank the functioning of the system. 
 
 Overall, the paper is clear, and it is edifying to see a formal user test included. However, it’s not a scientific paper as such, but more a piece of documentation (if one excludes the Related Work and the User Study section, this is a typical text something for an ‘About’ page of a software tool). I think it would be interesting for the SAVE-SD audience to see OSCAR ‘in action’, and perhaps reuse the code, if it is indeed as usable as the paper suggests. 
@@ -385,7 +385,7 @@ a) Have you studied what tasks users want to perform with the Open Citations cor
 4) Before the conclusion: Please add how this interface + the OpenCItation corpus perform, overall: how does it compare to similar tools (e.g., ArXiv, Pubmed, Google Scholar queries in references, or commercial tools, such as Web of Science or Scopus?)
 5) Furthermore, I’d suggest that the OSCAR team do a demo, during the conference.
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 I support the inclusion of this paper in the programme. The tool (OSCAR) that this paper describes addresses a justified need in the gap in tooling between semantic web experts and the web user in general. It is also very timely given its first use case to expose Open Citations data to more people when the I4OC initiative is gaining good traction. The structure of the paper addresses concerns I would have expected, and happily considers in detail the reusing of the software - an aspect often neglected in producing open source software.
 
 There are is good technical detail accompanied by step by step guides that support a range of audiences which could both be used in presenting this paper at the workshop.
@@ -398,7 +398,7 @@ An interesting side benefit of the pre-configuration of different RDF datasets r
 
 The authors clearly know the domain very well and have endeavoured to make a complex subject more accessible to the less well informed, like me. I find this is the real value in creating software of this kind and encourage the programme committee to include this paper in the programme so that the authors can reach as wide audience as possible.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 This paper proposes a tool for allowing "unaware" users to get the advantages of SPARQL via a free-text interface. The tool has been applied to OpenCitations Corpus, ScholarlyData, and Wikidata as a demonstration. The background use of SPARQL is a clear advantage here, which is well-suited to the scholarly data environment with which it has been tested.
 
 My biggest complaint with the paper is that Figure 1 is unnecessarily complex: the operations should be DIRECTLY underneath the blue text with which they are associated; adding a 90 degree turn in the diagram makes it very hard to follow. Further, you should use the same language as in Table 1; currently there are small differences (e.g. "modify number of rows" vs. "increase/decrease rows") which are unnecessary.
@@ -460,7 +460,7 @@ Please make the snippet on page 2 a listing that can be explicilty referred to
 
 Note that you use American English mainly; then "initialisation" should be "initialization"; regardless, be consistent with your spelling style.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 This paper proposes a customisable tool that supports free text search over SPARQL endpoints. 
 
 Although the work is interesting, the paper has deficiencies in terms of clarity and novelty. 
@@ -476,7 +476,7 @@ Finally, from a novelty perspective it is not entirely clear to be what this too
 Minor comments:
 -There are several grammatical issues that need to be addressed, e.g.  the World Wide Web (the Web) keep increasing rapidly, a SPARQL queryand, D B pedia, to name but a few
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 The work is obviously important, creating a bridge between a SPARQL endpoint and a layperson using the search facility. It is more of a system paper, and should be judged, primarily, on the basis of the usability of the tool and the quality of the architecture; the goals are not really novel and the related works' section gives a glimpse into what has already been done in the area. In a journal paper a more thorough comparison with those alternatives would be required but, I believe, the level of details in the submission is fine for a workshop paper. On the other hand, I really welcome the usability test even if, for a journal publication, a larger set of users should be considered.
 
 The presentation is relatively clear; however, there are certain details that are only glossed over. I would have liked to see more details of the configuration file. I suspect that the screen-dump on figure 2 does _not_ correspond to the configuration file ion section 3.3; I guess that json extract belongs to the Scholarly Data interface. It would be better to stick with one example and then also provide more details; in particular it would be important to show the very essence of the configuration, namely the details of the SPARQL SELECT statement.
@@ -514,11 +514,11 @@ References:
 	
 - - -
 
-## Andrea Mannocci, Francesco Osborne and Enrico Motta: [Geographical trends in research: a preliminary analysis on authors' affiliations](submission/mannocci/index.pdf)
+**Paper: ** Andrea Mannocci, Francesco Osborne and Enrico Motta: [Geographical trends in research: a preliminary analysis on authors' affiliations](submission/mannocci/index.pdf)
 
-### Decision: accept
+**Decision: accept** 
 
-### Review 1 (Scott Edmunds)
+**Review 1 (Scott Edmunds)** 
 Mannocci et al. contribute to the growing amount of scientometrics research on geographic trends in research. This is a useful and novel area to leverage the public Springer Nature Scigraph dataset, and this seems in scope for the SAVE-SD conference. I applaud the authors for applying the reproducible research paradigm and including their analyses and data in Jupyter notebooks. I have a few comments that may be worthy of discussion, but I am otherwise happy with the general focus of the work and the way it was carried out.
 
 The Jupyter notebooks make it very useful to interact with the original figures. For the charts including country/geographic details (e.g. Fig 2, 8 and 9) not all the countries listed can fit alongside the axis is in versions imported into the manuscript, so it is very used to be able to inspect and interact with the source versions. In the legends it may be useful to add a disclaimer to this effect.
@@ -547,7 +547,7 @@ Signed (and released under a CC-BY license):
 Scott Edmunds
 GigaScience/BGI Hong Kong
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 This is a well-written paper that has been prepared in a careful way.
 
 I am happy to see that the authors have used SciGraph, which seems to be a very valuable data source.
@@ -556,7 +556,7 @@ I object against the use of the term 'power law' by the authors. The authors sho
 
 Finally, I must note that most of the results presented by the authors do not seem very surprising to me. To me most results appear to be in line with outcomes of earlier studies or with common sense expectations.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 The paper by Mannocci et al. examines the geographical trends in scientific dissemination by investigating the affiliations of authors, whose work is indexed within the Springer's SciGraph. On a macro level they examined the articles published in a span of the last two decades and found out how only a handful of institutions from specific countries have been publishing in top-n rankings, illustrating a rather static landscape. Additionally, the authors report their details findings from a similar analysis conducted on three top-tier conferences in the semantic web and digital library sciences conferences.
 
 Overall, the paper is well-written and easy to read. Below, you can find some improvement points in terms of the readability of the paper, as well as some clarification points:
@@ -605,7 +605,7 @@ Overall, the paper is well-written and easy to read. Below, you can find some im
 
 - There is a lot of wasted white space above, below and around the figures in the paper. Try enlarging or reordering your diagrams so that they read better in the paper.
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 The paper does a good job in disambiguating the affiliations of papers in proceedings, a source which has not intensely used in the bibliometric literature.
 The publication set is interesting.
 The findings, however, are not spectacular.
@@ -665,7 +665,7 @@ I would stress this result and discuss it more carefully.
 
 4. Further, the finding that few countries and/or institutions excel in top conferences is interesting but should be placed in the appropriate context of international comparisons (see above).
 
-### Meta-review (Cameron Neylon)
+**Meta-review (Cameron Neylon)** 
 This is a nice paper that investigates a relatively new dataset to examine biases and preferences in the affiliation and country of authors within conferences. The referees have generally noted that this is interesting. I draw the authors attention to a series of minor technical criticisms made by several of the referees that should be addressed. I also note that some referees question the novelty of the findings. I feel this can be addressed by drawing out some of the stories as Referee 1 notes and this could make an interesting presentation.
 
 On a personal note. I would have written it with a slightly more critical stance as to why these biases exist, what underlies them, and why they have been so stable over the past 20 years but that is a point of personal preference.
@@ -679,11 +679,11 @@ cn@cameronneylon.net
 
 - - -
 
-## Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini: [Extending Scholarly Data with research impact indicators](submission/nuzzolese/index.html)
+**Paper: ** Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini: [Extending Scholarly Data with research impact indicators](submission/nuzzolese/index.html)
 
-### Decision: downgrade to short paper
+**Decision: downgrade to short paper** 
 
-### Review 1 (anonymous)
+**Review 1 (anonymous)** 
 This paper describes an ontology that is connected to the already existing SPAR ontologies, with the objective of allowing the description and reference to indicators about different types of bibliometry (including altmetrics) for published papers. The ontology represents a good addition to this suite of ontologies and as such I think that it is worth making it available through this workshop paper.
 
 That said, the description of the ontology is correct and adequate, although I must admit that it is very simple and I would have expected to have more detailed descriptions of the types of values allowed for each indicator, links to SKOS thesauri (or alike) for more explicit ranges of values for some of the indicators, etc. The ontology remains at a very superficial stage, where only simple indicators are presented, what leaves the processing of them to the ones trying to consume the corresponding RDF data.
@@ -700,7 +700,7 @@ coun —> count
 This annotations enables
 available form
 
-### Review 2 (anonymous)
+**Review 2 (anonymous)** 
 The paper describes the indicator-ontology (I-Ont), a novel ontology module that extends the existing conference-ontology, which is the foundation of the ScholarlyData initiative.
 I-Ont formalises concepts and properties capable of describing the information associated with impact indicators and (alt)metrics of conference papers.
 The methodology for the design of I-Ont avails of best practices in ontology engineering; the description is clear and well structured.
@@ -712,7 +712,7 @@ Additional comments:
 - the author claim "ScholarlyData contains 828 out of 5,185 (~6%) in-proceedings articles with a DOI". 828 is 15.9% of 5,185 not 6%.
 - I explored the SPARQL endpoint and often I was surprised to see DOIs missing from conference papers (e.g. editions of ISWC, ESWC, EKAW) as they could be, in my opinion, easily retrieved from Springer Nature SciGraph or other services (e.g. crossref). I believe this would have a positive impact on I-Ont too.
 
-### Review 3 (anonymous)
+**Review 3 (anonymous)** 
 - What is the target research problem?
 
 This paper does not define a research problem nor a use case. It explains “We believe that the semantic publishing community might benefit from…” but it does not explain what benefits. It is correct that “Citation count and h-index are as the major indicators for carrying out national habilitation processes to the professorship in Germany” but this does not justify the creation of an ontology that models an extension of ScholarlyData that exposes a linked open dataset with research impact indicators.
@@ -741,7 +741,7 @@ This paper has a good coverage of the related ontologies. Although, A relation t
 “Processess” in line 4 of the introduction should be “Processes”.
 
 
-### Review 4 (anonymous)
+**Review 4 (anonymous)** 
 The paper defines an ontology that extends the Conference ontology, and uses Scopus and PlumX data to express the extension in conjunction with linked data expressed using the conference ontology. I think this is a useful effort, there is a need for this type of vocabulary, but the scientific impact is limited (mostly an engineering exercise) and the ontology has several drawbacks in terms of reusability and provenance information.
 
 Claim:
@@ -773,7 +773,7 @@ Smaller comments:
 * The usage examples contain a consitent typo: sd-ind:basenOnMetric
 
 
-### Meta-review (anonymous)
+**Meta-review (anonymous)** 
 The reviewers found this paper to be of limited originality and interest to the community. The reviewers provided a few minor suggestions for the submission, but the most critical concern was that the problem was neither well motivated nor well-contextualized. Reviewers raised concerns about how the ontology articulated with or advanced other similar project. Therefore, were this submission to be revised, the authors should focus on addressing these reviewer concerns, particularly about the novel and meaningful contribution provided in this submission.
 
 - - -
