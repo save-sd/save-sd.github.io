@@ -1,0 +1,83 @@
+### 13:40 - 13:50 | Opening
+
+### 13:50 -14:20 | Session 1: Keynote
+
+Invited speaker: Natasha Noy (Google)
+
+_Facilitative Discovery of Scientific Data_
+
+### 14:20 -15:00 | Session 2: papers, part 1 
+
+14:20 - 14:30 
+
+Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini    
+
+Extending Scholarly Data with research impact indicators [short paper]
+
+---
+
+14:30 - 14:45
+
+Andrea Mannocci, Francesco Osborne and Enrico Motta
+
+Geographical trends in research: a preliminary analysis on authors' affiliations [full paper]
+
+---
+
+14:45 - 15:00
+
+Marco Corbatto and Antonina Dattolo
+
+A Web application for creating and sharing visual bibliographies [full paper]
+
+### 15:00 - 15:40 | Coffee break
+
+### 15:40 - 16:45 | Session 3: papers, part 2
+
+15:40 - 15:55
+
+Jessica Cox, Corey Harper and Anita Dewaard
+
+Optimised Machine Learning Methods Predict Discourse Segment Type in Biological Research Articles [full paper]
+
+---
+
+15:55 - 16:05
+
+Said Fathalla and Christoph Lange
+
+EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities [short paper]
+
+---
+
+16:05 - 16:20
+
+Ivan Heibi, Silvio Peroni and David Shotton    
+
+OSCAR: A customisable tool for free-text search over SPARQL endpoints [full paper]
+
+---
+
+16:20 - 16:30
+
+Gabriele Scalia, Matteo Pelucchi, Alessandro Stagni, Tiziano Faravelli and Barbara Pernici
+
+Storing combustion data experiments: new requirements emerging from a first prototype [position paper]
+
+---
+
+16:30 - 16:40
+
+Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis    
+
+Coloring citations for scholars: investigating palettes [short paper]
+
+---
+
+16:40 - 16:45
+
+Hanna Ćwiek-Kupczyńska
+
+Striving for Semantics of Plant Phenotyping Data [poster paper]
+
+### 16:45 - 17:00 | Closing and Award
