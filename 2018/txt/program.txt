@@ -4,7 +4,7 @@
 
 Invited speaker: Natasha Noy (Google)
 
-_Facilitative Discovery of Scientific Data_
+[_Facilitative Discovery of Scientific Data_](keynote.html)
 
 ### 14:20 -15:00 | Session 2: papers, part 1 
 
