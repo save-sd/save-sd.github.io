@@ -1,4 +1,4 @@
-**Paper: ** Marco Corbatto and Antonina Dattolo: [A Web application for creating and sharing visual bibliographies](submission/corbatto/index.html)
+**Paper: ** Marco Corbatto and Antonina Dattolo: A Web application for creating and sharing visual bibliographies ([preprint](submission/corbatto/index.html), [postprint](accepted/corbatto/index.html))
 
 **Decision: accept** 
 
@@ -6,44 +6,72 @@
 The paper presents “VisualBib”, a tool the authors developed to visualize and explore bibliographies in scientific articles. The paper is difficult to read as it is not well written with regards to the English language and would benefit hugely from copy editing by a native speaker. Sometimes the reader has to guess as to what the authors actually mean (for example the word "afference" is used while probably "affiliation" is meant). Further specific suggestions for improvement are given below but fixing these would only moderately increase the readability. The paper does do a good job of illustrating and presenting the use cases for the tool; visualizing collaboration networks and tracking the subject matter of a paper over time are very useful applications. In section 5 the authors also show a positive response to the tool from the prospective user community. The fact that the tool uses real time data is very useful, as is the fact that the tool is fully web based. An unfortunate point is that although the tool is mentioned in the paper as being available at http://sasweb.uniud.it/visualBib/ the tool was not available for this reviewer as access to the page was username/password restricted (tried to access at 6 feb 2018, 14:03 CET). It would have been nice to actually experience the user interface instead of relying only on the figures in the paper. The tool relies for one part on Scopus data which may mean access is restricted for many users as Scopus data is not Open Source but a subscription based commercial service? If this is true then this caveat does not seem to be mentioned in the paper. It would have been nice to know the authors’ reasoning for using Scopus data as there may be other sources available with less restrictions. For example the work of CrossRef (CR), which also operates a service to machine access all CR metadata (e.g. containing >94 million records of article metadata, references, cited-by counts, funding data, license information, full-text links, ORCID iDs, abstracts, retractions, corrections) is not mentioned, same for the I4OC open citations initiative. The other data source, OpenCitations, is OS. In general a report on this tool is worth publishing as it presents interesting use cases and a novel way of visualizing bibliographies. But the paper would need to undergo extensive copy editing in order for it to properly convey the contribution that the tool makes to the existing 109 different approaches the authors mention already exist today. I would recommend it be conditionally accepted only after the authors seek guidance from a native English copy editor.
 
 Abstract
+
 Maybe the first sentence could be rephrased so that it is clear that Scopus and WOS (also the first time using an acronym spell it out “Web of Science (WOS)”) are indexing databases of meta data on science articles, not articles themselves. For example by using the term “citation indexes” instead of “repositories”. It is also not really clear what “increasing availability” means > are there more repositories nowadays, are they more easily (machine) accessible, do they contain an increased number of records, do the authors mean that the output of scientific literature as a whole is growing?
+
 “like Scopus and” > “such as Scopus and”
+
 "growth of Open Access data providers" > Does this mean a growth in the number OA publishers, a growth in the number of scientific articles that are published with OA or a growth in the number of aggregators of OA data? Or something else? What is the source?
+
 What does “and for highlighting the groups” mean?
+
 “reasoned bibliography” is this an annotated bibliography? Perhaps either this term could be explained in the paper, or a more commonly used term can be used throughout the paper? Is this the English translation of "bibliografia ragionata"?
+
 “the papers” > “the titles of the papers” (?)
+
 “although contain the single pieces of information” >> “although they contain single pieces of information”
+
 “it enables user” > “it enables users”
+
 “realized to support the researchers” > “developed to support users”
+
 “visualize bibliography” > “visualize bibliographies”
+
 “enrich it” > “enrich them”
 “like the following” > “such as the following“
 
 1. Introduction
+
 “The search” > “Search”
+
 “carried on” > “carried out”
+
 “Using repository as Scopus or WOS is difficult to follow a paper in the time” > “Using citation indexes such as Scopus or WOS it is difficult to follow a paper over time”
+
 “among” > “between”
+
 “smoothly animations” > “smooth animations”
+
 “lack in” > “weaknesses in” (?)
 
 2. Related work
+
 “lack in the current apps” > “weaknesses in the currently available apps”
+
 “our contribute focus” > “our contribution focuses”
 
 3. Basic functionalities and user interface of VisualBib
+
 The url http://sasweb.uniud.it/visualBib/ is not accessible
+
 What does “afference” mean? affiliation?
+
 “showing a sort of” > “giving an indication of” (?)
 
 4.1. Data Providers
+
 “the next future” > “the near future”? or “in feature releases”?
 
 5.1. Study design and procedures
+
 “The overall participants were 67” “In total 67 participants were recruited”
+
 “and the other 36” > “ and the remaining 36”
+
 “familiarize with” > “familiarize them with”
+
 “consisting in” > “consisting of”
+
 “from the participants” > “by the participants”
 
 **Review 2 (Steve Pettifer)** 
@@ -102,7 +130,7 @@ Hence, I am giving a borderline score. As I said it would be nice to see this to
 
 - - -
 
-**Paper: ** Jessica Cox, Corey Harper and Anita Dewaard: [Optimised Machine Learning Methods Predict DIscourse Segment Type in Biological Research Articles](submission/cox/index.pdf)
+**Paper: ** Jessica Cox, Corey Harper and Anita Dewaard: Optimised Machine Learning Methods Predict DIscourse Segment Type in Biological Research Articles ([preprint](submission/cox/index.pdf), [postprint](accepted/cox/index.pdf))
 
 **Decision: accept** 
 
@@ -170,7 +198,7 @@ I also would like to see a discussion about why tense results to be a good predi
 
 - - -
 
-**Paper: ** Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis: [Coloring citations for scholars: investigating palettes](submission/diiorio/index.html)
+**Paper: ** Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis: Coloring citations for scholars: investigating palettes ([preprint](submission/diiorio/index.html), [postprint](accepted/diiorio/index.html))
 
 **Decision: downgrade to short paper** 
 
@@ -271,7 +299,7 @@ The four reviewers for this paper have expressed large concerns about the method
 
 - - -
 
-**Paper: ** Said Fathalla and Christoph Lange: [EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities](submission/fathalla/index.pdf)
+**Paper: ** Said Fathalla and Christoph Lange: EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities ([preprint](submission/fathalla/index.pdf), [postprint](accepted/fathalla/index.pdf))
 
 **Decision: downgrade to short paper** 
 
@@ -365,7 +393,7 @@ Overall I believe that the score of 0, borderline paper, correctly characterises
 
 - - -
 
-**Paper: ** Ivan Heibi, Silvio Peroni and David Shotton: [OSCAR: A customisable tool for free-text search over SPARQL endpoints](submission/heibi/index.html)
+**Paper: ** Ivan Heibi, Silvio Peroni and David Shotton: OSCAR: A customisable tool for free-text search over SPARQL endpoints ([preprint](submission/heibi/index.html), [postprint](accepted/heibi/index.html))
 
 **Decision: accept** 
 
@@ -375,14 +403,23 @@ This paper describes ‘OSCAR’, an RDF Search Application for the OpenCitation
 Overall, the paper is clear, and it is edifying to see a formal user test included. However, it’s not a scientific paper as such, but more a piece of documentation (if one excludes the Related Work and the User Study section, this is a typical text something for an ‘About’ page of a software tool). I think it would be interesting for the SAVE-SD audience to see OSCAR ‘in action’, and perhaps reuse the code, if it is indeed as usable as the paper suggests. 
 
 To give the paper a bit more academic rigor, I’d suggest addressing the following questions: 
+
 1) In Related Work (delete the ‘s’ in the title): 
+
 a) How does OSCAR compare to the other ‘uninformed-user’ tools described, in terms of software goals, development environment, and possible applications? 
+
 b) Did you reuse any code from these other two, and if not, why not? 
+
 c) Can the code developed for OSCAR be reused to improve either of the two other projects mentioned, if so, how?
+
 2) Before ‘OSCAR has been developed according to meet the following requirements:’ please motivate why these requirements were chosen, and how they are related to the OpenCitation corpus querying, in particular?
+
 3) Re. Empirical evaluation: 
+
 a) Have you studied what tasks users want to perform with the Open Citations corpus? If not, how did you come up with the list of tasks you tested? Please motivate
+
 4) Before the conclusion: Please add how this interface + the OpenCItation corpus perform, overall: how does it compare to similar tools (e.g., ArXiv, Pubmed, Google Scholar queries in references, or commercial tools, such as Web of Science or Scopus?)
+
 5) Furthermore, I’d suggest that the OSCAR team do a demo, during the conference.
 
 **Review 2 (anonymous)** 
@@ -412,6 +449,7 @@ I would label the evaluation as a "formative evaluation"; for a workshop paper I
 You write clearly but more attention to the finer points of writing (including proofreading, ideally by native English speakers) would benefit your future work.
 
 ==Wording==
+
 "unaware user tools" is an odd expression but I understand it
 
 "is one of this category of tools" --> "is in this category of tools"
@@ -454,6 +492,7 @@ Don't need DUT acronym since you don't reuse this.
 "D B pedia" (three separate links)
 
 ==Minor issues==
+
 Technically, DOIs don't include the https://doi.org etc (and it would be nicer in any case to use the same prefix for all DOIs if you're going to do that. 
 
 Please make the snippet on page 2 a listing that can be explicilty referred to
@@ -488,33 +527,54 @@ Other reviewers have also revealed problems in terms of the presentation languag
 With all its problems above, I think accepting this paper for the purpose of a workshop is the right decision.
 
 Section 2, penultimate paragraph: 
-	"property. instead" -> "property, instead"
+
+"property. instead" -> "property, instead"
 Section 3.2, after the figure: 
-	"queryand" -> "query and"
-	"iterates each rule as appear in sequence" -> "iterates each rule as they appear in the sequence"
-	"it run the" -> "it runs the"
-	"in the case in which a certain article" -> "in case a certain article"
-	"more than one author" -> "more than one authors"
-	"All the data obtained as consequence of the application of aforementioned operations" -> "All the data obtained by the aforementioned operations"
+
+"queryand" -> "query and"
+
+"iterates each rule as appear in sequence" -> "iterates each rule as they appear in the sequence"
+
+"it run the" -> "it runs the"
+
+"in the case in which a certain article" -> "in case a certain article"
+
+"more than one author" -> "more than one authors"
+
+"All the data obtained as consequence of the application of aforementioned operations" -> "All the data obtained by the aforementioned operations"
+
 Section 4, second paragraph:
-	"seen and used at see http://opencitations.net/search" -> "seen and used at http://opencitations.net/search"
-		(Alternatively, just use active links on the text. Who cares about the exact URL as long as it gets you where you want to go?)
-	"input:: DOIs" -> "input: DOIs"
+
+"seen and used at see http://opencitations.net/search" -> "seen and used at http://opencitations.net/search"
+
+(Alternatively, just use active links on the text. Who cares about the exact URL as long as it gets you where you want to go?)
+
+"input:: DOIs" -> "input: DOIs"
+
 Section 5.2, first paragraph:
-	"only the papers published in 2015 and 2016" -> "the papers published in 2015 and 2016 only"
+
+"only the papers published in 2015 and 2016" -> "the papers published in 2015 and 2016 only"
 Section 5.2, last paragraph:
-	"A particular praise concerned that the tool detected the corresponding query" I would consider a complete rephrase of that sentence, which does not really sound proper English to me in the order of the terms...
+
+"A particular praise concerned that the tool detected the corresponding query" I would consider a complete rephrase of that sentence, which does not really sound proper English to me in the order of the terms...
+
 Section 6:
-	"Finally, we have discuss" -> "Finally, we have discussed"
+
+"Finally, we have discuss" -> "Finally, we have discussed"
+
 Acknowledgment section:
-	"Alfred P.Sloan" -> "Alfred P. Sloan"
+
+"Alfred P.Sloan" -> "Alfred P. Sloan"
+
 References:
-	"Vrandecic" -> "Vrandečić"
-	"Strauss, A. Corbin, J." -> "Strauss, A., Corbin, J."
+
+"Vrandecic" -> "Vrandečić"
+
+"Strauss, A. Corbin, J." -> "Strauss, A., Corbin, J."
 	
 - - -
 
-**Paper: ** Andrea Mannocci, Francesco Osborne and Enrico Motta: [Geographical trends in research: a preliminary analysis on authors' affiliations](submission/mannocci/index.pdf)
+**Paper: ** Andrea Mannocci, Francesco Osborne and Enrico Motta: Geographical trends in research: a preliminary analysis on authors' affiliations ([preprint](submission/mannocci/index.pdf), [postprint](accepted/mannocci/index.pdf))
 
 **Decision: accept** 
 
@@ -679,7 +739,7 @@ cn@cameronneylon.net
 
 - - -
 
-**Paper: ** Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini: [Extending Scholarly Data with research impact indicators](submission/nuzzolese/index.html)
+**Paper: ** Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini: Extending Scholarly Data with research impact indicators ([preprint](submission/nuzzolese/index.html), [postprint](accepted/nuzzolese/index.html))
 
 **Decision: downgrade to short paper** 
 

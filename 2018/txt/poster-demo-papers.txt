@@ -1,4 +1,4 @@
-**Paper: ** Hanna Ćwiek-Kupczyńska: [Striving for Semantics of Plant Phenotyping Data](submission/cwiek-kupczynska/index.html)
+**Paper: ** Hanna Ćwiek-Kupczyńska: Striving for Semantics of Plant Phenotyping Data ([preprint](submission/cwiek-kupczynska/index.html), [postprint](accepted/cwiek-kupczynska/index.html))
 
 **Decision: accept** 
 
@@ -50,10 +50,76 @@ On a personal note, I would have liked to have seen more detail on specific chal
 
 - - -
 
-**Paper: ** Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: [Towards Development of Ontology for the National Digital Library of India](submission/sadhu/index.pdf)
+**Paper: ** Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: Towards Development of Ontology for the National Digital Library of India ([preprint](submission/sadhu/index.pdf), [postprint](accepted/sadhu/index.pdf))
 
 **Decision: reject** 
 
 Paper withdrawn - reviews not available yet
+
+**Review 1 (Terhi Nurmikko-Fuller)** 
+The authors describe the design of a new ontology for the capture and representation of the resources held at the National Digital Library of India (NDLI). Although developed afresh, a clear and deliberate effort has been made to align the new ontology with Schema.org. 
+
+The project itself is very interesting, and this type of research is not only important, but also very much aligned with my own research interests. Sadly, I remain unconvinced by the authors' justifications for their chosen approach. 
+
+My concern relates to the section in the Introduction (p. 2), which states that "the general scopes and repository constituents of NDLI vary significantly from the existing LDMs like that of Europeana Data model and Library of Congress, the ontological models adopted by them can not be readily applicable to NDLI domain". I would really need to see a lot more detail in terms of justification for this, with specific examples of how the classes and properties of Bibframe, MODS/MADS-RDF (to name the ontologies by the LoC), and event-based models such as FRBRoo, or other bibliographical metadata ontologies such as BiBo or FaBiO fail to match the NDLI data. Looking at the metadata specs made available through footnote 2, I am not able to immediately spot any classes that would not be addressed by one or indeed several of these existing ontologies. 
+
+I would have also needed to see a much more robust explanation for the need to develop a new ontology rather than just using Schema.org, and simply adding a small number of classes and properties as necessary.
+
+The papers cited in the bibliography are not the most recent ones (2009, 2010, 2013, and one recent one from 2016), and this adds to my concern that the authors may not have carried out an extensive enough assessment of the current state of existing bibliographical metadata ontologies before embarking on the task of creating a new one. The authors might be interested in reading extant comparative analyses between different bibliographical metadata ontologies, especially those papers which contrast these to Schema.org. I would encourage the authors to read through papers in the proceedings of the ACM/IEEE Joint Conference on Digital Libraries from the last few years. 
+
+I appreciate that designing an ontology based on a given dataset can be an informative, useful and yes, even enjoyable task. I am just not sure that in this instance it has been a necessary one. I would welcome further evidence to convince me!
+
+Dr Terhi Nurmikko-Fuller
+Australian National University
+https://orcid.org/0000-0002-0688-3006
+
+**Review 2 (anonymous)**
+The topic of the paper is definitely appropriate for the workshop. Though, the contribution is weak and the work is weakly linked to other similar works and existing ontologies. 
+
+It could be interesting as “experience paper”.
+
+Some aspects need to be discussed:
+- the paper does not justify the need for another ontology and the reasons why existing models would fail for NDLI. The FRBR model or the SPAR ontologies, for instance, cover most aspects relevant here. Why these were not taken into account? Which are the differences with these models? Why not using existing domain-specific ontologies?
+- the paper does not explain why the alignment with Schema.org is a good solution for this context
+- there is no information about the process to design the ontology: which workflow was followed? Were users involved? How many? How? Was the ontology validated?
+
+Some more specific points that I would suggest authors to work on:
+- the introduction refers to difficulties for longer queries: what does exactly mean? More details here would help to understand the context and the problem
+- the introduction also mentions similarity; it is not clear though which is the role of similarity for this research: is it a central aspect? How the proposal increase efficiency or efficacy to find similar results in the dataset?
+
+Finally, it would be good to access the ontology: is it available?
+
+A typo in the abstract: “ontology, We” → “ontology. We”
+
+**Review 3 (Aliaksandr Birukou)**
+This paper presents a new ontology developed for the NDLI to improve the integration of data from many content provider, supporting semantic search, recommender systems, etc. 
+
+This is overall a weak paper:
+- The approach is questionable. For example, if the motivation is to improve search and recsys of an aggregation/federation system where poor/sparse metadata are supplied by many data sources, why not to first provide full-text search experience (search) and implement content-based filtering/collaborative filtering (recsys). Why not to think about semantic search only then? It's a bit like giving someone who currently walks and needs a faster way of moving between two places in a city a helicopter, instead of considering a bicycle first. 
+- It is not convincing that if the data sources adopted the new ontology, it would solve the data sparseness problem.
+- No quantitative analyses of the problem domain (not even a quantitative indication of how sparse the current metadata are)
+- There is little information on the methodology of designing the ontology. It looks like the selection of classes and properties  is quite ad-hoc.
+- there is no evaluation of the suitability of the designed solution
+- some statements are questionable: such as "The metadata schema of NDLI incorporates fields from Dublin Core ... , to comprehensively represent a wide range of learning resources." Many people would argue that DC does not aim or provide a  comprehensive representation. 
+
+**Review 4 (anonymous)** 
+The paper describes the ontology developed for the national digital library of India. While the ontology and its mapping to schema.org can be very interesting for the community, I have not found answer to a couple of fundamental questions in the paper - therefore it is weak reject (weak in the sense that it can be taken as a poster and generate discussions / awareness about this important project).
+
+1. Which specific challenges do author face when modelling the content in the NDLI? Are they really different from those in, say the Library of Congress, or the German National Library? Can the solutions developed for the German National Library (also avail as LOD, by the way) be reused? The paper mentions Europeana and the Library of Congress, but it is not clear why those solutions cannot be applied here.
+
+2. What is the advantage of using semantic web technologies, such as knowledge graphs and RDF? From the introduction it seems that even a classic information retrieval tool (e.g., Lucene search on top of a relational DB, supporting advanced search on several fields) would be a huge step forward w.r.t. simple keyword search
+
+3. Related to the previous points, it is not clear how the authors address the mentioned challenges (e.g., computing the similarity between resources, or sparse metadata and its enrichment - from where?). Those challenges do not go away by adopting a knowledge graph solution.
+
+4. It would be great to see the ontology and mapping available online (e.g., on Figshare), so that it can be reused in other projects.
+
+5. On Figure 1, one cannot see the difference between Literal and Instance
+
+Aliaksandr Birukou
+
+**Meta-review (anonymous)** 
+All reviewers agree on the weakness of this contribution, for partly different reasons.
+Most of them do not understand why the authors propose a new ontology, when relevant bibliographic ontologies do exist already, but the reasons to create a new one are not given.
+As a poster, this might be an experience paper, but the lack of detail, motivation, and the lack of availability of the ontology do not help us deciding for an accept.
 
 - - -

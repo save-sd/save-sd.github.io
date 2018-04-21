@@ -1,0 +1,1479 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" prefix="schema: http://schema.org/ prism: http://prismstandard.org/namespaces/basic/2.0/"><head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/rash.css">
+  <!-- Local MathJax -->
+  <!-- <script src="js/MathJax/MathJax.js"></script> -->
+
+  <!-- online MathJax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+  <!-- JQuery -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap.js -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Rash.js -->
+  <script src="js/rash.js"></script>
+
+  <title>Extending ScholarlyData with research impact indicators</title>
+  
+  
+  
+  
+  
+<meta about="mailto:andrea.nuzzolese@cnr.it" typeof="schema:Person" property="schema:name" name="dc.creator" content="Andrea Giovanni Nuzzolese"><meta about="mailto:andrea.nuzzolese@cnr.it" property="schema:email" content="andrea.nuzzolese@cnr.it"><link about="mailto:andrea.nuzzolese@cnr.it" property="schema:affiliation" href="#affiliation_1"><meta about="mailto:valentina.presutti@cnr.it" typeof="schema:Person" property="schema:name" name="dc.creator" content="Valentina Presutti"><meta about="mailto:valentina.presutti@cnr.it" property="schema:email" content="valentina.presutti@cnr.it"><link about="mailto:valentina.presutti@cnr.it" property="schema:affiliation" href="#affiliation_1"><meta about="mailto:aldo.gangemi@cnr.it" typeof="schema:Person" property="schema:name" name="dc.creator" content="Aldo Gangemi"><meta about="mailto:aldo.gangemi@cnr.it" property="schema:email" content="aldo.gangemi@cnr.it"><link about="mailto:aldo.gangemi@cnr.it" property="schema:affiliation" href="#affiliation_2"><link about="mailto:aldo.gangemi@cnr.it" property="schema:affiliation" href="#affiliation_3"><meta about="mailto:paolo.ciancarini@unibo.it" typeof="schema:Person" property="schema:name" name="dc.creator" content="Paolo Ciancarini"><meta about="mailto:paolo.ciancarini@unibo.it" property="schema:email" content="paolo.ciancarini@unibo.it"><link about="mailto:paolo.ciancarini@unibo.it" property="schema:affiliation" href="#affiliation_4"><meta about="#affiliation_1" typeof="schema:Organization" property="schema:name" content="STLab, ISTC-CNR, Rome, Italy"><meta about="#affiliation_2" typeof="schema:Organization" property="schema:name" content="FICLIT, University of Bologna, Italy"><meta about="#affiliation_3" typeof="schema:Organization" property="schema:name" content="STLab, ISTC-CNR, Rome, italy"><meta about="#affiliation_4" typeof="schema:Organization" property="schema:name" content="DISI, University of Bologna, Italy"><meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0"></head>
+
+<body>
+<section role="doc-abstract" id="doc-abstract">
+<h1>Abstract</h1>
+	<p>ScholarlyData is the reference linked dataset of the Semantic
+Web community about papers, people, organisations, and events related
+to its academic conferences. In this paper we present an extension of
+such a linked dataset and its associated ontology (i.e. the
+conference ontology) in order to represent research impact
+indicators. The latter includes both traditional (e.g. citation
+count) and alternative indicators (e.g. altmetrics).</p>
+</section>
+<section id="section1">
+<h1>Introduction</h1>
+<p>
+Citation-based metrics are the key tools used for evaluating the impact of research. As a matter of fact,
+scholars are ranked for a variety of reasons. For example, in many countries
+like Italy, France, or Germany there are governmental institutions that use 
+citation count and <em>h</em>-index as the major indicators for carrying out national habilitation processess to the
+professorship. Nevertheless, non-citation-based metrics or alternative metrics (aka altmetrics) are gaining more and more interest in the 
+scientometrics community as they are able to capture both the volume and nature of attention that research receives online.
+According to <a href="#Priem2012"> </a> altmetrics is the term that identifies both metrics and the study and use of scholarly impact measures based on activity in 
+online tools and environments. Even though there is limited or none scientific evidence that altmetrics are valid proxies 
+of either impact or utility, a few case studies <a href="#Bar-Ilan2010"> </a>, <a href="#Xuemei2012"> </a>, <a href="#Shema2014"> </a> have reported 
+moderate correlations between citation-based metrics and altmetrics. We believe that 
+the semantic publishing <a href="#Shotton2009"> </a> community might benefit from Linked Open Data
+that provide formal representation, querying, and reasoning capabilities for dealing with semantically enhanced 
+indicators gathered both from citation-based metrics and altmetrics. Accordingly, we formalise 
+an ontology, i.e. the <em>indicators-ontology</em> (I-Ont), designed as a modular extension of the conference-ontology. The latter is the
+ontology used in ScholaryData, which is the reference linked dataset of the Semantic Web community about papers, 
+people, organisations, and events related to its academic conferences. For experimenting with the ontology, 
+we generate a linked dataset by adding indicators from Scopus<a href="#endnote_4"> </a> and PlumX<a href="#endnote_5"> </a> to a subset of articles from ScholarlyData and 
+we publish such a dataset on the SPARQL endpoint of ScholarlyData. The rest of the paper is organised as follows.
+<a href="#sec_related_work"> </a> presents the related work. <a href="#sec_ontology"> </a> describes the ontology and provides 
+its formal definition and examples. <a href="#dataset"> </a> presents the experimental extension of ScholarlyData by using the ontology.
+Finally, <a href="#sec_conclusions"> </a> concludes the paper.
+</p>
+
+</section>
+<section id="sec_related_work">
+<h1>Related work</h1>
+<p>
+	The knowledge management of scholarly products is an emerging
+research area in the Semantic Web field known as Semantic Publishing
+<a href="#Shotton2009"> </a>. Semantic Publishing aims at providing access to semantic
+enhanced scholarly products with the aim of enabling a variety of
+semantically oriented tasks, such as knowledge discovery, knowledge
+exploration and data integration. In this context, ontologies for representing citations and
+scholarly artefacts are not novel. The Bibliographic Ontology<a href="#endnote_16"> </a> 
+(BIBO) is an example of a widely adopted ontology for representing bibliographic 
+things and citations on the Semantic Web. More recently,
+the Semantic Publishing and Referencing<a href="#endnote_17"> </a> (SPAR) Ontologies have been introduced as a suite 
+of orthogonal and complementary ontologies that enable all aspects of the publishing 
+process. Among the SPAR ontologies, there is a subset of them that is focused on representing
+bibliographic references and citations with different characterisations. This subsets includes:
+(i) the Bibliographic Reference Ontology<a href="#endnote_19"> </a> (BiRO) <a href="#DiIorio2014"> </a>, which 
+is an ontology meant to define bibliographic records, bibliographic references, and their compilation 
+into bibliographic collections and bibliographic lists, respectively; 
+(ii) the Citation Typing Ontology<a href="#endnote_19"> </a> (CiTO) <a href="#Peroni2012"> </a>, 
+which is an ontology that enables characterization of 
+the nature or type of citations, both factually and rhetorically; and (iii) the
+Citation Counting and Context Characterization Ontology<a href="#endnote_18"> </a> 
+(C4O) <a href="#DiIorio2014"> </a>, which enables the representation of bibliographic citations 
+in terms of their number and their context. All those ontological solutions focus on the representation
+of bibliographic entries and references. Among them, C4O is certainly the ontology that has more overlap
+with I-Ont. However, C4O is more focused in citation count only, while I-Ont is meant
+for dealing with a wider spectrum of quantitative indicators. To the best of our knowledge I-Ont
+is the first effort in providing formal representation to citation-based and alternative indicators in the Semantic Web.
+</p>
+
+</section>
+<section id="sec_ontology">
+<h1>Extending the Conference Ontology with indicators</h1>
+	<p>ScholarlyData defines an ontology, named the conference-ontology<a href="#endnote_1"> </a> <a href="#Nuzzolese2016"> </a>, which formalises a subset of the scholarly domain 
+focused on papers, people, organisations, and events related to
+academic conferences. In this paper we extend the conference-ontology
+by adding a new ontology module that defines concepts and properties
+in order to deal with the knowledge associated with research impact
+indicators and metrics. This module is named the
+indicators-ontology (I-Ont). In the following sub-sections we provide
+details about this extension in terms of the design methodology
+adopted, the description, the formalisation, and the usage example
+of the ontology.</p> 
+
+<section id="sec_ontology_design"> <h1>Design
+methodology</h1> <p>I-Ont is designed by following
+best design practices and pattern-based ontology engineering aimed at
+extensively
+re-using Ontology Design Patterns (ODPs) <a href="#Gangemi2009"> </a>
+for modelling ontologies. The design methodology that we follow is
+based on an extension <a href="#Presutti2016"> </a> of the eXtreme
+Design <a href="#Blomqvist2010"> </a>, an agile design methodology
+developed in the context of the NeON project<a href="#endnote_3"> </a>. Such an extension mainly
+focuses on providing ontology engineer with clear strategies for
+ontology re-use. According to the guidelines provided by <a href="#Presutti2016"> </a>, we adopted the <em>indirect</em> re-use. This
+means that ODPs are used as templates. At the same time, the ontology
+guarantees interoperability by keeping the appropriate alignments
+with the external ODPs, and provides extensions that satisfy more
+specific requirements. <a href="#table_1"> </a> reports the
+<em>competency questions</em> (CQs) <a href="#Gruninger1995"> </a> used at design time for modelling the
+ontology.</p> 
+<figure id="table_1">
+<table>
+
+<tbody><tr>
+<th>ID</th>
+<th>Competency question</th>
+</tr>
+<tr>
+<td>
+<p>CQ1</p>
+</td>
+<td>
+<p>What are the indicators a certain paper is associated with?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>CQ2</p>
+</td>
+<td>
+<p>What is the metric used for measuring a certain indicator?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>CQ3</p>
+</td>
+<td>
+<p>What is the value associated with a certain indicator?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>CQ4</p>
+</td>
+<td>
+<p>What is the source or provider of a certain indicator?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>CQ5</p>
+</td>
+<td>
+<p>Is any indicator composed of sub-indicators?</p>
+</td>
+</tr>
+
+</tbody></table>
+<figcaption>Competency questions used for modelling the ontology.</figcaption>
+</figure>
+
+<p>
+Those CQs are identified by analysing a basic scenario like the following:
+</p>
+
+<blockquote>
+<em>According to Scopus, the article titled "Conference linked data: The scholarlydata project" is cited 4 times.</em>
+</blockquote>
+
+<p>
+From the scenario we identify the following key points:
+</p>
+<ul>
+<li>there is a certain article (i.e. "Conference linked data: The scholarlydata project") that 
+is associated with a specific indicator (i.e. the fact the article is cited 4 times by other articles). 
+This point is addressed by CQ1;</li>
+<li>the indicator is measured with a certain metric (i.e. the citation coun). This point is addressed by CQ2;</li>
+<li>there is a certain value (i.e. 4) that the indicator tracks. This point is addressed by CQ3;</li>
+<li>The indicator comes from a certain source (i.e. Scopus). This point is addressed by CQ4.</li>
+</ul>
+<p>
+Additionally, we analyse how article level indicators and metrics 
+are typically represented in online scholarly platforms. Namely, we use PlumX<a href="#endnote_5"> </a> for this purpose. 
+We select PlumX as it is listed among the most prominent altmetrics providers <a href="#Ortega2018"> </a> and it 
+covers more than 52.6M<a href="#endnote_7"> </a> artefacts. PlumX aggregates different categories
+of metrics from different sources. This means that PlumX provide indicators at three different
+granularity level, ranging from the level of the category (i.e. the most general one) to the level of the source (i.e. the most specific one).
+For example, the article titled "Conference linked data: The scholarlydata project" is associated with 12 captures (i.e. the category in PlumX
+that indicates that someone wants to come back to a work). The number of captures is provided by PlumX by aggregating
+different metrics, which are the number of people who have added the article to their online library (i.e. 10 readers) and
+the number of times the article has been bookmarked (i.e. 2 bookmarks). Additionally, PlumX obtains the metrics by tracking
+different sources, which, in our example, are Mendeley and CiteULike with 8 and 2 readers, respectively, and Delicious with 2 bookmarks.
+This scenario is addressed by CQ5.
+</p>
+
+</section>
+<section id="section_ont_description">
+<h1>Ontology description</h1>
+<p>
+<a href="#fig_indicators-ontology"> </a> shows the core classes and properties of the 
+indicators-ontology. We use the prefixes <code>:</code> and <code>sd:</code> for the namespaces
+<code>https://w3id.org/scholarlydata/ontology/indicators-ontology.owl#</code> and
+<code>https://w3id.org/scholarlydata/ontology/conference-ontology.owl#</code>, respectively.
+</p>
+<figure id="fig_indicators-ontology">
+    <p>
+        <img src="img/indicators-ontology.png" alt="The indicators-ontology.">
+    </p>
+    <figcaption>
+        Core classes and properties of the indicators-ontology.
+    </figcaption>
+</figure>
+<p>
+The class <code>:Indicator</code> represents an indicator. Examples of indicators are the citation count, social media mentions, reads on Mendeley, etc.
+An <code>:Indicator</code> is associated with a <code>sd:Document</code> by means of the object property 
+<code>:isIndicatorOf</code>. A <code>sd:Document</code> is the class defined in the conference-ontology
+that represents a scholarly artefact. As the conference-ontology is focused on modelling 
+conferences, the latter class may represent either in-proceedings or proceeding artefacts, i.e. 
+<code>sd:InProceedings</code> and <code>sd:Proceedings</code>, respectively. This modelling solution
+addresses CQ1. Additionally, an <code>:Indicator</code> is linked to an <code>:IndicatorSource</code>, a 
+<code>:Metric</code>, and an <code>:IndicatorValue</code> by the object properties <code>:hasSource</code>, 
+<code>:basedOnSource</code>, and <code>:hasIndicatorValue</code>, respectively. 
+An <code>:IndicatorSource</code> identifies the source a certain indicator is gathered from (i.e. CQ4).
+Instead, a <code>:Metric</code> represents the metric used for measuring an indicator. 
+Examples of metrics are the citation count or the count of tweets on Twitter. Finally, an <code>:IndicatorValue</code> 
+represents the actual value an indicator is associated with. The literal value is represented as
+an argument of an <code>:IndicatorValue</code> by using the datatype property <code>:indicatorValue</code>.
+The class <code>:Metric</code> is associated with the class <code>:Parameter</code> that
+represents a specific characteristic or parameter that is measured by using a specific metric.
+For modelling the classes and the relations among <code>:Indicator</code>, <code>:IndicatorValue</code>, and 
+<code>:Parameter</code> we reuse the Parameter Region<a href="#endnote_8"> </a> ontology design pattern as template.
+For example, if we provide an indicator about the social media mentions of an article, then
+the <code>:Parameter</code> is represented by the social media mentions. The latter are measured by using a
+specific <code>:Metric</code> that can be the count of those mentions. The object property 
+<code>:parametrises</code> is defined with <code>:Parameter</code> and <code>:IndicatorValue</code> as domain and range, respectively.
+This property is useful when the possible values that can be associated with a parameter are within a certain range
+or region in a dimensional space. For example, if we have a parameter that represents the quality
+of an article in terms of <em>good</em> or <em>poor</em>, then the latters can be modelled as individuals of 
+the class <code>:IndicatorValue</code> and linked to the individual of the class <code>:Parameter</code> that
+represents the quality by using the object property <code>:parametrises</code>.
+</p>
+
+<p>
+The object property <code>:hasSubIndicator</code> is defined as transitive and allows to model hierarchies of indicators 
+associated with an article. For example, it useful when the indicator provided by social media
+mentions is measured by using the number of tweets mentioning the article. The number of tweets
+identifies a narrower indicator of the paper, which is linked to the broader one represented by the social
+media mentions. Similarly, the object property <code>:hasSubParameter</code> allows to represent
+the same scenario but focused on parameters, e.g. twitter mentions narrow social media mentions.
+</p>
+
+<p>
+The ontology is annotated with the OPLa ontology <a href="#Hitzeler2017"></a> for explicitly indicating the reused patterns. 
+We use the property <code>opla:reusesPatternAsTemplate</code> to link I-Ont to the pattern 
+we adopted as template i.e. Parameter Region. Similarly, we use the property <code>opla:isNativeTo</code> to indicate 
+that certain classes and properties of are core elements of specific ontology patterns. 
+These annotations enable the automatic identification of the patterns reused by I-Ont, e.g. with SPARQL queries, 
+hence facilitating the correct reuse of the ontology. 
+Finally, I-Ont is aligned, by means of an external file, to
+DOLCE+DnS UltraLight<a href="#endnote_9"> </a>. <a href="#table_align_classes"> </a> and 
+<a href="#table_align_props"> </a> report the alignments axioms
+between the classes and the properties of the two ontologies,
+respectively.
+</p>
+
+<figure id="table_align_classes">
+<table>
+
+<tbody><tr>
+<th>I-Ont class</th>
+<th>Align. axiom</th>
+<th>DOLCE class</th>
+</tr>
+<tr>
+<td>
+<p><code>:IndicatorValue</code></p>
+</td>
+<td>
+<p><code>rdfs:subClassOf
+</code></p></td>
+<td>
+<p><code>dul:Region
+</code></p></td>
+</tr>
+<tr>
+<td>
+<p><code>:IndicatorValue</code></p>
+</td>
+<td>
+<p><code>rdfs:subClassOf
+</code></p></td>
+<td>
+<p><code>dul:Amount
+</code></p></td>
+</tr>
+<tr>
+<td>
+<p><code>:Parameter</code></p>
+</td>
+<td>
+<p><code>owl:equivalentClass
+</code></p></td>
+<td>
+<p><code>dul:Parameter
+</code></p></td>
+</tr>
+
+</tbody></table>
+<figcaption>Alignments between the classes of I-Ont and DOLCE+DnS UltraLight..</figcaption>
+</figure>
+
+<figure id="table_align_props">
+<table>
+
+<tbody><tr>
+<th>I-Ont class</th>
+<th>Align. axiom</th>
+<th>DOLCE class</th>
+</tr>
+<tr>
+<td>
+<p><code>:isSpecialisedBy</code></p>
+</td>
+<td>
+<p><code>owl:equivalentProperty
+</code></p></td>
+<td>
+<p><code>dul:isSpecializedBy
+</code></p></td>
+</tr>
+<tr>
+<td>
+<p><code>:parametrises</code></p>
+</td>
+<td>
+<p><code>owl:equivalentProperty
+</code></p></td>
+<td>
+<p><code>dul:parametrizes
+</code></p></td>
+</tr>
+<tr>
+<td>
+<p><code>:hasSubIndicator</code></p>
+</td>
+<td>
+<p><code>rdfs:subPropertyOf
+</code></p></td>
+<td>
+<p><code>dul:isSpecializedBy
+</code></p></td>
+</tr>
+<tr>
+<td>
+<p><code>:indicatorValue</code></p>
+</td>
+<td>
+<p><code>rdfs:subPropertyOf
+</code></p></td>
+<td>
+<p><code>dul:hasRegionDataValue
+</code></p></td>
+</tr>
+
+</tbody></table>
+<figcaption>Alignments between the properties of I-Ont and DOLCE+DnS UltraLight..</figcaption>
+</figure>
+
+Both I-Ont and the OWL file containing the alignments are available online <a href="#endnote_21"> </a>.
+
+</section>
+<section id="section6">
+<h1>Formalisation</h1>
+<p>
+The following is the formalisation of I-Ont described in <a href="#section_ont_description"> </a>. 
+The formalisation is expressed in Description Logics.
+</p>
+
+<figure id="formalisation">
+    <p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mtable class="m-eqnarray-starred" displaystyle="true" style="display: block; margin-top: 1.0em; margin-bottom: 2.0em">
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo>IndicatorValue</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊑</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>=</mo>
+			<mi>​</mi>
+			<mn>1</mn>
+			<mi>v</mi>
+			<mi>a</mi>
+			<mi>l</mi>
+			<mi>u</mi>
+			<mi>e</mi>
+			<mo>.</mo>
+		<mo>Literal</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo>Parameter</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊑</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mi>∀</mi>
+			<mi>p</mi>
+			<mi>a</mi>
+			<mi>r</mi>
+			<mi>a</mi>
+			<mi>m</mi>
+			<mi>e</mi>
+			<mi>t</mi>
+			<mi>r</mi>
+			<mi>i</mi>
+			<mi>z</mi>
+			<mi>e</mi>
+			<mi>s</mi>
+			<mo>.</mo>
+			<mo>IndicatorValue</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+		
+		</mtd>
+		<mtd columnalign="left">
+			
+		</mtd>
+		<mtd columnalign="left">
+			<mi>​</mi>
+			<mo>⊓</mo>
+			<mspace width="'0.5em"></mspace>
+			<mi>∀</mi>
+			<mi>i</mi>
+			<mi>s</mi>
+			<mi>S</mi>
+			<mi>p</mi>
+			<mi>e</mi>
+			<mi>c</mi>
+			<mi>i</mi>
+			<mi>a</mi>
+			<mi>l</mi>
+			<mi>i</mi>
+			<mi>z</mi>
+			<mi>e</mi>
+			<mi>d</mi>
+			<mi>B</mi>
+			<mi>y</mi>
+			<mo>.</mo>
+			<mo>Parameter</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo>Metric</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊑</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mi>∃</mi>
+			<mi>h</mi>
+			<mi>a</mi>
+			<mi>s</mi>
+			<mi>P</mi>
+			<mi>a</mi>
+			<mi>r</mi>
+			<mi>a</mi>
+			<mi>m</mi>
+			<mi>e</mi>
+			<mi>t</mi>
+			<mi>e</mi>
+			<mi>r</mi>
+			<mo>.</mo>
+			<mo>Parameter</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo>Indicator</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊑</mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>=</mo>
+			<mi>​</mi>
+			<mn>1</mn>
+			<mi>b</mi>
+			<mi>a</mi>
+			<mi>s</mi>
+			<mi>e</mi>
+			<mi>d</mi>
+			<mi>O</mi>
+			<mi>n</mi>
+			<mi>M</mi>
+			<mi>e</mi>
+			<mi>t</mi>
+			<mi>r</mi>
+			<mi>i</mi>
+			<mi>c</mi>
+			<mo>.</mo>
+			<mo>Metric</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊓</mo>
+			<mspace width="'0.5em"></mspace>
+			<mo>=</mo>
+			<mi>​</mi>
+			<mn>1</mn>
+			<mi>h</mi>
+			<mi>a</mi>
+			<mi>s</mi>
+			<mi>I</mi>
+			<mi>n</mi>
+			<mi>d</mi>
+			<mi>i</mi>
+			<mi>c</mi>
+			<mi>t</mi>
+			<mi>o</mi>
+			<mi>r</mi>
+			<mi>V</mi>
+			<mi>a</mi>
+			<mi>l</mi>
+			<mi>u</mi>
+			<mi>e</mi>
+			<mo>.</mo>
+			<mo>IndicatorValue</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo>⊓</mo>
+			<mspace width="'0.5em"></mspace>
+			<mo>=</mo>
+			<mi>​</mi>
+			<mn>1</mn>
+			<mi>i</mi>
+			<mi>s</mi>
+			<mi>I</mi>
+			<mi>n</mi>
+			<mi>d</mi>
+			<mi>i</mi>
+			<mi>c</mi>
+			<mi>t</mi>
+			<mi>o</mi>
+			<mi>r</mi>
+			<mi>O</mi>
+			<mi>f</mi>
+			<mo>.</mo>
+			<mo>Document</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mi>​</mi>
+			<mo>⊓</mo>
+			<mspace width="'0.5em"></mspace>
+			<mi>∃</mi>
+			<mi>h</mi>
+			<mi>a</mi>
+			<mi>s</mi>
+			<mi>S</mi>
+			<mi>o</mi>
+			<mi>u</mi>
+			<mi>r</mi>
+			<mi>c</mi>
+			<mi>e</mi>
+			<mo>.</mo>
+			<mo>IndicatorSource</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+	<mtr>
+		<mtd rowspan="29">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+		<mtd columnalign="right">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mo></mo>
+		</mtd>
+		<mtd columnalign="left">
+			<mi>​</mi>
+			<mo>⊓</mo>
+			<mspace width="'0.5em"></mspace>
+			<mi>∀</mi>
+			<mi>h</mi>
+			<mi>a</mi>
+			<mi>s</mi>
+			<mi>S</mi>
+			<mi>u</mi>
+			<mi>b</mi>
+			<mi>I</mi>
+			<mi>n</mi>
+			<mi>d</mi>
+			<mi>i</mi>
+			<mi>c</mi>
+			<mi>a</mi>
+			<mi>t</mi>
+			<mi>o</mi>
+			<mi>r</mi>
+			<mo>.</mo>
+			<mo>Indicator</mo>
+		</mtd>
+		<mtd columnalign="right" style="width: 100%">
+			<mspace width="6.0em"></mspace>
+		</mtd>
+	</mtr>
+</mtable>
+</math>
+    </p>
+</figure>
+
+</section>
+<section id="section7">
+<h1>Usage example</h1>
+<p>
+As a usage example of I-Ont, we show the RDF representation of the scenario we introduce in 
+<a href="#sec_ontology_design"> </a>. We remind that such a scenario is about the indicators associated with the papers titled 
+"Conference linked data: The scholarlydata project". The data we present below are expressed as RDF serialised 
+in TURTLE<a href="#endnote_10"> </a>. We use the namespaces available from ScholarlyData.
+</p>
+
+<pre><code>
+1. @prefix : <https://w3id.org/scholarlydata/examples/save-sd/;
+2. @prefix sd: <https://w3id.org/scholarlydata/ontology/conference-ontology.owl#>
+3. @prefix sd-ind: <https://w3id.org/scholarlydata/ontology/indicators-ontology.owl#>
+4. @prefix sd-inpro: <https://w3id.org/scholarlydata/inproceedings/iswc2016/paper/resource/>
+5. @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+6. 
+7. :resource-25-citation-count a sd-ind:Indicator;
+8.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+9.	sd-ind:hasSource :scopus;
+10.	sd-ind:basedOnMetric :scopus-citation-count;
+11.	sd-ind:hasIndicatorValue :resource-25-citation-count-value .
+12.
+13. sd-inpro:resource-25 a sd:InProceedings;
+14.     sd:title "Conference Linked Data: the ScholarlyData project" .
+15. 
+16. :scopus-citation-count a :Metric;
+17.     sd-ind:hasParameter :citation-count .
+18. 
+19. :resource-25-citation-count-value a :IndicatorValue
+20.     sd-ind:indicatorValue 4 .
+</code></pre>
+
+<p>
+The example describes an indicator, i.e. <code>:resource-25-citation-count</code> associated with:
+</p>
+<ul>
+<li>a document (cf. line 8). The relation is expressed by the predicate-object <code>sd-ind:isIndicatorOf sd-inpro:resource-25</code>,
+where the object identifies the in-proceedings article (cf. line 13) titled "Conference Linked Data: the ScholarlyData project" (cf. line 14);</li>
+<li>a source (cf. line 9), which is, namely Scopus (i.e. <code>:scopus</code>)</li>
+<li>a metric (cf. line 10), which is the Scopus-based citation count <code>:scopus-citation-count</code>. This metric 
+has the citation count (i.e. <code>:citation-count</code>) as the parameter being measured (cf. line 17);</li>
+<li>an indicator value metric (cf. line 11), which represents the number of citations tracked by Scopus
+for the specific article.
+</li></ul>
+<p>
+Instead, the RDF below provides different indicators based on altmetrics tracked by PlumX for the same article of the example above. 
+</p>
+<pre><code>
+1. :resource-25-captures a sd-ind:Indicator;
+2.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+3.	sd-ind:hasSource :plumx;
+4.	sd-ind:basedOnMetric :plumx-captures;
+5.	sd-ind:hasIndicatorValue :resource-25-captures-value ;
+6.      sd-ind:hasSubIndicator :resource-25-readers, :resource-25-bookmarks .
+7. 
+8. :resource-25-readers a sd-ind:Indicator;
+9.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+10.	sd-ind:hasSource :plumx;
+11.	sd-ind:basedOnMetric :plumx-readers;
+12.	sd-ind:hasIndicatorValue :resource-25-readers-value ;
+13.     sd-ind:hasSubIndicator :resource-25-mendeley-readers, :resource-25-citeulike-readers .
+14.
+15. :resource-25-bookmarks a sd-ind:Indicator;
+16.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+17.	sd-ind:hasSource :plumx;
+18.	sd-ind:basedOnMetric :plumx-bookmarks;
+19.	sd-ind:hasIndicatorValue :resource-25-bookmarks-value ;
+20.     sd-ind:hasSubIndicator :resource-25-delicious-bookmarks . 
+21.
+22. :resource-25-mendeley-readers a sd-ind:Indicator;
+23.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+24.	sd-ind:hasSource :mendeley;
+25.	sd-ind:basedOnMetric :mendeley-readers;
+26.	sd-ind:hasIndicatorValue :resource-25-mendeley-readers-value .
+27.
+28. :resource-25-citeulike-readers a sd-ind:Indicator;
+29.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+30.	sd-ind:hasSource :citeulike;
+31.	sd-ind:basedOnMetric :citeulike-readers;
+32.	sd-ind:hasIndicatorValue :resource-25-citeulike-readers-value .
+33.
+28. :resource-25-delicious-bookmarks a sd-ind:Indicator;
+29.	sd-ind:isIndicatorOf sd-inpro:resource-25;
+30.	sd-ind:hasSource :delicious;
+31.	sd-ind:basedOnMetric :delicious-bookmarks;
+32.	sd-ind:hasIndicatorValue :resource-25-delicious-bookmarks-value .
+33.
+34. :plumx-captures a sd-ind:Metric;
+35.     sd-ind:hasParameter :captures .
+36.
+37. :plumx-readers a sd-ind:Metric;
+38.     sd-ind:hasParameter :readers .
+39. 
+40. :plumx-bookmarks a sd-ind:Metric;
+41.     sd-ind:hasParameter :captures .
+42. 
+43. :menedely-readers a sd-ind:Metric;
+44.     sd-ind:hasParameter :readers .
+45.
+46. :citeulike-readers a sd-ind:Metric;
+47.     sd-ind:hasParameter :readers .
+48.  
+49. :delicious-bookmarks a sd-ind:Metric;
+50.     sd-ind:hasParameter :bookmarks .
+51.  
+52. :captures a sd-ind:Parameter;
+53.     sd-ind:isSpecialisedBy :readers, :bookmarks .
+54. 
+55. :readers a sd-ind:Parameter .
+56.
+57. :bookmarks a sd-ind:Parameter
+58. 
+59. :resource-25-captures-value a :IndicatorValue
+60.     sd-ind:indicatorValue 12 .
+61.
+62. :resource-25-readers-value a :IndicatorValue
+63.     sd-ind:indicatorValue 10 .
+64.
+65. :resource-25-bookmarks-value a :IndicatorValue
+66.     sd-ind:indicatorValue 2 .
+67.
+68. :resource-25-mendeley-readers-value a :IndicatorValue
+69.     sd-ind:indicatorValue 8 .
+70.
+71. :resource-25-citeulike-readers-value a :IndicatorValue
+72.     sd-ind:indicatorValue 2 .
+73.
+74. :resource-25-delicious-bookmarks-value a :IndicatorValue
+75.     sd-ind:indicatorValue 2 .
+</code></pre>
+<p>
+In the example above the article <code>sd-inpro:resource-25</code> is associated with
+different indicators, i.e. <code>:resource-25-captures</code>, <code>:resource-25-readers</code>,
+<code>:resource-25-bookmarks</code>, <code>:resource-25-mendeley-readers</code>, <code>:resource-25-citeulike-readers</code>,
+and <code>:resource-25-delicious-bookmarks</code>. Those indicators, are organised hierarchically.
+In fact, <code>:resource-25-captures</code> is the top-level indicator, which has two sub-indicators
+consisting of <code>:resource-25-readers</code> and <code>:resource-25-bookmarks</code>, respectively (cf. line 6).
+In turn, <code>:resource-25-readers</code> has two sub-indicators, i.e. <code>:resource-25-mendeley-readers</code> and 
+<code>:resource-25-citeulike-readers</code> (cf. line 13), and <code>:resource-25-bookmarks</code> has one sub-indicator only, 
+i.e. <code>:resource-25-delicious-bookmarks</code>. The indicators are described by the same properties as in the previous
+example.
+</p>
+</section>
+</section>
+
+<section id="dataset">
+<h1>Extending the linked dataset</h1>
+<p>
+I-Ont is used for modelling an extension of ScholarlyData that exposes a linked open dataset with research impact indicators based
+both on citation count metrics and altmetrics. The extension is performed by taking into account only
+the in-proceedings articles that are associated with a DOI in ScholarlyData. As at February 2018 ScholarlyData 
+contains 828 out of 5,185 (~6%) in-proceedings articles with a DOI. Accordingly, we generate an RDF graph
+for those articles that counts 25,400 triples. The RDF graph is available for download on the portal<a href="#endnote_11"> </a> 
+as N-TRIPLES and is accessible from the page about data dumps<a href="#endnote_12"> </a>. We plan to release periodic updates 
+of the indicators in ScholarlyData, thus the naming convention adopted for RDF dumps uses the date when a 
+certain update has been performed (e.g. 03-02-2018-indicators.nt). Additionally, the latest
+version of the dump is available for querying on the SPARQL endpoint<a href="#endnote_13"> </a>.
+The following example shows a SPARQL query that retrieves
+all the articles with their associated indicator values (i.e. <code>?source</code>) tracked by
+a source (i.e. <code>?source</code>) for a certain parameter (i.e. <code>?parameter</code>).
+</p>
+
+<pre><code>
+PREFIX iont: <https://w3id.org/scholarlydata/ontology/indicators-ontology.owl#>
+SELECT ?article ?parameter ?source ?value
+WHERE{
+   ?indicator iont:isIndicatorOf ?article;
+       iont:basedOnMetric/iont:hasParameter ?parameter;
+       iont:hasSource ?source;
+       iont:hasIndicatorValue/iont:indicatorValue ?value
+}
+</code></pre>
+
+<p>
+<a href="#table_ont_population"> </a> reports the number of individuals in ScholarlyData modelled
+with the classes of I-Ont. The figures reported in <a href="#table_ont_population"> </a> can
+be obtained via SPARQL<a href="#endnote_14"> </a>.
+</p><p>
+
+</p><figure id="table_ont_population">
+<table>
+
+<tbody><tr>
+<th>I-Ont class</th>
+<th># of individuals</th>
+</tr>
+<tr>
+<td>
+<p><code>:IndicatorValue</code></p>
+</td>
+<td>
+<p>2,511</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>:Indicator</code></p>
+</td>
+<td>
+<p>2,511</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>:Metric</code></p>
+</td>
+<td>
+<p>31</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>:Parameter</code></p>
+</td>
+<td>
+<p>16</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>:IndicatorSource</code></p>
+</td>
+<td>
+<p>12</p>
+</td>
+</tr>
+</tbody></table>
+<figcaption>Number of individual by class of I-Ont in ScholarlyData.</figcaption>
+</figure>
+
+<a href="#table_sources"> </a> reports the average values we record on the dataset for the parameters measured on 
+different sources with specific metrics. We use the hierarchy of indicators enabled by the property 
+<code>:hasSubIndicator</code> (cf. <a href="#section_ont_description"> </a>) in order to get those value
+via the SPARQL endpoint of ScholarlyData<a href="#endnote_15"> </a>.
+<!-- figure id="table_categories">
+<table>
+
+<r>
+<th>Parameter</th>
+<th>Source</th>
+<th>Avg value</th>
+</tr>
+<tr>
+<td>
+<p>Citation count</p>
+</td>
+<td>
+<p>Scopus</p>
+</td>
+<td>
+<p>23.75</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Captures</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>40.74</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Mentions</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>1</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Social media</p>
+</td>
+<td>
+<p>Scopus</p>
+</td>
+<td>
+<p>2.75</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Usage</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>533.6</p>
+</td>
+</tr>
+</table>
+<figcaption>Average values for top-level parameters used as indicators.</figcaption>
+</figure>
+
+Similarly, <a href="#table_metrics"> </a> reports the average values we record on the dataset for the second-level parameters that are
+those artefact called <em>metrics</em> in PlumX. Again, we use the hierarchy of <code>:isSpecialisedBy</code> and values can be 
+easily obtained by querying the dataset via its SPARQL endpoint <a href="#endnote_16"> </a>.
+
+<figure id="table_metrics">
+<table>
+
+<tr>
+<th>Top-level parameter</th>
+<th>Parameter</th>
+<th>Source</th>
+<th>Avg value</th>
+</tr>
+<tr>
+<td rowspan="2">
+<p>Captures</p>
+</td>
+<td>
+<p>Exports-saves</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>3.5</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Readers</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>49.01</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>Mentions</p>
+</td>
+<td>
+<p>Blog mentions</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>1</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>References</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>1</p>
+</td>
+</tr>
+<td rowspan="3">
+<p>Social media</p>
+</td>
+<td>
+<p>Shares, likes & comments</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>1.5</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>+1s</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>10</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Tweets</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>1.5</p>
+</td>
+</tr>
+</tr>
+<td rowspan="4">
+<p>Usage</p>
+</td>
+<td>
+<p>Downloads</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>469</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Abstract views</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>437,2</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Full-text views</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>3</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Links out</p>
+</td>
+<td>
+<p>PlumX</p>
+</td>
+<td>
+<p>10</p>
+</td>
+</tr>
+
+</table>
+<figcaption>Average values for second-level parameters used as indicators.</figcaption>
+</figure -->
+
+<figure id="table_sources">
+<table>
+
+<tbody><tr>
+<th>Provider</th>
+<th>Top-level parameter</th>
+<th>Parameter</th>
+<th>Source</th>
+<th>Avg value</th>
+</tr>
+<tr>
+<td>
+<p>Scopus</p>
+</td>
+<td>
+<p>Citations</p>
+</td>
+<td>
+<p>Citation count</p>
+</td>
+<td>
+<p>Scopus</p>
+</td>
+<td>
+<p>23.75</p>
+</td>
+</tr>
+<tr>
+<td rowspan="15">
+<p>PlumX</p>
+</td>
+<td rowspan="4">
+<p>Captures</p>
+</td>
+<td>
+<p>Exports-saves</p>
+</td>
+<td>
+<p>Ebsco</p>
+</td>
+<td>
+<p>3.5</p>
+</td>
+</tr>
+<tr>
+<td rowspan="3">
+<p>Readers</p>
+</td>
+<td>
+<p>CiteULike</p>
+</td>
+<td>
+<p>3.64</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Mendeley</p>
+</td>
+<td>
+<p>34.92</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>SSRN</p>
+</td>
+<td>
+<p>2</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>Mentions</p>
+</td>
+<td>
+<p>Blog mentions</p>
+</td>
+<td>
+<p>Blogs</p>
+</td>
+<td>
+<p>1</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>References</p>
+</td>
+<td>
+<p>Wikipedia</p>
+</td>
+<td>
+<p>1</p>
+</td>
+</tr>
+<tr>
+<td rowspan="3">
+<p>Social media</p>
+</td>
+<td>
+<p>Shares, like & comments</p>
+</td>
+<td>
+<p>Facebook</p>
+</td>
+<td>
+<p>1.5</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>+1s</p>
+</td>
+<td>
+<p>Google+</p>
+</td>
+<td>
+<p>10</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Tweets</p>
+</td>
+<td>
+<p>Twitter</p>
+</td>
+<td>
+<p>1.5</p>
+</td>
+</tr>
+<tr>
+<td rowspan="6">
+<p>Usage</p>
+</td>
+<td>
+<p>Downloads</p>
+</td>
+<td>
+<p>SSRN</p>
+</td>
+<td>
+<p>469</p>
+</td>
+</tr>
+<tr>
+<td rowspan="3">
+<p>Abstract view</p>
+</td>
+<td>
+<p>DSpace</p>
+</td>
+<td>
+<p>16</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>EBSCO</p>
+</td>
+<td>
+<p>21.33</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>SSRN</p>
+</td>
+<td>
+<p>2,106</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Full-text view</p>
+</td>
+<td>
+<p>EBSCO</p>
+</td>
+<td>
+<p>3</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Links out</p>
+</td>
+<td>
+<p>EBSCO</p>
+</td>
+<td>
+<p>10</p>
+</td>
+</tr>
+</tbody></table>
+<figcaption>Average values for parameters used as indicators.</figcaption>
+</figure>
+
+</section>
+<section id="sec_conclusions">
+<h1>Conclusions</h1>
+<p>
+This work presents the indicator-ontology (I-Ont), which is designed as a modular extension
+of the conference-ontology used by ScholarlyData. Such an extension is obtained by using well
+established ontology engineering methods based on the reuse and interlink of ontology design patterns.
+We showcase I-Ont by using the ontology for representing indicators for a subset of articles
+in ScholarlyData. The result of the showcase is an RDF graph that is published in the public 
+SPARQL endpoint of ScholarlyData and can be downloaded as a separate dump. As a future work we aim at
+aligning I-Ont with SPAR ontologies, i.e. c4o, and covering the whole ScholarlyData linked dataset
+with indicator.
+</p>
+</section>
+
+<section role="doc-acknowledgements">
+	<h1>Acknowledgments</h1>
+	<p>This work has been part-funded by the Italian National Agency for the Evaluation of Universities and Research Institutes (ANVUR)
+	under grant agreement "Measuring the Impact of Research: Alterative Indicators" (MIRA).</p>
+</section>
+
+<section id="doc-bibliography" role="doc-bibliography">
+<h1>References</h1>
+<ul>
+<li role="doc-biblioentry" id="Blomqvist2010"><p>Eva Blomqvist et al. "Experimenting with eXtreme Design". In: <em>Proc. of EKAW 2010</em>. Springer, 2010, pp. 120–134.</p></li>
+<li role="doc-biblioentry" id="Gangemi2009">
+<p>Aldo Gangemi and Valentina Presutti. "Ontology design patterns". <em>Handbook on ontologies</em>, 221-243. Springer, 2009. DOI: 10.1007/978-3-540-92673-3_10.</p>
+</li>
+<li role="doc-biblioentry" id="Gruninger1995">
+<p>Michael Grüninger and Mark S. Fox. "The role of competency questions in enterprise engineering". In: <em>BenchmarkingTheory and practice</em>, 
+pp. 22–31. Springer, 1995</p>
+</li>
+<li role="doc-biblioentry" id="Hitzeler2017">
+<p>Pascal Hitzler et al. "Towards a simple but useful ontology design pattern representation language". In: <em>WOP 2017</em>.
+CEUR-ws, 2017</p>
+</li>
+<li role="doc-biblioentry" id="Nuzzolese2016">
+<p>Andrea Giovanni Nuzzolese et al. "Conference Linked Data: the ScholarlyData project". In <em>Proc. of ISWC 2016 - Resource Track</em>, Lecture Notes in Computer Science 9982:150-158. Springer, 2016. DOI: 10.1007/978-3-319-46547-0_16</p>
+</li>
+<li role="doc-biblioentry" id="Ortega2018"><p>José Luis Ortega. "Reliability and accuracy of altmetric providers: a comparison among Altmetric, PlumX and Crossref Event Data". 2018.
+</p></li>
+<li role="doc-biblioentry" id="Presutti2016"><p>Valentina Presutti et al. "The role of Ontology Design Patterns in Linked Data projects". In: <em>Proc. of ER 2016</em>, 113–121. Springer, 2016.</p></li>
+<li role="doc-biblioentry" id="Priem2012"><p>Jason Priem er al. "The altmetrics collection". In: <em>PloS one</em>, 7.11. 2012.</p></li>
+<li role="doc-biblioentry" id="Bar-Ilan2010"><p>Judit Bar-Ilan. "JASIST 2001–2010". In: <em>Bulletin of the Association for Information Science and Technology 38.6</em>, 24–28. 2012.</p></li>
+<li role="doc-biblioentry" id="Xuemei2012"><p>Xuemei Li er al. "Validating online reference managers for scholarly impact measurement." In: <em>Scientometrics</em> 91.2, 461–471. 2012.</p></li>
+<li role="doc-biblioentry" id="Shema2014"><p>Hadas Shema et al. "Do blog citations correlate with a higher number of future citations? Research blogs as a potential source for alternative metrics". In: 
+    <em>Journal of the Association for information science and technology</em> 65.5, 1018–1027. 2014.</p></li>
+<li role="doc-biblioentry" id="Shotton2009"><p>David Shotton. "Semantic publishing: the coming revolution in scientific journal publishing". In: <em>Learned Publishing</em>, 22(2):85–94. 2009.</p></li>
+<li role="doc-biblioentry" id="DiIorio2014"><p>Angelo Di Iorio et al. "Describing bibliographic references in RDF". In: <em>Proceedings of 4th Workshop on Semantic Publishing (SePublica 2014)</em>, CEUR Workshop Proceedings 1155. CEUR-WS.org, 2014.</p></li>
+<li role="doc-biblioentry" id="Peroni2012"><p>Silvio Peroni and David Shotton. "FaBiO and CiTO: ontologies for describing bibliographic resources and citations". In: <em>Journal of Web Semantics: Science, Services and Agents on the World Wide Web</em>, 33-43. Elsevier, 2012.</p></li>
+</ul>
+</section>
+<section id="doc-endnotes" role="doc-endnotes">
+<section role="doc-endnote" id="endnote_1">
+<p><a href="https://w3id.org/scholarlydata/ontology/conference-ontology.owl" rel="noopener">https://w3id.org/scholarlydata/ontology/conference-ontology.owl</a> </p>
+</section>
+<section role="doc-endnote" id="endnote_2">
+<p><a href="http://ontologydesignpatterns.org/" rel="noopener">http://ontologydesignpatterns.org/</a> </p>
+</section>
+<section role="doc-endnote" id="endnote_3">
+<p><a href="http://www.neon-project.org/nw/" rel="noopener">http://www.neon-project.org/nw/.</a> </p>
+</section>
+<section role="doc-endnote" id="endnote_4">
+<p><a href="http://scopus.com/" rel="noopener">http://scopus.com/</a></p>
+
+<section role="doc-endnote" id="endnote_5">
+<p><a href="https://plumanalytics.com/" rel="noopener">https://plumanalytics.com/</a></p>
+</section>
+<section role="doc-endnote" id="endnote_6">
+<p>For example, the Italian National Agency for the Evaluation of Universities and Research Institutes (ANVUR) adopts 
+Scopus in order to use citation counts and <em>h</em>-indexes as indicators for evaluating scholars in bibliometric academic fields for the national
+habilitation to the professorhip.</p>
+</section>
+<section role="doc-endnote" id="endnote_7">
+<p>M stands for millions.</p>
+</section>
+<section role="doc-endnote" id="endnote_8">
+<p><a href="http://ontologydesignpatterns.org/cp/owl/parameterregion.owl" rel="noopener">http://ontologydesignpatterns.org/cp/owl/parameterregion.owl</a></p>
+</section>
+<section role="doc-endnote" id="endnote_9">
+<p><a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl" rel="noopener">http://www.ontologydesignpatterns.org/ont/dul/DUL.owl</a></p>
+</section>
+<section role="doc-endnote" id="endnote_10">
+<p><a href="https://www.w3.org/TR/turtle/" rel="noopener">https://www.w3.org/TR/turtle/</a></p>
+</section>
+<section role="doc-endnote" id="endnote_11">
+<p><a href="https://w3id.org/scholarlydata/dumps/indicators/03-02-2018-indicators.nt" rel="noopener">https://w3id.org/scholarlydata/dumps/indicators/03-02-2018-indicators.nt</a></p>
+</section>
+<section role="doc-endnote" id="endnote_12">
+<p><a href="https://w3id.org/scholarlydata/dumps" rel="noopener">https://w3id.org/scholarlydata/dumps</a></p>
+</section>
+<section role="doc-endnote" id="endnote_13">
+<p><a href="https://w3id.org/scholarlydata/sparql" rel="noopener">https://w3id.org/scholarlydata/sparql</a></p>
+</section>
+<section role="doc-endnote" id="endnote_14">
+<p><a href="https://goo.gl/t88H9c" rel="noopener">https://goo.gl/t88H9c</a></p>
+</section>
+<section role="doc-endnote" id="endnote_15">
+<p><a href="https://goo.gl/jxSRSx" rel="noopener">https://goo.gl/jxSRSx</a></p>
+</section>
+<section role="doc-endnote" id="endnote_16">
+<p><a href="http://purl.org/ontology/bibo/" rel="noopener">http://purl.org/ontology/bibo/</a></p>
+</section>
+<section role="doc-endnote" id="endnote_17">
+<p><a href="https://w3id.org/spar" rel="noopener">https://w3id.org/spar</a></p>
+</section>
+<section role="doc-endnote" id="endnote_18">
+<p><a href="https://w3id.org/spar/c4o" rel="noopener">https://w3id.org/spar/c4o</a></p>
+</section>
+<section role="doc-endnote" id="endnote_19">
+<p><a href="https://w3id.org/spar/biro" rel="noopener">https://w3id.org/spar/biro</a></p>
+</section>
+<section role="doc-endnote" id="endnote_20">
+<p><a href="https://w3id.org/spar/cito" rel="noopener">https://w3id.org/spar/cito</a></p>
+</section>
+<section role="doc-endnote" id="endnote_21">
+<p>I-Ont is available at <a href="https://w3id.org/scholarlydata/ontology/indicators-ontology.owl" rel="noopener">https://w3id.org/scholarlydata/ontology/indicators-ontology.owl</a>. 
+The alignments are available at <a href="https://w3id.org/scholarlydata/ontology/indicators-ontology-aligns.owl" rel="noopener">https://w3id.org/scholarlydata/ontology/indicators-ontology-aligns.owl</a></p>
+</section>
+</section></section></body></html>

@@ -12,7 +12,7 @@ Invited speaker: Natasha Noy (Google)
 
 Andrea Giovanni Nuzzolese, Valentina Presutti, Aldo Gangemi and Paolo Ciancarini    
 
-Extending Scholarly Data with research impact indicators [short paper]
+[Extending Scholarly Data with research impact indicators](accepted/nuzzolese/index.html) [short paper]
 
 ---
 
@@ -20,7 +20,7 @@ Extending Scholarly Data with research impact indicators [short paper]
 
 Andrea Mannocci, Francesco Osborne and Enrico Motta
 
-Geographical trends in research: a preliminary analysis on authors' affiliations [full paper]
+[Geographical trends in research: a preliminary analysis on authors' affiliations](accepted/mannocci/index.pdf) [full paper]
 
 ---
 
@@ -28,7 +28,7 @@ Geographical trends in research: a preliminary analysis on authors' affiliations
 
 Marco Corbatto and Antonina Dattolo
 
-A Web application for creating and sharing visual bibliographies [full paper]
+[A Web application for creating and sharing visual bibliographies](accepted/corbatto/index.html) [full paper]
 
 ### 15:00 - 15:40 | Coffee break
 
@@ -38,7 +38,7 @@ A Web application for creating and sharing visual bibliographies [full paper]
 
 Jessica Cox, Corey Harper and Anita Dewaard
 
-Optimised Machine Learning Methods Predict Discourse Segment Type in Biological Research Articles [full paper]
+[Optimised Machine Learning Methods Predict Discourse Segment Type in Biological Research Articles](accepted/cox/index.pdf) [full paper]
 
 ---
 
@@ -46,7 +46,7 @@ Optimised Machine Learning Methods Predict Discourse Segment Type in Biological 
 
 Said Fathalla and Christoph Lange
 
-EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities [short paper]
+[EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science Communities](accepted/fathalla/index.pdf) [short paper]
 
 ---
 
@@ -54,7 +54,7 @@ EVENTS: A Historical Dataset of Top-Prestigious Events in Five Computer Science 
 
 Ivan Heibi, Silvio Peroni and David Shotton    
 
-OSCAR: A customisable tool for free-text search over SPARQL endpoints [full paper]
+[OSCAR: A customisable tool for free-text search over SPARQL endpoints](accepted/heibi/index.html) [full paper]
 
 ---
 
@@ -62,7 +62,7 @@ OSCAR: A customisable tool for free-text search over SPARQL endpoints [full pape
 
 Gabriele Scalia, Matteo Pelucchi, Alessandro Stagni, Tiziano Faravelli and Barbara Pernici
 
-Storing combustion data experiments: new requirements emerging from a first prototype [position paper]
+[Storing combustion data experiments: new requirements emerging from a first prototype](accepted/scalia/index.pdf) [position paper]
 
 ---
 
@@ -70,7 +70,7 @@ Storing combustion data experiments: new requirements emerging from a first prot
 
 Angelo Di Iorio, Freddy Limpens, Silvio Peroni, Agata Rotondi, Georgios Tsatsaronis and Jorgos Achtsivassilis    
 
-Coloring citations for scholars: investigating palettes [short paper]
+[Coloring citations for scholars: investigating palettes](accepted/diiorio/index.html) [short paper]
 
 ---
 
@@ -78,6 +78,6 @@ Coloring citations for scholars: investigating palettes [short paper]
 
 Hanna Ćwiek-Kupczyńska
 
-Striving for Semantics of Plant Phenotyping Data [poster paper]
+[Striving for Semantics of Plant Phenotyping Data](accepted/cwiek-kupczynska/index.html) [poster paper]
 
 ### 16:45 - 17:00 | Closing and Award
