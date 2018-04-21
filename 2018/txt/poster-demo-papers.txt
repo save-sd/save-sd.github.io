@@ -50,7 +50,7 @@ On a personal note, I would have liked to have seen more detail on specific chal
 
 - - -
 
-**Paper: ** Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: Towards Development of Ontology for the National Digital Library of India ([preprint](submission/sadhu/index.pdf), [postprint](accepted/sadhu/index.pdf))
+**Paper: ** Susmita Sadhu, Poonam Anthony, Plaban Kumar Bhowmick and Debarshi Kumar Sanyal: Towards Development of Ontology for the National Digital Library of India ([preprint](submission/sadhu/index.pdf))
 
 **Decision: reject** 
 

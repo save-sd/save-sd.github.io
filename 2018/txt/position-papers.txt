@@ -1,4 +1,4 @@
-**Paper: ** Gustavo Publio, Diego Esteves, Agnieszka Ławrynowicz, Panče Panov, Larisa Soldatova, Tommaso Soru and Joaquin Vanschoren: ML Schema: Exposing the Semantics of Machine Learning with Schemas and Ontologies ([preprint](submission/publio/index.html), [postprint](accepted/publio/index.html))
+**Paper: ** Gustavo Publio, Diego Esteves, Agnieszka Ławrynowicz, Panče Panov, Larisa Soldatova, Tommaso Soru and Joaquin Vanschoren: ML Schema: Exposing the Semantics of Machine Learning with Schemas and Ontologies ([preprint](submission/publio/index.html))
 
 **Decision: reject** 
 
